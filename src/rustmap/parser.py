@@ -16,6 +16,15 @@ from typing import Iterator
 import lz4.block
 
 
+# Rust currently writes one-megabyte legacy LZ4 chunks and normal procedural
+# maps decode to well below 1 GiB. Bound attacker-controlled length fields
+# before allocating so a corrupt/untrusted map cannot cause unbounded memory or
+# CPU consumption.
+MAX_LZ4_CHUNK_BYTES = 16 * 1024 * 1024
+MAX_DECOMPRESSED_MAP_BYTES = 1024 * 1024 * 1024
+MAX_LZ4_CHUNKS = 4096
+
+
 class RustMapError(ValueError):
     """Raised when a map is truncated, corrupt, or unsupported."""
 
@@ -237,12 +246,20 @@ def _read_stream_varint(stream, *, allow_eof: bool = False) -> int | None:
 
 def _decompress_legacy_lz4(stream) -> bytearray:
     output = bytearray()
+    chunk_count = 0
     while True:
         flags = _read_stream_varint(stream, allow_eof=True)
         if flags is None:
             break
+        chunk_count += 1
+        if chunk_count > MAX_LZ4_CHUNKS:
+            raise RustMapError("Legacy LZ4 stream contains too many chunks")
         original_length = _read_stream_varint(stream)
         assert original_length is not None
+        if original_length > MAX_LZ4_CHUNK_BYTES:
+            raise RustMapError("Legacy LZ4 chunk exceeds the safety limit")
+        if len(output) + original_length > MAX_DECOMPRESSED_MAP_BYTES:
+            raise RustMapError("Decompressed map exceeds the safety limit")
         is_compressed = bool(flags & 1)
         if flags >> 2:
             raise RustMapError("Multi-pass legacy LZ4 chunks are unsupported")
@@ -294,4 +311,3 @@ def load_map(path: str | Path) -> RustMap:
             elif number == 4:
                 paths.append(_path(value))
     return RustMap(version, timestamp, size, layers, prefabs, paths, protobuf_buffer)
-

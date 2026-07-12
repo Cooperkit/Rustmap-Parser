@@ -107,7 +107,11 @@ def render_tunnel_map(world, manifest: PrefabManifest, geometry_cache: str | Pat
     template_prepare_seconds = template_png_load_seconds = paste_seconds = fallback_seconds = 0.0
     cache_load_started = time.perf_counter()
 
-    arrays_context = np.load(geometry_path) if geometry_path is not None and geometry_path.is_file() else nullcontext(None)
+    arrays_context = (
+        np.load(geometry_path, allow_pickle=False)
+        if geometry_path is not None and geometry_path.is_file()
+        else nullcontext(None)
+    )
     with arrays_context as arrays:
         cache_load_seconds = time.perf_counter() - cache_load_started
         templates = {item["prefab_path"]: item for item in cache_metadata["templates"]}
