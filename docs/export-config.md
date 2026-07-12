@@ -6,7 +6,7 @@ settings, and packaged-data overrides so applications do not pay for work they
 did not request.
 
 ```python
-from rustmap import ExportConfig, RustMapExporter
+from rustmap_parser import ExportConfig, RustMapExporter
 
 result = RustMapExporter(ExportConfig(
     map_path="procedural.map",
@@ -48,10 +48,10 @@ the `exports` argument is omitted.
 
 ## Imports
 
-All configuration types are available from the public `rustmap` package:
+All configuration types are available from the public `rustmap_parser` package:
 
 ```python
-from rustmap import (
+from rustmap_parser import (
     DataOptions,
     ExportConfig,
     ExportOptions,
@@ -518,7 +518,7 @@ DataOptions(
 )
 ```
 
-The package normally loads `rustmap.data` resources automatically.
+The package normally loads `rustmap_parser.data` resources automatically.
 
 ### `spawn_rules_path`
 

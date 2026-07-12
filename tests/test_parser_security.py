@@ -2,7 +2,7 @@ from io import BytesIO
 
 import pytest
 
-from rustmap.parser import (
+from rustmap_parser.parser import (
     MAX_LZ4_CHUNK_BYTES,
     MAX_LZ4_CHUNKS,
     RustMapError,

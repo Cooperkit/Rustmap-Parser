@@ -6,7 +6,7 @@ from pathlib import Path
 
 import numpy as np
 
-from rustmap.validation import compare_files
+from rustmap_parser.validation import compare_files
 
 
 def write_heatmap(path: Path, array: np.ndarray) -> None:

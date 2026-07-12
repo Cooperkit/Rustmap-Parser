@@ -4,5 +4,5 @@ include example.py
 include refresh_all_data.py
 recursive-include docs *.md *.png *.jpg
 recursive-include tests *.py
-recursive-include src/rustmap/data *.json
-recursive-include src/rustmap/data/tunnel_tiles *.json *.png
+recursive-include src/rustmap_parser/data *.json
+recursive-include src/rustmap_parser/data/tunnel_tiles *.json *.png

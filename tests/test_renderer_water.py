@@ -7,7 +7,7 @@ from unittest.mock import patch
 import numpy as np
 from PIL import Image
 
-from rustmap.renderer import MapRenderResult, _apply_ocean_level, save_map_render
+from rustmap_parser.renderer import MapRenderResult, _apply_ocean_level, save_map_render
 
 
 class RendererWaterTests(unittest.TestCase):
@@ -34,8 +34,8 @@ class RendererWaterTests(unittest.TestCase):
             (output / "map_render.png").write_bytes(b"stale")
             (output / "map_render.jpg").write_bytes(b"stale")
             with (
-                patch("rustmap.renderer._prepare_render_inputs", return_value=prepared),
-                patch("rustmap.renderer.render_map_image", return_value=rendered) as render,
+                patch("rustmap_parser.renderer._prepare_render_inputs", return_value=prepared),
+                patch("rustmap_parser.renderer.render_map_image", return_value=rendered) as render,
             ):
                 metadata = save_map_render(
                     world, output, scale=0.5, formats=("png", "jpg"),

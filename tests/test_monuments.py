@@ -1,6 +1,6 @@
 import unittest
 
-from rustmap.monuments import monument_metadata
+from rustmap_parser.monuments import monument_metadata
 
 
 PREFIX = "assets/bundled/prefabs/autospawn/monument/"

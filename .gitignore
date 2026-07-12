@@ -19,7 +19,7 @@ outputs/
 *.map
 *.npz
 *.png
-!src/rustmap/data/tunnel_tiles/*.png
+!src/rustmap_parser/data/tunnel_tiles/*.png
 !docs/images/*.png
 *.jpg
 !docs/images/*.jpg

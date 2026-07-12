@@ -108,7 +108,7 @@ compose output sections in Python.
 ```python
 from pathlib import Path
 
-from rustmap import ExportConfig, ExportOptions, RustMapExporter
+from rustmap_parser import ExportConfig, ExportOptions, RustMapExporter
 
 
 config = ExportConfig(
@@ -159,7 +159,7 @@ config = ExportConfig(
 ### Mix exactly what you need
 
 ```python
-from rustmap import (
+from rustmap_parser import (
     ExportConfig,
     ExportOptions,
     NoBuildZoneOptions,
@@ -257,7 +257,7 @@ A `None` resolution uses the map's world size.
 `DataOptions` can override the bundled version-matched resources:
 
 ```python
-from rustmap import DataOptions
+from rustmap_parser import DataOptions
 
 config = ExportConfig(
     map_path=map_path,
@@ -415,8 +415,8 @@ rasterization and PNG encoding.
 Skip the exporter entirely when you only need decoded data:
 
 ```python
-from rustmap import load_map
-from rustmap.layers import biome_grid, splat_grid, topology_grid, world_height_grid
+from rustmap_parser import load_map
+from rustmap_parser.layers import biome_grid, splat_grid, topology_grid, world_height_grid
 
 world = load_map("procedural.map")
 height = world_height_grid(world)
@@ -473,7 +473,7 @@ python refresh_all_data.py
 [`refresh_all_data.py`](refresh_all_data.py) stages and validates the prefab
 manifest, spawn rules, monument gameplay metadata, no-build geometry, and 81
 tunnel tiles. It checks Rust build IDs, bundle identities, counts, and machine
-path leaks before replacing `src/rustmap/data`.
+path leaks before replacing `src/rustmap_parser/data`.
 
 ## Development
 
@@ -491,7 +491,7 @@ comparisons.
 
 ```text
 rust-map-parser/
-|-- src/rustmap/          # Package and implementation
+|-- src/rustmap_parser/          # Package and implementation
 |   `-- data/             # Versioned sanitized runtime resources
 |-- tests/                # Unit and regression tests
 |-- docs/images/          # README showcase outputs

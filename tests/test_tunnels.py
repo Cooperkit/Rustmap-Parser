@@ -7,11 +7,11 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from rustmap.config import ExportConfig, ExportOptions, TunnelOptions
-from rustmap.parser import Prefab, RustMap, Vector3
-from rustmap.prefabs import PrefabManifest, PrefabManifestEntry
-from rustmap.tunnels import _euler_matrix, _instance_matrix, render_tunnel_map, save_tunnel_render
-from rustmap.tunnel_assets import _cache_key, _rasterize_template
+from rustmap_parser.config import ExportConfig, ExportOptions, TunnelOptions
+from rustmap_parser.parser import Prefab, RustMap, Vector3
+from rustmap_parser.prefabs import PrefabManifest, PrefabManifestEntry
+from rustmap_parser.tunnels import _euler_matrix, _instance_matrix, render_tunnel_map, save_tunnel_render
+from rustmap_parser.tunnel_assets import _cache_key, _rasterize_template
 
 
 class TunnelRendererTests(unittest.TestCase):
@@ -153,7 +153,7 @@ class TunnelRendererTests(unittest.TestCase):
         self.assertNotEqual(first, _cache_key(identity))
 
     def test_packaged_tile_set_is_sanitized_and_complete(self):
-        root = resources.files("rustmap.data.tunnel_tiles")
+        root = resources.files("rustmap_parser.data.tunnel_tiles")
         payload = json.loads(root.joinpath("tiles.json").read_text(encoding="utf-8"))
         self.assertEqual(payload["template_count"], 81)
         self.assertEqual(len([item for item in root.iterdir() if item.name.endswith(".png")]), 81)

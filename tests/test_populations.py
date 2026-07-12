@@ -1,7 +1,7 @@
 import json
 from importlib import resources
 
-from rustmap.populations import SpawnRule, heatmap_categories
+from rustmap_parser.populations import SpawnRule, heatmap_categories
 
 
 def _rule(name: str, asset_path: str) -> SpawnRule:
@@ -41,6 +41,6 @@ def test_hemp_category_combines_temperate_and_jungle_populations() -> None:
 
 def test_packaged_spawn_database_contains_hemp_category() -> None:
     payload = json.loads(
-        resources.files("rustmap.data").joinpath("spawn_rules.json").read_text(encoding="utf-8")
+        resources.files("rustmap_parser.data").joinpath("spawn_rules.json").read_text(encoding="utf-8")
     )
     assert len(payload["heatmap_categories"]["hemp"]) == 2

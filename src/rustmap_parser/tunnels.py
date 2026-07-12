@@ -76,11 +76,11 @@ def render_tunnel_map(world, manifest: PrefabManifest, geometry_cache: str | Pat
         raise ValueError("Tunnel overlay opacity must be between 0 and 1")
     cache = Path(geometry_cache) if geometry_cache is not None else None
     if cache is None:
-        tile_root = resources.files("rustmap.data.tunnel_tiles")
+        tile_root = resources.files("rustmap_parser.data.tunnel_tiles")
         cache_metadata = json.loads(tile_root.joinpath("tiles.json").read_text(encoding="utf-8"))
         tile_source = "packaged"
         geometry_path = None
-        tile_directory = "rustmap.data.tunnel_tiles"
+        tile_directory = "rustmap_parser.data.tunnel_tiles"
         def tile_exists(filename): return tile_root.joinpath(filename).is_file()
         def load_tile(filename):
             with tile_root.joinpath(filename).open("rb") as stream, Image.open(stream) as source:

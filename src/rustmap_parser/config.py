@@ -12,7 +12,7 @@ Color = tuple[int, int, int, int]
 
 @dataclass(frozen=True, slots=True)
 class DataOptions:
-    """Optional overrides for the versioned data bundled with ``rustmap``."""
+    """Optional overrides for the versioned data bundled with ``rustmap_parser``."""
 
     spawn_rules_path: Path | None = None
     prefab_manifest_path: Path | None = None

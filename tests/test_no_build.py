@@ -4,11 +4,11 @@ import unittest
 from importlib import resources
 from pathlib import Path
 
-from rustmap.config import ExportConfig, ExportOptions, NoBuildZoneOptions
-from rustmap.no_build import _draw_zones, build_no_build_export, save_no_build_zones
-from rustmap.parser import Prefab, RustMap, Vector3
-from rustmap.prefabs import PrefabManifest, PrefabManifestEntry
-from rustmap.no_build_assets import _include_surface_blocker, _primitive_contains, _remove_contained
+from rustmap_parser.config import ExportConfig, ExportOptions, NoBuildZoneOptions
+from rustmap_parser.no_build import _draw_zones, build_no_build_export, save_no_build_zones
+from rustmap_parser.parser import Prefab, RustMap, Vector3
+from rustmap_parser.prefabs import PrefabManifest, PrefabManifestEntry
+from rustmap_parser.no_build_assets import _include_surface_blocker, _primitive_contains, _remove_contained
 
 
 PATH = "assets/bundled/prefabs/autospawn/monument/test/test.prefab"
@@ -150,7 +150,7 @@ class NoBuildZoneTests(unittest.TestCase):
             self.assertEqual(metadata["requested_outputs"], {"images": False, "json": True})
 
     def test_packaged_data_is_sanitized(self):
-        payload = json.loads(resources.files("rustmap.data").joinpath(
+        payload = json.loads(resources.files("rustmap_parser.data").joinpath(
             "no_build_zones.json").read_text(encoding="utf-8"))
         self.assertGreater(payload["prefab_count"], 0)
         self.assertGreater(payload["zone_definition_count"], 0)

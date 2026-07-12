@@ -4,7 +4,7 @@
 artifacts produced by the selected export stages.
 
 ```python
-from rustmap import ExportConfig, ExportOptions, RustMapExporter
+from rustmap_parser import ExportConfig, ExportOptions, RustMapExporter
 
 result = RustMapExporter(ExportConfig(
     map_path="procedural.map",
@@ -481,7 +481,7 @@ assert result.tunnel_render_status == "disabled"
 ### Tunnel overlay only
 
 ```python
-from rustmap import TerrainOptions, TunnelOptions
+from rustmap_parser import TerrainOptions, TunnelOptions
 
 result = RustMapExporter(ExportConfig(
     map_path=map_path,
@@ -502,7 +502,7 @@ assert result.tunnels_overlay_image is not None
 ### No-build JSON only
 
 ```python
-from rustmap import NoBuildZoneOptions
+from rustmap_parser import NoBuildZoneOptions
 
 result = RustMapExporter(ExportConfig(
     map_path=map_path,

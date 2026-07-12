@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from rustmap import ExportConfig, ExportOptions, RustMapExporter
+from rustmap_parser import ExportConfig, ExportOptions, RustMapExporter
 
 
 # --- User configuration ----------------------------------------------------

@@ -2,7 +2,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from rustmap.png import PNG_SOURCE_KEY, PROJECT_URL, save_png
+from rustmap_parser.png import PNG_SOURCE_KEY, PROJECT_URL, save_png
 
 
 def test_save_png_embeds_project_source_without_changing_pixels(tmp_path: Path) -> None:

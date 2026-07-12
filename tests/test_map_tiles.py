@@ -7,8 +7,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from rustmap.renderer import save_full_map_tiles
-from rustmap.png import PNG_SOURCE_KEY, PROJECT_URL
+from rustmap_parser.renderer import save_full_map_tiles
+from rustmap_parser.png import PNG_SOURCE_KEY, PROJECT_URL
 
 
 class MapTileTests(unittest.TestCase):

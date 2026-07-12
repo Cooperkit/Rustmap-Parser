@@ -70,7 +70,7 @@ def _size_class(group: str, name: str) -> str:
 
 @lru_cache(maxsize=1)
 def _gameplay_database() -> dict:
-    resource = resources.files("rustmap.data").joinpath("monument_metadata.json")
+    resource = resources.files("rustmap_parser.data").joinpath("monument_metadata.json")
     return json.loads(resource.read_text(encoding="utf-8"))
 
 

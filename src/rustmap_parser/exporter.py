@@ -353,14 +353,14 @@ class RustMapExporter:
                 rules = config.data.spawn_rules_path
                 if rules is None:
                     rules = stack.enter_context(resources.as_file(
-                        resources.files("rustmap.data").joinpath("spawn_rules.json")
+                        resources.files("rustmap_parser.data").joinpath("spawn_rules.json")
                     ))
             manifest = None
             if needs_manifest:
                 manifest = config.data.prefab_manifest_path
                 if manifest is None:
                     manifest = stack.enter_context(resources.as_file(
-                        resources.files("rustmap.data").joinpath("prefab_manifest.json")
+                        resources.files("rustmap_parser.data").joinpath("prefab_manifest.json")
                     ))
             metadata = _generate(config, Path(rules) if rules else None,
                                  Path(manifest) if manifest else None)

@@ -97,8 +97,8 @@ def _draw_zones(zones: list[dict], resolution: int, fill, outline, width: int,
 
 
 def _load_packaged_data() -> tuple[dict, str]:
-    item = resources.files("rustmap.data").joinpath("no_build_zones.json")
-    return json.loads(item.read_text(encoding="utf-8")), "rustmap.data/no_build_zones.json"
+    item = resources.files("rustmap_parser.data").joinpath("no_build_zones.json")
+    return json.loads(item.read_text(encoding="utf-8")), "rustmap_parser.data/no_build_zones.json"
 
 
 def build_no_build_export(world, manifest: PrefabManifest, data: dict,

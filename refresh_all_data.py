@@ -1,4 +1,4 @@
-"""Refresh every versioned ``src/rustmap/data`` resource from one Rust install.
+"""Refresh every versioned ``src/rustmap_parser/data`` resource from one Rust install.
 
 Run this file directly from a source checkout. No command-line arguments are
 used. Set RUST_INSTALL_PATH below, set the RUST_INSTALL_PATH environment
@@ -22,7 +22,7 @@ PROJECT_DIR = Path(__file__).resolve().parent
 SRC_DIR = PROJECT_DIR / "src"
 sys.path.insert(0, str(SRC_DIR))
 
-from rustmap.tunnel_assets import bundle_identity, find_rust_install
+from rustmap_parser.tunnel_assets import bundle_identity, find_rust_install
 
 
 # --- Maintainer configuration ---------------------------------------------
@@ -65,23 +65,23 @@ def _stage_worker(stage: str, install_text: str, staging_text: str,
         install = Path(install_text)
         staging = Path(staging_text)
         if stage == "prefab_manifest":
-            from rustmap import refresh_prefab_manifest
+            from rustmap_parser import refresh_prefab_manifest
             target = staging / "prefab_manifest.json"
             refresh_prefab_manifest(install, target)
             _sanitize_manifest(target)
         elif stage == "spawn_rules":
-            from rustmap import refresh_spawn_rules
+            from rustmap_parser import refresh_spawn_rules
             target = staging / "spawn_rules.json"
             refresh_spawn_rules(install, target)
             _sanitize_spawn_rules(target)
         elif stage == "monument_metadata":
-            from rustmap import refresh_monument_metadata
+            from rustmap_parser import refresh_monument_metadata
             refresh_monument_metadata(install, staging / "monument_metadata.json")
         elif stage == "no_build_zones":
-            from rustmap import refresh_no_build_zone_data
+            from rustmap_parser import refresh_no_build_zone_data
             refresh_no_build_zone_data(install, staging / "no_build_zones.json")
         elif stage == "tunnel_tiles":
-            from rustmap import install_packaged_tunnel_templates, refresh_tunnel_templates
+            from rustmap_parser import install_packaged_tunnel_templates, refresh_tunnel_templates
             cache = refresh_tunnel_templates(
                 install, Path(tunnel_cache_text) if tunnel_cache_text else None
             )
@@ -183,7 +183,7 @@ def _validate_staging(staging: Path, install: Path) -> dict:
 
 
 def _replace_packaged_data(staging: Path) -> None:
-    data_dir = SRC_DIR / "rustmap" / "data"
+    data_dir = SRC_DIR / "rustmap_parser" / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
     for name in JSON_RESOURCES:
         destination = data_dir / name
@@ -224,7 +224,7 @@ def main() -> None:
     stages = ("prefab_manifest", "spawn_rules", "monument_metadata",
               "no_build_zones", "tunnel_tiles")
     timings = {}
-    with tempfile.TemporaryDirectory(prefix="rustmap-data-refresh-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="rustmap_parser-data-refresh-") as temporary:
         staging = Path(temporary)
         for stage in stages:
             print(f"Refreshing {stage.replace('_', ' ')}...")

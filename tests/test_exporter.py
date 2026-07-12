@@ -6,11 +6,11 @@ from unittest.mock import patch
 
 import numpy as np
 
-from rustmap.config import (
+from rustmap_parser.config import (
     DataOptions, ExportConfig, ExportOptions, HeatmapOptions, TerrainOptions,
     TileOptions,
 )
-from rustmap.exporter import _generate, export_orientation
+from rustmap_parser.exporter import _generate, export_orientation
 
 
 class ExporterTests(unittest.TestCase):
@@ -101,12 +101,12 @@ class ExporterTests(unittest.TestCase):
             )
             render_metadata = {"artifacts": {}, "full_size_tiles": None}
             with (
-                patch("rustmap.exporter.load_map", return_value=world),
-                patch("rustmap.exporter.save_map_render", return_value=render_metadata) as render,
-                patch("rustmap.exporter.generate_diagnostics") as diagnostics,
-                patch("rustmap.exporter.save_monuments") as monuments,
-                patch("rustmap.exporter.save_tunnel_render") as tunnels,
-                patch("rustmap.exporter.save_no_build_zones") as no_build,
+                patch("rustmap_parser.exporter.load_map", return_value=world),
+                patch("rustmap_parser.exporter.save_map_render", return_value=render_metadata) as render,
+                patch("rustmap_parser.exporter.generate_diagnostics") as diagnostics,
+                patch("rustmap_parser.exporter.save_monuments") as monuments,
+                patch("rustmap_parser.exporter.save_tunnel_render") as tunnels,
+                patch("rustmap_parser.exporter.save_no_build_zones") as no_build,
             ):
                 metadata = _generate(config, None, None)
             render.assert_called_once()
