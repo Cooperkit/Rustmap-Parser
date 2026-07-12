@@ -14,8 +14,6 @@ dist/
 .idea/
 .vscode/
 .DS_Store
-output/
-outputs/
 *.map
 *.npz
 *.png
@@ -29,9 +27,23 @@ server/
 codex_map_render/
 /test.py
 
-# Ignore every generated output child except the curated repository example.
-# These final exceptions also override the global PNG, JPG, and NPZ rules.
-!output/
-output/*
-!output/ExampleOutput/
-!output/ExampleOutput/**
+# Ignore every generated output folder except the curated repository example.
+# Support both common directory spellings. These final exceptions also override
+# the global PNG, JPG, and NPZ rules for ExampleOutput only.
+/output/**
+!/output/
+!/output/ExampleOutput/
+!/output/ExampleOutput/**
+
+/outputs/**
+!/outputs/
+!/outputs/ExampleOutput/
+!/outputs/ExampleOutput/**
+
+# Explicitly commit the generated map-tile gallery in the curated example.
+!/output/ExampleOutput/map_render_tiles/
+!/output/ExampleOutput/map_render_tiles/*.png
+!/output/ExampleOutput/map_render_tiles/tiles.json
+!/outputs/ExampleOutput/map_render_tiles/
+!/outputs/ExampleOutput/map_render_tiles/*.png
+!/outputs/ExampleOutput/map_render_tiles/tiles.json

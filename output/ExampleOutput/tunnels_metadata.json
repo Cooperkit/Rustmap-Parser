@@ -21,9 +21,9 @@
     105,
     104
   ],
-  "png_encode_seconds": 0.05990399999791407,
-  "overlay_compose_seconds": 0.037239300003420794,
-  "overlay_encode_seconds": 0.34386409999933676,
+  "png_encode_seconds": 0.06300599999667611,
+  "overlay_compose_seconds": 0.043880700002773665,
+  "overlay_encode_seconds": 0.34361680000438355,
   "resolution": [
     2500,
     2500
@@ -70,17 +70,17 @@
   "cache_pixels_per_meter": 8.0,
   "cache_template_raster_seconds": null,
   "intermediate_pixels_per_meter": 2.0,
-  "cache_load_seconds": 3.2999996619764715e-06,
-  "template_prepare_seconds": 0.04770109999662964,
-  "template_png_load_seconds": 0.02732069999910891,
-  "template_paste_seconds": 0.009202000004734145,
+  "cache_load_seconds": 3.2999960239976645e-06,
+  "template_prepare_seconds": 0.05885139999736566,
+  "template_png_load_seconds": 0.032520800043130293,
+  "template_paste_seconds": 0.0058191000134684145,
   "fallback_raster_seconds": 0.0,
-  "downsample_seconds": 0.0694842000011704,
+  "downsample_seconds": 0.06444159999955446,
   "alpha_nonzero_pixels": 263144,
-  "render_seconds": 0.14185549999820068,
+  "render_seconds": 0.1474755999952322,
   "cache_template_count": 81,
   "tile_source": "packaged",
-  "tile_directory": "rustmap.data.tunnel_tiles",
+  "tile_directory": "rustmap_parser.data.tunnel_tiles",
   "loaded_tile_count": 24,
   "missing_tiles": [
     "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
@@ -111,6 +111,6 @@
   "tile_source_build_id": "24091435",
   "tile_version_mismatch": false,
   "tile_warnings": [],
-  "total_seconds": 0.6970351999989362,
+  "total_seconds": 0.685729499993613,
   "metadata_file": "tunnels_metadata.json"
 }

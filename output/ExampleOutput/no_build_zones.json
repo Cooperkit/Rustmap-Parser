@@ -2432,7 +2432,7 @@
     "images": true,
     "json": true
   },
-  "packaged_data": "rustmap.data/no_build_zones.json",
+  "packaged_data": "rustmap_parser.data/no_build_zones.json",
   "style": {
     "fill_color": [
       255,
@@ -2448,10 +2448,10 @@
     ],
     "outline_width": 3
   },
-  "render_seconds": 0.2857492999974056,
+  "render_seconds": 0.34508009999990463,
   "image_file": "no_build_zones.png",
   "overlay_file": "no_build_zones_on_map.png",
-  "elapsed_seconds": 0.8449335999976029,
+  "elapsed_seconds": 0.8705243000003975,
   "artifact_sizes_bytes": {
     "no_build_zones.png": 322403,
     "no_build_zones_on_map.png": 4956316

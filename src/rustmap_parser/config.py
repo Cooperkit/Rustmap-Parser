@@ -77,7 +77,7 @@ class ExportOptions:
     def all(cls) -> "ExportOptions":
         return cls(
             heatmaps=HeatmapOptions(), diagnostics=True, monuments=True,
-            terrain=TerrainOptions(), tunnels=TunnelOptions(),
+            terrain=TerrainOptions(tiles=TileOptions()), tunnels=TunnelOptions(),
             no_build_zones=NoBuildZoneOptions(),
         )
 

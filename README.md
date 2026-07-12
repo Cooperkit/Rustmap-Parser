@@ -71,7 +71,6 @@ These images were generated from a real size-4500 Rust map.
 - Compact monument JSON with extracted gameplay metadata
 - Compact circle/rectangle no-build zone JSON and overlays
 - Detailed timings, source identities, counts, and validation metadata
-- Correct orientation: exported images reverse rows only and never mirror X
 
 ## Requirements and installation
 
@@ -155,6 +154,11 @@ config = ExportConfig(
     exports=ExportOptions.all(),
 )
 ```
+
+`ExportOptions.all()` includes heatmaps and previews, diagnostics, monuments,
+the full-size terrain image and 512-pixel tiles, both tunnel images, and the
+no-build-zone images and JSON. The redundant scaled terrain render is skipped
+when the full-size render is enabled.
 
 ### Mix exactly what you need
 

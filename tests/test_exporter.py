@@ -47,6 +47,22 @@ class ExporterTests(unittest.TestCase):
                 ExportConfig(path, Path("output"), exports=ExportOptions()).validated()
 
     def test_presets_select_only_requested_stages(self):
+        everything = ExportOptions.all()
+        self.assertIsNotNone(everything.heatmaps)
+        self.assertTrue(everything.heatmaps.previews)
+        self.assertTrue(everything.diagnostics)
+        self.assertTrue(everything.monuments)
+        self.assertIsNotNone(everything.terrain)
+        self.assertTrue(everything.terrain.full_size)
+        self.assertIsNotNone(everything.terrain.tiles)
+        self.assertEqual(everything.terrain.tiles.size, 512)
+        self.assertIsNotNone(everything.tunnels)
+        self.assertTrue(everything.tunnels.export_layer)
+        self.assertTrue(everything.tunnels.export_overlay)
+        self.assertIsNotNone(everything.no_build_zones)
+        self.assertTrue(everything.no_build_zones.export_images)
+        self.assertTrue(everything.no_build_zones.export_json)
+
         map_only = ExportOptions.map_only(tiles=True)
         self.assertIsNotNone(map_only.terrain)
         self.assertIsNotNone(map_only.terrain.tiles)

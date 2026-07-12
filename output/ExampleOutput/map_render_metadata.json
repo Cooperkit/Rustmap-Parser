@@ -109,14 +109,497 @@
     "ocean_margin": 0,
     "timings": {
       "shore_seconds": 0.0,
-      "total_seconds": 4.1556302000026335,
-      "prepare_seconds": 0.8322049000016705
+      "total_seconds": 4.877863800007617,
+      "prepare_seconds": 1.939230600008159
     },
     "artifact": "map_render_full.png"
   },
-  "full_size_tiles": null,
+  "full_size_tiles": {
+    "schema_version": 1,
+    "map_width": 2500,
+    "map_height": 2500,
+    "tile_size": 512,
+    "columns": 5,
+    "rows": 5,
+    "tile_count": 25,
+    "coordinate_system": {
+      "origin": "bottom-left",
+      "x_axis": "right",
+      "y_axis": "up",
+      "units": "map pixels (one pixel per world metre for the full-size render)"
+    },
+    "padding": {
+      "mode": "transparent",
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "filename_pattern": "x_{x}_y_{y}.png",
+    "tiles": [
+      {
+        "x": 0,
+        "y": 0,
+        "filename": "x_0_y_0.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 0,
+          "bottom": 0,
+          "right": 512,
+          "top": 512
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 25807
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "filename": "x_1_y_0.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 512,
+          "bottom": 0,
+          "right": 1024,
+          "top": 512
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 214147
+      },
+      {
+        "x": 2,
+        "y": 0,
+        "filename": "x_2_y_0.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1024,
+          "bottom": 0,
+          "right": 1536,
+          "top": 512
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 112395
+      },
+      {
+        "x": 3,
+        "y": 0,
+        "filename": "x_3_y_0.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1536,
+          "bottom": 0,
+          "right": 2048,
+          "top": 512
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 121133
+      },
+      {
+        "x": 4,
+        "y": 0,
+        "filename": "x_4_y_0.png",
+        "content_width": 452,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 2048,
+          "bottom": 0,
+          "right": 2500,
+          "top": 512
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 58691
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "filename": "x_0_y_1.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 0,
+          "bottom": 512,
+          "right": 512,
+          "top": 1024
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 125082
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "filename": "x_1_y_1.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 512,
+          "bottom": 512,
+          "right": 1024,
+          "top": 1024
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 401224
+      },
+      {
+        "x": 2,
+        "y": 1,
+        "filename": "x_2_y_1.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1024,
+          "bottom": 512,
+          "right": 1536,
+          "top": 1024
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 322925
+      },
+      {
+        "x": 3,
+        "y": 1,
+        "filename": "x_3_y_1.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1536,
+          "bottom": 512,
+          "right": 2048,
+          "top": 1024
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 377106
+      },
+      {
+        "x": 4,
+        "y": 1,
+        "filename": "x_4_y_1.png",
+        "content_width": 452,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 2048,
+          "bottom": 512,
+          "right": 2500,
+          "top": 1024
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 79227
+      },
+      {
+        "x": 0,
+        "y": 2,
+        "filename": "x_0_y_2.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 0,
+          "bottom": 1024,
+          "right": 512,
+          "top": 1536
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 120265
+      },
+      {
+        "x": 1,
+        "y": 2,
+        "filename": "x_1_y_2.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 512,
+          "bottom": 1024,
+          "right": 1024,
+          "top": 1536
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 377890
+      },
+      {
+        "x": 2,
+        "y": 2,
+        "filename": "x_2_y_2.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1024,
+          "bottom": 1024,
+          "right": 1536,
+          "top": 1536
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 411662
+      },
+      {
+        "x": 3,
+        "y": 2,
+        "filename": "x_3_y_2.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1536,
+          "bottom": 1024,
+          "right": 2048,
+          "top": 1536
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 410724
+      },
+      {
+        "x": 4,
+        "y": 2,
+        "filename": "x_4_y_2.png",
+        "content_width": 452,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 2048,
+          "bottom": 1024,
+          "right": 2500,
+          "top": 1536
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 138405
+      },
+      {
+        "x": 0,
+        "y": 3,
+        "filename": "x_0_y_3.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 0,
+          "bottom": 1536,
+          "right": 512,
+          "top": 2048
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 135379
+      },
+      {
+        "x": 1,
+        "y": 3,
+        "filename": "x_1_y_3.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 512,
+          "bottom": 1536,
+          "right": 1024,
+          "top": 2048
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 268412
+      },
+      {
+        "x": 2,
+        "y": 3,
+        "filename": "x_2_y_3.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1024,
+          "bottom": 1536,
+          "right": 1536,
+          "top": 2048
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 331905
+      },
+      {
+        "x": 3,
+        "y": 3,
+        "filename": "x_3_y_3.png",
+        "content_width": 512,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 1536,
+          "bottom": 1536,
+          "right": 2048,
+          "top": 2048
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 262334
+      },
+      {
+        "x": 4,
+        "y": 3,
+        "filename": "x_4_y_3.png",
+        "content_width": 452,
+        "content_height": 512,
+        "map_bounds": {
+          "left": 2048,
+          "bottom": 1536,
+          "right": 2500,
+          "top": 2048
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 0
+        },
+        "size_bytes": 40919
+      },
+      {
+        "x": 0,
+        "y": 4,
+        "filename": "x_0_y_4.png",
+        "content_width": 512,
+        "content_height": 452,
+        "map_bounds": {
+          "left": 0,
+          "bottom": 2048,
+          "right": 512,
+          "top": 2500
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 60
+        },
+        "size_bytes": 20048
+      },
+      {
+        "x": 1,
+        "y": 4,
+        "filename": "x_1_y_4.png",
+        "content_width": 512,
+        "content_height": 452,
+        "map_bounds": {
+          "left": 512,
+          "bottom": 2048,
+          "right": 1024,
+          "top": 2500
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 60
+        },
+        "size_bytes": 78600
+      },
+      {
+        "x": 2,
+        "y": 4,
+        "filename": "x_2_y_4.png",
+        "content_width": 512,
+        "content_height": 452,
+        "map_bounds": {
+          "left": 1024,
+          "bottom": 2048,
+          "right": 1536,
+          "top": 2500
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 60
+        },
+        "size_bytes": 48174
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "filename": "x_3_y_4.png",
+        "content_width": 512,
+        "content_height": 452,
+        "map_bounds": {
+          "left": 1536,
+          "bottom": 2048,
+          "right": 2048,
+          "top": 2500
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 60
+        },
+        "size_bytes": 64788
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "filename": "x_4_y_4.png",
+        "content_width": 452,
+        "content_height": 452,
+        "map_bounds": {
+          "left": 2048,
+          "bottom": 2048,
+          "right": 2500,
+          "top": 2500
+        },
+        "image_content_offset": {
+          "x": 0,
+          "y": 60
+        },
+        "size_bytes": 19725
+      }
+    ],
+    "timings": {
+      "png_encode_seconds": 0.10533530000247993,
+      "total_seconds": 0.10606740000366699
+    },
+    "metadata_file": "tiles.json",
+    "directory_size_bytes": 4576318
+  },
   "artifacts": {
-    "map_render_full.png": 4245050
+    "map_render_full.png": 4245050,
+    "map_render_tiles-total": 4576318
   },
   "validation": {
     "server_reference": "not_run"

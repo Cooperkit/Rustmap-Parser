@@ -445,14 +445,497 @@
       "ocean_margin": 0,
       "timings": {
         "shore_seconds": 0.0,
-        "total_seconds": 4.1556302000026335,
-        "prepare_seconds": 0.8322049000016705
+        "total_seconds": 4.877863800007617,
+        "prepare_seconds": 1.939230600008159
       },
       "artifact": "map_render_full.png"
     },
-    "full_size_tiles": null,
+    "full_size_tiles": {
+      "schema_version": 1,
+      "map_width": 2500,
+      "map_height": 2500,
+      "tile_size": 512,
+      "columns": 5,
+      "rows": 5,
+      "tile_count": 25,
+      "coordinate_system": {
+        "origin": "bottom-left",
+        "x_axis": "right",
+        "y_axis": "up",
+        "units": "map pixels (one pixel per world metre for the full-size render)"
+      },
+      "padding": {
+        "mode": "transparent",
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "filename_pattern": "x_{x}_y_{y}.png",
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "filename": "x_0_y_0.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 0,
+            "bottom": 0,
+            "right": 512,
+            "top": 512
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 25807
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "filename": "x_1_y_0.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 512,
+            "bottom": 0,
+            "right": 1024,
+            "top": 512
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 214147
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "filename": "x_2_y_0.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1024,
+            "bottom": 0,
+            "right": 1536,
+            "top": 512
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 112395
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "filename": "x_3_y_0.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1536,
+            "bottom": 0,
+            "right": 2048,
+            "top": 512
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 121133
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "filename": "x_4_y_0.png",
+          "content_width": 452,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 2048,
+            "bottom": 0,
+            "right": 2500,
+            "top": 512
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 58691
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "filename": "x_0_y_1.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 0,
+            "bottom": 512,
+            "right": 512,
+            "top": 1024
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 125082
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "filename": "x_1_y_1.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 512,
+            "bottom": 512,
+            "right": 1024,
+            "top": 1024
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 401224
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "filename": "x_2_y_1.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1024,
+            "bottom": 512,
+            "right": 1536,
+            "top": 1024
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 322925
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "filename": "x_3_y_1.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1536,
+            "bottom": 512,
+            "right": 2048,
+            "top": 1024
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 377106
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "filename": "x_4_y_1.png",
+          "content_width": 452,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 2048,
+            "bottom": 512,
+            "right": 2500,
+            "top": 1024
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 79227
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "filename": "x_0_y_2.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 0,
+            "bottom": 1024,
+            "right": 512,
+            "top": 1536
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 120265
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "filename": "x_1_y_2.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 512,
+            "bottom": 1024,
+            "right": 1024,
+            "top": 1536
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 377890
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "filename": "x_2_y_2.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1024,
+            "bottom": 1024,
+            "right": 1536,
+            "top": 1536
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 411662
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "filename": "x_3_y_2.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1536,
+            "bottom": 1024,
+            "right": 2048,
+            "top": 1536
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 410724
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "filename": "x_4_y_2.png",
+          "content_width": 452,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 2048,
+            "bottom": 1024,
+            "right": 2500,
+            "top": 1536
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 138405
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "filename": "x_0_y_3.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 0,
+            "bottom": 1536,
+            "right": 512,
+            "top": 2048
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 135379
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "filename": "x_1_y_3.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 512,
+            "bottom": 1536,
+            "right": 1024,
+            "top": 2048
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 268412
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "filename": "x_2_y_3.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1024,
+            "bottom": 1536,
+            "right": 1536,
+            "top": 2048
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 331905
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "filename": "x_3_y_3.png",
+          "content_width": 512,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 1536,
+            "bottom": 1536,
+            "right": 2048,
+            "top": 2048
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 262334
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "filename": "x_4_y_3.png",
+          "content_width": 452,
+          "content_height": 512,
+          "map_bounds": {
+            "left": 2048,
+            "bottom": 1536,
+            "right": 2500,
+            "top": 2048
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 0
+          },
+          "size_bytes": 40919
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "filename": "x_0_y_4.png",
+          "content_width": 512,
+          "content_height": 452,
+          "map_bounds": {
+            "left": 0,
+            "bottom": 2048,
+            "right": 512,
+            "top": 2500
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 60
+          },
+          "size_bytes": 20048
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "filename": "x_1_y_4.png",
+          "content_width": 512,
+          "content_height": 452,
+          "map_bounds": {
+            "left": 512,
+            "bottom": 2048,
+            "right": 1024,
+            "top": 2500
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 60
+          },
+          "size_bytes": 78600
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "filename": "x_2_y_4.png",
+          "content_width": 512,
+          "content_height": 452,
+          "map_bounds": {
+            "left": 1024,
+            "bottom": 2048,
+            "right": 1536,
+            "top": 2500
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 60
+          },
+          "size_bytes": 48174
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "filename": "x_3_y_4.png",
+          "content_width": 512,
+          "content_height": 452,
+          "map_bounds": {
+            "left": 1536,
+            "bottom": 2048,
+            "right": 2048,
+            "top": 2500
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 60
+          },
+          "size_bytes": 64788
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "filename": "x_4_y_4.png",
+          "content_width": 452,
+          "content_height": 452,
+          "map_bounds": {
+            "left": 2048,
+            "bottom": 2048,
+            "right": 2500,
+            "top": 2500
+          },
+          "image_content_offset": {
+            "x": 0,
+            "y": 60
+          },
+          "size_bytes": 19725
+        }
+      ],
+      "timings": {
+        "png_encode_seconds": 0.10533530000247993,
+        "total_seconds": 0.10606740000366699
+      },
+      "metadata_file": "tiles.json",
+      "directory_size_bytes": 4576318
+    },
     "artifacts": {
-      "map_render_full.png": 4245050
+      "map_render_full.png": 4245050,
+      "map_render_tiles-total": 4576318
     },
     "validation": {
       "server_reference": "not_run"
@@ -481,9 +964,9 @@
       105,
       104
     ],
-    "png_encode_seconds": 0.05990399999791407,
-    "overlay_compose_seconds": 0.037239300003420794,
-    "overlay_encode_seconds": 0.34386409999933676,
+    "png_encode_seconds": 0.06300599999667611,
+    "overlay_compose_seconds": 0.043880700002773665,
+    "overlay_encode_seconds": 0.34361680000438355,
     "resolution": [
       2500,
       2500
@@ -530,17 +1013,17 @@
     "cache_pixels_per_meter": 8.0,
     "cache_template_raster_seconds": null,
     "intermediate_pixels_per_meter": 2.0,
-    "cache_load_seconds": 3.2999996619764715e-06,
-    "template_prepare_seconds": 0.04770109999662964,
-    "template_png_load_seconds": 0.02732069999910891,
-    "template_paste_seconds": 0.009202000004734145,
+    "cache_load_seconds": 3.2999960239976645e-06,
+    "template_prepare_seconds": 0.05885139999736566,
+    "template_png_load_seconds": 0.032520800043130293,
+    "template_paste_seconds": 0.0058191000134684145,
     "fallback_raster_seconds": 0.0,
-    "downsample_seconds": 0.0694842000011704,
+    "downsample_seconds": 0.06444159999955446,
     "alpha_nonzero_pixels": 263144,
-    "render_seconds": 0.14185549999820068,
+    "render_seconds": 0.1474755999952322,
     "cache_template_count": 81,
     "tile_source": "packaged",
-    "tile_directory": "rustmap.data.tunnel_tiles",
+    "tile_directory": "rustmap_parser.data.tunnel_tiles",
     "loaded_tile_count": 24,
     "missing_tiles": [
       "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
@@ -571,7 +1054,7 @@
     "tile_source_build_id": "24091435",
     "tile_version_mismatch": false,
     "tile_warnings": [],
-    "total_seconds": 0.6970351999989362,
+    "total_seconds": 0.685729499993613,
     "metadata_file": "tunnels_metadata.json"
   },
   "no_build_zones": {
@@ -3008,7 +3491,7 @@
       "images": true,
       "json": true
     },
-    "packaged_data": "rustmap.data/no_build_zones.json",
+    "packaged_data": "rustmap_parser.data/no_build_zones.json",
     "style": {
       "fill_color": [
         255,
@@ -3024,70 +3507,71 @@
       ],
       "outline_width": 3
     },
-    "render_seconds": 0.2857492999974056,
+    "render_seconds": 0.34508009999990463,
     "image_file": "no_build_zones.png",
     "overlay_file": "no_build_zones_on_map.png",
-    "elapsed_seconds": 0.8449335999976029,
+    "elapsed_seconds": 0.8705243000003975,
     "artifact_sizes_bytes": {
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 60493
+      "no_build_zones.json": 60501
     }
   },
   "timings": {
     "heatmap_categories": {
-      "bear": 0.2477710000021034,
-      "berries": 0.4088803000013286,
-      "boar": 0.047297900000558,
-      "chicken": 0.3767111000015575,
-      "corn": 0.054916099998081336,
-      "crocodile": 0.04725419999886071,
-      "flowers": 0.06532949999746052,
-      "hab": 0.3770074999993085,
-      "hemp": 0.1588898000009067,
-      "horse": 0.054751300001953496,
-      "junkpiles": 0.10639639999862993,
-      "logs": 0.31184700000085286,
-      "modularcar": 0.050461700000596466,
-      "mushroom": 0.06337119999807328,
-      "ores": 0.39422909999848343,
-      "pedalbike": 0.049143199998070486,
-      "potato": 0.005115799998748116,
-      "pumpkin": 0.005074000000604428,
-      "rowboat": 0.08484880000105477,
-      "snake": 0.04302749999988009,
-      "stag": 0.04467169999770704,
-      "tiger": 0.04389970000192989,
-      "wheat": 0.00448080000205664,
-      "wolf": 0.08266019999791752,
-      "wood": 0.05005449999953271
+      "bear": 0.2497433000098681,
+      "berries": 0.4206230999989202,
+      "boar": 0.04640800000925083,
+      "chicken": 0.3859888000006322,
+      "corn": 0.05414779999409802,
+      "crocodile": 0.045596600000862963,
+      "flowers": 0.06786389999615494,
+      "hab": 0.40052969999669585,
+      "hemp": 0.16424639998876955,
+      "horse": 0.05225839999911841,
+      "junkpiles": 0.10884590000205208,
+      "logs": 0.3052871999971103,
+      "modularcar": 0.04883870000776369,
+      "mushroom": 0.06177210000168998,
+      "ores": 0.41215940000256523,
+      "pedalbike": 0.053229500001179986,
+      "potato": 0.004983100006938912,
+      "pumpkin": 0.0055410999921150506,
+      "rowboat": 0.08488029999716673,
+      "snake": 0.041864900005748495,
+      "stag": 0.04303960000106599,
+      "tiger": 0.042905599999357946,
+      "wheat": 0.004823499999474734,
+      "wolf": 0.07982660000561737,
+      "wood": 0.049309800000628456
     },
-    "map_parse_seconds": 0.35175389999858453,
-    "rule_database_load_seconds": 0.0006796000016038306,
-    "heatmap_evaluator_setup_seconds": 0.34087039999940316,
-    "heatmaps_total_seconds": 3.1780902999962564,
-    "heatmap_npz_encode_seconds": 0.5606552999997803,
-    "diagnostics_seconds": 4.081419599999208,
-    "monuments_seconds": 0.04731610000089859,
-    "map_render_seconds": 5.266941500001849,
-    "no_build_zones_seconds": 0.8509423000032257,
-    "tunnel_render_seconds": 0.7051480000009178
+    "map_parse_seconds": 0.36851800000295043,
+    "rule_database_load_seconds": 0.0009941999887814745,
+    "heatmap_evaluator_setup_seconds": 0.3381487000006018,
+    "heatmaps_total_seconds": 3.234713300014846,
+    "heatmap_npz_encode_seconds": 0.5661179000017,
+    "diagnostics_seconds": 4.141089099997771,
+    "monuments_seconds": 0.045114799999282695,
+    "map_render_seconds": 7.21382309999899,
+    "no_build_zones_seconds": 0.8759559000027366,
+    "tunnel_render_seconds": 0.6990661000018008
   },
   "generation": {
-    "elapsed_seconds": 10.680756300000212,
+    "elapsed_seconds": 12.727499200002057,
     "artifact_sizes_bytes": {
       "heatmaps_2048.npz": 3651681,
       "Heatmap-previews-total": 3414311,
       "diagnostics-total": 9047588,
       "monuments.json": 32062,
       "map_render_full.png": 4245050,
+      "map_render_tiles-total": 4576318,
       "tunnels.png": 109373,
       "tunnels_on_map.png": 3962354,
-      "tunnels_metadata.json": 5791,
+      "tunnels_metadata.json": 5799,
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 60493,
-      "export_metadata.json": 83756
+      "no_build_zones.json": 60501,
+      "export_metadata.json": 95127
     }
   }
 }

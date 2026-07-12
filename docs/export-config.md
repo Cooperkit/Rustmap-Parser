@@ -130,11 +130,13 @@ The complete preset enables:
 - Heatmaps and raw previews
 - Diagnostics
 - Monuments
-- Scaled and full-size terrain renders
-- Train tunnels
-- No-build zones
+- Full-size terrain render and 512-pixel map tiles
+- Train-tunnel layer and overlay
+- No-build-zone layer, overlay, and JSON
 
-Full-size map tiles remain opt-in because they create many additional files.
+The scaled terrain render is intentionally omitted when `full_size=True`; this
+avoids rendering the same terrain twice. All distinct normal output artifacts,
+including full-size map tiles, are enabled by this preset.
 
 ### Map only
 
