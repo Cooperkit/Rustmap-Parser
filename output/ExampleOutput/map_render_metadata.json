@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "width": null,
+  "height": null,
+  "scale": null,
+  "ocean_margin": null,
+  "transparent": false,
+  "background_rgb": [
+    11,
+    59,
+    74
+  ],
+  "constants": {
+    "colors": {
+      "start": [
+        0.28627452,
+        0.27058825,
+        0.24705884,
+        1.0
+      ],
+      "water": [
+        0.16941601,
+        0.31755757,
+        0.36200002,
+        1.0
+      ],
+      "gravel": [
+        0.25,
+        0.24342105,
+        0.22039475,
+        1.0
+      ],
+      "dirt": [
+        0.6,
+        0.47959462,
+        0.33,
+        1.0
+      ],
+      "sand": [
+        0.7,
+        0.65968585,
+        0.5277487,
+        1.0
+      ],
+      "grass": [
+        0.35486364,
+        0.37,
+        0.2035,
+        1.0
+      ],
+      "forest": [
+        0.24843751,
+        0.3,
+        0.0703125,
+        1.0
+      ],
+      "rock": [
+        0.4,
+        0.39379844,
+        0.37519377,
+        1.0
+      ],
+      "snow": [
+        0.86274517,
+        0.9294118,
+        0.94117653,
+        1.0
+      ],
+      "pebble": [
+        0.13725491,
+        0.2784314,
+        0.2761563,
+        1.0
+      ],
+      "offshore": [
+        0.04090196,
+        0.22060032,
+        0.27450982,
+        1.0
+      ]
+    },
+    "splat_order": [
+      "gravel",
+      "pebble",
+      "rock",
+      "dirt",
+      "grass",
+      "forest",
+      "sand",
+      "snow"
+    ],
+    "sun_direction": [
+      0.24730613827705383,
+      0.7471248507499695,
+      0.6169636845588684
+    ],
+    "sun_power": 0.65,
+    "brightness": 1.05,
+    "contrast": 0.94,
+    "max_depth": 50.0,
+    "ocean_water_level": 0.0,
+    "ocean_topology_mask": 384
+  },
+  "timings": {},
+  "full_size_render": {
+    "width": 2500,
+    "height": 2500,
+    "scale": 1.0,
+    "ocean_margin": 0,
+    "timings": {
+      "shore_seconds": 0.0,
+      "total_seconds": 4.1556302000026335,
+      "prepare_seconds": 0.8322049000016705
+    },
+    "artifact": "map_render_full.png"
+  },
+  "full_size_tiles": null,
+  "artifacts": {
+    "map_render_full.png": 4245050
+  },
+  "validation": {
+    "server_reference": "not_run"
+  }
+}

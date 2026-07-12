@@ -1,0 +1,277 @@
+{
+  "world_size": 2500,
+  "orientation_validation": {
+    "method": "raw grid indexed as [z,x], centered world coordinates, no axis flip",
+    "sample_count": 7013,
+    "median_absolute_height_error_m": 0.33259010314941406,
+    "p75_absolute_height_error_m": 0.9782333374023438,
+    "mean_absolute_height_error_m": 2.0545736099779552
+  },
+  "layers": {
+    "terrain": {
+      "shape": [
+        2049,
+        2049
+      ],
+      "dtype": "int16-le",
+      "raw_min": 14745,
+      "raw_max": 20867,
+      "world_y_min_m": -49.9908447265625,
+      "world_y_max_m": 136.84918212890625
+    },
+    "height": {
+      "shape": [
+        2049,
+        2049
+      ],
+      "dtype": "int16-le",
+      "raw_min": 14745,
+      "raw_max": 20867,
+      "world_y_min_m": -49.9908447265625,
+      "world_y_max_m": 136.84918212890625
+    },
+    "water": {
+      "shape": [
+        2049,
+        2049
+      ],
+      "dtype": "int16-le",
+      "raw_min": 0,
+      "raw_max": 18393,
+      "world_y_min_m": -500.0,
+      "world_y_max_m": 61.3441162109375
+    },
+    "alpha": {
+      "shape": [
+        2048,
+        2048
+      ],
+      "dtype": "uint8",
+      "min": 0,
+      "max": 255,
+      "visible_pixels": 4188321
+    },
+    "splat": {
+      "shape": [
+        8,
+        2048,
+        2048
+      ],
+      "dtype": "uint8-channel-major",
+      "pixel_sum_min": 0,
+      "pixel_sum_max": 791,
+      "channels": {
+        "dirt": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 594213
+        },
+        "snow": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 711039
+        },
+        "sand": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 2769738
+        },
+        "rock": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 61953
+        },
+        "grass": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 987307
+        },
+        "forest": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 487181
+        },
+        "stones": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 649164
+        },
+        "gravel": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 516823
+        }
+      }
+    },
+    "biome": {
+      "shape": [
+        5,
+        2048,
+        2048
+      ],
+      "dtype": "uint8-channel-major",
+      "pixel_sum_min": 254,
+      "pixel_sum_max": 256,
+      "channels": {
+        "arid": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 1538074
+        },
+        "temperate": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 1651904
+        },
+        "tundra": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 1067884
+        },
+        "arctic": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 769873
+        },
+        "jungle": {
+          "min": 0,
+          "max": 255,
+          "nonzero_pixels": 684630
+        }
+      }
+    },
+    "topology": {
+      "shape": [
+        2048,
+        2048
+      ],
+      "dtype": "uint32-le-bitmask",
+      "channels": {
+        "field": {
+          "bit": 0,
+          "set_pixels": 1275058
+        },
+        "cliff": {
+          "bit": 1,
+          "set_pixels": 204639
+        },
+        "summit": {
+          "bit": 2,
+          "set_pixels": 36240
+        },
+        "beachside": {
+          "bit": 3,
+          "set_pixels": 20764
+        },
+        "beach": {
+          "bit": 4,
+          "set_pixels": 97276
+        },
+        "forest": {
+          "bit": 5,
+          "set_pixels": 355594
+        },
+        "forestside": {
+          "bit": 6,
+          "set_pixels": 94998
+        },
+        "ocean": {
+          "bit": 7,
+          "set_pixels": 2465342
+        },
+        "oceanside": {
+          "bit": 8,
+          "set_pixels": 431211
+        },
+        "decor": {
+          "bit": 9,
+          "set_pixels": 258989
+        },
+        "monument": {
+          "bit": 10,
+          "set_pixels": 490682
+        },
+        "road": {
+          "bit": 11,
+          "set_pixels": 52792
+        },
+        "roadside": {
+          "bit": 12,
+          "set_pixels": 206408
+        },
+        "swamp": {
+          "bit": 13,
+          "set_pixels": 64796
+        },
+        "river": {
+          "bit": 14,
+          "set_pixels": 57686
+        },
+        "riverside": {
+          "bit": 15,
+          "set_pixels": 82440
+        },
+        "lake": {
+          "bit": 16,
+          "set_pixels": 16381
+        },
+        "lakeside": {
+          "bit": 17,
+          "set_pixels": 9209
+        },
+        "offshore": {
+          "bit": 18,
+          "set_pixels": 1404801
+        },
+        "powerline": {
+          "bit": 19,
+          "set_pixels": 0
+        },
+        "runway": {
+          "bit": 20,
+          "set_pixels": 20506
+        },
+        "building": {
+          "bit": 21,
+          "set_pixels": 197803
+        },
+        "cliffside": {
+          "bit": 22,
+          "set_pixels": 224466
+        },
+        "mountain": {
+          "bit": 23,
+          "set_pixels": 9999
+        },
+        "clutter": {
+          "bit": 24,
+          "set_pixels": 466854
+        },
+        "alt": {
+          "bit": 25,
+          "set_pixels": 801209
+        },
+        "tier0": {
+          "bit": 26,
+          "set_pixels": 1257472
+        },
+        "tier1": {
+          "bit": 27,
+          "set_pixels": 1258169
+        },
+        "tier2": {
+          "bit": 28,
+          "set_pixels": 1673084
+        },
+        "mainland": {
+          "bit": 29,
+          "set_pixels": 1657020
+        },
+        "hilltop": {
+          "bit": 30,
+          "set_pixels": 168399
+        }
+      }
+    }
+  }
+}

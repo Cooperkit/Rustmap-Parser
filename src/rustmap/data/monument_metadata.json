@@ -1,0 +1,954 @@
+{
+  "schema_version": 1,
+  "source": {
+    "schema_version": 5,
+    "rust_build_id": "24091435",
+    "bundles": {
+      "content": {
+        "size": 4412718160,
+        "mtime_ns": 1783536348287478600
+      },
+      "asset_scenes": {
+        "size": 1007244752,
+        "mtime_ns": 1783536348287478600
+      },
+      "maps": {
+        "size": 114147120,
+        "mtime_ns": 1783116536193229800
+      }
+    }
+  },
+  "extraction": {
+    "asset_scene_count": 25,
+    "method": "prefab component and named loot-spawner scan",
+    "keycard_access_levels": {
+      "1": "green",
+      "2": "blue",
+      "3": "red"
+    },
+    "loot_tier_scale": {
+      "0": "none detected",
+      "1": "low/normal",
+      "2": "tier 2",
+      "3": "tier 3/elite"
+    }
+  },
+  "prefab_count": 58,
+  "prefabs": {
+    "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "blue"
+      ],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 2,
+        "red": 0
+      },
+      "puzzle_type": "keycard_and_electrical",
+      "puzzle_reset_count": 1,
+      "loot_tier": 2,
+      "loot_spawner_count": 4,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_large_hard.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_large_medium.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_large_sewers_hard.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_easy.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_hard.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_medium.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_small_hard.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/cave/cave_small_medium.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 1
+    },
+    "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 1
+    },
+    "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 1
+    },
+    "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 2,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard_and_electrical",
+      "puzzle_reset_count": 1,
+      "loot_tier": 2,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_d.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ziggurat_a.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/airfield_1.prefab": {
+      "recycler_count": 2,
+      "keycard_requirements": [
+        "green",
+        "blue"
+      ],
+      "keycard_reader_counts": {
+        "green": 4,
+        "blue": 1,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/excavator_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/military_tunnel_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "keycard_reader_counts": {
+        "green": 2,
+        "blue": 2,
+        "red": 2
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/powerplant_1.prefab": {
+      "recycler_count": 3,
+      "keycard_requirements": [
+        "green",
+        "blue"
+      ],
+      "keycard_reader_counts": {
+        "green": 4,
+        "blue": 2,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/trainyard_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green",
+        "blue"
+      ],
+      "keycard_reader_counts": {
+        "green": 3,
+        "blue": 1,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green",
+        "blue"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 1,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 2,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/apartments_complex_1.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab": {
+      "recycler_count": 2,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab": {
+      "recycler_count": 3,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 7
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/junkyard_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [
+        "red"
+      ],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 1
+      },
+      "puzzle_type": "keycard_and_electrical",
+      "puzzle_reset_count": 2,
+      "loot_tier": 3,
+      "loot_spawner_count": 4,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/medium/radtown_small_3.prefab": {
+      "recycler_count": 2,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 2,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 1,
+        "red": 1
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 4,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [
+        "green",
+        "blue",
+        "red"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 1,
+        "red": 1
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 3,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/roadside/gas_station_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/roadside/supermarket_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "keycard",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/stables_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/small/stables_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": true,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/swamp/swamp_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/swamp/swamp_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 2,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/tiny/water_well_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/tiny/water_well_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/tiny/water_well_d.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/tiny/water_well_e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_d.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 1,
+      "loot_spawner_count": 1,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    },
+    "assets/bundled/prefabs/autospawn/monument/xlarge/launch_site_1.prefab": {
+      "recycler_count": 1,
+      "keycard_requirements": [
+        "green",
+        "red"
+      ],
+      "keycard_reader_counts": {
+        "green": 1,
+        "blue": 0,
+        "red": 4
+      },
+      "puzzle_type": "keycard_and_electrical",
+      "puzzle_reset_count": 1,
+      "loot_tier": 3,
+      "loot_spawner_count": 3,
+      "safe_zone": false,
+      "vending_machine_count": 0
+    }
+  }
+}

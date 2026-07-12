@@ -1,0 +1,997 @@
+{
+  "schema_version": 5,
+  "identity": {
+    "schema_version": 5,
+    "rust_build_id": "24091435",
+    "bundles": {
+      "content": {
+        "size": 4412718160,
+        "mtime_ns": 1783536348287478600
+      },
+      "asset_scenes": {
+        "size": 1007244752,
+        "mtime_ns": 1783536348287478600
+      },
+      "maps": {
+        "size": 114147120,
+        "mtime_ns": 1783116536193229800
+      }
+    }
+  },
+  "template_count": 81,
+  "template_pixels_per_meter": 8.0,
+  "templates": [
+    {
+      "key": "template_000",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-nw-0.prefab",
+      "mask_file": "template_000__curve-nw-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.125,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        934,
+        933
+      ]
+    },
+    {
+      "key": "template_001",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-nw-1.prefab",
+      "mask_file": "template_001__curve-nw-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        934,
+        935
+      ]
+    },
+    {
+      "key": "template_002",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-n.prefab",
+      "mask_file": "template_002__intersection-bb1-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 288.25,
+      "mask_shape": [
+        2375,
+        1733
+      ]
+    },
+    {
+      "key": "template_003",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-n.prefab",
+      "mask_file": "template_003__intersection-bb4-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 396.125,
+      "mask_shape": [
+        3238,
+        1733
+      ]
+    },
+    {
+      "key": "template_004",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-n.prefab",
+      "mask_file": "template_004__intersection-b5-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 432.125,
+      "mask_shape": [
+        3526,
+        1733
+      ]
+    },
+    {
+      "key": "template_005",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-n.prefab",
+      "mask_file": "template_005__intersection-b3-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 360.125,
+      "mask_shape": [
+        2950,
+        1733
+      ]
+    },
+    {
+      "key": "template_006",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-n.prefab",
+      "mask_file": "template_006__intersection-b2-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 324.125,
+      "mask_shape": [
+        2662,
+        1733
+      ]
+    },
+    {
+      "key": "template_007",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-n.prefab",
+      "mask_file": "template_007__intersection-bb2-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 324.125,
+      "mask_shape": [
+        2662,
+        1733
+      ]
+    },
+    {
+      "key": "template_008",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-n.prefab",
+      "mask_file": "template_008__intersection-b6-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 468.125,
+      "mask_shape": [
+        3814,
+        1733
+      ]
+    },
+    {
+      "key": "template_009",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-n.prefab",
+      "mask_file": "template_009__intersection-bb3-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 360.125,
+      "mask_shape": [
+        2950,
+        1733
+      ]
+    },
+    {
+      "key": "template_010",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-n.prefab",
+      "mask_file": "template_010__intersection-b4-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 396.125,
+      "mask_shape": [
+        3238,
+        1733
+      ]
+    },
+    {
+      "key": "template_011",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-n.prefab",
+      "mask_file": "template_011__intersection-bb6-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 468.125,
+      "mask_shape": [
+        3814,
+        1733
+      ]
+    },
+    {
+      "key": "template_012",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/intersection-n.prefab",
+      "mask_file": "template_012__intersection-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 108.125,
+      "mask_shape": [
+        934,
+        1733
+      ]
+    },
+    {
+      "key": "template_013",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-n.prefab",
+      "mask_file": "template_013__intersection-b1-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 288.25,
+      "mask_shape": [
+        2375,
+        1733
+      ]
+    },
+    {
+      "key": "template_014",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-n.prefab",
+      "mask_file": "template_014__intersection-bb5-n.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 432.125,
+      "mask_shape": [
+        3526,
+        1733
+      ]
+    },
+    {
+      "key": "template_015",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-sn-0.prefab",
+      "mask_file": "template_015__station-sn-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -52.75,
+      "mask_top_z": 108.125,
+      "mask_shape": [
+        1732,
+        845
+      ]
+    },
+    {
+      "key": "template_016",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-3.prefab",
+      "mask_file": "template_016__straight-sn-3.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        136
+      ]
+    },
+    {
+      "key": "template_017",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-2.prefab",
+      "mask_file": "template_017__straight-sn-2.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        136
+      ]
+    },
+    {
+      "key": "template_018",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-sn-1.prefab",
+      "mask_file": "template_018__station-sn-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -52.75,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1732,
+        845
+      ]
+    },
+    {
+      "key": "template_019",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-0.prefab",
+      "mask_file": "template_019__straight-sn-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 108.125,
+      "mask_shape": [
+        1732,
+        135
+      ]
+    },
+    {
+      "key": "template_020",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-1.prefab",
+      "mask_file": "template_020__straight-sn-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1732,
+        135
+      ]
+    },
+    {
+      "key": "template_021",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-sn-3.prefab",
+      "mask_file": "template_021__station-sn-3.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -52.75,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1732,
+        845
+      ]
+    },
+    {
+      "key": "template_022",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-4.prefab",
+      "mask_file": "template_022__straight-sn-4.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -22.625,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        364
+      ]
+    },
+    {
+      "key": "template_023",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-sn-2.prefab",
+      "mask_file": "template_023__station-sn-2.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -52.75,
+      "mask_top_z": 108.125,
+      "mask_shape": [
+        1732,
+        845
+      ]
+    },
+    {
+      "key": "template_024",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-sn-5.prefab",
+      "mask_file": "template_024__straight-sn-5.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -22.75,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        364
+      ]
+    },
+    {
+      "key": "template_025",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-ne-1.prefab",
+      "mask_file": "template_025__curve-ne-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        934,
+        934
+      ]
+    },
+    {
+      "key": "template_026",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-ne-0.prefab",
+      "mask_file": "template_026__curve-ne-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 108.125,
+      "mask_shape": [
+        934,
+        934
+      ]
+    },
+    {
+      "key": "template_027",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/intersection.prefab",
+      "mask_file": "template_027__intersection.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        1733
+      ]
+    },
+    {
+      "key": "template_028",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-s.prefab",
+      "mask_file": "template_028__intersection-bb2-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2662,
+        1733
+      ]
+    },
+    {
+      "key": "template_029",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-s.prefab",
+      "mask_file": "template_029__intersection-b2-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2662,
+        1733
+      ]
+    },
+    {
+      "key": "template_030",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-s.prefab",
+      "mask_file": "template_030__intersection-b6-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3814,
+        1733
+      ]
+    },
+    {
+      "key": "template_031",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-s.prefab",
+      "mask_file": "template_031__intersection-bb5-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3526,
+        1733
+      ]
+    },
+    {
+      "key": "template_032",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-s.prefab",
+      "mask_file": "template_032__intersection-bb1-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2375,
+        1733
+      ]
+    },
+    {
+      "key": "template_033",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/intersection-s.prefab",
+      "mask_file": "template_033__intersection-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        934,
+        1733
+      ]
+    },
+    {
+      "key": "template_034",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-s.prefab",
+      "mask_file": "template_034__intersection-b1-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2375,
+        1733
+      ]
+    },
+    {
+      "key": "template_035",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-s.prefab",
+      "mask_file": "template_035__intersection-bb6-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3814,
+        1733
+      ]
+    },
+    {
+      "key": "template_036",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-s.prefab",
+      "mask_file": "template_036__intersection-b5-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3526,
+        1733
+      ]
+    },
+    {
+      "key": "template_037",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-s.prefab",
+      "mask_file": "template_037__intersection-bb4-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3238,
+        1733
+      ]
+    },
+    {
+      "key": "template_038",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-s.prefab",
+      "mask_file": "template_038__intersection-b3-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2950,
+        1733
+      ]
+    },
+    {
+      "key": "template_039",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-s.prefab",
+      "mask_file": "template_039__intersection-bb3-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        2950,
+        1733
+      ]
+    },
+    {
+      "key": "template_040",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-s.prefab",
+      "mask_file": "template_040__intersection-b4-s.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        3238,
+        1733
+      ]
+    },
+    {
+      "key": "template_041",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-3.prefab",
+      "mask_file": "template_041__straight-we-3.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        136,
+        1733
+      ]
+    },
+    {
+      "key": "template_042",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-we-1.prefab",
+      "mask_file": "template_042__station-we-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 52.75,
+      "mask_shape": [
+        845,
+        1733
+      ]
+    },
+    {
+      "key": "template_043",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-5.prefab",
+      "mask_file": "template_043__straight-we-5.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 22.75,
+      "mask_shape": [
+        365,
+        1733
+      ]
+    },
+    {
+      "key": "template_044",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-4.prefab",
+      "mask_file": "template_044__straight-we-4.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 22.75,
+      "mask_shape": [
+        364,
+        1733
+      ]
+    },
+    {
+      "key": "template_045",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-we-2.prefab",
+      "mask_file": "template_045__station-we-2.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 52.75,
+      "mask_shape": [
+        845,
+        1732
+      ]
+    },
+    {
+      "key": "template_046",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-we-3.prefab",
+      "mask_file": "template_046__station-we-3.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 52.75,
+      "mask_shape": [
+        845,
+        1733
+      ]
+    },
+    {
+      "key": "template_047",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-station/station-we-0.prefab",
+      "mask_file": "template_047__station-we-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 52.75,
+      "mask_shape": [
+        845,
+        1732
+      ]
+    },
+    {
+      "key": "template_048",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-2.prefab",
+      "mask_file": "template_048__straight-we-2.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        137,
+        1733
+      ]
+    },
+    {
+      "key": "template_049",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-1.prefab",
+      "mask_file": "template_049__straight-we-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        137,
+        1733
+      ]
+    },
+    {
+      "key": "template_050",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/straight-we-0.prefab",
+      "mask_file": "template_050__straight-we-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        137,
+        1733
+      ]
+    },
+    {
+      "key": "template_051",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-se-0.prefab",
+      "mask_file": "template_051__curve-se-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.375,
+      "mask_top_z": 8.375,
+      "mask_shape": [
+        934,
+        933
+      ]
+    },
+    {
+      "key": "template_052",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-se-1.prefab",
+      "mask_file": "template_052__curve-se-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 8.375,
+      "mask_shape": [
+        934,
+        935
+      ]
+    },
+    {
+      "key": "template_053",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-w.prefab",
+      "mask_file": "template_053__intersection-bb3-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -360.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2951
+      ]
+    },
+    {
+      "key": "template_054",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/intersection-w.prefab",
+      "mask_file": "template_054__intersection-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.125,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        934
+      ]
+    },
+    {
+      "key": "template_055",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-w.prefab",
+      "mask_file": "template_055__intersection-bb5-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -432.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3527
+      ]
+    },
+    {
+      "key": "template_056",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-w.prefab",
+      "mask_file": "template_056__intersection-b5-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -432.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3527
+      ]
+    },
+    {
+      "key": "template_057",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-w.prefab",
+      "mask_file": "template_057__intersection-b1-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -288.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2375
+      ]
+    },
+    {
+      "key": "template_058",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-w.prefab",
+      "mask_file": "template_058__intersection-bb1-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -288.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2375
+      ]
+    },
+    {
+      "key": "template_059",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-w.prefab",
+      "mask_file": "template_059__intersection-bb4-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -396.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3239
+      ]
+    },
+    {
+      "key": "template_060",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-w.prefab",
+      "mask_file": "template_060__intersection-b4-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -396.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3239
+      ]
+    },
+    {
+      "key": "template_061",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-w.prefab",
+      "mask_file": "template_061__intersection-b6-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -468.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3815
+      ]
+    },
+    {
+      "key": "template_062",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-w.prefab",
+      "mask_file": "template_062__intersection-bb2-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -324.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2663
+      ]
+    },
+    {
+      "key": "template_063",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-w.prefab",
+      "mask_file": "template_063__intersection-b3-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -360.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2951
+      ]
+    },
+    {
+      "key": "template_064",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-w.prefab",
+      "mask_file": "template_064__intersection-b2-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -324.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2663
+      ]
+    },
+    {
+      "key": "template_065",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-w.prefab",
+      "mask_file": "template_065__intersection-bb6-w.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -468.25,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3815
+      ]
+    },
+    {
+      "key": "template_066",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-sw-0.prefab",
+      "mask_file": "template_066__curve-sw-0.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.5,
+      "mask_shape": [
+        934,
+        934
+      ]
+    },
+    {
+      "key": "template_067",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/curve-sw-1.prefab",
+      "mask_file": "template_067__curve-sw-1.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -108.25,
+      "mask_top_z": 8.375,
+      "mask_shape": [
+        934,
+        934
+      ]
+    },
+    {
+      "key": "template_068",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-e.prefab",
+      "mask_file": "template_068__intersection-bb3-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2951
+      ]
+    },
+    {
+      "key": "template_069",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-e.prefab",
+      "mask_file": "template_069__intersection-bb6-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3815
+      ]
+    },
+    {
+      "key": "template_070",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-e.prefab",
+      "mask_file": "template_070__intersection-b4-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3239
+      ]
+    },
+    {
+      "key": "template_071",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-e.prefab",
+      "mask_file": "template_071__intersection-b6-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3815
+      ]
+    },
+    {
+      "key": "template_072",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-e.prefab",
+      "mask_file": "template_072__intersection-b5-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3527
+      ]
+    },
+    {
+      "key": "template_073",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-e.prefab",
+      "mask_file": "template_073__intersection-b1-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2375
+      ]
+    },
+    {
+      "key": "template_074",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-e.prefab",
+      "mask_file": "template_074__intersection-b3-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2951
+      ]
+    },
+    {
+      "key": "template_075",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-e.prefab",
+      "mask_file": "template_075__intersection-bb2-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2663
+      ]
+    },
+    {
+      "key": "template_076",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel/intersection-e.prefab",
+      "mask_file": "template_076__intersection-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        934
+      ]
+    },
+    {
+      "key": "template_077",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-e.prefab",
+      "mask_file": "template_077__intersection-bb1-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2375
+      ]
+    },
+    {
+      "key": "template_078",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-e.prefab",
+      "mask_file": "template_078__intersection-bb4-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3239
+      ]
+    },
+    {
+      "key": "template_079",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-e.prefab",
+      "mask_file": "template_079__intersection-b2-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        2663
+      ]
+    },
+    {
+      "key": "template_080",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-e.prefab",
+      "mask_file": "template_080__intersection-bb5-e.png",
+      "mask_pixels_per_meter": 8.0,
+      "mask_left_x": -8.5,
+      "mask_top_z": 108.25,
+      "mask_shape": [
+        1733,
+        3527
+      ]
+    }
+  ]
+}

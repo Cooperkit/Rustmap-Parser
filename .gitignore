@@ -1,0 +1,37 @@
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.rustmap-cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.idea/
+.vscode/
+.DS_Store
+output/
+outputs/
+*.map
+*.npz
+*.png
+!src/rustmap/data/tunnel_tiles/*.png
+!docs/images/*.png
+*.jpg
+!docs/images/*.jpg
+*.jpeg
+*.log
+server/
+codex_map_render/
+/test.py
+
+# Ignore every generated output child except the curated repository example.
+# These final exceptions also override the global PNG, JPG, and NPZ rules.
+!output/
+output/*
+!output/ExampleOutput/
+!output/ExampleOutput/**
