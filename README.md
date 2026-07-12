@@ -78,13 +78,14 @@ These images were generated from a real size-4500 Rust map.
 - Python 3.11 or newer
 - A Rust `.map` file
 
-Install from a checkout:
+Install the latest release from PyPI:
 
 ```powershell
-python -m pip install .
+pip install rust-map-parser
 ```
 
-Editable development install:
+For contributors working from a cloned checkout, use an editable development
+install instead:
 
 ```powershell
 python -m pip install -e .
