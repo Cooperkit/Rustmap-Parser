@@ -331,8 +331,8 @@
   },
   "monuments": {
     "file": "monuments.json",
-    "count": 30,
-    "unique_prefab_count": 28
+    "count": 34,
+    "unique_prefab_count": 31
   },
   "terrain": {
     "schema_version": 1,
@@ -445,8 +445,8 @@
       "ocean_margin": 0,
       "timings": {
         "shore_seconds": 0.0,
-        "total_seconds": 4.877863800007617,
-        "prepare_seconds": 1.939230600008159
+        "total_seconds": 4.111675700012711,
+        "prepare_seconds": 0.8527643000124954
       },
       "artifact": "map_render_full.png"
     },
@@ -927,8 +927,8 @@
         }
       ],
       "timings": {
-        "png_encode_seconds": 0.10533530000247993,
-        "total_seconds": 0.10606740000366699
+        "png_encode_seconds": 0.10151110000151675,
+        "total_seconds": 0.10210340000048745
       },
       "metadata_file": "tiles.json",
       "directory_size_bytes": 4576318
@@ -964,9 +964,9 @@
       105,
       104
     ],
-    "png_encode_seconds": 0.06300599999667611,
-    "overlay_compose_seconds": 0.043880700002773665,
-    "overlay_encode_seconds": 0.34361680000438355,
+    "png_encode_seconds": 0.0596984000003431,
+    "overlay_compose_seconds": 0.0369016000040574,
+    "overlay_encode_seconds": 0.3326182000018889,
     "resolution": [
       2500,
       2500
@@ -1013,14 +1013,14 @@
     "cache_pixels_per_meter": 8.0,
     "cache_template_raster_seconds": null,
     "intermediate_pixels_per_meter": 2.0,
-    "cache_load_seconds": 3.2999960239976645e-06,
-    "template_prepare_seconds": 0.05885139999736566,
-    "template_png_load_seconds": 0.032520800043130293,
-    "template_paste_seconds": 0.0058191000134684145,
+    "cache_load_seconds": 4.2000028770416975e-06,
+    "template_prepare_seconds": 0.05209720000857487,
+    "template_png_load_seconds": 0.02809210003761109,
+    "template_paste_seconds": 0.005456899991258979,
     "fallback_raster_seconds": 0.0,
-    "downsample_seconds": 0.06444159999955446,
+    "downsample_seconds": 0.06084039999404922,
     "alpha_nonzero_pixels": 263144,
-    "render_seconds": 0.1474755999952322,
+    "render_seconds": 0.1338394999911543,
     "cache_template_count": 81,
     "tile_source": "packaged",
     "tile_directory": "rustmap_parser.data.tunnel_tiles",
@@ -1054,7 +1054,7 @@
     "tile_source_build_id": "24091435",
     "tile_version_mismatch": false,
     "tile_warnings": [],
-    "total_seconds": 0.685729499993613,
+    "total_seconds": 0.6479434000066249,
     "metadata_file": "tunnels_metadata.json"
   },
   "no_build_zones": {
@@ -3507,10 +3507,10 @@
       ],
       "outline_width": 3
     },
-    "render_seconds": 0.34508009999990463,
+    "render_seconds": 0.31007839999801945,
     "image_file": "no_build_zones.png",
     "overlay_file": "no_build_zones_on_map.png",
-    "elapsed_seconds": 0.8705243000003975,
+    "elapsed_seconds": 0.8303999999916414,
     "artifact_sizes_bytes": {
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
@@ -3519,59 +3519,59 @@
   },
   "timings": {
     "heatmap_categories": {
-      "bear": 0.2497433000098681,
-      "berries": 0.4206230999989202,
-      "boar": 0.04640800000925083,
-      "chicken": 0.3859888000006322,
-      "corn": 0.05414779999409802,
-      "crocodile": 0.045596600000862963,
-      "flowers": 0.06786389999615494,
-      "hab": 0.40052969999669585,
-      "hemp": 0.16424639998876955,
-      "horse": 0.05225839999911841,
-      "junkpiles": 0.10884590000205208,
-      "logs": 0.3052871999971103,
-      "modularcar": 0.04883870000776369,
-      "mushroom": 0.06177210000168998,
-      "ores": 0.41215940000256523,
-      "pedalbike": 0.053229500001179986,
-      "potato": 0.004983100006938912,
-      "pumpkin": 0.0055410999921150506,
-      "rowboat": 0.08488029999716673,
-      "snake": 0.041864900005748495,
-      "stag": 0.04303960000106599,
-      "tiger": 0.042905599999357946,
-      "wheat": 0.004823499999474734,
-      "wolf": 0.07982660000561737,
-      "wood": 0.049309800000628456
+      "bear": 0.24674149999918882,
+      "berries": 0.41744309999921825,
+      "boar": 0.04498190000595059,
+      "chicken": 0.3696441999927629,
+      "corn": 0.05329950001032557,
+      "crocodile": 0.04611139999178704,
+      "flowers": 0.06162749999202788,
+      "hab": 0.4034611999959452,
+      "hemp": 0.16334129999449942,
+      "horse": 0.05466069999965839,
+      "junkpiles": 0.10136749999946915,
+      "logs": 0.31429199999547563,
+      "modularcar": 0.04860380000900477,
+      "mushroom": 0.06199699999706354,
+      "ores": 0.3976074999955017,
+      "pedalbike": 0.04822690000582952,
+      "potato": 0.004873500001849607,
+      "pumpkin": 0.004514600004767999,
+      "rowboat": 0.08269129999098368,
+      "snake": 0.042554500003461726,
+      "stag": 0.04327140000532381,
+      "tiger": 0.04152829998929519,
+      "wheat": 0.005340700008673593,
+      "wolf": 0.07988589999149553,
+      "wood": 0.049295000004349276
     },
-    "map_parse_seconds": 0.36851800000295043,
-    "rule_database_load_seconds": 0.0009941999887814745,
-    "heatmap_evaluator_setup_seconds": 0.3381487000006018,
-    "heatmaps_total_seconds": 3.234713300014846,
-    "heatmap_npz_encode_seconds": 0.5661179000017,
-    "diagnostics_seconds": 4.141089099997771,
-    "monuments_seconds": 0.045114799999282695,
-    "map_render_seconds": 7.21382309999899,
-    "no_build_zones_seconds": 0.8759559000027366,
-    "tunnel_render_seconds": 0.6990661000018008
+    "map_parse_seconds": 0.3490330999920843,
+    "rule_database_load_seconds": 0.0006085000059101731,
+    "heatmap_evaluator_setup_seconds": 0.3338723999913782,
+    "heatmaps_total_seconds": 3.187362199983909,
+    "heatmap_npz_encode_seconds": 0.5642788999975892,
+    "diagnostics_seconds": 4.087176700006239,
+    "monuments_seconds": 0.0462961000012001,
+    "map_render_seconds": 5.34980500000529,
+    "no_build_zones_seconds": 0.8363742999936221,
+    "tunnel_render_seconds": 0.6555633999960264
   },
   "generation": {
-    "elapsed_seconds": 12.727499200002057,
+    "elapsed_seconds": 10.752134499998647,
     "artifact_sizes_bytes": {
       "heatmaps.npz": 3651681,
       "Heatmap-previews-total": 3414311,
       "diagnostics-total": 9047588,
-      "monuments.json": 32062,
+      "monuments.json": 36381,
       "map_render_full.png": 4245050,
       "map_render_tiles-total": 4576318,
       "tunnels.png": 109373,
       "tunnels_on_map.png": 3962354,
-      "tunnels_metadata.json": 5799,
+      "tunnels_metadata.json": 5794,
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
       "no_build_zones.json": 60501,
-      "export_metadata.json": 95127
+      "export_metadata.json": 95110
     }
   }
 }

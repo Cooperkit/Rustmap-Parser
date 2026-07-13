@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "map": {
     "serialization_version": 10,
     "timestamp": 1783040108421,
@@ -12,12 +12,17 @@
     "heading_degrees": "rotation Y normalized to [0, 360)"
   },
   "selection": {
-    "prefab_path_prefix": "assets/bundled/prefabs/autospawn/monument/",
-    "excludes_tunnel_entrances": true,
+    "prefab_path_prefixes": [
+      "assets/bundled/prefabs/autospawn/monument/",
+      "assets/bundled/prefabs/autospawn/tunnel-entrance/",
+      "assets/bundled/prefabs/autospawn/tunnel-upwards/"
+    ],
+    "includes_train_tunnel_entrances": true,
+    "includes_train_tunnel_links": true,
     "excludes_unique_environments": true
   },
-  "monument_count": 30,
-  "unique_prefab_count": 28,
+  "monument_count": 34,
+  "unique_prefab_count": 31,
   "metadata": {
     "schema_version": 1,
     "classification_source": "deterministic prefab-path rules",
@@ -49,7 +54,7 @@
         }
       }
     },
-    "enriched_instance_count": 30
+    "enriched_instance_count": 34
   },
   "monuments": [
     {
@@ -1186,6 +1191,154 @@
           "size_large",
           "underwater",
           "underwater_monument"
+        ]
+      }
+    },
+    {
+      "name": "entrance_bunker_a",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": -597.0,
+        "y": 12.0,
+        "z": -765.0
+      },
+      "map_position": {
+        "x": 653.0,
+        "y": 485.0
+      },
+      "heading_degrees": 222.673904419,
+      "metadata": {
+        "display_name": "Train Tunnel Entrance Bunker A",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "entrance_bunker_a",
+          "size_class": "medium"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_medium",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
+      "name": "entrance_bunker_a",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": 831.0,
+        "y": 4.5,
+        "z": -651.0
+      },
+      "map_position": {
+        "x": 2081.0,
+        "y": 599.0
+      },
+      "heading_degrees": 10.583739281,
+      "metadata": {
+        "display_name": "Train Tunnel Entrance Bunker A",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "entrance_bunker_a",
+          "size_class": "medium"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_medium",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
+      "name": "entrance_bunker_b",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_b.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": 453.0,
+        "y": 48.0,
+        "z": 219.0
+      },
+      "map_position": {
+        "x": 1703.0,
+        "y": 1469.0
+      },
+      "heading_degrees": 142.114059448,
+      "metadata": {
+        "display_name": "Train Tunnel Entrance Bunker B",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "entrance_bunker_b",
+          "size_class": "medium"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_medium",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
+      "name": "entrance_bunker_d",
+      "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_d.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": -114.0,
+        "y": 19.5,
+        "z": -315.0
+      },
+      "map_position": {
+        "x": 1136.0,
+        "y": 935.0
+      },
+      "heading_degrees": 259.807189941,
+      "metadata": {
+        "display_name": "Train Tunnel Entrance Bunker D",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "entrance_bunker_d",
+          "size_class": "medium"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_medium",
+          "surface_to_underground",
+          "train_tunnel_entrance"
         ]
       }
     }

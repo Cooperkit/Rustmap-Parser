@@ -2448,10 +2448,10 @@
     ],
     "outline_width": 3
   },
-  "render_seconds": 0.34508009999990463,
+  "render_seconds": 0.31007839999801945,
   "image_file": "no_build_zones.png",
   "overlay_file": "no_build_zones_on_map.png",
-  "elapsed_seconds": 0.8705243000003975,
+  "elapsed_seconds": 0.8303999999916414,
   "artifact_sizes_bytes": {
     "no_build_zones.png": 322403,
     "no_build_zones_on_map.png": 4956316
