@@ -4,7 +4,7 @@
 
 ### Decode, analyze, and render Rust `.map` files entirely from Python.
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Python 3.11–3.13](https://img.shields.io/badge/python-3.11%E2%80%933.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
 [![Library First](https://img.shields.io/badge/interface-Python%20API-6f42c1)](#quick-start)
 [![UnityPy Optional](https://img.shields.io/badge/UnityPy-maintainers%20only-orange)](#refreshing-rust-data)
@@ -68,13 +68,13 @@ These images were generated from a real size-4500 Rust map.
 - Half-scale and world-size server-style terrain rendering
 - Optional bottom-left-indexed padded map tiles
 - Exact pre-rasterized underground train-tunnel layer
-- Compact monument JSON with extracted gameplay metadata
+- Compact monument JSON with gameplay metadata, train-tunnel entrances, and links
 - Compact circle/rectangle no-build zone JSON and overlays
 - Detailed timings, source identities, counts, and validation metadata
 
 ## Requirements and installation
 
-- Python 3.11 or newer
+- Python 3.11, 3.12, or 3.13
 - A Rust `.map` file
 
 Install the latest release from PyPI:
@@ -317,7 +317,7 @@ A complete export resembles:
 ```text
 output/full/
 |-- export_metadata.json
-|-- heatmaps_2048.npz
+|-- heatmaps.npz
 |-- Heatmap-previews/
 |-- diagnostics/
 |-- monuments.json

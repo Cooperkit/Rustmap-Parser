@@ -227,9 +227,7 @@ size, while `requested_resolution` remains `null` and `resolution_mode` is
 The output archive is named from this value:
 
 ```text
-heatmaps_2048.npz
-heatmaps_1024.npz
-heatmaps_4250.npz  # resolution=None on a size-4250 map
+heatmaps.npz  # the configured resolution is stored in export metadata
 ```
 
 Larger values increase interpolation time, NPZ size, preview size, and memory

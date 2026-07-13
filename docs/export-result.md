@@ -138,7 +138,7 @@ if result.heatmaps_file is not None:
 ```
 
 The filename includes the configured resolution, such as
-`heatmaps_2048.npz`.
+`heatmaps.npz`.
 
 ### `heatmap_categories`
 

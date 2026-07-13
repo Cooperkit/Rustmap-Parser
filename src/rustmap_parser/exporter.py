@@ -122,7 +122,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
                 ))
             timings["heatmap_categories"][category] = time.perf_counter() - category_started
         timings["heatmaps_total_seconds"] = sum(timings["heatmap_categories"].values())
-        npz_path = output / f"heatmaps_{heatmap_resolution}.npz"
+        npz_path = output / "heatmaps.npz"
         stage = time.perf_counter()
         np.savez_compressed(npz_path, **arrays)
         timings["heatmap_npz_encode_seconds"] = time.perf_counter() - stage

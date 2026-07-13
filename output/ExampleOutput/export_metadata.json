@@ -16,7 +16,7 @@
     "no_build_zones": true
   },
   "heatmaps": {
-    "file": "heatmaps_2048.npz",
+    "file": "heatmaps.npz",
     "resolution": 2048,
     "requested_resolution": 2048,
     "resolution_mode": "explicit",
@@ -3559,7 +3559,7 @@
   "generation": {
     "elapsed_seconds": 12.727499200002057,
     "artifact_sizes_bytes": {
-      "heatmaps_2048.npz": 3651681,
+      "heatmaps.npz": 3651681,
       "Heatmap-previews-total": 3414311,
       "diagnostics-total": 9047588,
       "monuments.json": 32062,

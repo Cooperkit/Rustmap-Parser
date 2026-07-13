@@ -11,6 +11,13 @@ from .prefabs import PrefabManifest
 
 
 MONUMENT_PATH_PREFIX = "assets/bundled/prefabs/autospawn/monument/"
+TRAIN_TUNNEL_ENTRANCE_PREFIX = "assets/bundled/prefabs/autospawn/tunnel-entrance/"
+TRAIN_TUNNEL_LINK_PREFIX = "assets/bundled/prefabs/autospawn/tunnel-upwards/"
+MONUMENT_PATH_PREFIXES = (
+    MONUMENT_PATH_PREFIX,
+    TRAIN_TUNNEL_ENTRANCE_PREFIX,
+    TRAIN_TUNNEL_LINK_PREFIX,
+)
 SIZE_CLASSES = {"tiny", "small", "medium", "large", "xlarge"}
 GROUP_SIZE_CLASSES = {
     "arctic_bases": "large",
@@ -44,7 +51,7 @@ DISPLAY_NAMES = {
 
 
 def _humanize(name: str) -> str:
-    return name.replace("_", " ").strip().title()
+    return name.replace("_", " ").replace("-", " ").strip().title()
 
 
 def _family(name: str) -> str:
@@ -76,14 +83,33 @@ def _gameplay_database() -> dict:
 
 def monument_metadata(path: str) -> dict:
     """Return deterministic path-derived metadata without inventing asset facts."""
-    relative = path.casefold()[len(MONUMENT_PATH_PREFIX):]
+    folded_path = path.casefold()
+    if folded_path.startswith(MONUMENT_PATH_PREFIX):
+        path_kind = "gameplay_monument"
+        relative = folded_path[len(MONUMENT_PATH_PREFIX):]
+    elif folded_path.startswith(TRAIN_TUNNEL_ENTRANCE_PREFIX):
+        path_kind = "train_tunnel_entrance"
+        relative = folded_path[len(TRAIN_TUNNEL_ENTRANCE_PREFIX):]
+    elif folded_path.startswith(TRAIN_TUNNEL_LINK_PREFIX):
+        path_kind = "train_tunnel_link"
+        relative = folded_path[len(TRAIN_TUNNEL_LINK_PREFIX):]
+    else:
+        raise ValueError(f"Unsupported monument prefab path: {path}")
     parts = relative.removesuffix(".prefab").split("/")
     group, name = parts[0], parts[-1]
     database = _gameplay_database()
     extracted = database.get("prefabs", {}).get(path.casefold())
     safe_zone = bool(extracted["safe_zone"]) if extracted is not None else name in SAFE_ZONE_NAMES
-    size_class = _size_class(group, name)
-    if group == "cave":
+    size_class = (
+        "medium" if path_kind == "train_tunnel_entrance"
+        else "small" if path_kind == "train_tunnel_link"
+        else _size_class(group, name)
+    )
+    if path_kind == "train_tunnel_entrance":
+        kind, environment = "train_tunnel_entrance", "surface_to_underground"
+    elif path_kind == "train_tunnel_link":
+        kind, environment = "train_tunnel_link", "surface_to_underground"
+    elif group == "cave":
         kind, environment = "cave", "underground"
     elif group == "underwater_lab":
         kind, environment = "underwater_monument", "underwater"
@@ -124,9 +150,18 @@ def monument_metadata(path: str) -> dict:
             "puzzle_type": str(extracted["puzzle_type"]),
             "loot_tier": int(extracted["loot_tier"]),
         }
+    if path_kind == "train_tunnel_entrance":
+        display_name = f"Train Tunnel {_humanize(name)}"
+        family = "train_tunnel_entrance"
+    elif path_kind == "train_tunnel_link":
+        display_name = f"Train Tunnel Link {_humanize(name)}"
+        family = "train_tunnel_link"
+    else:
+        display_name = DISPLAY_NAMES.get(name, _humanize(name))
+        family = _family(name)
     return {
-        "display_name": DISPLAY_NAMES.get(name, _humanize(name)),
-        "family": _family(name),
+        "display_name": display_name,
+        "family": family,
         "classification": {
             "kind": kind,
             "environment": environment,
@@ -146,7 +181,7 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
     candidates = []
     for prefab in world.prefabs:
         entry = manifest.get(prefab.prefab_id)
-        if entry is None or not entry.path.casefold().startswith(MONUMENT_PATH_PREFIX):
+        if entry is None or not entry.path.casefold().startswith(MONUMENT_PATH_PREFIXES):
             continue
         if prefab.position is None:
             continue
@@ -180,7 +215,7 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
         })
 
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "map": {
             "serialization_version": int(world.serialization_version),
             "timestamp": int(world.timestamp),
@@ -193,8 +228,9 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
             "heading_degrees": "rotation Y normalized to [0, 360)",
         },
         "selection": {
-            "prefab_path_prefix": MONUMENT_PATH_PREFIX,
-            "excludes_tunnel_entrances": True,
+            "prefab_path_prefixes": list(MONUMENT_PATH_PREFIXES),
+            "includes_train_tunnel_entrances": True,
+            "includes_train_tunnel_links": True,
             "excludes_unique_environments": True,
         },
         "monument_count": len(monuments),

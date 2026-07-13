@@ -1,6 +1,8 @@
 import unittest
+from types import SimpleNamespace
 
-from rustmap_parser.monuments import monument_metadata
+from rustmap_parser.monuments import build_monument_export, monument_metadata
+from rustmap_parser.prefabs import PrefabManifest, PrefabManifestEntry
 
 
 PREFIX = "assets/bundled/prefabs/autospawn/monument/"
@@ -48,6 +50,49 @@ class MonumentMetadataTests(unittest.TestCase):
             with self.subTest(path=path):
                 value = monument_metadata(PREFIX + path + ".prefab")
                 self.assertEqual(value["classification"]["size_class"], expected)
+
+    def test_train_tunnel_entrance_and_link_metadata(self):
+        entrance = monument_metadata(
+            "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab"
+        )
+        self.assertEqual(entrance["classification"]["kind"], "train_tunnel_entrance")
+        self.assertEqual(entrance["family"], "train_tunnel_entrance")
+        link = monument_metadata(
+            "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-e.prefab"
+        )
+        self.assertEqual(link["classification"]["kind"], "train_tunnel_link")
+        self.assertEqual(link["family"], "train_tunnel_link")
+
+    def test_export_includes_entrances_and_links_but_not_track_pieces(self):
+        paths = {
+            1: PREFIX + "large/airfield_1.prefab",
+            2: "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
+            3: "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-e.prefab",
+            4: "assets/content/structures/train_tunnels/train_tunnel_double_str_a_36m.prefab",
+        }
+        manifest = PrefabManifest(
+            entries={key: PrefabManifestEntry(key, path) for key, path in paths.items()},
+            collisions={}, source_bundle="test", source_size=0, source_mtime_ns=0,
+        )
+        prefabs = [
+            SimpleNamespace(
+                prefab_id=key,
+                position=SimpleNamespace(x=float(key), y=0.0, z=0.0),
+                rotation=SimpleNamespace(x=0.0, y=0.0, z=0.0),
+                category="Monument",
+            )
+            for key in paths
+        ]
+        world = SimpleNamespace(
+            size=4250, serialization_version=1, timestamp=2, prefabs=prefabs,
+        )
+        payload = build_monument_export(world, manifest)
+        self.assertEqual(payload["schema_version"], 4)
+        self.assertEqual(payload["monument_count"], 3)
+        exported_paths = {item["prefab_path"] for item in payload["monuments"]}
+        self.assertIn(paths[2], exported_paths)
+        self.assertIn(paths[3], exported_paths)
+        self.assertNotIn(paths[4], exported_paths)
 
 
 if __name__ == "__main__":

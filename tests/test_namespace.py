@@ -5,7 +5,7 @@ import rustmap_parser
 
 
 def test_new_namespace_exposes_public_api_and_version() -> None:
-    assert rustmap_parser.__version__ == "0.2.1"
+    assert rustmap_parser.__version__ == "0.2.2"
     for name in ("ExportConfig", "ExportOptions", "RustMapExporter", "load_map"):
         assert hasattr(rustmap_parser, name)
 
