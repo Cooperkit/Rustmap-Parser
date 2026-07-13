@@ -1,16 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source": {
     "schema_version": 5,
-    "rust_build_id": "24091435",
+    "rust_build_id": "24181174",
     "bundles": {
       "content": {
         "size": 4412718160,
-        "mtime_ns": 1783536348287478600
+        "mtime_ns": 1783979403611910200
       },
       "asset_scenes": {
         "size": 1007244752,
-        "mtime_ns": 1783536348287478600
+        "mtime_ns": 1783979403611910200
       },
       "maps": {
         "size": 114147120,
@@ -20,7 +20,14 @@
   },
   "extraction": {
     "asset_scene_count": 25,
-    "method": "prefab component and named loot-spawner scan",
+    "method": "prefab component, named loot-spawner, and LandmarkInfo transform scan",
+    "landmark_classes": [
+      "DungeonBaseLandmarkInfo",
+      "DungeonGridInfo",
+      "LandmarkInfo",
+      "MonumentInfo"
+    ],
+    "landmark_transform_space": "prefab-root-relative Unity local-to-world matrix",
     "keycard_access_levels": {
       "1": "green",
       "2": "blue",
@@ -33,7 +40,7 @@
       "3": "tier 3/elite"
     }
   },
-  "prefab_count": 58,
+  "prefab_count": 121,
   "prefabs": {
     "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab": {
       "recycler_count": 1,
@@ -50,7 +57,41 @@
       "loot_tier": 2,
       "loot_spawner_count": 4,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab",
+          "display_token": "arctic_base_a",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_large_hard.prefab": {
       "recycler_count": 0,
@@ -65,7 +106,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_large_hard.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_large_medium.prefab": {
       "recycler_count": 0,
@@ -80,7 +155,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_large_medium.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_large_sewers_hard.prefab": {
       "recycler_count": 0,
@@ -95,7 +204,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_large_sewers_hard.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_easy.prefab": {
       "recycler_count": 0,
@@ -110,7 +253,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_easy.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_hard.prefab": {
       "recycler_count": 0,
@@ -125,7 +302,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_hard.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_medium.prefab": {
       "recycler_count": 0,
@@ -140,7 +351,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_medium.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab": {
       "recycler_count": 0,
@@ -155,7 +400,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_small_hard.prefab": {
       "recycler_count": 0,
@@ -170,7 +449,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_hard.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/cave/cave_small_medium.prefab": {
       "recycler_count": 0,
@@ -185,7 +498,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_medium.prefab",
+          "display_token": "undergroundcave",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab": {
       "recycler_count": 0,
@@ -200,7 +547,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 1
+      "vending_machine_count": 1,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab",
+          "display_token": "large_fishing_village_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_b.prefab": {
       "recycler_count": 0,
@@ -215,7 +596,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 1
+      "vending_machine_count": 1,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_b.prefab",
+          "display_token": "fishing_village_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_c.prefab": {
       "recycler_count": 0,
@@ -230,7 +645,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 1
+      "vending_machine_count": 1,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_c.prefab",
+          "display_token": "fishing_village_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab": {
       "recycler_count": 1,
@@ -247,7 +696,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_ferry_terminal",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              -0.0,
+              -5.900859e-06,
+              -17.75
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              13.75
+            ],
+            [
+              5.900859e-06,
+              0.0,
+              -1.0,
+              -9.75
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab",
+          "display_token": "ferryterminal",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab": {
       "recycler_count": 1,
@@ -264,7 +779,73 @@
       "loot_tier": 2,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              87.369995117188
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              4.553999900818
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              -47.764999389648
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
+          "display_token": "harbor_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab": {
       "recycler_count": 1,
@@ -281,7 +862,318 @@
       "loot_tier": 2,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_a",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              1.16229e-06,
+              -46.575004577637
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              3.769999980927
+            ],
+            [
+              -1.16229e-06,
+              0.0,
+              -1.0,
+              -2.010002374649
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
+          "display_token": "harbor_2_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_1.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_1.prefab",
+          "display_token": "ice_lake_1",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_2.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_2.prefab",
+          "display_token": "ice_lake_2",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_3.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_3.prefab",
+          "display_token": "ice_lake_3",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_4.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_4.prefab",
+          "display_token": "ice_lake_4",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_a.prefab",
+          "display_token": "jungle_ruin_a",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_b.prefab": {
       "recycler_count": 0,
@@ -296,7 +1188,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_b.prefab",
+          "display_token": "jungle_ruin_b",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_c.prefab": {
       "recycler_count": 0,
@@ -311,7 +1237,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_c.prefab",
+          "display_token": "jungle_ruin_c",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_d.prefab": {
       "recycler_count": 0,
@@ -326,7 +1286,90 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_d.prefab",
+          "display_token": "jungle_ruin_d",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ruins_e.prefab",
+          "display_token": "jungle_ruin_e",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ziggurat_a.prefab": {
       "recycler_count": 1,
@@ -341,7 +1384,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/jungle_ruins/jungle_ziggurat_a.prefab",
+          "display_token": "jungle_ziggurat",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/airfield_1.prefab": {
       "recycler_count": 2,
@@ -359,7 +1436,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              -5.9605e-08,
+              -156.639999389648
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.56400001049
+            ],
+            [
+              5.9605e-08,
+              0.0,
+              1.0,
+              -92.48999786377
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/airfield_1.prefab",
+          "display_token": "airfield_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/excavator_1.prefab": {
       "recycler_count": 1,
@@ -374,7 +1517,73 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              0.707106471377,
+              0.0,
+              -0.707107133494,
+              -82.880004882812
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.899999976158
+            ],
+            [
+              0.707107133494,
+              0.0,
+              0.707106471377,
+              -52.700000762939
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/excavator_1.prefab",
+          "display_token": "excavator",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/military_tunnel_1.prefab": {
       "recycler_count": 1,
@@ -393,7 +1602,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -75.639999389648
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              69.75
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              50.419998168945
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/military_tunnel_1.prefab",
+          "display_token": "military_tunnels_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/powerplant_1.prefab": {
       "recycler_count": 3,
@@ -411,7 +1686,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              -7.45058e-07,
+              -40.209999084473
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.579999983311
+            ],
+            [
+              7.45058e-07,
+              0.0,
+              1.0,
+              -76.370002746582
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/powerplant_1.prefab",
+          "display_token": "power_plant_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/trainyard_1.prefab": {
       "recycler_count": 1,
@@ -429,7 +1770,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              -2.920628e-06,
+              -70.550003051758
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.579999983311
+            ],
+            [
+              2.920628e-06,
+              0.0,
+              -1.0,
+              6.340000152588
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/trainyard_1.prefab",
+          "display_token": "train_yard_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab": {
       "recycler_count": 1,
@@ -447,7 +1854,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 2,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000050065,
+              -6.5
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.509999990463
+            ],
+            [
+              1.000000050065,
+              0.0,
+              -1.34359e-07,
+              -138.5
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
+          "display_token": "water_treatment_plant_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab": {
       "recycler_count": 1,
@@ -462,7 +1935,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab",
+          "display_token": "lighthouse_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/apartments_complex_1.prefab": {
       "recycler_count": 0,
@@ -477,7 +1984,73 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_town",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              2.057276e-06,
+              0.0,
+              1.000000134358,
+              -106.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.419999986887
+            ],
+            [
+              -1.000000134358,
+              0.0,
+              2.057276e-06,
+              -24.25
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/apartments_complex_1.prefab",
+          "display_token": "apartmentcomplex",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab": {
       "recycler_count": 2,
@@ -492,7 +2065,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab",
+          "display_token": "bandit_camp",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab": {
       "recycler_count": 3,
@@ -507,7 +2114,73 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 7
+      "vending_machine_count": 7,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              2.02816e-07,
+              0.0,
+              1.000000050065,
+              -58.290000915527
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.209999993443
+            ],
+            [
+              -1.000000050065,
+              0.0,
+              2.02816e-07,
+              84.150001525879
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab",
+          "display_token": "outpost",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/junkyard_1.prefab": {
       "recycler_count": 1,
@@ -522,7 +2195,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/junkyard_1.prefab",
+          "display_token": "junkyard_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab": {
       "recycler_count": 0,
@@ -539,7 +2246,41 @@
       "loot_tier": 3,
       "loot_spawner_count": 4,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab",
+          "display_token": "missile_silo_monument",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/medium/radtown_small_3.prefab": {
       "recycler_count": 2,
@@ -556,7 +2297,237 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/medium/radtown_small_3.prefab",
+          "display_token": "sewer_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_a.prefab",
+          "display_token": "AbandonedMilitaryBase",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_b.prefab",
+          "display_token": "AbandonedMilitaryBase",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_c.prefab",
+          "display_token": "AbandonedMilitaryBase",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_d.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_d.prefab",
+          "display_token": "AbandonedMilitaryBase",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab": {
       "recycler_count": 0,
@@ -575,7 +2546,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 4,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab",
+          "display_token": "large_oil_rig",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab": {
       "recycler_count": 0,
@@ -594,7 +2599,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 3,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab",
+          "display_token": "oil_rig_small",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/roadside/gas_station_1.prefab": {
       "recycler_count": 1,
@@ -609,7 +2648,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/roadside/gas_station_1.prefab",
+          "display_token": "gas_station",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab": {
       "recycler_count": 1,
@@ -626,7 +2699,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab",
+          "display_token": "radtown",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/roadside/supermarket_1.prefab": {
       "recycler_count": 1,
@@ -641,7 +2748,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/roadside/supermarket_1.prefab",
+          "display_token": "supermarket",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab": {
       "recycler_count": 1,
@@ -656,7 +2797,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab",
+          "display_token": "mining_outpost_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_a.prefab": {
       "recycler_count": 0,
@@ -671,7 +2846,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_a.prefab",
+          "display_token": "mining_quarry_sulfur_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_b.prefab": {
       "recycler_count": 0,
@@ -686,7 +2895,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_b.prefab",
+          "display_token": "mining_quarry_stone_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_c.prefab": {
       "recycler_count": 0,
@@ -701,7 +2944,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_c.prefab",
+          "display_token": "mining_quarry_hqm_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab": {
       "recycler_count": 1,
@@ -718,7 +2995,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab",
+          "display_token": "satellite_dish_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab": {
       "recycler_count": 1,
@@ -735,7 +3046,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab",
+          "display_token": "dome_monument_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/stables_a.prefab": {
       "recycler_count": 0,
@@ -750,7 +3095,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/stables_a.prefab",
+          "display_token": "stables_a",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/small/stables_b.prefab": {
       "recycler_count": 0,
@@ -765,7 +3144,90 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": true,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/small/stables_b.prefab",
+          "display_token": "stables_b",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/monument/swamp/swamp_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/swamp/swamp_a.prefab",
+          "display_token": "swamp_a",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/swamp/swamp_b.prefab": {
       "recycler_count": 0,
@@ -780,7 +3242,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/swamp/swamp_b.prefab",
+          "display_token": "swamp_b",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/swamp/swamp_c.prefab": {
       "recycler_count": 0,
@@ -795,7 +3291,41 @@
       "loot_tier": 1,
       "loot_spawner_count": 2,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/swamp/swamp_c.prefab",
+          "display_token": "swamp_c",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab": {
       "recycler_count": 0,
@@ -810,7 +3340,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab",
+          "display_token": "water_well_a_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/tiny/water_well_b.prefab": {
       "recycler_count": 0,
@@ -825,7 +3389,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_b.prefab",
+          "display_token": "water_well_b_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/tiny/water_well_c.prefab": {
       "recycler_count": 0,
@@ -840,7 +3438,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_c.prefab",
+          "display_token": "water_well_c_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/tiny/water_well_d.prefab": {
       "recycler_count": 0,
@@ -855,7 +3487,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_d.prefab",
+          "display_token": "water_well_d_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/tiny/water_well_e.prefab": {
       "recycler_count": 0,
@@ -870,7 +3536,41 @@
       "loot_tier": 0,
       "loot_spawner_count": 0,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_e.prefab",
+          "display_token": "water_well_e_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_a.prefab": {
       "recycler_count": 0,
@@ -885,7 +3585,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonBaseLandmarkInfo",
+          "object_name": "moonpool_1200x1500_1way",
+          "display_token": null,
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              8.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_a.prefab",
+          "display_token": "underwater_lab",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_b.prefab": {
       "recycler_count": 0,
@@ -900,7 +3666,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonBaseLandmarkInfo",
+          "object_name": "moonpool_1200x1500_2way",
+          "display_token": null,
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              8.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_b.prefab",
+          "display_token": "underwater_lab",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_c.prefab": {
       "recycler_count": 0,
@@ -915,7 +3747,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonBaseLandmarkInfo",
+          "object_name": "moonpool_1200x1500_3way",
+          "display_token": null,
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              8.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_c.prefab",
+          "display_token": "underwater_lab",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_d.prefab": {
       "recycler_count": 0,
@@ -930,7 +3828,73 @@
       "loot_tier": 1,
       "loot_spawner_count": 1,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonBaseLandmarkInfo",
+          "object_name": "moonpool_1200x1800_ladder",
+          "display_token": null,
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              8.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_d.prefab",
+          "display_token": "underwater_lab",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     },
     "assets/bundled/prefabs/autospawn/monument/xlarge/launch_site_1.prefab": {
       "recycler_count": 1,
@@ -948,7 +3912,2749 @@
       "loot_tier": 3,
       "loot_spawner_count": 3,
       "safe_zone": false,
-      "vending_machine_count": 0
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_b",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              0.999999988322,
+              0.0,
+              -0.000152826309,
+              196.100006103516
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              3.539999961853
+            ],
+            [
+              0.000152826309,
+              0.0,
+              0.999999988322,
+              54.090000152588
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/monument/xlarge/launch_site_1.prefab",
+          "display_token": "launchsite",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_c",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              -0.0,
+              -8.9407e-08,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              0.0
+            ],
+            [
+              8.9407e-08,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_b.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_c",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              -0.0,
+              -8.9407e-08,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              0.0
+            ],
+            [
+              8.9407e-08,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_b.prefab",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_c.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_c",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              -0.0,
+              -8.9407e-08,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              0.0
+            ],
+            [
+              8.9407e-08,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_c.prefab",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_d.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "DungeonGridInfo",
+          "object_name": "entrance_monuments_c",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              -0.0,
+              -8.9407e-08,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              0.0
+            ],
+            [
+              8.9407e-08,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_d.prefab",
+          "display_token": "train_tunnel_display_name",
+          "should_display_on_map": false,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              324.000074049852
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.3532274e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              324.000030517578
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -324.000030517578
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b1-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -324.000074049852
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.3532274e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              360.000048369188
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.8369188e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              360.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -360.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b2-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -360.000048369188
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.8369188e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              396.000053206107
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.3206107e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              396.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -396.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b3-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -396.000053206107
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.3206107e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              432.000058043026
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.8043026e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              432.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -432.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b4-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -432.000058043026
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.8043026e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              468.000062879945
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.2879945e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              468.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -468.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b5-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -468.000062879945
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.2879945e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              504.000067716864
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.7716864e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              504.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -504.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-b6-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -504.000067716864
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.7716864e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              324.000074049852
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.3532274e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              324.000030517578
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -324.000030517578
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb1-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -324.000074049852
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              45.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.3532274e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              360.000048369188
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.8369188e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              360.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -360.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb2-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -360.000048369188
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              60.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              4.8369188e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              396.000053206107
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.3206107e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              396.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -396.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb3-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -396.000053206107
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              75.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.3206107e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              432.000058043026
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.8043026e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              432.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -432.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb4-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -432.000058043026
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              90.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              5.8043026e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              468.000062879945
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.2879945e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              468.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -468.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb5-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -468.000062879945
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              105.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.2879945e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-e.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              -1.000000134359,
+              504.000067716864
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.7716864e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-n.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              504.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-s.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -504.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/intersection-bb6-w.prefab": {
+      "recycler_count": 0,
+      "keycard_requirements": [],
+      "keycard_reader_counts": {
+        "green": 0,
+        "blue": 0,
+        "red": 0
+      },
+      "puzzle_type": "none",
+      "puzzle_reset_count": 0,
+      "loot_tier": 0,
+      "loot_spawner_count": 0,
+      "safe_zone": false,
+      "vending_machine_count": 0,
+      "landmarks": [
+        {
+          "component_type": "MonumentInfo",
+          "object_name": "train_tunnel_double_entrance_b_72m",
+          "display_token": "train_tunnel_link_display_name",
+          "should_display_on_map": true,
+          "local_matrix": [
+            [
+              -1.34359e-07,
+              0.0,
+              1.000000134359,
+              -504.000067716864
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              120.0
+            ],
+            [
+              -1.000000134359,
+              0.0,
+              -1.34359e-07,
+              6.7716864e-05
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ]
     }
   }
 }

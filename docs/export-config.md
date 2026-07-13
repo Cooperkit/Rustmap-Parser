@@ -278,7 +278,9 @@ exports = ExportOptions(monuments=True)
 
 This writes `monuments.json` with positions, bottom-left map coordinates,
 headings, classifications, safe-zone status, recycler counts, keycards, puzzle
-types, and loot tiers.
+types, and loot tiers. Existing gameplay-monument roots are preserved, while
+train-tunnel links and monument-owned entrances are positioned from packaged
+prefab child `LandmarkInfo` transforms to match the Rust+ server behavior.
 
 Monument export loads the prefab manifest. It does not require terrain,
 heatmaps, or diagnostics.

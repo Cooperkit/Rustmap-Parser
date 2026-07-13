@@ -174,8 +174,9 @@ Path to `monuments.json`, or `None` when disabled.
 
 ### `monument_count`
 
-Number of placed gameplay monument instances exported. Zero when disabled or
-when the map has no matching gameplay monuments.
+Number of monument and tunnel-landmark records exported. A placed gameplay
+monument can contribute both its normal root record and a train-tunnel entrance
+record. Zero means the stage was disabled or no matching records were found.
 
 ```python
 if result.monuments_file:

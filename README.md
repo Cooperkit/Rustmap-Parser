@@ -383,10 +383,13 @@ produces 144.
 - Bottom-left `map_position` in metres
 - Heading, display name, family, kind, environment, spawn group, and size class
 - Safe-zone status, recycler count, keycards, puzzle type, and detected loot tier
+- Server-accurate train-tunnel link positions and monument-owned entrance markers
 - Searchable tags
 
 Gameplay facts come from a sanitized, build-versioned component database
-bundled with the package.
+bundled with the package. Train-tunnel markers use the same visible child
+`LandmarkInfo` transforms that Rust+ reads on the server; users do not need
+UnityPy or a Rust installation at runtime.
 
 ## Underground train tunnels
 

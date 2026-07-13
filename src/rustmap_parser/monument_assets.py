@@ -6,12 +6,22 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import numpy as np
+
 from .no_build_assets import _class_name, _root_game_object
-from .tunnel_assets import bundle_identity
+from .tunnel_assets import _component, _world_matrix, bundle_identity
 
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 PREFIX = "assets/bundled/prefabs/autospawn/monument/"
+LANDMARK_PREFIXES = (
+    PREFIX,
+    "assets/bundled/prefabs/autospawn/tunnel-entrance/",
+    "assets/bundled/prefabs/autospawn/tunnel-upwards/",
+)
+LANDMARK_CLASSES = frozenset((
+    "LandmarkInfo", "MonumentInfo", "DungeonGridInfo", "DungeonBaseLandmarkInfo",
+))
 NAME_FILTERS = (
     "recycler", "cardreader", "card_reader", "keycard", "puzzle", "loot",
     "crate", "safezone", "safe_zone", "vending",
@@ -55,7 +65,54 @@ def extract_monument_metadata(rust_install_path: str | Path) -> dict:
         "loot_spawner_count": 0,
         "loot_tier": 0,
     })
+    landmarks: dict[str, list[dict]] = defaultdict(list)
     for scene in scenes:
+        # Resolve each MonoBehaviour script type once, then inspect only the
+        # LandmarkInfo-derived components instead of walking every hierarchy.
+        representatives = {}
+        for obj in scene.objects.values():
+            if obj.type.name == "MonoBehaviour":
+                representatives.setdefault(obj.serialized_type.script_type_index, obj)
+        landmark_types = {}
+        for type_index, obj in representatives.items():
+            try:
+                class_name = obj.read().m_Script.read().m_ClassName
+                if class_name in LANDMARK_CLASSES:
+                    landmark_types[type_index] = class_name
+            except Exception:
+                continue
+        transform_memo: dict[int, np.ndarray] = {}
+        for obj in scene.objects.values():
+            if (obj.type.name != "MonoBehaviour" or
+                    obj.serialized_type.script_type_index not in landmark_types):
+                continue
+            try:
+                tree = obj.read_typetree()
+                game_object = scene.objects[tree["m_GameObject"]["m_PathID"]].read()
+                root = _root_game_object(game_object)
+                path = root.m_Name.casefold().replace("\\", "/")
+                if not path.startswith(LANDMARK_PREFIXES):
+                    continue
+                root_transform = _component(root, "Transform")
+                child_transform = _component(game_object, "Transform")
+                local_matrix = (
+                    np.linalg.inv(_world_matrix(root_transform, transform_memo)) @
+                    _world_matrix(child_transform, transform_memo)
+                )
+                phrase = tree.get("displayPhrase", {})
+                token = phrase.get("token") if isinstance(phrase, dict) else None
+                landmarks[path].append({
+                    "component_type": landmark_types[obj.serialized_type.script_type_index],
+                    "object_name": str(game_object.m_Name),
+                    "display_token": str(token) if token else None,
+                    "should_display_on_map": bool(tree.get("shouldDisplayOnMap", False)),
+                    "local_matrix": np.round(local_matrix, 12).tolist(),
+                })
+                # Ensure prefabs containing only landmark data are packaged.
+                facts[path]
+            except Exception:
+                continue
+
         for obj in scene.objects.values():
             if obj.type.name != "GameObject":
                 continue
@@ -117,6 +174,12 @@ def extract_monument_metadata(rust_install_path: str | Path) -> dict:
             "loot_spawner_count": int(item["loot_spawner_count"]),
             "safe_zone": bool(item["safe_zone"]),
             "vending_machine_count": int(item["vending_machine_count"]),
+            "landmarks": sorted(landmarks.get(path, []), key=lambda value: (
+                not value["should_display_on_map"],
+                value["component_type"].casefold(),
+                value["object_name"].casefold(),
+                json.dumps(value["local_matrix"], separators=(",", ":")),
+            )),
         }
 
     identity = bundle_identity(install)
@@ -127,7 +190,9 @@ def extract_monument_metadata(rust_install_path: str | Path) -> dict:
         "source": identity,
         "extraction": {
             "asset_scene_count": len(scenes),
-            "method": "prefab component and named loot-spawner scan",
+            "method": "prefab component, named loot-spawner, and LandmarkInfo transform scan",
+            "landmark_classes": sorted(LANDMARK_CLASSES),
+            "landmark_transform_space": "prefab-root-relative Unity local-to-world matrix",
             "keycard_access_levels": ACCESS_LEVELS,
             "loot_tier_scale": {"0": "none detected", "1": "low/normal", "2": "tier 2", "3": "tier 3/elite"},
         },

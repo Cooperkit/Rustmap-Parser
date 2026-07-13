@@ -7,7 +7,11 @@ from functools import lru_cache
 from importlib import resources
 from pathlib import Path
 
+import numpy as np
+
+from .no_build import _decompose
 from .prefabs import PrefabManifest
+from .tunnels import _instance_matrix
 
 
 MONUMENT_PATH_PREFIX = "assets/bundled/prefabs/autospawn/monument/"
@@ -173,6 +177,62 @@ def monument_metadata(path: str) -> dict:
     }
 
 
+def _landmark_metadata(path: str, landmark: dict | None) -> dict:
+    metadata = monument_metadata(path)
+    if landmark is None:
+        return metadata
+    token = str(landmark.get("display_token") or "").casefold()
+    component_type = str(landmark.get("component_type") or "")
+    if token == "train_tunnel_link_display_name":
+        kind, family, display_name = "train_tunnel_link", "train_tunnel_link", "Train Tunnel Link"
+    elif token == "train_tunnel_display_name" or component_type == "DungeonGridInfo":
+        kind, family, display_name = "train_tunnel_entrance", "train_tunnel_entrance", "Train Tunnel"
+    else:
+        return metadata
+    metadata.update({
+        "display_name": display_name,
+        "family": family,
+        "classification": {
+            "kind": kind,
+            "environment": "surface_to_underground",
+            "spawn_group": family,
+            "size_class": "small",
+        },
+        "gameplay": {
+            "safe_zone": False,
+            "recycler_count": 0,
+            "keycard_requirements": [],
+            "puzzle_type": "none",
+            "loot_tier": 0,
+        },
+        "tags": ["size_small", "surface_to_underground", kind],
+    })
+    return metadata
+
+
+def _visible_landmarks(path: str) -> tuple[list[dict | None], bool]:
+    definition = _gameplay_database().get("prefabs", {}).get(path.casefold())
+    if path.casefold().startswith(MONUMENT_PATH_PREFIX):
+        # monuments.json intentionally includes every gameplay monument, even
+        # ones Rust+ hides. Preserve its root entry and append the visible
+        # DungeonGridInfo child markers Rust+ uses for train-tunnel entrances.
+        landmarks = definition.get("landmarks", []) if definition else []
+        entrances = [
+            item for item in landmarks
+            if item.get("should_display_on_map") and (
+                item.get("component_type") == "DungeonGridInfo" or
+                str(item.get("display_token") or "").casefold() ==
+                "train_tunnel_display_name"
+            )
+        ]
+        return [None, *entrances], False
+    if definition is None or "landmarks" not in definition:
+        return [None], True
+    visible = [item for item in definition["landmarks"]
+               if item.get("should_display_on_map")]
+    return (visible, False) if visible else ([None], True)
+
+
 def build_monument_export(world, manifest: PrefabManifest) -> dict:
     """Return a deterministic JSON-compatible gameplay monument document."""
     if world.size <= 0:
@@ -194,28 +254,45 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
     ))
 
     monuments = []
+    fallback_instance_count = 0
     for path, prefab in candidates:
-        position = prefab.position
-        rotation = prefab.rotation
-        heading = None
-        if rotation is not None:
-            heading = round(float(rotation.y) % 360.0, 9)
-        map_x = round(float(position.x) + float(world.size) / 2.0, 9)
-        map_y = round(float(position.z) + float(world.size) / 2.0, 9)
-        monuments.append({
-            "name": Path(path).stem,
-            "prefab_path": path,
-            "map_category": prefab.category,
-            "position": {
-                "x": float(position.x), "y": float(position.y), "z": float(position.z),
-            },
-            "map_position": {"x": map_x, "y": map_y},
-            "heading_degrees": heading,
-            "metadata": monument_metadata(path),
-        })
+        landmarks, used_fallback = _visible_landmarks(path)
+        fallback_instance_count += int(used_fallback)
+        instance_matrix = _instance_matrix(prefab)
+        for landmark in landmarks:
+            local_matrix = (
+                np.eye(4, dtype=np.float64) if landmark is None
+                else np.asarray(landmark["local_matrix"], dtype=np.float64)
+            )
+            world_matrix = instance_matrix @ local_matrix
+            transform = _decompose(world_matrix)
+            position = transform["position"]
+            map_x = round(float(position["x"]) + float(world.size) / 2.0, 9)
+            map_y = round(float(position["z"]) + float(world.size) / 2.0, 9)
+            metadata = _landmark_metadata(path, landmark)
+            monuments.append({
+                "name": (
+                    Path(path).stem if landmark is None or
+                    metadata["classification"]["kind"] not in {
+                        "train_tunnel_entrance", "train_tunnel_link"
+                    } else metadata["family"]
+                ),
+                "prefab_path": path,
+                "map_category": prefab.category,
+                "position": position,
+                "map_position": {"x": map_x, "y": map_y},
+                "heading_degrees": transform["rotation_euler"]["y"],
+                "metadata": metadata,
+            })
+
+    monuments.sort(key=lambda item: (
+        item["prefab_path"].casefold(), float(item["position"]["x"]),
+        float(item["position"]["y"]), float(item["position"]["z"]),
+        item["name"].casefold(),
+    ))
 
     return {
-        "schema_version": 4,
+        "schema_version": 5,
         "map": {
             "serialization_version": int(world.serialization_version),
             "timestamp": int(world.timestamp),
@@ -231,6 +308,7 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
             "prefab_path_prefixes": list(MONUMENT_PATH_PREFIXES),
             "includes_train_tunnel_entrances": True,
             "includes_train_tunnel_links": True,
+            "server_behavior": "gameplay roots plus visible train-tunnel LandmarkInfo child transforms",
             "excludes_unique_environments": True,
         },
         "monument_count": len(monuments),
@@ -247,6 +325,8 @@ def build_monument_export(world, manifest: PrefabManifest) -> dict:
                 "prefab_count": _gameplay_database().get("prefab_count", 0),
                 "extraction": _gameplay_database().get("extraction", {}),
             },
+            "position_source": "serialized gameplay roots and packaged prefab-root-relative tunnel LandmarkInfo transforms",
+            "root_position_fallback_instance_count": fallback_instance_count,
             "enriched_instance_count": len(monuments),
         },
         "monuments": monuments,

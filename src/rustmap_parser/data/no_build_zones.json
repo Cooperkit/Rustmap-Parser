@@ -1,9 +1,9 @@
 {
   "schema_version": 4,
   "source": {
-    "rust_build_id": "24091435",
+    "rust_build_id": "24181174",
     "content_bundle_size": 4412718160,
-    "content_bundle_mtime_ns": 1783536348287478600,
+    "content_bundle_mtime_ns": 1783979403611910200,
     "asset_scene_count": 25,
     "selection": "prevent-building named/tagged colliders affecting building blocks",
     "selection_strategy": "maximal_same_owner_containment",
