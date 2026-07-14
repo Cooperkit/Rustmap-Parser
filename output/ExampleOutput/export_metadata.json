@@ -29,7 +29,7 @@
         "content_bundle": {
           "path": "Bundles/shared/content.bundle",
           "size": 4412718160,
-          "mtime_ns": 1783536348287478600
+          "mtime_ns": 1783979403611910200
         },
         "maps_bundle": {
           "path": "Bundles/maps/maps.bundle",
@@ -331,7 +331,7 @@
   },
   "monuments": {
     "file": "monuments.json",
-    "count": 34,
+    "count": 39,
     "unique_prefab_count": 31
   },
   "terrain": {
@@ -445,8 +445,8 @@
       "ocean_margin": 0,
       "timings": {
         "shore_seconds": 0.0,
-        "total_seconds": 4.111675700012711,
-        "prepare_seconds": 0.8527643000124954
+        "total_seconds": 4.15753500000028,
+        "prepare_seconds": 1.0302363999999216
       },
       "artifact": "map_render_full.png"
     },
@@ -927,8 +927,8 @@
         }
       ],
       "timings": {
-        "png_encode_seconds": 0.10151110000151675,
-        "total_seconds": 0.10210340000048745
+        "png_encode_seconds": 0.10493859999951383,
+        "total_seconds": 0.10555609999937587
       },
       "metadata_file": "tiles.json",
       "directory_size_bytes": 4576318
@@ -964,9 +964,9 @@
       105,
       104
     ],
-    "png_encode_seconds": 0.0596984000003431,
-    "overlay_compose_seconds": 0.0369016000040574,
-    "overlay_encode_seconds": 0.3326182000018889,
+    "png_encode_seconds": 0.06080350000047474,
+    "overlay_compose_seconds": 0.035364600000320934,
+    "overlay_encode_seconds": 0.33436320000146225,
     "resolution": [
       2500,
       2500
@@ -1013,14 +1013,14 @@
     "cache_pixels_per_meter": 8.0,
     "cache_template_raster_seconds": null,
     "intermediate_pixels_per_meter": 2.0,
-    "cache_load_seconds": 4.2000028770416975e-06,
-    "template_prepare_seconds": 0.05209720000857487,
-    "template_png_load_seconds": 0.02809210003761109,
-    "template_paste_seconds": 0.005456899991258979,
+    "cache_load_seconds": 3.7999998312443495e-06,
+    "template_prepare_seconds": 0.05785939999805123,
+    "template_png_load_seconds": 0.03689269999813405,
+    "template_paste_seconds": 0.0056170999978348846,
     "fallback_raster_seconds": 0.0,
-    "downsample_seconds": 0.06084039999404922,
+    "downsample_seconds": 0.060795100000177626,
     "alpha_nonzero_pixels": 263144,
-    "render_seconds": 0.1338394999911543,
+    "render_seconds": 0.1400534999993397,
     "cache_template_count": 81,
     "tile_source": "packaged",
     "tile_directory": "rustmap_parser.data.tunnel_tiles",
@@ -1051,19 +1051,19 @@
       "assets/bundled/prefabs/autospawn/tunnel-transition/transition-we-1.prefab"
     ],
     "fallback_geometry_available": false,
-    "tile_source_build_id": "24091435",
+    "tile_source_build_id": "24181174",
     "tile_version_mismatch": false,
     "tile_warnings": [],
-    "total_seconds": 0.6479434000066249,
+    "total_seconds": 0.6569600000002538,
     "metadata_file": "tunnels_metadata.json"
   },
   "no_build_zones": {
-    "schema_version": 4,
+    "schema_version": 5,
     "status": "rendered",
     "source": {
-      "rust_build_id": "24091435",
+      "rust_build_id": "24181174",
       "content_bundle_size": 4412718160,
-      "content_bundle_mtime_ns": 1783536348287478600,
+      "content_bundle_mtime_ns": 1783979403611910200,
       "asset_scene_count": 25,
       "selection": "prevent-building named/tagged colliders affecting building blocks",
       "selection_strategy": "maximal_same_owner_containment",
@@ -1090,8 +1090,9 @@
     ],
     "coordinates": {
       "world": "Unity metres: X east/west, Y elevation, Z north/south",
-      "normalized": "x = world_x / world_size + 0.5; z = world_z / world_size + 0.5",
-      "image": "x = normalized x; y = 1 - normalized z",
+      "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
+      "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
+      "heading_degrees": "rotation Y normalized to [0, 360)",
       "orientation": "flip_vertical (reverse Z; preserve X left/right)"
     },
     "selection": {
@@ -1150,32 +1151,16 @@
           "prefab_id": 3968358155,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -676.555908203,
-            "y": 18.454769135,
-            "z": 263.947235107
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 102.016448975,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.229377637,
-            "z": 0.605578894
-          },
-          "image_position": {
-            "x": 0.229377637,
-            "y": 0.394421106
-          },
-          "heading_degrees": 102.016448975
+        "position": {
+          "x": -676.555908203,
+          "y": 18.454769135,
+          "z": 263.947235107
         },
+        "map_position": {
+          "x": 573.444091797,
+          "y": 1513.947235107
+        },
+        "heading_degrees": 102.016448975,
         "geometry": {
           "radius_m": 140.0
         },
@@ -1194,32 +1179,16 @@
           "prefab_id": 2203204346,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_medium.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 667.889039647,
-            "y": 24.148722649,
-            "z": -587.088879178
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 58.793933868,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.767155616,
-            "z": 0.265164448
-          },
-          "image_position": {
-            "x": 0.767155616,
-            "y": 0.734835552
-          },
-          "heading_degrees": 58.793933868
+        "position": {
+          "x": 667.889039647,
+          "y": 24.148722649,
+          "z": -587.088879178
         },
+        "map_position": {
+          "x": 1917.889039647,
+          "y": 662.911120822
+        },
+        "heading_degrees": 58.793933868,
         "geometry": {
           "width_m": 130.0,
           "height_m": 100.0
@@ -1239,32 +1208,16 @@
           "prefab_id": 198044338,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -223.056741976,
-            "y": 29.164445877,
-            "z": -759.374438556
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 80.038246155,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.410777303,
-            "z": 0.196250225
-          },
-          "image_position": {
-            "x": 0.410777303,
-            "y": 0.803749775
-          },
-          "heading_degrees": 80.038246155
+        "position": {
+          "x": -223.056741976,
+          "y": 29.164445877,
+          "z": -759.374438556
         },
+        "map_position": {
+          "x": 1026.943258024,
+          "y": 490.625561444
+        },
+        "heading_degrees": 80.038246155,
         "geometry": {
           "width_m": 60.0,
           "height_m": 60.0
@@ -1284,32 +1237,16 @@
           "prefab_id": 198044338,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 654.401336096,
-            "y": 7.0,
-            "z": 683.860881707
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 218.754013062,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.761760534,
-            "z": 0.773544353
-          },
-          "image_position": {
-            "x": 0.761760534,
-            "y": 0.226455647
-          },
-          "heading_degrees": 218.754013062
+        "position": {
+          "x": 654.401336096,
+          "y": 7.0,
+          "z": 683.860881707
         },
+        "map_position": {
+          "x": 1904.401336096,
+          "y": 1933.860881707
+        },
+        "heading_degrees": 218.754013062,
         "geometry": {
           "width_m": 60.0,
           "height_m": 60.0
@@ -1329,32 +1266,16 @@
           "prefab_id": 2838540317,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_hard.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -567.81145931,
-            "y": 15.959554434,
-            "z": 770.699476779
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 134.623016357,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.272875416,
-            "z": 0.808279791
-          },
-          "image_position": {
-            "x": 0.272875416,
-            "y": 0.191720209
-          },
-          "heading_degrees": 134.623016357
+        "position": {
+          "x": -567.81145931,
+          "y": 15.959554434,
+          "z": 770.699476779
         },
+        "map_position": {
+          "x": 682.18854069,
+          "y": 2020.699476779
+        },
+        "heading_degrees": 134.623016357,
         "geometry": {
           "width_m": 60.0,
           "height_m": 60.0
@@ -1374,32 +1295,16 @@
           "prefab_id": 1017425168,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_medium.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 119.814103491,
-            "y": 75.266120911,
-            "z": 5.663029614
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 259.438659668,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.547925641,
-            "z": 0.502265212
-          },
-          "image_position": {
-            "x": 0.547925641,
-            "y": 0.497734788
-          },
-          "heading_degrees": 259.438659668
+        "position": {
+          "x": 119.814103491,
+          "y": 75.266120911,
+          "z": 5.663029614
         },
+        "map_position": {
+          "x": 1369.814103491,
+          "y": 1255.663029614
+        },
+        "heading_degrees": 259.438659668,
         "geometry": {
           "width_m": 60.0,
           "height_m": 60.0
@@ -1419,32 +1324,16 @@
           "prefab_id": 1873767918,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 184.039764404,
-            "y": -8.5,
-            "z": -643.381896973
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 75.963529817,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.00000005,
-            "y": 1.0,
-            "z": 1.00000005
-          },
-          "normalized_position": {
-            "x": 0.573615906,
-            "z": 0.242647241
-          },
-          "image_position": {
-            "x": 0.573615906,
-            "y": 0.757352759
-          },
-          "heading_degrees": 75.963529817
+        "position": {
+          "x": 184.039764404,
+          "y": -8.5,
+          "z": -643.381896973
         },
+        "map_position": {
+          "x": 1434.039764404,
+          "y": 606.618103027
+        },
+        "heading_degrees": 75.963529817,
         "geometry": {
           "radius_m": 125.000006258
         },
@@ -1463,32 +1352,16 @@
           "prefab_id": 779654519,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 951.143737793,
-            "y": 0.75,
-            "z": -24.069778442
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 91.93926239,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.880457495,
-            "z": 0.490372089
-          },
-          "image_position": {
-            "x": 0.880457495,
-            "y": 0.509627911
-          },
-          "heading_degrees": 91.93926239
+        "position": {
+          "x": 951.143737793,
+          "y": 0.75,
+          "z": -24.069778442
         },
+        "map_position": {
+          "x": 2201.143737793,
+          "y": 1225.930221558
+        },
+        "heading_degrees": 91.93926239,
         "geometry": {
           "radius_m": 200.0
         },
@@ -1507,32 +1380,16 @@
           "prefab_id": 3348191966,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 207.650027022,
-            "y": 0.446000099,
-            "z": 831.159073598
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 343.612518311,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.583060011,
-            "z": 0.832463629
-          },
-          "image_position": {
-            "x": 0.583060011,
-            "y": 0.167536371
-          },
-          "heading_degrees": 343.612518311
+        "position": {
+          "x": 207.650027022,
+          "y": 0.446000099,
+          "z": 831.159073598
         },
+        "map_position": {
+          "x": 1457.650027022,
+          "y": 2081.159073598
+        },
+        "heading_degrees": 343.612518311,
         "geometry": {
           "radius_m": 250.0
         },
@@ -1551,32 +1408,16 @@
           "prefab_id": 3348191966,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 504.417124814,
-            "y": 0.446000099,
-            "z": 1029.962799287
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 343.612518311,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.70176685,
-            "z": 0.91198512
-          },
-          "image_position": {
-            "x": 0.70176685,
-            "y": 0.08801488
-          },
-          "heading_degrees": 343.612518311
+        "position": {
+          "x": 504.417124814,
+          "y": 0.446000099,
+          "z": 1029.962799287
         },
+        "map_position": {
+          "x": 1754.417124814,
+          "y": 2279.962799287
+        },
+        "heading_degrees": 343.612518311,
         "geometry": {
           "radius_m": 150.0
         },
@@ -1595,32 +1436,16 @@
           "prefab_id": 3348191966,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -149.493287459,
-            "y": 0.446000099,
-            "z": 837.661734703
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 343.612518311,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.440202685,
-            "z": 0.835064694
-          },
-          "image_position": {
-            "x": 0.440202685,
-            "y": 0.164935306
-          },
-          "heading_degrees": 343.612518311
+        "position": {
+          "x": -149.493287459,
+          "y": 0.446000099,
+          "z": 837.661734703
         },
+        "map_position": {
+          "x": 1100.506712541,
+          "y": 2087.661734703
+        },
+        "heading_degrees": 343.612518311,
         "geometry": {
           "radius_m": 150.0
         },
@@ -1639,32 +1464,16 @@
           "prefab_id": 2958463062,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -995.573909797,
-            "y": -0.269999981,
-            "z": 360.950644076
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 179.968505859,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.101770436,
-            "z": 0.644380258
-          },
-          "image_position": {
-            "x": 0.101770436,
-            "y": 0.355619742
-          },
-          "heading_degrees": 179.968505859
+        "position": {
+          "x": -995.573909797,
+          "y": -0.269999981,
+          "z": 360.950644076
         },
+        "map_position": {
+          "x": 254.426090203,
+          "y": 1610.950644076
+        },
+        "heading_degrees": 179.968505859,
         "geometry": {
           "radius_m": 250.0
         },
@@ -1683,32 +1492,16 @@
           "prefab_id": 2958463062,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -1081.019069509,
-            "y": -0.269999981,
-            "z": 625.003722881
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 179.968505859,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.067592372,
-            "z": 0.750001489
-          },
-          "image_position": {
-            "x": 0.067592372,
-            "y": 0.249998511
-          },
-          "heading_degrees": 179.968505859
+        "position": {
+          "x": -1081.019069509,
+          "y": -0.269999981,
+          "z": 625.003722881
         },
+        "map_position": {
+          "x": 168.980930491,
+          "y": 1875.003722881
+        },
+        "heading_degrees": 179.968505859,
         "geometry": {
           "radius_m": 100.0
         },
@@ -1727,32 +1520,16 @@
           "prefab_id": 2958463062,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -1080.707348007,
-            "y": -0.269999981,
-            "z": 57.90380245
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 179.968505859,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.067717061,
-            "z": 0.523161521
-          },
-          "image_position": {
-            "x": 0.067717061,
-            "y": 0.476838479
-          },
-          "heading_degrees": 179.968505859
+        "position": {
+          "x": -1080.707348007,
+          "y": -0.269999981,
+          "z": 57.90380245
         },
+        "map_position": {
+          "x": 169.292651993,
+          "y": 1307.90380245
+        },
+        "heading_degrees": 179.968505859,
         "geometry": {
           "radius_m": 100.0
         },
@@ -1771,32 +1548,16 @@
           "prefab_id": 3422899798,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -235.853389021,
-            "y": 51.989999771,
-            "z": 366.585593214
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 180.683456421,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.405658644,
-            "z": 0.646634237
-          },
-          "image_position": {
-            "x": 0.405658644,
-            "y": 0.353365763
-          },
-          "heading_degrees": 180.683456421
+        "position": {
+          "x": -235.853389021,
+          "y": 51.989999771,
+          "z": 366.585593214
         },
+        "map_position": {
+          "x": 1014.146610979,
+          "y": 1616.585593214
+        },
+        "heading_degrees": 180.683456421,
         "geometry": {
           "width_m": 350.0,
           "height_m": 450.0
@@ -1816,32 +1577,16 @@
           "prefab_id": 610633799,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -862.427734375,
-            "y": 0.0,
-            "z": 733.435180664
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 151.238952637,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.155028906,
-            "z": 0.793374072
-          },
-          "image_position": {
-            "x": 0.155028906,
-            "y": 0.206625928
-          },
-          "heading_degrees": 151.238952637
+        "position": {
+          "x": -862.427734375,
+          "y": 0.0,
+          "z": 733.435180664
         },
+        "map_position": {
+          "x": 387.572265625,
+          "y": 1983.435180664
+        },
+        "heading_degrees": 151.238952637,
         "geometry": {
           "radius_m": 100.0
         },
@@ -1860,32 +1605,16 @@
           "prefab_id": 610633799,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 883.461669922,
-            "y": 0.0,
-            "z": 824.930236816
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 164.376190186,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.853384668,
-            "z": 0.829972095
-          },
-          "image_position": {
-            "x": 0.853384668,
-            "y": 0.170027905
-          },
-          "heading_degrees": 164.376190186
+        "position": {
+          "x": 883.461669922,
+          "y": 0.0,
+          "z": 824.930236816
         },
+        "map_position": {
+          "x": 2133.461669922,
+          "y": 2074.930236816
+        },
+        "heading_degrees": 164.376190186,
         "geometry": {
           "radius_m": 100.0
         },
@@ -1904,32 +1633,16 @@
           "prefab_id": 2074025910,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 120.233102786,
-            "y": 12.20847702,
-            "z": 390.589852702
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 219.264744983,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.000000021,
-            "y": 1.0,
-            "z": 1.000000021
-          },
-          "normalized_position": {
-            "x": 0.548093241,
-            "z": 0.656235941
-          },
-          "image_position": {
-            "x": 0.548093241,
-            "y": 0.343764059
-          },
-          "heading_degrees": 219.264744983
+        "position": {
+          "x": 120.233102786,
+          "y": 12.20847702,
+          "z": 390.589852702
         },
+        "map_position": {
+          "x": 1370.233102786,
+          "y": 1640.589852702
+        },
+        "heading_degrees": 219.264744983,
         "geometry": {
           "radius_m": 150.000003155
         },
@@ -1948,32 +1661,16 @@
           "prefab_id": 1879405026,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -497.298347483,
-            "y": 25.360001087,
-            "z": -72.168605507
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 316.954711914,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.301080661,
-            "z": 0.471132558
-          },
-          "image_position": {
-            "x": 0.301080661,
-            "y": 0.528867442
-          },
-          "heading_degrees": 316.954711914
+        "position": {
+          "x": -497.298347483,
+          "y": 25.360001087,
+          "z": -72.168605507
         },
+        "map_position": {
+          "x": 752.701652517,
+          "y": 1177.831394493
+        },
+        "heading_degrees": 316.954711914,
         "geometry": {
           "radius_m": 200.0
         },
@@ -1992,32 +1689,16 @@
           "prefab_id": 454470717,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -387.356140137,
-            "y": 30.964946747,
-            "z": -866.356140137
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 302.403289795,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.345057544,
-            "z": 0.153457544
-          },
-          "image_position": {
-            "x": 0.345057544,
-            "y": 0.846542456
-          },
-          "heading_degrees": 302.403289795
+        "position": {
+          "x": -387.356140137,
+          "y": 30.964946747,
+          "z": -866.356140137
         },
+        "map_position": {
+          "x": 862.643859863,
+          "y": 383.643859863
+        },
+        "heading_degrees": 302.403289795,
         "geometry": {
           "radius_m": 170.0
         },
@@ -2036,32 +1717,16 @@
           "prefab_id": 2940558852,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_c.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 500.241482332,
-            "y": 15.123564243,
-            "z": -194.462878657
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 313.408081055,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.700096593,
-            "z": 0.422214849
-          },
-          "image_position": {
-            "x": 0.700096593,
-            "y": 0.577785151
-          },
-          "heading_degrees": 313.408081055
+        "position": {
+          "x": 500.241482332,
+          "y": 15.123564243,
+          "z": -194.462878657
         },
+        "map_position": {
+          "x": 1750.241482332,
+          "y": 1055.537121343
+        },
+        "heading_degrees": 313.408081055,
         "geometry": {
           "radius_m": 150.0
         },
@@ -2080,32 +1745,16 @@
           "prefab_id": 2839094107,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 1307.541934768,
-            "y": 12.050000191,
-            "z": -1546.950029945
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 356.576934814,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 1.023016774,
-            "z": -0.118780012
-          },
-          "image_position": {
-            "x": 1.023016774,
-            "y": 1.118780012
-          },
-          "heading_degrees": 356.576934814
+        "position": {
+          "x": 1307.541934768,
+          "y": 12.050000191,
+          "z": -1546.950029945
         },
+        "map_position": {
+          "x": 2557.541934768,
+          "y": -296.950029945
+        },
+        "heading_degrees": 356.576934814,
         "geometry": {
           "width_m": 128.0,
           "height_m": 138.0
@@ -2125,32 +1774,16 @@
           "prefab_id": 2038914978,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -1043.589682318,
-            "y": -11.005002022,
-            "z": -1607.678078242
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 22.476633072,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.082564127,
-            "z": -0.143071231
-          },
-          "image_position": {
-            "x": 0.082564127,
-            "y": 1.143071231
-          },
-          "heading_degrees": 22.476633072
+        "position": {
+          "x": -1043.589682318,
+          "y": -11.005002022,
+          "z": -1607.678078242
         },
+        "map_position": {
+          "x": 206.410317682,
+          "y": -357.678078242
+        },
+        "heading_degrees": 22.476633072,
         "geometry": {
           "width_m": 128.0,
           "height_m": 128.0
@@ -2170,32 +1803,16 @@
           "prefab_id": 400079324,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 27.74638176,
-            "y": 9.06742382,
-            "z": -291.904998779
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 18.521783829,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.511098553,
-            "z": 0.383238
-          },
-          "image_position": {
-            "x": 0.511098553,
-            "y": 0.616762
-          },
-          "heading_degrees": 18.521783829
+        "position": {
+          "x": 27.74638176,
+          "y": 9.06742382,
+          "z": -291.904998779
         },
+        "map_position": {
+          "x": 1277.74638176,
+          "y": 958.095001221
+        },
+        "heading_degrees": 18.521783829,
         "geometry": {
           "radius_m": 130.0
         },
@@ -2214,32 +1831,16 @@
           "prefab_id": 891304283,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 743.62677002,
-            "y": 12.038167953,
-            "z": -21.201969147
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 68.937667847,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.797450708,
-            "z": 0.491519212
-          },
-          "image_position": {
-            "x": 0.797450708,
-            "y": 0.508480788
-          },
-          "heading_degrees": 68.937667847
+        "position": {
+          "x": 743.62677002,
+          "y": 12.038167953,
+          "z": -21.201969147
         },
+        "map_position": {
+          "x": 1993.62677002,
+          "y": 1228.798030853
+        },
+        "heading_degrees": 68.937667847,
         "geometry": {
           "radius_m": 100.0
         },
@@ -2258,32 +1859,16 @@
           "prefab_id": 2148214341,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 828.262954205,
-            "y": 10.841889143,
-            "z": -776.94232804
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 219.695114136,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.831305182,
-            "z": 0.189223069
-          },
-          "image_position": {
-            "x": 0.831305182,
-            "y": 0.810776931
-          },
-          "heading_degrees": 219.695114136
+        "position": {
+          "x": 828.262954205,
+          "y": 10.841889143,
+          "z": -776.94232804
         },
+        "map_position": {
+          "x": 2078.262954205,
+          "y": 473.05767196
+        },
+        "heading_degrees": 219.695114136,
         "geometry": {
           "radius_m": 70.0
         },
@@ -2302,32 +1887,16 @@
           "prefab_id": 2046822015,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_b.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 311.57901985,
-            "y": 12.292472839,
-            "z": -387.905531022
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 103.714080811,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.624631608,
-            "z": 0.344837788
-          },
-          "image_position": {
-            "x": 0.624631608,
-            "y": 0.655162212
-          },
-          "heading_degrees": 103.714080811
+        "position": {
+          "x": 311.57901985,
+          "y": 12.292472839,
+          "z": -387.905531022
         },
+        "map_position": {
+          "x": 1561.57901985,
+          "y": 862.094468978
+        },
+        "heading_degrees": 103.714080811,
         "geometry": {
           "radius_m": 70.0
         },
@@ -2346,32 +1915,16 @@
           "prefab_id": 3899974108,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_c.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -844.195898499,
-            "y": 12.674547195,
-            "z": -279.985942393
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 127.801475525,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.162321641,
-            "z": 0.388005623
-          },
-          "image_position": {
-            "x": 0.162321641,
-            "y": 0.611994377
-          },
-          "heading_degrees": 127.801475525
+        "position": {
+          "x": -844.195898499,
+          "y": 12.674547195,
+          "z": -279.985942393
         },
+        "map_position": {
+          "x": 405.804101501,
+          "y": 970.014057607
+        },
+        "heading_degrees": 127.801475525,
         "geometry": {
           "radius_m": 70.0
         },
@@ -2390,32 +1943,16 @@
           "prefab_id": 182769745,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 669.656677246,
-            "y": 29.623571396,
-            "z": 203.208023071
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 253.75680542,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.767862671,
-            "z": 0.581283209
-          },
-          "image_position": {
-            "x": 0.767862671,
-            "y": 0.418716791
-          },
-          "heading_degrees": 253.75680542
+        "position": {
+          "x": 669.656677246,
+          "y": 29.623571396,
+          "z": 203.208023071
         },
+        "map_position": {
+          "x": 1919.656677246,
+          "y": 1453.208023071
+        },
+        "heading_degrees": 253.75680542,
         "geometry": {
           "radius_m": 170.0
         },
@@ -2434,32 +1971,16 @@
           "prefab_id": 3903103539,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -163.229553223,
-            "y": 30.650226593,
-            "z": 42.188762665
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 247.332855225,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.434708179,
-            "z": 0.516875505
-          },
-          "image_position": {
-            "x": 0.434708179,
-            "y": 0.483124495
-          },
-          "heading_degrees": 247.332855225
+        "position": {
+          "x": -163.229553223,
+          "y": 30.650226593,
+          "z": 42.188762665
         },
+        "map_position": {
+          "x": 1086.770446777,
+          "y": 1292.188762665
+        },
+        "heading_degrees": 247.332855225,
         "geometry": {
           "radius_m": 130.0
         },
@@ -2478,32 +1999,16 @@
           "prefab_id": 3653679896,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 363.87322998,
-            "y": 5.307946205,
-            "z": 569.630737305
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 49.306915283,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.645549292,
-            "z": 0.727852295
-          },
-          "image_position": {
-            "x": 0.645549292,
-            "y": 0.272147705
-          },
-          "heading_degrees": 49.306915283
+        "position": {
+          "x": 363.87322998,
+          "y": 5.307946205,
+          "z": 569.630737305
         },
+        "map_position": {
+          "x": 1613.87322998,
+          "y": 1819.630737305
+        },
+        "heading_degrees": 49.306915283,
         "geometry": {
           "radius_m": 24.0
         },
@@ -2522,32 +2027,16 @@
           "prefab_id": 693730846,
           "prefab_path": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_b.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -1180.107788086,
-            "y": -41.990795135,
-            "z": -352.291473389
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 341.157043457,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.027956885,
-            "z": 0.359083411
-          },
-          "image_position": {
-            "x": 0.027956885,
-            "y": 0.640916589
-          },
-          "heading_degrees": 341.157043457
+        "position": {
+          "x": -1180.107788086,
+          "y": -41.990795135,
+          "z": -352.291473389
         },
+        "map_position": {
+          "x": 69.892211914,
+          "y": 897.708526611
+        },
+        "heading_degrees": 341.157043457,
         "geometry": {
           "width_m": 64.0,
           "height_m": 64.0
@@ -2567,32 +2056,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -623.12310791,
-            "y": 18.4457798,
-            "z": 195.195220947
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 290.802978516,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.250750757,
-            "z": 0.578078088
-          },
-          "image_position": {
-            "x": 0.250750757,
-            "y": 0.421921912
-          },
-          "heading_degrees": 290.802978516
+        "position": {
+          "x": -623.12310791,
+          "y": 18.4457798,
+          "z": 195.195220947
         },
+        "map_position": {
+          "x": 626.87689209,
+          "y": 1445.195220947
+        },
+        "heading_degrees": 290.802978516,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2611,32 +2084,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -45.045017242,
-            "y": 11.906105995,
-            "z": -367.867858887
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 354.799468994,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.481981993,
-            "z": 0.352852856
-          },
-          "image_position": {
-            "x": 0.481981993,
-            "y": 0.647147144
-          },
-          "heading_degrees": 354.799468994
+        "position": {
+          "x": -45.045017242,
+          "y": 11.906105995,
+          "z": -367.867858887
         },
+        "map_position": {
+          "x": 1204.954982758,
+          "y": 882.132141113
+        },
+        "heading_degrees": 354.799468994,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2655,32 +2112,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -30.030012131,
-            "y": 15.024224281,
-            "z": 623.123046875
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 105.961929321,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.487987995,
-            "z": 0.749249219
-          },
-          "image_position": {
-            "x": 0.487987995,
-            "y": 0.250750781
-          },
-          "heading_degrees": 105.961929321
+        "position": {
+          "x": -30.030012131,
+          "y": 15.024224281,
+          "z": 623.123046875
         },
+        "map_position": {
+          "x": 1219.969987869,
+          "y": 1873.123046875
+        },
+        "heading_degrees": 105.961929321,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2699,32 +2140,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -7.507503033,
-            "y": 8.726197243,
-            "z": -337.837860107
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 38.943454742,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.496996999,
-            "z": 0.364864856
-          },
-          "image_position": {
-            "x": 0.496996999,
-            "y": 0.635135144
-          },
-          "heading_degrees": 38.943454742
+        "position": {
+          "x": -7.507503033,
+          "y": 8.726197243,
+          "z": -337.837860107
         },
+        "map_position": {
+          "x": 1242.492496967,
+          "y": 912.162139893
+        },
+        "heading_degrees": 38.943454742,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2743,32 +2168,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 30.030012131,
-            "y": 6.417606831,
-            "z": -540.540527344
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 250.055664062,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.512012005,
-            "z": 0.283783789
-          },
-          "image_position": {
-            "x": 0.512012005,
-            "y": 0.716216211
-          },
-          "heading_degrees": 250.055664062
+        "position": {
+          "x": 30.030012131,
+          "y": 6.417606831,
+          "z": -540.540527344
         },
+        "map_position": {
+          "x": 1280.030012131,
+          "y": 709.459472656
+        },
+        "heading_degrees": 250.055664062,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2787,32 +2196,16 @@
           "prefab_id": 4254972482,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 855.855773926,
-            "y": 7.725590706,
-            "z": -97.597610474
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 11.023692131,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.84234231,
-            "z": 0.460960956
-          },
-          "image_position": {
-            "x": 0.84234231,
-            "y": 0.539039044
-          },
-          "heading_degrees": 11.023692131
+        "position": {
+          "x": 855.855773926,
+          "y": 7.725590706,
+          "z": -97.597610474
         },
+        "map_position": {
+          "x": 2105.855773926,
+          "y": 1152.402389526
+        },
+        "heading_degrees": 11.023692131,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2831,32 +2224,16 @@
           "prefab_id": 2915130455,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -412.912902832,
-            "y": 17.769775391,
-            "z": 37.537513733
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 79.635772705,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.334834839,
-            "z": 0.515015005
-          },
-          "image_position": {
-            "x": 0.334834839,
-            "y": 0.484984995
-          },
-          "heading_degrees": 79.635772705
+        "position": {
+          "x": -412.912902832,
+          "y": 17.769775391,
+          "z": 37.537513733
         },
+        "map_position": {
+          "x": 837.087097168,
+          "y": 1287.537513733
+        },
+        "heading_degrees": 79.635772705,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2875,32 +2252,16 @@
           "prefab_id": 2915130455,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -367.867858887,
-            "y": 26.437005997,
-            "z": -75.07510376
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 204.799987793,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.352852856,
-            "z": 0.469969958
-          },
-          "image_position": {
-            "x": 0.352852856,
-            "y": 0.530030042
-          },
-          "heading_degrees": 204.799987793
+        "position": {
+          "x": -367.867858887,
+          "y": 26.437005997,
+          "z": -75.07510376
         },
+        "map_position": {
+          "x": 882.132141113,
+          "y": 1174.92489624
+        },
+        "heading_degrees": 204.799987793,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2919,32 +2280,16 @@
           "prefab_id": 2915130455,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 0.0,
-            "y": 6.140566826,
-            "z": -382.882873535
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 193.642105103,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.5,
-            "z": 0.346846851
-          },
-          "image_position": {
-            "x": 0.5,
-            "y": 0.653153149
-          },
-          "heading_degrees": 193.642105103
+        "position": {
+          "x": 0.0,
+          "y": 6.140566826,
+          "z": -382.882873535
         },
+        "map_position": {
+          "x": 1250.0,
+          "y": 867.117126465
+        },
+        "heading_degrees": 193.642105103,
         "geometry": {
           "radius_m": 30.0
         },
@@ -2963,32 +2308,16 @@
           "prefab_id": 2915130455,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/big/power_sub_big_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 135.13520813,
-            "y": 2.560953617,
-            "z": -563.063110352
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 223.872436523,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.554054083,
-            "z": 0.274774756
-          },
-          "image_position": {
-            "x": 0.554054083,
-            "y": 0.725225244
-          },
-          "heading_degrees": 223.872436523
+        "position": {
+          "x": 135.13520813,
+          "y": 2.560953617,
+          "z": -563.063110352
         },
+        "map_position": {
+          "x": 1385.13520813,
+          "y": 686.936889648
+        },
+        "heading_degrees": 223.872436523,
         "geometry": {
           "radius_m": 30.0
         },
@@ -3007,32 +2336,16 @@
           "prefab_id": 4110266940,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -397.243347168,
-            "y": 21.991113663,
-            "z": 369.182434082
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 184.251068115,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.341102661,
-            "z": 0.647672974
-          },
-          "image_position": {
-            "x": 0.341102661,
-            "y": 0.352327026
-          },
-          "heading_degrees": 184.251068115
+        "position": {
+          "x": -397.243347168,
+          "y": 21.991113663,
+          "z": 369.182434082
         },
+        "map_position": {
+          "x": 852.756652832,
+          "y": 1619.182434082
+        },
+        "heading_degrees": 184.251068115,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3051,32 +2364,16 @@
           "prefab_id": 4110266940,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_1.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -226.801849365,
-            "y": 28.166780472,
-            "z": -29.528402328
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 168.80406189,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.40927926,
-            "z": 0.488188639
-          },
-          "image_position": {
-            "x": 0.40927926,
-            "y": 0.511811361
-          },
-          "heading_degrees": 168.80406189
+        "position": {
+          "x": -226.801849365,
+          "y": 28.166780472,
+          "z": -29.528402328
         },
+        "map_position": {
+          "x": 1023.198150635,
+          "y": 1220.471597672
+        },
+        "heading_degrees": 168.80406189,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3095,32 +2392,16 @@
           "prefab_id": 1816998299,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -610.885253906,
-            "y": 18.54873848,
-            "z": -15.727966309
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 293.314880371,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.255645898,
-            "z": 0.493708813
-          },
-          "image_position": {
-            "x": 0.255645898,
-            "y": 0.506291187
-          },
-          "heading_degrees": 293.314880371
+        "position": {
+          "x": -610.885253906,
+          "y": 18.54873848,
+          "z": -15.727966309
         },
+        "map_position": {
+          "x": 639.114746094,
+          "y": 1234.272033691
+        },
+        "heading_degrees": 293.314880371,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3139,32 +2420,16 @@
           "prefab_id": 1816998299,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -137.712432861,
-            "y": 23.154056549,
-            "z": 527.024353027
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 46.147777557,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.444915027,
-            "z": 0.710809741
-          },
-          "image_position": {
-            "x": 0.444915027,
-            "y": 0.289190259
-          },
-          "heading_degrees": 46.147777557
+        "position": {
+          "x": -137.712432861,
+          "y": 23.154056549,
+          "z": 527.024353027
         },
+        "map_position": {
+          "x": 1112.287567139,
+          "y": 1777.024353027
+        },
+        "heading_degrees": 46.147777557,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3183,32 +2448,16 @@
           "prefab_id": 1816998299,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 76.553535461,
-            "y": 7.226004124,
-            "z": 690.631896973
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 33.715114594,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.530621414,
-            "z": 0.776252759
-          },
-          "image_position": {
-            "x": 0.530621414,
-            "y": 0.223747241
-          },
-          "heading_degrees": 33.715114594
+        "position": {
+          "x": 76.553535461,
+          "y": 7.226004124,
+          "z": 690.631896973
         },
+        "map_position": {
+          "x": 1326.553535461,
+          "y": 1940.631896973
+        },
+        "heading_degrees": 33.715114594,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3227,32 +2476,16 @@
           "prefab_id": 1816998299,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 389.881774902,
-            "y": 2.627179384,
-            "z": 794.120605469
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 228.675033569,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.65595271,
-            "z": 0.817648242
-          },
-          "image_position": {
-            "x": 0.65595271,
-            "y": 0.182351758
-          },
-          "heading_degrees": 228.675033569
+        "position": {
+          "x": 389.881774902,
+          "y": 2.627179384,
+          "z": 794.120605469
         },
+        "map_position": {
+          "x": 1639.881774902,
+          "y": 2044.120605469
+        },
+        "heading_degrees": 228.675033569,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3271,32 +2504,16 @@
           "prefab_id": 1816998299,
           "prefab_path": "assets/bundled/prefabs/autospawn/power substations/small/power_sub_small_2.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 830.410949707,
-            "y": 6.567492485,
-            "z": 8.727777481
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 294.982818604,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.83216438,
-            "z": 0.503491111
-          },
-          "image_position": {
-            "x": 0.83216438,
-            "y": 0.496508889
-          },
-          "heading_degrees": 294.982818604
+        "position": {
+          "x": 830.410949707,
+          "y": 6.567492485,
+          "z": 8.727777481
         },
+        "map_position": {
+          "x": 2080.410949707,
+          "y": 1258.727777481
+        },
+        "heading_degrees": 294.982818604,
         "geometry": {
           "radius_m": 20.0
         },
@@ -3315,32 +2532,16 @@
           "prefab_id": 3873722037,
           "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -597.0,
-            "y": 29.555217743,
-            "z": -765.0
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 222.673904419,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.2612,
-            "z": 0.194
-          },
-          "image_position": {
-            "x": 0.2612,
-            "y": 0.806
-          },
-          "heading_degrees": 222.673904419
+        "position": {
+          "x": -597.0,
+          "y": 29.555217743,
+          "z": -765.0
         },
+        "map_position": {
+          "x": 653.0,
+          "y": 485.0
+        },
+        "heading_degrees": 222.673904419,
         "geometry": {
           "width_m": 100.0,
           "height_m": 100.0
@@ -3360,32 +2561,16 @@
           "prefab_id": 3873722037,
           "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 831.0,
-            "y": 22.055217743,
-            "z": -651.0
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 10.583739281,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.8324,
-            "z": 0.2396
-          },
-          "image_position": {
-            "x": 0.8324,
-            "y": 0.7604
-          },
-          "heading_degrees": 10.583739281
+        "position": {
+          "x": 831.0,
+          "y": 22.055217743,
+          "z": -651.0
         },
+        "map_position": {
+          "x": 2081.0,
+          "y": 599.0
+        },
+        "heading_degrees": 10.583739281,
         "geometry": {
           "width_m": 100.0,
           "height_m": 100.0
@@ -3405,32 +2590,16 @@
           "prefab_id": 2362750489,
           "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_b.prefab"
         },
-        "transform": {
-          "position": {
-            "x": 453.0,
-            "y": 68.290597916,
-            "z": 219.0
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 142.114059448,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.6812,
-            "z": 0.5876
-          },
-          "image_position": {
-            "x": 0.6812,
-            "y": 0.4124
-          },
-          "heading_degrees": 142.114059448
+        "position": {
+          "x": 453.0,
+          "y": 68.290597916,
+          "z": 219.0
         },
+        "map_position": {
+          "x": 1703.0,
+          "y": 1469.0
+        },
+        "heading_degrees": 142.114059448,
         "geometry": {
           "width_m": 100.0,
           "height_m": 100.0
@@ -3450,32 +2619,16 @@
           "prefab_id": 2393056659,
           "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_d.prefab"
         },
-        "transform": {
-          "position": {
-            "x": -114.0,
-            "y": 38.370536804,
-            "z": -315.0
-          },
-          "rotation_euler": {
-            "x": -0.0,
-            "y": 259.807189941,
-            "z": 0.0
-          },
-          "scale": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0
-          },
-          "normalized_position": {
-            "x": 0.4544,
-            "z": 0.374
-          },
-          "image_position": {
-            "x": 0.4544,
-            "y": 0.626
-          },
-          "heading_degrees": 259.807189941
+        "position": {
+          "x": -114.0,
+          "y": 38.370536804,
+          "z": -315.0
         },
+        "map_position": {
+          "x": 1136.0,
+          "y": 935.0
+        },
+        "heading_degrees": 259.807189941,
         "geometry": {
           "width_m": 100.0,
           "height_m": 100.0
@@ -3507,71 +2660,71 @@
       ],
       "outline_width": 3
     },
-    "render_seconds": 0.31007839999801945,
+    "render_seconds": 0.2952619000006962,
     "image_file": "no_build_zones.png",
     "overlay_file": "no_build_zones_on_map.png",
-    "elapsed_seconds": 0.8303999999916414,
+    "elapsed_seconds": 0.8194885000011709,
     "artifact_sizes_bytes": {
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 60501
+      "no_build_zones.json": 42497
     }
   },
   "timings": {
     "heatmap_categories": {
-      "bear": 0.24674149999918882,
-      "berries": 0.41744309999921825,
-      "boar": 0.04498190000595059,
-      "chicken": 0.3696441999927629,
-      "corn": 0.05329950001032557,
-      "crocodile": 0.04611139999178704,
-      "flowers": 0.06162749999202788,
-      "hab": 0.4034611999959452,
-      "hemp": 0.16334129999449942,
-      "horse": 0.05466069999965839,
-      "junkpiles": 0.10136749999946915,
-      "logs": 0.31429199999547563,
-      "modularcar": 0.04860380000900477,
-      "mushroom": 0.06199699999706354,
-      "ores": 0.3976074999955017,
-      "pedalbike": 0.04822690000582952,
-      "potato": 0.004873500001849607,
-      "pumpkin": 0.004514600004767999,
-      "rowboat": 0.08269129999098368,
-      "snake": 0.042554500003461726,
-      "stag": 0.04327140000532381,
-      "tiger": 0.04152829998929519,
-      "wheat": 0.005340700008673593,
-      "wolf": 0.07988589999149553,
-      "wood": 0.049295000004349276
+      "bear": 0.25247250000029453,
+      "berries": 0.4099490999997215,
+      "boar": 0.047027500000695,
+      "chicken": 0.3760901000005106,
+      "corn": 0.04983639999954903,
+      "crocodile": 0.04499759999998787,
+      "flowers": 0.05767399999967893,
+      "hab": 0.3895189999984723,
+      "hemp": 0.15696650000063528,
+      "horse": 0.05307119999997667,
+      "junkpiles": 0.0983883999997488,
+      "logs": 0.32651670000086597,
+      "modularcar": 0.04877699999997276,
+      "mushroom": 0.06163410000044678,
+      "ores": 0.3966393999999127,
+      "pedalbike": 0.0487870999986626,
+      "potato": 0.005526499999177759,
+      "pumpkin": 0.005160299999261042,
+      "rowboat": 0.08374400000138849,
+      "snake": 0.0425109000007069,
+      "stag": 0.043798900000183494,
+      "tiger": 0.04230029999962426,
+      "wheat": 0.004231400000207941,
+      "wolf": 0.08015989999876183,
+      "wood": 0.04946449999988545
     },
-    "map_parse_seconds": 0.3490330999920843,
-    "rule_database_load_seconds": 0.0006085000059101731,
-    "heatmap_evaluator_setup_seconds": 0.3338723999913782,
-    "heatmaps_total_seconds": 3.187362199983909,
-    "heatmap_npz_encode_seconds": 0.5642788999975892,
-    "diagnostics_seconds": 4.087176700006239,
-    "monuments_seconds": 0.0462961000012001,
-    "map_render_seconds": 5.34980500000529,
-    "no_build_zones_seconds": 0.8363742999936221,
-    "tunnel_render_seconds": 0.6555633999960264
+    "map_parse_seconds": 0.37366429999929096,
+    "rule_database_load_seconds": 0.0014429000002564862,
+    "heatmap_evaluator_setup_seconds": 0.3254603000004863,
+    "heatmaps_total_seconds": 3.1752432999983284,
+    "heatmap_npz_encode_seconds": 0.5605907999997726,
+    "diagnostics_seconds": 4.063957599999412,
+    "monuments_seconds": 0.04929249999986496,
+    "map_render_seconds": 5.571443999999246,
+    "no_build_zones_seconds": 0.8255313000008755,
+    "tunnel_render_seconds": 0.6662557999989076
   },
   "generation": {
-    "elapsed_seconds": 10.752134499998647,
+    "elapsed_seconds": 10.966527300000962,
     "artifact_sizes_bytes": {
       "heatmaps.npz": 3651681,
       "Heatmap-previews-total": 3414311,
       "diagnostics-total": 9047588,
-      "monuments.json": 36381,
+      "monuments.json": 41745,
       "map_render_full.png": 4245050,
       "map_render_tiles-total": 4576318,
       "tunnels.png": 109373,
       "tunnels_on_map.png": 3962354,
-      "tunnels_metadata.json": 5794,
+      "tunnels_metadata.json": 5800,
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 60501,
-      "export_metadata.json": 95110
+      "no_build_zones.json": 42497,
+      "export_metadata.json": 75414
     }
   }
 }

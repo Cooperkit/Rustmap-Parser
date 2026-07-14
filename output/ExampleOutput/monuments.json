@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "map": {
     "serialization_version": 10,
     "timestamp": 1783040108421,
@@ -19,9 +19,10 @@
     ],
     "includes_train_tunnel_entrances": true,
     "includes_train_tunnel_links": true,
+    "server_behavior": "gameplay roots plus visible train-tunnel LandmarkInfo child transforms",
     "excludes_unique_environments": true
   },
-  "monument_count": 34,
+  "monument_count": 39,
   "unique_prefab_count": 31,
   "metadata": {
     "schema_version": 1,
@@ -35,12 +36,19 @@
     ],
     "component_fields_status": "populated from packaged Rust prefab-component extraction",
     "component_database": {
-      "schema_version": 1,
-      "source_rust_build_id": "24091435",
-      "prefab_count": 58,
+      "schema_version": 2,
+      "source_rust_build_id": "24181174",
+      "prefab_count": 121,
       "extraction": {
         "asset_scene_count": 25,
-        "method": "prefab component and named loot-spawner scan",
+        "method": "prefab component, named loot-spawner, and LandmarkInfo transform scan",
+        "landmark_classes": [
+          "DungeonBaseLandmarkInfo",
+          "DungeonGridInfo",
+          "LandmarkInfo",
+          "MonumentInfo"
+        ],
+        "landmark_transform_space": "prefab-root-relative Unity local-to-world matrix",
         "keycard_access_levels": {
           "1": "green",
           "2": "blue",
@@ -54,7 +62,9 @@
         }
       }
     },
-    "enriched_instance_count": 34
+    "position_source": "serialized gameplay roots and packaged prefab-root-relative tunnel LandmarkInfo transforms",
+    "root_position_fallback_instance_count": 0,
+    "enriched_instance_count": 39
   },
   "monuments": [
     {
@@ -62,9 +72,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -676.555908203125,
-        "y": 18.454769134521484,
-        "z": 263.9472351074219
+        "x": -676.555908203,
+        "y": 18.454769135,
+        "z": 263.947235107
       },
       "map_position": {
         "x": 573.444091797,
@@ -101,9 +111,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_medium_medium.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 666.4053955078125,
-        "y": 14.148722648620605,
-        "z": -593.1319580078125
+        "x": 666.405395508,
+        "y": 14.148722649,
+        "z": -593.131958008
       },
       "map_position": {
         "x": 1916.405395508,
@@ -138,9 +148,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -221.28500366210938,
-        "y": 23.164445877075195,
-        "z": -753.2760009765625
+        "x": -221.285003662,
+        "y": 23.164445877,
+        "z": -753.276000977
       },
       "map_position": {
         "x": 1028.714996338,
@@ -175,9 +185,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_easy.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 657.0936889648438,
+        "x": 657.093688965,
         "y": 1.0,
-        "z": 678.1092529296875
+        "z": 678.10925293
       },
       "map_position": {
         "x": 1907.093688965,
@@ -212,9 +222,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_hard.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -562.1658935546875,
-        "y": 3.629554510116577,
-        "z": 772.4337158203125
+        "x": -562.165893555,
+        "y": 3.62955451,
+        "z": 772.43371582
       },
       "map_position": {
         "x": 687.834106445,
@@ -249,9 +259,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/cave/cave_small_medium.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 123.48145294189453,
-        "y": 75.26612091064453,
-        "z": -0.36694109439849854
+        "x": 123.481452942,
+        "y": 75.266120911,
+        "z": -0.366941094
       },
       "map_position": {
         "x": 1373.481452942,
@@ -286,9 +296,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 184.03976440429688,
+        "x": 184.039764404,
         "y": 0.0,
-        "z": -643.3818969726562
+        "z": -643.381896973
       },
       "map_position": {
         "x": 1434.039764404,
@@ -319,13 +329,50 @@
       }
     },
     {
+      "name": "train_tunnel_entrance",
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": 941.999982913,
+        "y": 15.0,
+        "z": -6.000004047
+      },
+      "map_position": {
+        "x": 2191.999982913,
+        "y": 1243.999995953
+      },
+      "heading_degrees": 271.939600484,
+      "metadata": {
+        "display_name": "Train Tunnel",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_small",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
       "name": "ferry_terminal_1",
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 951.1437377929688,
+        "x": 951.143737793,
         "y": 1.25,
-        "z": -24.069778442382812
+        "z": -24.069778442
       },
       "map_position": {
         "x": 2201.143737793,
@@ -362,9 +409,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 214.7033233642578,
-        "y": 1.446000099182129,
-        "z": 807.1746826171875
+        "x": 214.703323364,
+        "y": 1.446000099,
+        "z": 807.174682617
       },
       "map_position": {
         "x": 1464.703323364,
@@ -397,13 +444,50 @@
       }
     },
     {
+      "name": "train_tunnel_entrance",
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": 311.999996098,
+        "y": 6.0,
+        "z": 785.999964474
+      },
+      "map_position": {
+        "x": 1561.999996098,
+        "y": 2035.999964474
+      },
+      "heading_degrees": 253.612510612,
+      "metadata": {
+        "display_name": "Train Tunnel",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_small",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
       "name": "harbor_2",
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -970.5739135742188,
-        "y": 0.7300000190734863,
-        "z": 360.9643859863281
+        "x": -970.573913574,
+        "y": 0.730000019,
+        "z": 360.964385986
       },
       "map_position": {
         "x": 279.426086426,
@@ -436,13 +520,50 @@
       }
     },
     {
+      "name": "train_tunnel_entrance",
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": -924.000020884,
+        "y": 4.5,
+        "z": 362.999989239
+      },
+      "map_position": {
+        "x": 325.999979116,
+        "y": 1612.999989239
+      },
+      "heading_degrees": 359.968439265,
+      "metadata": {
+        "display_name": "Train Tunnel",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_small",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
       "name": "ice_lake_4",
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/ice_lakes/ice_lake_4.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -485.9200134277344,
-        "y": 18.79815673828125,
-        "z": 335.276123046875
+        "x": -485.920013428,
+        "y": 18.798156738,
+        "z": 335.276123047
       },
       "map_position": {
         "x": 764.079986572,
@@ -477,9 +598,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -236.15159606933594,
-        "y": 21.989999771118164,
-        "z": 341.5873718261719
+        "x": -236.151596069,
+        "y": 21.989999771,
+        "z": 341.587371826
       },
       "map_position": {
         "x": 1013.848403931,
@@ -513,13 +634,50 @@
       }
     },
     {
+      "name": "train_tunnel_entrance",
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": -227.999991458,
+        "y": 22.499999762,
+        "z": 479.999984482
+      },
+      "map_position": {
+        "x": 1022.000008542,
+        "y": 1729.999984482
+      },
+      "heading_degrees": 90.683448723,
+      "metadata": {
+        "display_name": "Train Tunnel",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_small",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
       "name": "lighthouse",
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab",
       "map_category": "Monument",
       "position": {
         "x": -862.427734375,
         "y": 0.0,
-        "z": 733.4351806640625
+        "z": 733.435180664
       },
       "map_position": {
         "x": 387.572265625,
@@ -554,9 +712,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 883.461669921875,
+        "x": 883.461669922,
         "y": 0.0,
-        "z": 824.9302368164062
+        "z": 824.930236816
       },
       "map_position": {
         "x": 2133.461669922,
@@ -591,8 +749,8 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 127.92274475097656,
-        "y": 3.378477096557617,
+        "x": 127.922744751,
+        "y": 3.378477097,
         "z": 401.375
       },
       "map_position": {
@@ -624,13 +782,50 @@
       }
     },
     {
+      "name": "train_tunnel_entrance",
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab",
+      "map_category": "Monument",
+      "position": {
+        "x": -602.999999037,
+        "y": 21.000000909,
+        "z": -62.999975717
+      },
+      "map_position": {
+        "x": 647.000000963,
+        "y": 1187.000024283
+      },
+      "heading_degrees": 46.954700294,
+      "metadata": {
+        "display_name": "Train Tunnel",
+        "family": "train_tunnel_entrance",
+        "classification": {
+          "kind": "train_tunnel_entrance",
+          "environment": "surface_to_underground",
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
+        },
+        "gameplay": {
+          "safe_zone": false,
+          "recycler_count": 0,
+          "keycard_requirements": [],
+          "puzzle_type": "none",
+          "loot_tier": 0
+        },
+        "tags": [
+          "size_small",
+          "surface_to_underground",
+          "train_tunnel_entrance"
+        ]
+      }
+    },
+    {
       "name": "compound",
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -502.9620361328125,
-        "y": 20.790000915527344,
-        "z": -84.71063995361328
+        "x": -502.962036133,
+        "y": 20.790000916,
+        "z": -84.710639954
       },
       "map_position": {
         "x": 747.037963867,
@@ -665,9 +860,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -387.35614013671875,
-        "y": -15.035053253173828,
-        "z": -866.3561401367188
+        "x": -387.356140137,
+        "y": -15.035053253,
+        "z": -866.356140137
       },
       "map_position": {
         "x": 862.643859863,
@@ -704,9 +899,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/military_bases/desert_military_base_c.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 495.364501953125,
-        "y": 10.553564071655273,
-        "z": -207.3312530517578
+        "x": 495.364501953,
+        "y": 10.553564072,
+        "z": -207.331253052
       },
       "map_position": {
         "x": 1745.364501953,
@@ -741,9 +936,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 1308.264404296875,
+        "x": 1308.264404297,
         "y": 0.0,
-        "z": -1559.0284423828125
+        "z": -1559.028442383
       },
       "map_position": {
         "x": 2558.264404297,
@@ -782,9 +977,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -1050.4801025390625,
+        "x": -1050.480102539,
         "y": 0.0,
-        "z": -1588.29833984375
+        "z": -1588.298339844
       },
       "map_position": {
         "x": 199.519897461,
@@ -823,9 +1018,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 27.746381759643555,
-        "y": 9.067423820495605,
-        "z": -291.9049987792969
+        "x": 27.74638176,
+        "y": 9.06742382,
+        "z": -291.904998779
       },
       "map_position": {
         "x": 1277.74638176,
@@ -862,9 +1057,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 743.6267700195312,
-        "y": 12.038167953491211,
-        "z": -21.201969146728516
+        "x": 743.62677002,
+        "y": 12.038167953,
+        "z": -21.201969147
       },
       "map_position": {
         "x": 1993.62677002,
@@ -899,9 +1094,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_a.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 826.7252197265625,
-        "y": 8.371889114379883,
-        "z": -784.243408203125
+        "x": 826.725219727,
+        "y": 8.371889114,
+        "z": -784.243408203
       },
       "map_position": {
         "x": 2076.725219727,
@@ -936,9 +1131,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_b.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 310.4813537597656,
-        "y": 12.292472839355469,
-        "z": -392.4035339355469
+        "x": 310.48135376,
+        "y": 12.292472839,
+        "z": -392.403533936
       },
       "map_position": {
         "x": 1560.48135376,
@@ -973,9 +1168,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/mining_quarry_c.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -847.0337524414062,
-        "y": 12.67454719543457,
-        "z": -283.644287109375
+        "x": -847.033752441,
+        "y": 12.674547195,
+        "z": -283.644287109
       },
       "map_position": {
         "x": 402.966247559,
@@ -1010,9 +1205,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 669.6566772460938,
-        "y": 13.623571395874023,
-        "z": 203.20802307128906
+        "x": 669.656677246,
+        "y": 13.623571396,
+        "z": 203.208023071
       },
       "map_position": {
         "x": 1919.656677246,
@@ -1049,9 +1244,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -163.22955322265625,
-        "y": 25.060226440429688,
-        "z": 42.18876266479492
+        "x": -163.229553223,
+        "y": 25.06022644,
+        "z": 42.188762665
       },
       "map_position": {
         "x": 1086.770446777,
@@ -1088,9 +1283,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/swamp/swamp_b.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -202.1520538330078,
-        "y": 32.32261276245117,
-        "z": -569.5258178710938
+        "x": -202.152053833,
+        "y": 32.322612762,
+        "z": -569.525817871
       },
       "map_position": {
         "x": 1047.847946167,
@@ -1125,9 +1320,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab",
       "map_category": "Monument",
       "position": {
-        "x": 363.87322998046875,
-        "y": 5.30794620513916,
-        "z": 569.6307373046875
+        "x": 363.87322998,
+        "y": 5.307946205,
+        "z": 569.630737305
       },
       "map_position": {
         "x": 1613.87322998,
@@ -1162,9 +1357,9 @@
       "prefab_path": "assets/bundled/prefabs/autospawn/monument/underwater_lab/underwater_lab_b.prefab",
       "map_category": "Monument",
       "position": {
-        "x": -1180.1077880859375,
-        "y": -49.99079513549805,
-        "z": -352.2914733886719
+        "x": -1180.107788086,
+        "y": -49.990795135,
+        "z": -352.291473389
       },
       "map_position": {
         "x": 69.892211914,
@@ -1195,7 +1390,7 @@
       }
     },
     {
-      "name": "entrance_bunker_a",
+      "name": "train_tunnel_entrance",
       "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
       "map_category": "Monument",
       "position": {
@@ -1207,15 +1402,15 @@
         "x": 653.0,
         "y": 485.0
       },
-      "heading_degrees": 222.673904419,
+      "heading_degrees": 222.673899296,
       "metadata": {
-        "display_name": "Train Tunnel Entrance Bunker A",
+        "display_name": "Train Tunnel",
         "family": "train_tunnel_entrance",
         "classification": {
           "kind": "train_tunnel_entrance",
           "environment": "surface_to_underground",
-          "spawn_group": "entrance_bunker_a",
-          "size_class": "medium"
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
         },
         "gameplay": {
           "safe_zone": false,
@@ -1225,14 +1420,14 @@
           "loot_tier": 0
         },
         "tags": [
-          "size_medium",
+          "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
       }
     },
     {
-      "name": "entrance_bunker_a",
+      "name": "train_tunnel_entrance",
       "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_a.prefab",
       "map_category": "Monument",
       "position": {
@@ -1244,15 +1439,15 @@
         "x": 2081.0,
         "y": 599.0
       },
-      "heading_degrees": 10.583739281,
+      "heading_degrees": 10.583734158,
       "metadata": {
-        "display_name": "Train Tunnel Entrance Bunker A",
+        "display_name": "Train Tunnel",
         "family": "train_tunnel_entrance",
         "classification": {
           "kind": "train_tunnel_entrance",
           "environment": "surface_to_underground",
-          "spawn_group": "entrance_bunker_a",
-          "size_class": "medium"
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
         },
         "gameplay": {
           "safe_zone": false,
@@ -1262,14 +1457,14 @@
           "loot_tier": 0
         },
         "tags": [
-          "size_medium",
+          "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
       }
     },
     {
-      "name": "entrance_bunker_b",
+      "name": "train_tunnel_entrance",
       "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_b.prefab",
       "map_category": "Monument",
       "position": {
@@ -1281,15 +1476,15 @@
         "x": 1703.0,
         "y": 1469.0
       },
-      "heading_degrees": 142.114059448,
+      "heading_degrees": 142.114054326,
       "metadata": {
-        "display_name": "Train Tunnel Entrance Bunker B",
+        "display_name": "Train Tunnel",
         "family": "train_tunnel_entrance",
         "classification": {
           "kind": "train_tunnel_entrance",
           "environment": "surface_to_underground",
-          "spawn_group": "entrance_bunker_b",
-          "size_class": "medium"
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
         },
         "gameplay": {
           "safe_zone": false,
@@ -1299,14 +1494,14 @@
           "loot_tier": 0
         },
         "tags": [
-          "size_medium",
+          "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
       }
     },
     {
-      "name": "entrance_bunker_d",
+      "name": "train_tunnel_entrance",
       "prefab_path": "assets/bundled/prefabs/autospawn/tunnel-entrance/entrance_bunker_d.prefab",
       "map_category": "Monument",
       "position": {
@@ -1318,15 +1513,15 @@
         "x": 1136.0,
         "y": 935.0
       },
-      "heading_degrees": 259.807189941,
+      "heading_degrees": 259.807184819,
       "metadata": {
-        "display_name": "Train Tunnel Entrance Bunker D",
+        "display_name": "Train Tunnel",
         "family": "train_tunnel_entrance",
         "classification": {
           "kind": "train_tunnel_entrance",
           "environment": "surface_to_underground",
-          "spawn_group": "entrance_bunker_d",
-          "size_class": "medium"
+          "spawn_group": "train_tunnel_entrance",
+          "size_class": "small"
         },
         "gameplay": {
           "safe_zone": false,
@@ -1336,7 +1531,7 @@
           "loot_tier": 0
         },
         "tags": [
-          "size_medium",
+          "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]

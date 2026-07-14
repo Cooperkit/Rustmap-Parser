@@ -109,8 +109,8 @@
     "ocean_margin": 0,
     "timings": {
       "shore_seconds": 0.0,
-      "total_seconds": 4.111675700012711,
-      "prepare_seconds": 0.8527643000124954
+      "total_seconds": 4.15753500000028,
+      "prepare_seconds": 1.0302363999999216
     },
     "artifact": "map_render_full.png"
   },
@@ -591,8 +591,8 @@
       }
     ],
     "timings": {
-      "png_encode_seconds": 0.10151110000151675,
-      "total_seconds": 0.10210340000048745
+      "png_encode_seconds": 0.10493859999951383,
+      "total_seconds": 0.10555609999937587
     },
     "metadata_file": "tiles.json",
     "directory_size_bytes": 4576318

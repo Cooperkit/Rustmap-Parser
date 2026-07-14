@@ -496,6 +496,19 @@ Write `no_build_zones.json`. Set `export_images=False, export_json=True` for
 JSON-only output. Set `export_images=True, export_json=False` for images only.
 At least one output must be enabled.
 
+Each zone exposes a compact top-level coordinate set:
+
+```json
+{
+  "position": {"x": -1530.0, "y": 9.0, "z": -1038.0},
+  "map_position": {"x": 595.0, "y": 1087.0},
+  "heading_degrees": 316.143671635
+}
+```
+
+`map_position` is measured in metres from the bottom-left of the playable map.
+Verbose Euler, scale, normalized, and image-position transforms are omitted.
+
 ### Example
 
 ```python

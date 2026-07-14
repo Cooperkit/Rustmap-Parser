@@ -68,17 +68,18 @@ def _draw_zones(zones: list[dict], resolution: int, fill, outline, width: int,
     image = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(image, "RGBA")
     for zone in zones:
-        transform, geometry = zone["transform"], zone["geometry"]
-        center = transform["image_position"]
-        cx, cy = center["x"] * size, center["y"] * size
+        geometry = zone["geometry"]
         pixels_per_metre = size / float(world_size or resolution)
+        center = zone["map_position"]
+        cx = center["x"] * pixels_per_metre
+        cy = (float(world_size or resolution) - center["y"]) * pixels_per_metre
         if zone["shape"] == "circle":
             radius = geometry["radius_m"] * pixels_per_metre
             bounds = (cx-radius, cy-radius, cx+radius, cy+radius)
             draw.ellipse(bounds, fill=tuple(fill), outline=tuple(outline) if width else None,
                          width=width * supersample)
             continue
-        heading = math.radians(transform["heading_degrees"])
+        heading = math.radians(zone["heading_degrees"])
         half_width = geometry["width_m"] * pixels_per_metre / 2.0
         half_height = geometry["height_m"] * pixels_per_metre / 2.0
         # Image Y reverses world Z. Unity positive yaw rotates +X toward -Z.
@@ -134,12 +135,12 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
                 center_local["x"], center_local["y"], center_local["z"]
             ]], dtype=np.float64))[0]
             decomposed = _decompose(combined)
-            decomposed["position"] = _vector(center)
-            norm_x = _round(center[0] / world.size + 0.5)
-            norm_z = _round(center[2] / world.size + 0.5)
-            decomposed["normalized_position"] = {"x": norm_x, "z": norm_z}
-            decomposed["image_position"] = {"x": norm_x, "y": _round(1.0 - norm_z)}
-            decomposed["heading_degrees"] = decomposed["rotation_euler"]["y"]
+            position = _vector(center)
+            map_position = {
+                "x": _round(center[0] + float(world.size) / 2.0),
+                "y": _round(center[2] + float(world.size) / 2.0),
+            }
+            heading_degrees = decomposed["rotation_euler"]["y"]
             if blocker["shape"] == "circle":
                 radial_scale = math.hypot(float(combined[0, 0]), float(combined[2, 0]))
                 geometry = {"radius_m": _round(float(blocker["radius"]) * radial_scale)}
@@ -162,7 +163,9 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
                     "instance_id": f"owner-{owner_index:04d}", "family": family,
                     "prefab_id": int(prefab.prefab_id), "prefab_path": path,
                 },
-                "transform": decomposed,
+                "position": position,
+                "map_position": map_position,
+                "heading_degrees": heading_degrees,
                 "geometry": geometry,
                 "vertical_bounds": {
                     "minimum_y": _round(min(y_points)), "maximum_y": _round(max(y_points)),
@@ -180,7 +183,7 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
         )
     )
     document = {
-        "schema_version": 4,
+        "schema_version": 5,
         "status": "rendered",
         "source": source,
         "map": {
@@ -190,8 +193,9 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
         "resolution": [resolution, resolution],
         "coordinates": {
             "world": "Unity metres: X east/west, Y elevation, Z north/south",
-            "normalized": "x = world_x / world_size + 0.5; z = world_z / world_size + 0.5",
-            "image": "x = normalized x; y = 1 - normalized z",
+            "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
+            "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
+            "heading_degrees": "rotation Y normalized to [0, 360)",
             "orientation": ORIENTATION,
         },
         "selection": {

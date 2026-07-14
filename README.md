@@ -412,6 +412,10 @@ useful circles and rotated rectangles, removes shapes fully contained by a
 larger primitive from the same owner, and excludes deployable-only volumes,
 capsules, mesh blockers, and redundant internals.
 
+Each JSON zone uses the compact coordinate fields `position`, bottom-left
+`map_position`, and `heading_degrees`; normalized/image positions and verbose
+Euler/scale transforms are not exported.
+
 The transparent layer and JSON work without terrain. The composited preview is
 added only when the selected terrain section includes a full-size render. Set
 `export_images=False, export_json=True` for a fast JSON-only export that skips
