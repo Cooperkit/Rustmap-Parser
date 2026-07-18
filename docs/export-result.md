@@ -25,7 +25,7 @@ The result is designed so applications do not need to reopen
 - Core run fields are always populated.
 - Paths belonging to disabled outputs are `None`.
 - Counts belonging to disabled outputs are zero.
-- Tunnel/no-build status strings are `"disabled"` when their stage is disabled.
+- Tunnel/no-build/cargo status strings are `"disabled"` when their stage is disabled.
 - An enabled stage can have a missing convenience overlay when full-size terrain
   was not selected.
 - `metadata` contains the complete in-memory metadata document.
@@ -62,6 +62,11 @@ ExportResult(
     no_build_zones_file: Path | None = None,
     no_build_zone_count: int = 0,
     no_build_zone_status: str = "disabled",
+    cargo_ship_path_image: Path | None = None,
+    cargo_ship_path_overlay_image: Path | None = None,
+    cargo_ship_path_file: Path | None = None,
+    cargo_ship_path_node_count: int = 0,
+    cargo_ship_path_status: str = "disabled",
 )
 ```
 
@@ -328,6 +333,46 @@ if result.no_build_zones_file:
     print(f"JSON contains {result.no_build_zone_count} zones")
 ```
 
+## Cargo-ship path fields
+
+Populated according to `CargoShipPathOptions`.
+
+### `cargo_ship_path_image`
+
+Path to the transparent `cargo_ship_path.png` layer when
+`export_layer=True`, otherwise `None`.
+
+### `cargo_ship_path_overlay_image`
+
+Path to `cargo_ship_path_on_map.png` when an overlay was requested and a
+matching full-size terrain image was available.
+
+### `cargo_ship_path_file`
+
+Path to `cargo_ship_path.json` when `export_json=True`. The JSON contains the
+closed patrol nodes, decreasing-index travel direction, transformed harbor
+approaches, smoothing metadata, server generation constants, timings, warnings,
+and accuracy. With smoothing enabled, these are the same smooth nodes used by
+the PNG; `patrol.source_node_count` records the server-style source count.
+
+### `cargo_ship_path_node_count`
+
+Number of exported nodes in the permanent ocean patrol loop. This is the smooth
+node count when `smooth_patrol=True`, or the reconstructed server-style count
+when disabled. Harbor approach nodes are reported separately inside the JSON
+and metadata.
+
+### `cargo_ship_path_status`
+
+`"rendered"` after successful static path generation or `"disabled"` when the
+stage was not selected.
+
+```python
+if result.cargo_ship_path_status == "rendered":
+    print(result.cargo_ship_path_node_count)
+    print(result.cargo_ship_path_file)
+```
+
 ## Selection-to-result matrix
 
 | Selected output | Primary populated result fields |
@@ -342,6 +387,7 @@ if result.no_build_zones_file:
 | Tunnel overlay only | `tunnels_overlay_image`, `tunnels_metadata_file`, status |
 | No-build images | `no_build_zones_image`, optional overlay, count, status |
 | No-build JSON only | `no_build_zones_file`, count, status |
+| Cargo path | `cargo_ship_path_image`, optional overlay/JSON, node count, status |
 
 ## Safe consumption patterns
 

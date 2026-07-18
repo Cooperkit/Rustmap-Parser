@@ -2,6 +2,7 @@
 
 from .config import (
     DataOptions,
+    CargoShipPathOptions,
     ExportConfig,
     ExportOptions,
     ExportResult,
@@ -26,9 +27,11 @@ from .no_build import build_no_build_export, save_no_build_zones
 from .no_build_assets import refresh_no_build_zone_data
 from .monuments import monument_metadata
 from .monument_assets import refresh_monument_metadata
+from .cargo import build_cargo_ship_path_export, generate_cargo_patrol_path, save_cargo_ship_path
+from .cargo_assets import refresh_cargo_collision_tiles, refresh_cargo_harbor_paths
 
 __all__ = (
-    "DataOptions", "ExportConfig", "ExportOptions", "ExportResult",
+    "DataOptions", "CargoShipPathOptions", "ExportConfig", "ExportOptions", "ExportResult",
     "HeatmapOptions", "NoBuildZoneOptions", "TerrainOptions", "TileOptions",
     "TunnelOptions", "RustMapExporter", "RustMap", "RustMapError",
     "load_map", "generate_diagnostics", "refresh_prefab_manifest",
@@ -39,6 +42,9 @@ __all__ = (
     "build_no_build_export", "save_no_build_zones", "refresh_no_build_zone_data",
     "monument_metadata",
     "refresh_monument_metadata",
+    "build_cargo_ship_path_export", "generate_cargo_patrol_path",
+    "save_cargo_ship_path", "refresh_cargo_harbor_paths",
+    "refresh_cargo_collision_tiles",
 )
 
-__version__ = "0.2.4"
+__version__ = "0.3.0"

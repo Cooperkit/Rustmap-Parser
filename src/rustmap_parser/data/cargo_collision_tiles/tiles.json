@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "source": {
+    "schema_version": 5,
+    "rust_build_id": "24253723",
+    "bundles": {
+      "content": {
+        "size": 4412718160,
+        "mtime_ns": 1784283976328049600
+      },
+      "asset_scenes": {
+        "size": 1007244752,
+        "mtime_ns": 1784283976325502300
+      },
+      "maps": {
+        "size": 114147120,
+        "mtime_ns": 1783116536193229800
+      }
+    }
+  },
+  "selection": {
+    "world_setup_stage": true,
+    "prefab_prefixes": [
+      "assets/bundled/prefabs/autospawn/decor/iceberg/",
+      "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/",
+      "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/"
+    ],
+    "geometry": "AssetScene-world LOD0 collider-source triangles intersecting Y=-3..3m"
+  },
+  "sphere_radius_preexpanded_m": 3.0,
+  "template_count": 15,
+  "templates": [
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/coastal_rocks_large_a.prefab",
+      "mask_file": "collision_000__coastal_rocks_large_a.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -30.75,
+      "top_z_m": 34.625,
+      "width": 481,
+      "height": 583,
+      "mesh_count": 24,
+      "triangle_count": 460736
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/coastal_rocks_large_b.prefab",
+      "mask_file": "collision_001__coastal_rocks_large_b.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -28.875,
+      "top_z_m": 25.25,
+      "width": 424,
+      "height": 626,
+      "mesh_count": 22,
+      "triangle_count": 413334
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/coastal_rocks_large_c.prefab",
+      "mask_file": "collision_002__coastal_rocks_large_c.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -17.125,
+      "top_z_m": 21.5,
+      "width": 294,
+      "height": 380,
+      "mesh_count": 14,
+      "triangle_count": 278597
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/coastal_rocks_large_d.prefab",
+      "mask_file": "collision_003__coastal_rocks_large_d.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -21.25,
+      "top_z_m": 19.625,
+      "width": 363,
+      "height": 390,
+      "mesh_count": 16,
+      "triangle_count": 335635
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large/coastal_rocks_large_e.prefab",
+      "mask_file": "collision_004__coastal_rocks_large_e.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -26.75,
+      "top_z_m": 78.375,
+      "width": 363,
+      "height": 1116,
+      "mesh_count": 28,
+      "triangle_count": 593984
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/coastal_rocks_large_a.prefab",
+      "mask_file": "collision_005__coastal_rocks_large_a.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -30.75,
+      "top_z_m": 34.625,
+      "width": 481,
+      "height": 583,
+      "mesh_count": 24,
+      "triangle_count": 460736
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/coastal_rocks_large_b.prefab",
+      "mask_file": "collision_006__coastal_rocks_large_b.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -28.875,
+      "top_z_m": 25.25,
+      "width": 424,
+      "height": 626,
+      "mesh_count": 22,
+      "triangle_count": 413334
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/coastal_rocks_large_c.prefab",
+      "mask_file": "collision_007__coastal_rocks_large_c.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -17.125,
+      "top_z_m": 21.5,
+      "width": 294,
+      "height": 380,
+      "mesh_count": 14,
+      "triangle_count": 278597
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/coastal_rocks_large_d.prefab",
+      "mask_file": "collision_008__coastal_rocks_large_d.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -21.25,
+      "top_z_m": 19.625,
+      "width": 363,
+      "height": 390,
+      "mesh_count": 16,
+      "triangle_count": 335635
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/coastal_rocks_large_arctic/coastal_rocks_large_e.prefab",
+      "mask_file": "collision_009__coastal_rocks_large_e.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -26.75,
+      "top_z_m": 78.375,
+      "width": 363,
+      "height": 1116,
+      "mesh_count": 28,
+      "triangle_count": 593984
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/iceberg/iceberg_1.prefab",
+      "mask_file": "collision_010__iceberg_1.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -83.375,
+      "top_z_m": 94.75,
+      "width": 1388,
+      "height": 1420,
+      "mesh_count": 63,
+      "triangle_count": 161495
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/iceberg/iceberg_2.prefab",
+      "mask_file": "collision_011__iceberg_2.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -77.625,
+      "top_z_m": 77.875,
+      "width": 1207,
+      "height": 1267,
+      "mesh_count": 63,
+      "triangle_count": 176731
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/iceberg/iceberg_3.prefab",
+      "mask_file": "collision_012__iceberg_3.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -90.375,
+      "top_z_m": 87.75,
+      "width": 1444,
+      "height": 1433,
+      "mesh_count": 79,
+      "triangle_count": 233542
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/iceberg/iceberg_4.prefab",
+      "mask_file": "collision_013__iceberg_4.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -65.875,
+      "top_z_m": 80.75,
+      "width": 1060,
+      "height": 1285,
+      "mesh_count": 59,
+      "triangle_count": 181837
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/decor/iceberg/iceberg_5.prefab",
+      "mask_file": "collision_014__iceberg_5.png",
+      "pixels_per_metre": 8.0,
+      "left_x_m": -96.875,
+      "top_z_m": 102.375,
+      "width": 1408,
+      "height": 1573,
+      "mesh_count": 73,
+      "triangle_count": 238760
+    }
+  ]
+}

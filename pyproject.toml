@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rust-map-parser"
-version = "0.2.4"
+version = "0.3.0"
 description = "Standalone Python parser, heatmap generator, and renderer for Facepunch Rust map files"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
@@ -43,6 +43,7 @@ where = ["src"]
 [tool.setuptools.package-data]
 "rustmap_parser.data" = ["*.json"]
 "rustmap_parser.data.tunnel_tiles" = ["*.json", "*.png"]
+"rustmap_parser.data.cargo_collision_tiles" = ["*.json", "*.png"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

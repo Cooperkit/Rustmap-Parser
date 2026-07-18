@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "source": {
+    "schema_version": 5,
+    "rust_build_id": "24253723",
+    "bundles": {
+      "content": {
+        "size": 4412718160,
+        "mtime_ns": 1784283976328049600
+      },
+      "asset_scenes": {
+        "size": 1007244752,
+        "mtime_ns": 1784283976325502300
+      },
+      "maps": {
+        "size": 114147120,
+        "mtime_ns": 1783116536193229800
+      }
+    }
+  },
+  "extraction": {
+    "method": "CargoShip-named BasePath and BasePathNode transform scan",
+    "asset_scene_count": 25,
+    "coordinate_space": "prefab-root-relative Unity X/Y/Z metres"
+  },
+  "prefab_count": 2,
+  "prefabs": [
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
+      "nodes": [
+        {
+          "name": "Waypoint Accept",
+          "position": {
+            "x": 349.6000061035156,
+            "y": -1.0,
+            "z": 86.5999984741211
+          },
+          "max_velocity_on_approach": 0.800000011920929
+        },
+        {
+          "name": "Waypoint 1",
+          "position": {
+            "x": 303.5,
+            "y": -1.0,
+            "z": 73.30000305175781
+          },
+          "max_velocity_on_approach": 0.5
+        },
+        {
+          "name": "Waypoint 2",
+          "position": {
+            "x": 248.39999389648438,
+            "y": -1.0,
+            "z": 63.599998474121094
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 3",
+          "position": {
+            "x": 208.39999389648438,
+            "y": -1.0,
+            "z": 63.599998474121094
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint Slow",
+          "position": {
+            "x": 107.19999694824219,
+            "y": -1.0,
+            "z": 63.599998474121094
+          },
+          "max_velocity_on_approach": 0.30000001192092896
+        },
+        {
+          "name": "WaypointSlowStop",
+          "position": {
+            "x": 4.199999809265137,
+            "y": -0.6459999978542328,
+            "z": 63.60069274902344
+          },
+          "max_velocity_on_approach": 0.20000000298023224
+        },
+        {
+          "name": "Waypoint Stopped",
+          "position": {
+            "x": -26.0,
+            "y": -0.6459999978542328,
+            "z": 63.60069274902344
+          },
+          "max_velocity_on_approach": 0.0
+        },
+        {
+          "name": "Waypoint Stopped (1)",
+          "position": {
+            "x": -117.30000305175781,
+            "y": -0.6459999978542328,
+            "z": 63.599998474121094
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 6",
+          "position": {
+            "x": -182.39999389648438,
+            "y": -1.0,
+            "z": 63.599998474121094
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 7",
+          "position": {
+            "x": -230.3000030517578,
+            "y": -1.0,
+            "z": 92.5
+          },
+          "max_velocity_on_approach": 0.800000011920929
+        },
+        {
+          "name": "Waypoint Release",
+          "position": {
+            "x": -281.0,
+            "y": -1.0,
+            "z": 122.0999984741211
+          },
+          "max_velocity_on_approach": 1.0
+        }
+      ]
+    },
+    {
+      "prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
+      "nodes": [
+        {
+          "name": "Waypoint Accept",
+          "position": {
+            "x": 102.999977477208,
+            "y": -1.0,
+            "z": -305.3000528997147
+          },
+          "max_velocity_on_approach": 0.699999988079071
+        },
+        {
+          "name": "Waypoint 1",
+          "position": {
+            "x": 80.89997419522837,
+            "y": -1.0,
+            "z": -262.20003803599997
+          },
+          "max_velocity_on_approach": 0.5
+        },
+        {
+          "name": "Waypoint 2",
+          "position": {
+            "x": 65.19998583251629,
+            "y": -1.0,
+            "z": -182.60003438687602
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 3",
+          "position": {
+            "x": 65.1999925773315,
+            "y": -1.0,
+            "z": -132.4000230644241
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint Slow",
+          "position": {
+            "x": 65.19999805917223,
+            "y": -1.0,
+            "z": -91.60002216022008
+          },
+          "max_velocity_on_approach": 0.30000001192092896
+        },
+        {
+          "name": "Waypoint Stopped (1)",
+          "position": {
+            "x": 65.20004099151325,
+            "y": -1.0,
+            "z": 0.7999936877621607
+          },
+          "max_velocity_on_approach": 0.30000001192092896
+        },
+        {
+          "name": "Waypoint Stopped",
+          "position": {
+            "x": 65.20001256993027,
+            "y": -1.0,
+            "z": 16.400003794629757
+          },
+          "max_velocity_on_approach": 0.0
+        },
+        {
+          "name": "Waypoint 6",
+          "position": {
+            "x": 65.2000347257054,
+            "y": -1.0,
+            "z": 181.30002366158652
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 6 (1)",
+          "position": {
+            "x": 65.20003789657318,
+            "y": -1.0,
+            "z": 204.90001767718087
+          },
+          "max_velocity_on_approach": 0.4000000059604645
+        },
+        {
+          "name": "Waypoint 7",
+          "position": {
+            "x": 85.70004632087307,
+            "y": -1.0,
+            "z": 247.10001754100983
+          },
+          "max_velocity_on_approach": 0.800000011920929
+        },
+        {
+          "name": "Waypoint Release",
+          "position": {
+            "x": 110.30005117703882,
+            "y": -1.0,
+            "z": 270.00001120908354
+          },
+          "max_velocity_on_approach": 1.0
+        }
+      ]
+    }
+  ]
+}

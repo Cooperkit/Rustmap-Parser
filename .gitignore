@@ -18,6 +18,7 @@ dist/
 *.npz
 *.png
 !src/rustmap_parser/data/tunnel_tiles/*.png
+!src/rustmap_parser/data/cargo_collision_tiles/*.png
 !docs/images/*.png
 *.jpg
 !docs/images/*.jpg

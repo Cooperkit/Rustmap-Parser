@@ -21,9 +21,9 @@
     105,
     104
   ],
-  "png_encode_seconds": 0.06080350000047474,
-  "overlay_compose_seconds": 0.035364600000320934,
-  "overlay_encode_seconds": 0.33436320000146225,
+  "png_encode_seconds": 0.07151029999658931,
+  "overlay_compose_seconds": 0.03897690000303555,
+  "overlay_encode_seconds": 2.8454108000005363,
   "resolution": [
     2500,
     2500
@@ -70,14 +70,14 @@
   "cache_pixels_per_meter": 8.0,
   "cache_template_raster_seconds": null,
   "intermediate_pixels_per_meter": 2.0,
-  "cache_load_seconds": 3.7999998312443495e-06,
-  "template_prepare_seconds": 0.05785939999805123,
-  "template_png_load_seconds": 0.03689269999813405,
-  "template_paste_seconds": 0.0056170999978348846,
+  "cache_load_seconds": 5.200003215577453e-06,
+  "template_prepare_seconds": 0.11141930001758737,
+  "template_png_load_seconds": 0.08800329997757217,
+  "template_paste_seconds": 0.010298500012140721,
   "fallback_raster_seconds": 0.0,
-  "downsample_seconds": 0.060795100000177626,
+  "downsample_seconds": 0.06746030000067549,
   "alpha_nonzero_pixels": 263144,
-  "render_seconds": 0.1400534999993397,
+  "render_seconds": 0.21536059999925783,
   "cache_template_count": 81,
   "tile_source": "packaged",
   "tile_directory": "rustmap_parser.data.tunnel_tiles",
@@ -111,6 +111,6 @@
   "tile_source_build_id": "24181174",
   "tile_version_mismatch": false,
   "tile_warnings": [],
-  "total_seconds": 0.6569600000002538,
+  "total_seconds": 3.3388735000044107,
   "metadata_file": "tunnels_metadata.json"
 }

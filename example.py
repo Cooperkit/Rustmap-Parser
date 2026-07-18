@@ -24,6 +24,8 @@ def main() -> None:
     print(f"World size: {result.world_size}")
     print(f"Full-size map: {result.full_map_image}")
     print(f"Map tiles: {result.map_tiles_dir} ({result.map_tile_count})")
+    print(f"Cargo path: {result.cargo_ship_path_image}")
+    print(f"Cargo path nodes: {result.cargo_ship_path_node_count}")
     print(f"Completed in {result.elapsed_seconds:.2f} seconds")
 
 

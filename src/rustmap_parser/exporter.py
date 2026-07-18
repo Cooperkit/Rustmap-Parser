@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
+from .cargo import save_cargo_ship_path
 from .config import ExportConfig, ExportResult
 from .layers import generate_diagnostics
 from .monuments import save_monuments
@@ -181,6 +182,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
 
     no_build_options = exports.no_build_zones
     tunnel_options = exports.tunnels
+    cargo_options = exports.cargo_ship_path
 
     def run_no_build():
         if manifest_path is None:
@@ -213,25 +215,48 @@ def _generate(config: ExportConfig, rules_path: Path | None,
         )
         return value, time.perf_counter() - stage_started
 
-    if no_build_options is not None and tunnel_options is not None:
-        with ThreadPoolExecutor(max_workers=2) as pool:
-            no_build_future = pool.submit(run_no_build)
-            tunnel_future = pool.submit(run_tunnels)
-            no_build_metadata, timings["no_build_zones_seconds"] = no_build_future.result()
-            tunnel_metadata, timings["tunnel_render_seconds"] = tunnel_future.result()
-    elif no_build_options is not None:
-        no_build_metadata, timings["no_build_zones_seconds"] = run_no_build()
-        tunnel_metadata, timings["tunnel_render_seconds"] = {"status": "disabled"}, 0.0
-    elif tunnel_options is not None:
-        tunnel_metadata, timings["tunnel_render_seconds"] = run_tunnels()
-        no_build_metadata, timings["no_build_zones_seconds"] = {
-            "status": "disabled", "zone_count": 0
-        }, 0.0
-    else:
-        no_build_metadata = {"status": "disabled", "zone_count": 0}
-        tunnel_metadata = {"status": "disabled"}
-        timings["no_build_zones_seconds"] = 0.0
-        timings["tunnel_render_seconds"] = 0.0
+    def run_cargo():
+        if manifest_path is None:
+            raise RuntimeError("Cargo-ship path export requires a prefab manifest")
+        stage_started = time.perf_counter()
+        value = save_cargo_ship_path(
+            world, manifest_path, output,
+            resolution=cargo_options.resolution,
+            patrol_color=cargo_options.patrol_color,
+            harbor_color=cargo_options.harbor_color,
+            line_width=cargo_options.line_width,
+            smooth_patrol=cargo_options.smooth_patrol,
+            terrain_image=terrain_image,
+            export_layer=cargo_options.export_layer,
+            export_overlay=cargo_options.export_overlay,
+            export_json=cargo_options.export_json,
+        )
+        return value, time.perf_counter() - stage_started
+
+    jobs = {}
+    if no_build_options is not None:
+        jobs["no_build_zones"] = run_no_build
+    if tunnel_options is not None:
+        jobs["tunnels"] = run_tunnels
+    if cargo_options is not None:
+        jobs["cargo_ship_path"] = run_cargo
+    results = {}
+    if len(jobs) == 1:
+        name, function = next(iter(jobs.items()))
+        results[name] = function()
+    elif jobs:
+        with ThreadPoolExecutor(max_workers=min(3, len(jobs))) as pool:
+            futures = {name: pool.submit(function) for name, function in jobs.items()}
+            results = {name: future.result() for name, future in futures.items()}
+    no_build_metadata, timings["no_build_zones_seconds"] = results.get(
+        "no_build_zones", ({"status": "disabled", "zone_count": 0}, 0.0)
+    )
+    tunnel_metadata, timings["tunnel_render_seconds"] = results.get(
+        "tunnels", ({"status": "disabled"}, 0.0)
+    )
+    cargo_metadata, timings["cargo_ship_path_seconds"] = results.get(
+        "cargo_ship_path", ({"status": "disabled", "patrol": {"node_count": 0}}, 0.0)
+    )
     if terrain_image is not None:
         terrain_image.close()
 
@@ -252,6 +277,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             "terrain": terrain_options is not None,
             "tunnels": tunnel_options is not None,
             "no_build_zones": no_build_options is not None,
+            "cargo_ship_path": cargo_options is not None,
         },
         "heatmaps": {
             "file": npz_path.name if npz_path else None,
@@ -284,6 +310,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
         "terrain": render_metadata,
         "tunnels": tunnel_metadata,
         "no_build_zones": no_build_metadata,
+        "cargo_ship_path": cargo_metadata,
         "timings": timings,
     }
     artifacts: dict[str, int] = {}
@@ -300,6 +327,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
     for enabled, names in (
         (tunnel_options is not None, ("tunnels.png", "tunnels_on_map.png", "tunnels_metadata.json")),
         (no_build_options is not None, ("no_build_zones.png", "no_build_zones_on_map.png", "no_build_zones.json")),
+        (cargo_options is not None, ("cargo_ship_path.png", "cargo_ship_path_on_map.png", "cargo_ship_path.json")),
     ):
         if enabled:
             for name in names:
@@ -322,6 +350,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             "heatmap_npz_encode_seconds", "diagnostics_seconds",
             "monuments_seconds", "map_render_seconds",
             "no_build_zones_seconds", "tunnel_render_seconds",
+            "cargo_ship_path_seconds",
         )
         for label in labels:
             print(f"{label.removesuffix('_seconds').replace('_', ' '):32s} {float(timings[label]):8.3f}s")
@@ -331,6 +360,11 @@ def _generate(config: ExportConfig, rules_path: Path | None,
                 timings["heatmap_categories"].items(), key=lambda item: item[1], reverse=True
             )[:8]:
                 print(f"    {name:28s} {seconds:8.3f}s")
+        cargo_generation_timings = cargo_metadata.get("generation", {}).get("timings", {})
+        if cargo_generation_timings:
+            print("  Cargo path generation:")
+            for name, seconds in cargo_generation_timings.items():
+                print(f"    {name.removesuffix('_seconds').replace('_', ' '):28s} {float(seconds):8.3f}s")
         print("-" * 48)
         print(f"{'total':32s} {elapsed:8.3f}s\n")
     return metadata
@@ -346,7 +380,10 @@ class RustMapExporter:
         config = self.config
         exports = config.exports
         needs_rules = exports.heatmaps is not None
-        needs_manifest = bool(exports.monuments or exports.tunnels or exports.no_build_zones)
+        needs_manifest = bool(
+            exports.monuments or exports.tunnels or exports.no_build_zones or
+            exports.cargo_ship_path
+        )
         with ExitStack() as stack:
             rules = None
             if needs_rules:
@@ -371,8 +408,10 @@ class RustMapExporter:
         tiles = terrain.tiles if terrain else None
         tunnel_options = exports.tunnels
         no_build_options = exports.no_build_zones
+        cargo_options = exports.cargo_ship_path
         tunnel_metadata = metadata["tunnels"]
         no_build_metadata = metadata["no_build_zones"]
+        cargo_metadata = metadata["cargo_ship_path"]
         return ExportResult(
             output_dir=output,
             world_size=int(metadata["map"]["world_size"]),
@@ -406,4 +445,14 @@ class RustMapExporter:
                 if no_build_options and no_build_options.export_json else None,
             no_build_zone_count=int(no_build_metadata.get("zone_count", 0)),
             no_build_zone_status=str(no_build_metadata.get("status", "disabled")),
+            cargo_ship_path_image=(output / "cargo_ship_path.png")
+                if cargo_options and cargo_options.export_layer else None,
+            cargo_ship_path_overlay_image=(output / "cargo_ship_path_on_map.png")
+                if cargo_metadata.get("overlay_file") else None,
+            cargo_ship_path_file=(output / "cargo_ship_path.json")
+                if cargo_options and cargo_options.export_json else None,
+            cargo_ship_path_node_count=int(
+                cargo_metadata.get("patrol", {}).get("node_count", 0)
+            ),
+            cargo_ship_path_status=str(cargo_metadata.get("status", "disabled")),
         )

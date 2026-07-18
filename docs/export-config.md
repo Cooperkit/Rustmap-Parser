@@ -29,7 +29,8 @@ ExportConfig
 |   |-- monuments: bool
 |   |-- terrain: TerrainOptions | None
 |   |-- tunnels: TunnelOptions | None
-|   `-- no_build_zones: NoBuildZoneOptions | None
+|   |-- no_build_zones: NoBuildZoneOptions | None
+|   `-- cargo_ship_path: CargoShipPathOptions | None
 |-- data: DataOptions
 `-- timing_debug: bool
 ```
@@ -52,6 +53,7 @@ All configuration types are available from the public `rustmap_parser` package:
 
 ```python
 from rustmap_parser import (
+    CargoShipPathOptions,
     DataOptions,
     ExportConfig,
     ExportOptions,
@@ -133,6 +135,7 @@ The complete preset enables:
 - Full-size terrain render and 512-pixel map tiles
 - Train-tunnel layer and overlay
 - No-build-zone layer, overlay, and JSON
+- Cargo patrol layer, terrain overlay, and JSON
 
 The scaled terrain render is intentionally omitted when `full_size=True`; this
 avoids rendering the same terrain twice. All distinct normal output artifacts,
@@ -183,6 +186,7 @@ ExportOptions(
     terrain: TerrainOptions | None = None,
     tunnels: TunnelOptions | None = None,
     no_build_zones: NoBuildZoneOptions | None = None,
+    cargo_ship_path: CargoShipPathOptions | None = None,
 )
 ```
 
@@ -524,6 +528,78 @@ exports = ExportOptions(
 )
 ```
 
+## CargoShipPathOptions
+
+```python
+CargoShipPathOptions(
+    resolution: int | None = None,
+    patrol_color: tuple[int, int, int, int] = (62, 203, 255, 255),
+    harbor_color: tuple[int, int, int, int] = (255, 184, 61, 255),
+    line_width: int = 4,
+    smooth_patrol: bool = True,
+    export_layer: bool = True,
+    export_overlay: bool = True,
+    export_json: bool = True,
+)
+```
+
+### `resolution`
+
+Output width and height. `None` uses the world size and aligns directly with
+`map_render_full.png`.
+
+### Colors and width
+
+`patrol_color` draws the closed generated ocean loop. `harbor_color` draws the
+packaged Harbor 1/2 approach and departure nodes. Colors are RGBA channels from
+0 through 255; `line_width` must be positive.
+
+### `smooth_patrol`
+
+When `True` (the default), the exporter uniformly samples radius-versus-angle,
+builds an 11-sample circular outer envelope, applies a Gaussian low-pass filter,
+then compacts the result with a 1-metre simplification. This removes
+high-frequency saw-blade noise without pulling the route inward toward land.
+The PNG, terrain composite, and `cargo_ship_path.json` all use the same cleaned
+nodes; `source_node_count` records the reconstructed server-node count. Packaged
+harbor paths are not filtered and reconnect to the nearest exported patrol node.
+Set it to `False` for angular server-style nodes in both PNG and JSON.
+
+### Output selection
+
+- `export_layer=True` writes `cargo_ship_path.png`.
+- `export_overlay=True` writes `cargo_ship_path_on_map.png` when a matching
+  full-size terrain image is available.
+- `export_json=True` writes `cargo_ship_path.json`.
+
+At least one must be enabled. JSON-only cargo export does not allocate or encode
+a world-size image:
+
+```python
+exports = ExportOptions(
+    cargo_ship_path=CargoShipPathOptions(
+        export_layer=False,
+        export_overlay=False,
+        export_json=True,
+    ),
+)
+```
+
+The server generates the ocean loop during `WorldSetup` rather than serializing
+it in the `.map`. The offline Python export reconstructs its ordered relaxation
+from the serialized TerrainCollider heightfield and packaged collision
+footprints for placed world prefabs such as icebergs. It reports
+`accuracy: world_setup_collision_reconstructed`. Shallow submerged terrain down
+to three metres below sea level is included because Rust uses radius-3 sphere
+casts at world Y=0; measuring from only the visible shoreline is insufficient.
+
+`WorldSetup` creates the route before `ServerMgr.Initialize`, save loading, and
+`SpawnHandler.InitialSpawn`. Later runtime populations such as floating
+junkpiles are therefore deliberately excluded. Exact packaged harbor `BasePath`
+nodes are applied through each placed harbor transform. Collision resource
+version and missing-template details are available under
+`generation.prefab_collision`.
+
 ## DataOptions
 
 ```python
@@ -639,7 +715,7 @@ The configuration rejects:
 
 - Missing `.map` paths
 - Empty output selections
-- Non-positive heatmap, tunnel, no-build, or tile resolutions
+- Non-positive heatmap, tunnel, no-build, cargo-path, or tile resolutions
 - Unsupported terrain formats
 - Negative ocean margins or no-build outline widths
 - Tiles without a full-size terrain render
@@ -653,6 +729,7 @@ Asset-level omissions are handled differently:
 - Tunnel build mismatches generate warnings.
 - A missing unusual-transform fallback omits only that tunnel instance.
 - Missing terrain omits only tunnel/no-build composite previews.
+- Missing terrain omits only the cargo-path composite preview.
 
 ## ExportResult
 
@@ -694,9 +771,14 @@ result.no_build_zones_image
 result.no_build_zones_overlay_image
 result.no_build_zone_count
 result.no_build_zone_status
+result.cargo_ship_path_file
+result.cargo_ship_path_image
+result.cargo_ship_path_overlay_image
+result.cargo_ship_path_node_count
+result.cargo_ship_path_status
 ```
 
-Disabled output paths are `None`; counts are zero. An enabled tunnel/no-build
+Disabled output paths are `None`; counts are zero. An enabled tunnel/no-build/cargo
 stage may still have a missing composite path when terrain is disabled.
 
 ## export_metadata.json
@@ -709,7 +791,7 @@ Every run writes a stage-neutral `export_metadata.json` containing:
 - Diagnostic shapes and orientation validation
 - Monument counts
 - Terrain render and tile metadata
-- Tunnel/no-build warnings and statistics
+- Tunnel/no-build/cargo warnings and statistics
 - Stage timings
 - Artifact sizes
 

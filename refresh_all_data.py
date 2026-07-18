@@ -36,6 +36,7 @@ JSON_RESOURCES = (
     "spawn_rules.json",
     "monument_metadata.json",
     "no_build_zones.json",
+    "cargo_harbor_paths.json",
 )
 
 
@@ -80,6 +81,12 @@ def _stage_worker(stage: str, install_text: str, staging_text: str,
         elif stage == "no_build_zones":
             from rustmap_parser import refresh_no_build_zone_data
             refresh_no_build_zone_data(install, staging / "no_build_zones.json")
+        elif stage == "cargo_harbor_paths":
+            from rustmap_parser import refresh_cargo_harbor_paths
+            refresh_cargo_harbor_paths(install, staging / "cargo_harbor_paths.json")
+        elif stage == "cargo_collision_tiles":
+            from rustmap_parser import refresh_cargo_collision_tiles
+            refresh_cargo_collision_tiles(install, staging / "cargo_collision_tiles")
         elif stage == "tunnel_tiles":
             from rustmap_parser import install_packaged_tunnel_templates, refresh_tunnel_templates
             cache = refresh_tunnel_templates(
@@ -128,8 +135,11 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     paths = {name: staging / name for name in JSON_RESOURCES}
     missing = [str(path) for path in paths.values() if not path.is_file()]
     tile_metadata_path = staging / "tunnel_tiles" / "tiles.json"
+    cargo_collision_metadata_path = staging / "cargo_collision_tiles" / "tiles.json"
     if not tile_metadata_path.is_file():
         missing.append(str(tile_metadata_path))
+    if not cargo_collision_metadata_path.is_file():
+        missing.append(str(cargo_collision_metadata_path))
     if missing:
         raise RuntimeError("Refresh did not produce: " + ", ".join(missing))
 
@@ -137,7 +147,9 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     rules = _read_json(paths["spawn_rules.json"])
     monuments = _read_json(paths["monument_metadata.json"])
     no_build = _read_json(paths["no_build_zones.json"])
+    cargo = _read_json(paths["cargo_harbor_paths.json"])
     tunnels = _read_json(tile_metadata_path)
+    cargo_collisions = _read_json(cargo_collision_metadata_path)
     identity = bundle_identity(install)
     bundles = identity["bundles"]
 
@@ -147,7 +159,9 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     _assert_bundle(rules["sources"]["maps_bundle"], bundles["maps"], "rules/maps")
     for name in ("content", "asset_scenes", "maps"):
         _assert_bundle(monuments["source"]["bundles"][name], bundles[name], f"monuments/{name}")
+        _assert_bundle(cargo["source"]["bundles"][name], bundles[name], f"cargo/{name}")
         _assert_bundle(tunnels["identity"]["bundles"][name], bundles[name], f"tunnels/{name}")
+        _assert_bundle(cargo_collisions["source"]["bundles"][name], bundles[name], f"cargo-collisions/{name}")
     _assert_bundle({"size": no_build["source"]["content_bundle_size"],
                     "mtime_ns": no_build["source"]["content_bundle_mtime_ns"]},
                    bundles["content"], "no-build/content")
@@ -156,8 +170,10 @@ def _validate_staging(staging: Path, install: Path) -> dict:
         value for value in (
             identity.get("rust_build_id"),
             monuments.get("source", {}).get("rust_build_id"),
+            cargo.get("source", {}).get("rust_build_id"),
             no_build.get("source", {}).get("rust_build_id"),
             tunnels.get("identity", {}).get("rust_build_id"),
+            cargo_collisions.get("source", {}).get("rust_build_id"),
         ) if value is not None
     }
     if len(build_ids) > 1:
@@ -166,8 +182,11 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     tile_files = sorted((staging / "tunnel_tiles").glob("*.png"))
     if len(tile_files) != int(tunnels["template_count"]):
         raise RuntimeError("Tunnel PNG count does not match tiles.json")
+    cargo_collision_files = sorted((staging / "cargo_collision_tiles").glob("*.png"))
+    if len(cargo_collision_files) != int(cargo_collisions["template_count"]):
+        raise RuntimeError("Cargo collision PNG count does not match tiles.json")
     leaked_path = str(install).casefold()
-    for path in list(paths.values()) + [tile_metadata_path]:
+    for path in list(paths.values()) + [tile_metadata_path, cargo_collision_metadata_path]:
         if leaked_path in path.read_text(encoding="utf-8").casefold():
             raise RuntimeError(f"Machine-specific Rust path leaked into {path.name}")
 
@@ -178,6 +197,8 @@ def _validate_staging(staging: Path, install: Path) -> dict:
         "monument_prefabs": int(monuments["prefab_count"]),
         "no_build_prefabs": int(no_build["prefab_count"]),
         "no_build_zones": int(no_build["zone_definition_count"]),
+        "cargo_harbor_paths": int(cargo["prefab_count"]),
+        "cargo_collision_tiles": int(cargo_collisions["template_count"]),
         "tunnel_tiles": int(tunnels["template_count"]),
     }
 
@@ -212,6 +233,27 @@ def _replace_packaged_data(staging: Path) -> None:
         if backup.exists():
             shutil.rmtree(backup)
 
+    cargo_destination = data_dir / "cargo_collision_tiles"
+    cargo_refreshing = data_dir / f".cargo_collision_tiles.{uuid.uuid4().hex}.refreshing"
+    cargo_backup = data_dir / f".cargo_collision_tiles.{uuid.uuid4().hex}.backup"
+    shutil.copytree(staging / "cargo_collision_tiles", cargo_refreshing)
+    initializer = cargo_destination / "__init__.py"
+    if initializer.is_file():
+        shutil.copy2(initializer, cargo_refreshing / "__init__.py")
+    try:
+        if cargo_destination.exists():
+            cargo_destination.rename(cargo_backup)
+        cargo_refreshing.rename(cargo_destination)
+    except BaseException:
+        if not cargo_destination.exists() and cargo_backup.exists():
+            cargo_backup.rename(cargo_destination)
+        raise
+    finally:
+        if cargo_refreshing.exists():
+            shutil.rmtree(cargo_refreshing)
+        if cargo_backup.exists():
+            shutil.rmtree(cargo_backup)
+
 
 def main() -> None:
     install = find_rust_install(RUST_INSTALL_PATH)
@@ -222,7 +264,8 @@ def main() -> None:
         )
     print(f"Rust install: {install}")
     stages = ("prefab_manifest", "spawn_rules", "monument_metadata",
-              "no_build_zones", "tunnel_tiles")
+              "no_build_zones", "cargo_harbor_paths", "cargo_collision_tiles",
+              "tunnel_tiles")
     timings = {}
     with tempfile.TemporaryDirectory(prefix="rustmap_parser-data-refresh-") as temporary:
         staging = Path(temporary)
@@ -241,6 +284,8 @@ def main() -> None:
     print(f"  Monument prefabs: {summary['monument_prefabs']}")
     print(f"  No-build prefabs: {summary['no_build_prefabs']}")
     print(f"  No-build zones:   {summary['no_build_zones']}")
+    print(f"  Cargo harbors:    {summary['cargo_harbor_paths']}")
+    print(f"  Cargo collisions: {summary['cargo_collision_tiles']}")
     print(f"  Tunnel tiles:     {summary['tunnel_tiles']}")
     print(f"  Total time:       {sum(timings.values()):.2f}s")
 

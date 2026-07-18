@@ -7,8 +7,8 @@ from unittest.mock import patch
 import numpy as np
 
 from rustmap_parser.config import (
-    DataOptions, ExportConfig, ExportOptions, HeatmapOptions, TerrainOptions,
-    TileOptions,
+    CargoShipPathOptions, DataOptions, ExportConfig, ExportOptions, HeatmapOptions,
+    TerrainOptions, TileOptions,
 )
 from rustmap_parser.exporter import _generate, export_orientation
 
@@ -45,6 +45,10 @@ class ExporterTests(unittest.TestCase):
                     terrain=TerrainOptions(full_size=False, tiles=TileOptions()))).validated()
             with self.assertRaisesRegex(ValueError, "At least one"):
                 ExportConfig(path, Path("output"), exports=ExportOptions()).validated()
+            with self.assertRaisesRegex(ValueError, "line_width"):
+                ExportConfig(path, Path("output"), exports=ExportOptions(
+                    cargo_ship_path=CargoShipPathOptions(line_width=0),
+                )).validated()
 
     def test_presets_select_only_requested_stages(self):
         everything = ExportOptions.all()
@@ -62,6 +66,11 @@ class ExporterTests(unittest.TestCase):
         self.assertIsNotNone(everything.no_build_zones)
         self.assertTrue(everything.no_build_zones.export_images)
         self.assertTrue(everything.no_build_zones.export_json)
+        self.assertIsNotNone(everything.cargo_ship_path)
+        self.assertTrue(everything.cargo_ship_path.smooth_patrol)
+        self.assertTrue(everything.cargo_ship_path.export_layer)
+        self.assertTrue(everything.cargo_ship_path.export_overlay)
+        self.assertTrue(everything.cargo_ship_path.export_json)
 
         map_only = ExportOptions.map_only(tiles=True)
         self.assertIsNotNone(map_only.terrain)
@@ -123,6 +132,7 @@ class ExporterTests(unittest.TestCase):
                 patch("rustmap_parser.exporter.save_monuments") as monuments,
                 patch("rustmap_parser.exporter.save_tunnel_render") as tunnels,
                 patch("rustmap_parser.exporter.save_no_build_zones") as no_build,
+                patch("rustmap_parser.exporter.save_cargo_ship_path") as cargo,
             ):
                 metadata = _generate(config, None, None)
             render.assert_called_once()
@@ -130,9 +140,11 @@ class ExporterTests(unittest.TestCase):
             monuments.assert_not_called()
             tunnels.assert_not_called()
             no_build.assert_not_called()
+            cargo.assert_not_called()
             self.assertEqual(metadata["enabled_outputs"], {
                 "heatmaps": False, "diagnostics": False, "monuments": False,
                 "terrain": True, "tunnels": False, "no_build_zones": False,
+                "cargo_ship_path": False,
             })
 
 

@@ -10,7 +10,8 @@
 [![UnityPy Optional](https://img.shields.io/badge/UnityPy-maintainers%20only-orange)](#refreshing-rust-data)
 
 **A standalone, library-first toolkit for heatmaps, server-style terrain
-renders, monuments, train tunnels, no-build zones, diagnostics, and map tiles.**
+renders, monuments, cargo-ship routes, train tunnels, no-build zones,
+diagnostics, and map tiles.**
 
 ![Server-style map render](docs/images/map-render.jpg)
 
@@ -39,7 +40,7 @@ server.
 
 ## Output gallery
 
-These images were generated from a real size-4500 Rust map.
+These images were generated from a real size-4250 Rust map.
 
 <table>
   <tr>
@@ -56,6 +57,12 @@ These images were generated from a real size-4500 Rust map.
       <br /><strong>Ore population heatmap</strong>
     </td>
   </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="docs/images/cargo-ship-path.jpg" alt="Reconstructed cargo-ship patrol loop and harbor paths" width="80%" />
+      <br /><strong>Reconstructed cargo-ship patrol loop and harbor paths</strong>
+    </td>
+  </tr>
 </table>
 
 ## Features
@@ -70,6 +77,7 @@ These images were generated from a real size-4500 Rust map.
 - Exact pre-rasterized underground train-tunnel layer
 - Compact monument JSON with gameplay metadata, train-tunnel entrances, and links
 - Compact circle/rectangle no-build zone JSON and overlays
+- Reconstructed cargo patrol loop with exact packaged harbor approach nodes
 - Detailed timings, source identities, counts, and validation metadata
 
 ## Requirements and installation
@@ -122,7 +130,7 @@ print(result.map_tiles_dir)
 ```
 
 This run does not load spawn rules or generate heatmaps, diagnostics, monuments,
-tunnels, or no-build zones.
+tunnels, no-build zones, or cargo paths.
 
 ### Generate only heatmaps
 
@@ -156,14 +164,16 @@ config = ExportConfig(
 ```
 
 `ExportOptions.all()` includes heatmaps and previews, diagnostics, monuments,
-the full-size terrain image and 512-pixel tiles, both tunnel images, and the
-no-build-zone images and JSON. The redundant scaled terrain render is skipped
-when the full-size render is enabled.
+the full-size terrain image and 512-pixel tiles, both tunnel images, the
+no-build-zone images and JSON, and the cargo patrol layer, overlay, and JSON.
+The redundant scaled terrain render is skipped when the full-size render is
+enabled.
 
 ### Mix exactly what you need
 
 ```python
 from rustmap_parser import (
+    CargoShipPathOptions,
     ExportConfig,
     ExportOptions,
     NoBuildZoneOptions,
@@ -187,6 +197,10 @@ config = ExportConfig(
         no_build_zones=NoBuildZoneOptions(
             outline_width=4,
         ),
+        cargo_ship_path=CargoShipPathOptions(
+            line_width=5,
+            smooth_patrol=True,
+        ),
     ),
     timing_debug=True,
 )
@@ -194,7 +208,8 @@ config = ExportConfig(
 result = RustMapExporter(config).run()
 ```
 
-Only monuments, terrain, tiles, and no-build zones run in this example.
+Only monuments, terrain, tiles, no-build zones, and the cargo route run in this
+example.
 `None` disables configurable stages; `False` disables simple stages.
 
 Use [`example.py`](example.py) for a complete editable example after installing
@@ -231,6 +246,7 @@ its default for convenient complete exports.
 | `terrain` | `TerrainOptions` | `None` | Scaled/full terrain renders and tiles |
 | `tunnels` | `TunnelOptions` | `None` | Train-tunnel layer and optional overlay |
 | `no_build_zones` | `NoBuildZoneOptions` | `None` | Building exclusion layer, JSON, and overlay |
+| `cargo_ship_path` | `CargoShipPathOptions` | `None` | Ocean patrol loop, harbor approaches, JSON, and images |
 
 ### Option types
 
@@ -256,6 +272,8 @@ its default for convenient complete exports.
 tint, and whether to write the transparent layer, terrain overlay, or both.
 `NoBuildZoneOptions` controls
 resolution, RGBA colors, outline width, and independent image/JSON output.
+`CargoShipPathOptions` controls route resolution, patrol/harbor colors, line
+width, patrol smoothing, and independent layer/overlay/JSON output.
 A `None` resolution uses the map's world size.
 
 `DataOptions` can override the bundled version-matched resources:
@@ -299,6 +317,8 @@ result.tunnels_image
 result.tunnel_render_status
 result.no_build_zones_file
 result.no_build_zone_count
+result.cargo_ship_path_file
+result.cargo_ship_path_node_count
 ```
 
 Every run writes `export_metadata.json`, a stage-neutral summary containing the
@@ -331,7 +351,10 @@ output/full/
 |-- tunnels_metadata.json
 |-- no_build_zones.png
 |-- no_build_zones_on_map.png
-`-- no_build_zones.json
+|-- no_build_zones.json
+|-- cargo_ship_path.png
+|-- cargo_ship_path_on_map.png
+`-- cargo_ship_path.json
 ```
 
 Use a fresh output directory for logically different selections. The exporter
@@ -421,6 +444,44 @@ added only when the selected terrain section includes a full-size render. Set
 `export_images=False, export_json=True` for a fast JSON-only export that skips
 rasterization and PNG encoding.
 
+## Cargo-ship path
+
+Rust does not serialize its cargo patrol loop into the `.map`. During world
+setup, the server generates `TerrainMeta.Path.OceanPatrolFar` by relaxing a
+circle toward the world while maintaining a 200-metre sphere-cast clearance,
+then simplifies it. This package ports that ordered float32 relaxation against
+the serialized terrain collider and the placed-prefab colliders that exist at
+that exact `WorldSetup` stage. The terrain projection includes shallow submerged
+shoals down to three metres below sea level, while packaged high-resolution
+collision masks cover route-changing world prefabs such as icebergs. Omitting
+either layer produces an incorrectly close route on affected maps.
+
+- `cargo_ship_path.png` is a transparent indexed PNG containing the patrol loop
+  and harbor paths.
+- `cargo_ship_path_on_map.png` is added when a matching full-size terrain render
+  is selected.
+- `cargo_ship_path.json` contains world and bottom-left map positions, travel
+  direction, server constants, generation timings, and accuracy limitations.
+- Harbor 1 and Harbor 2 use their exact 11-node prefab `BasePath` definitions,
+  shipped as sanitized versioned package data.
+
+The blue patrol line is cleaned by default with a circular radial outer envelope
+and Gaussian low-pass filter followed by a compact 1-metre simplification. This
+flattens the server path's high-frequency saw-blade noise outward: smoothing
+never pulls the route closer to land than the reconstructed source signal. PNG
+and JSON use the same cleaned route, while `source_node_count` records the
+reconstructed server-node count. Harbor paths are never filtered and reconnect
+to the nearest cleaned patrol node. Set `smooth_patrol=False` in
+`CargoShipPathOptions` to export the server's noisy angular nodes in both PNG
+and JSON.
+
+Rust creates this permanent route before `ServerMgr.Initialize`, save loading,
+and `SpawnHandler.InitialSpawn`. Consequently, later populations such as
+floating junkpiles must not influence the reconstructed startup route. The
+packaged collision masks are sanitized derived data; normal users do not need
+UnityPy or a Rust installation. Build mismatches and unavailable templates are
+reported in `cargo_ship_path.json` rather than silently hidden.
+
 ## Low-level parsing
 
 Skip the exporter entirely when you only need decoded data:
@@ -482,9 +543,10 @@ python refresh_all_data.py
 ```
 
 [`refresh_all_data.py`](refresh_all_data.py) stages and validates the prefab
-manifest, spawn rules, monument gameplay metadata, no-build geometry, and 81
-tunnel tiles. It checks Rust build IDs, bundle identities, counts, and machine
-path leaks before replacing `src/rustmap_parser/data`.
+manifest, spawn rules, monument gameplay metadata, no-build geometry, cargo
+harbor paths, cargo world-collision masks, and 81 tunnel tiles. It checks Rust
+build IDs, bundle identities, counts, and machine path leaks before replacing
+`src/rustmap_parser/data`.
 
 ## Development
 

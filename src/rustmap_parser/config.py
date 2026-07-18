@@ -63,6 +63,20 @@ class NoBuildZoneOptions:
 
 
 @dataclass(frozen=True, slots=True)
+class CargoShipPathOptions:
+    """Cargo patrol-loop and harbor-approach export settings."""
+
+    resolution: int | None = None
+    patrol_color: Color = (62, 203, 255, 255)
+    harbor_color: Color = (255, 184, 61, 255)
+    line_width: int = 4
+    smooth_patrol: bool = True
+    export_layer: bool = True
+    export_overlay: bool = True
+    export_json: bool = True
+
+
+@dataclass(frozen=True, slots=True)
 class ExportOptions:
     """Select outputs. ``None``/``False`` means that stage does not run."""
 
@@ -72,6 +86,7 @@ class ExportOptions:
     terrain: TerrainOptions | None = None
     tunnels: TunnelOptions | None = None
     no_build_zones: NoBuildZoneOptions | None = None
+    cargo_ship_path: CargoShipPathOptions | None = None
 
     @classmethod
     def all(cls) -> "ExportOptions":
@@ -79,6 +94,7 @@ class ExportOptions:
             heatmaps=HeatmapOptions(), diagnostics=True, monuments=True,
             terrain=TerrainOptions(tiles=TileOptions()), tunnels=TunnelOptions(),
             no_build_zones=NoBuildZoneOptions(),
+            cargo_ship_path=CargoShipPathOptions(),
         )
 
     @classmethod
@@ -108,7 +124,8 @@ class ExportConfig:
             raise FileNotFoundError(f"Rust map not found: {map_path}")
         exports = self.exports
         if not any((exports.heatmaps, exports.diagnostics, exports.monuments,
-                    exports.terrain, exports.tunnels, exports.no_build_zones)):
+                    exports.terrain, exports.tunnels, exports.no_build_zones,
+                    exports.cargo_ship_path)):
             raise ValueError("At least one export output must be enabled")
 
         heatmaps = exports.heatmaps
@@ -184,11 +201,43 @@ class ExportConfig:
                 export_json=bool(no_build.export_json),
             )
 
+        cargo = exports.cargo_ship_path
+        if cargo is not None:
+            if cargo.resolution is not None and cargo.resolution <= 0:
+                raise ValueError("cargo-ship path resolution must be positive")
+            if cargo.line_width <= 0:
+                raise ValueError("cargo-ship path line_width must be positive")
+            if not cargo.export_layer and not cargo.export_overlay and not cargo.export_json:
+                raise ValueError(
+                    "Cargo-ship path export needs export_layer, export_overlay, or export_json"
+                )
+            if (cargo.export_overlay and not cargo.export_layer and
+                    (terrain is None or not terrain.full_size)):
+                raise ValueError(
+                    "Cargo-ship path overlay-only export requires full-size terrain"
+                )
+            for label, color in (("patrol_color", cargo.patrol_color),
+                                 ("harbor_color", cargo.harbor_color)):
+                if len(color) != 4 or any(not 0 <= int(channel) <= 255 for channel in color):
+                    raise ValueError(
+                        f"cargo-ship path {label} must contain four channels from 0 to 255"
+                    )
+            cargo = CargoShipPathOptions(
+                resolution=cargo.resolution,
+                patrol_color=tuple(map(int, cargo.patrol_color)),
+                harbor_color=tuple(map(int, cargo.harbor_color)),
+                line_width=int(cargo.line_width),
+                smooth_patrol=bool(cargo.smooth_patrol),
+                export_layer=bool(cargo.export_layer),
+                export_overlay=bool(cargo.export_overlay),
+                export_json=bool(cargo.export_json),
+            )
+
         data = self.data
         required_overrides = (
             ("spawn rules", data.spawn_rules_path, heatmaps is not None),
             ("prefab manifest", data.prefab_manifest_path,
-             bool(exports.monuments or tunnels or no_build)),
+             bool(exports.monuments or tunnels or no_build or cargo)),
         )
         for label, value, required in required_overrides:
             if required and value is not None and not Path(value).is_file():
@@ -200,7 +249,7 @@ class ExportConfig:
         normalized_exports = ExportOptions(
             heatmaps=heatmaps, diagnostics=bool(exports.diagnostics),
             monuments=bool(exports.monuments), terrain=terrain,
-            tunnels=tunnels, no_build_zones=no_build,
+            tunnels=tunnels, no_build_zones=no_build, cargo_ship_path=cargo,
         )
         return ExportConfig(
             map_path=map_path, output_dir=output_dir, exports=normalized_exports,
@@ -234,3 +283,8 @@ class ExportResult:
     no_build_zones_file: Path | None = None
     no_build_zone_count: int = 0
     no_build_zone_status: str = "disabled"
+    cargo_ship_path_image: Path | None = None
+    cargo_ship_path_overlay_image: Path | None = None
+    cargo_ship_path_file: Path | None = None
+    cargo_ship_path_node_count: int = 0
+    cargo_ship_path_status: str = "disabled"
