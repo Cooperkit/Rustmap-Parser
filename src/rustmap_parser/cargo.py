@@ -32,9 +32,14 @@ HARBOR_PREFIX = "assets/bundled/prefabs/autospawn/monument/harbor/"
 CARGO_COLLISION_RESOURCE = "cargo_collision_tiles"
 COLLISION_GRID_MARGIN_M = 260.0
 COLLISION_GRID_PIXELS_PER_METER = 1.0
-SMOOTHING_RADIUS_SAMPLES = 5
-SMOOTHING_SIGMA_SAMPLES = 2.5
-SMOOTHING_TOLERANCE_M = 1.0
+CARGO_FIXED_DELTA_SECONDS = 0.05
+CARGO_WAYPOINT_REACHED_M = 80.0
+CARGO_TURN_RATE_DEGREES_PER_SECOND = 2.5
+CARGO_MAX_SPEED_METRES_PER_SECOND = 8.0
+CARGO_CONTROL_LERP_PER_SECOND = 0.2
+CARGO_TRAJECTORY_SAMPLE_SECONDS = 0.25
+CARGO_TRAJECTORY_TOLERANCE_M = 0.5
+CARGO_TRAJECTORY_MAX_STEPS = 500_000
 
 
 @njit(cache=True)
@@ -564,49 +569,93 @@ def _harbor_approaches(world, manifest: PrefabManifest, patrol: np.ndarray,
 
 def _smooth_patrol_nodes(patrol: np.ndarray,
                          sample_count: int | None = None) -> np.ndarray:
-    """Remove high-frequency radial noise from Rust's fixed-angle path."""
+    """Simulate CargoShip.UpdateMovement to produce its smooth patrol track.
+
+    Rust does not spline OceanPatrolFar. The ship steers toward decreasing node
+    indices, accepts a waypoint from 80 metres away, and is limited to a 2.5
+    degree-per-second turn. Simulating those controls produces the rounded,
+    corner-cutting centreline seen in game. ``sample_count`` remains accepted
+    for source compatibility but no longer controls the trajectory density.
+    """
+    del sample_count
     if len(patrol) < 3:
         return np.ascontiguousarray(patrol)
-    # GenerateOceanPatrolPath moves fixed angular rays toward the map centre.
-    # The saw-blade artifact is therefore noise in radius-versus-angle, not a
-    # shortage of line vertices. Resample that signal uniformly, build a local
-    # outer envelope, then apply a circular Gaussian. The envelope is deliberate:
-    # smoothing must never pull the route inward toward land.
-    angles = np.mod(np.arctan2(patrol[:, 0], patrol[:, 2]), 2.0 * math.pi)
-    radii = np.linalg.norm(patrol[:, (0, 2)], axis=1)
-    order = np.argsort(angles)
-    angles, radii = angles[order], radii[order]
-    count = max(len(patrol), int(sample_count or len(patrol)))
-    uniform_angles = np.arange(count, dtype=np.float64) * (2.0 * math.pi / count)
-    extended_angles = np.concatenate((
-        angles[-1:] - 2.0 * math.pi, angles, angles[:1] + 2.0 * math.pi,
-    ))
-    extended_radii = np.concatenate((radii[-1:], radii, radii[:1]))
-    uniform_radii = np.interp(uniform_angles, extended_angles, extended_radii)
-    radius = min(SMOOTHING_RADIUS_SAMPLES, max(1, (count - 1) // 2))
-    neighborhood = np.stack([
-        np.roll(uniform_radii, offset)
-        for offset in range(-radius, radius + 1)
-    ])
-    filtered_radii = np.max(neighborhood, axis=0)
-    offsets = np.arange(-radius, radius + 1, dtype=np.float64)
-    weights = np.exp(-0.5 * (offsets / SMOOTHING_SIGMA_SAMPLES) ** 2)
-    weights /= np.sum(weights)
-    filtered_radii = sum(
-        weight * np.roll(filtered_radii, int(offset))
-        for weight, offset in zip(weights, offsets)
-    )
-    points = np.column_stack((
-        np.sin(uniform_angles) * filtered_radii,
-        np.zeros(count, dtype=np.float64),
-        np.cos(uniform_angles) * filtered_radii,
-    )).astype(np.float32)
-    closed = np.vstack((points[:, (0, 2)], points[0, (0, 2)]))
-    indices = _rdp_indices(closed, SMOOTHING_TOLERANCE_M)
-    # The final RDP endpoint duplicates the first point because this is a loop.
-    indices = [index for index in indices if index < count]
+
+    waypoints = np.asarray(patrol[:, (0, 2)], dtype=np.float64)
+    position = waypoints[0].copy()
+    target_index = len(waypoints) - 1
+    initial_direction = waypoints[target_index] - position
+    initial_length = float(np.linalg.norm(initial_direction))
+    if initial_length <= 1.0e-9:
+        return np.ascontiguousarray(patrol)
+    forward = initial_direction / initial_length
+    throttle = 1.0
+    turn_scale = 0.0
+    completed_loops = 0
+    sample_every = max(1, int(round(
+        CARGO_TRAJECTORY_SAMPLE_SECONDS / CARGO_FIXED_DELTA_SECONDS
+    )))
+    collected: list[np.ndarray] = []
+
+    for step in range(CARGO_TRAJECTORY_MAX_STEPS):
+        to_target = waypoints[target_index] - position
+        distance = float(np.linalg.norm(to_target))
+        if distance <= 1.0e-9:
+            desired = forward.copy()
+        else:
+            desired = to_target / distance
+
+        # CargoShip.UpdateShip uses transform.right dot desired direction to
+        # choose the turn side and eases both steering and throttle at 0.2/s.
+        right = np.asarray((forward[1], -forward[0]), dtype=np.float64)
+        side = float(right @ desired)
+        turn_demand = float(np.clip((abs(side) - 0.05) / 0.45, 0.0, 1.0))
+        if turn_demand == 0.0 and float(desired @ -forward) >= 0.95:
+            turn_demand = 1.0
+        lerp = min(1.0, CARGO_FIXED_DELTA_SECONDS * CARGO_CONTROL_LERP_PER_SECOND)
+        turn_scale += (turn_demand - turn_scale) * lerp
+        turn_sign = -1.0 if side < 0.0 else 1.0
+        yaw = math.radians(
+            CARGO_TURN_RATE_DEGREES_PER_SECOND * turn_scale * turn_sign *
+            CARGO_FIXED_DELTA_SECONDS
+        )
+        cosine, sine = math.cos(yaw), math.sin(yaw)
+        forward = np.asarray((
+            forward[0] * cosine + forward[1] * sine,
+            -forward[0] * sine + forward[1] * cosine,
+        ), dtype=np.float64)
+        forward /= max(float(np.linalg.norm(forward)), 1.0e-12)
+
+        desired_throttle = float(np.clip(forward @ desired, 0.0, 1.0))
+        throttle += (desired_throttle - throttle) * lerp
+        position += (
+            forward * CARGO_MAX_SPEED_METRES_PER_SECOND * throttle *
+            CARGO_FIXED_DELTA_SECONDS
+        )
+
+        if completed_loops == 1 and step % sample_every == 0:
+            collected.append(position.copy())
+
+        if float(np.linalg.norm(waypoints[target_index] - position)) < CARGO_WAYPOINT_REACHED_M:
+            if target_index == 0:
+                completed_loops += 1
+                if completed_loops == 2:
+                    break
+            target_index = (target_index - 1 + len(waypoints)) % len(waypoints)
+    else:
+        raise RuntimeError("Cargo patrol trajectory simulation did not complete two loops")
+
+    if len(collected) < 3:
+        return np.ascontiguousarray(patrol)
+    # Collected points follow the ship's decreasing-index travel direction.
+    # Reverse them so the exported array retains the source convention and the
+    # existing decreasing_node_index metadata remains true.
+    points = np.asarray(collected[::-1], dtype=np.float32)
+    closed = np.vstack((points, points[0]))
+    indices = _rdp_indices(closed, CARGO_TRAJECTORY_TOLERANCE_M)
+    indices = [index for index in indices if index < len(points)]
     smoothed = np.zeros((len(indices), 3), dtype=np.float32)
-    smoothed[:, (0, 2)] = closed[indices]
+    smoothed[:, (0, 2)] = points[indices]
     return smoothed
 
 
@@ -627,7 +676,8 @@ def _reconnect_harbor_approaches(approaches: list[dict], patrol: np.ndarray,
 
 def build_cargo_ship_path_export(world, manifest: PrefabManifest,
                                  resolution: int | None = None,
-                                 smooth_patrol: bool = True) -> tuple[dict, np.ndarray]:
+                                 smooth_patrol: bool = False,
+                                 ) -> tuple[dict, np.ndarray]:
     resolution = world.size if resolution is None else int(resolution)
     patrol, generation = generate_cargo_patrol_path(world, manifest)
     harbor_data, resource_name = _load_harbor_data()
@@ -678,9 +728,9 @@ def build_cargo_ship_path_export(world, manifest: PrefabManifest,
                 "maximum_iterations": 100000,
             },
             "limitations": [
+                "offline reconstruction cannot reproduce every Unity monument and underwater-lab collider",
                 "only colliders present during WorldSetup affect this route; later SpawnHandler populations and loaded saves do not",
-                "unpackaged or version-mismatched placed-prefab collision templates are reported in generation metadata",
-                "live cargo spawn, movement, and egress state are not part of this static export",
+                "smooth patrol simulates normal ocean steering only; harbor docking, spawn transients, and egress are separate runtime states",
             ],
         },
         "patrol": {
@@ -690,20 +740,29 @@ def build_cargo_ship_path_export(world, manifest: PrefabManifest,
             "smoothing": {
                 "enabled": bool(smooth_patrol),
                 "algorithm": (
-                    "circular_radial_outer_envelope_gaussian"
+                    "rust_cargo_update_movement_simulation"
                     if smooth_patrol else None
                 ),
-                "uniform_sample_count": (
-                    int(generation["raw_node_count"]) if smooth_patrol else None
+                "fixed_delta_seconds": (
+                    CARGO_FIXED_DELTA_SECONDS if smooth_patrol else None
                 ),
-                "outer_envelope_window_samples": (
-                    SMOOTHING_RADIUS_SAMPLES * 2 + 1 if smooth_patrol else None
+                "waypoint_reached_distance_m": (
+                    CARGO_WAYPOINT_REACHED_M if smooth_patrol else None
                 ),
-                "gaussian_sigma_samples": (
-                    SMOOTHING_SIGMA_SAMPLES if smooth_patrol else None
+                "turn_rate_degrees_per_second": (
+                    CARGO_TURN_RATE_DEGREES_PER_SECOND if smooth_patrol else None
+                ),
+                "maximum_speed_m_per_second": (
+                    CARGO_MAX_SPEED_METRES_PER_SECOND if smooth_patrol else None
+                ),
+                "control_lerp_per_second": (
+                    CARGO_CONTROL_LERP_PER_SECOND if smooth_patrol else None
+                ),
+                "trajectory_sample_seconds": (
+                    CARGO_TRAJECTORY_SAMPLE_SECONDS if smooth_patrol else None
                 ),
                 "final_simplification_tolerance_m": (
-                    SMOOTHING_TOLERANCE_M if smooth_patrol else None
+                    CARGO_TRAJECTORY_TOLERANCE_M if smooth_patrol else None
                 ),
             },
             "nodes": [_point_document(point, world.size) for point in patrol],
@@ -771,7 +830,7 @@ def save_cargo_ship_path(world, manifest_path: str | Path, output_dir: str | Pat
                          resolution: int | None = None,
                          patrol_color=(62, 203, 255, 255),
                          harbor_color=(255, 184, 61, 255), line_width: int = 4,
-                         smooth_patrol: bool = True,
+                         smooth_patrol: bool = False,
                          terrain_image: str | Path | Image.Image | None = None,
                          export_layer: bool = True, export_overlay: bool = True,
                          export_json: bool = True) -> dict:
@@ -793,7 +852,7 @@ def save_cargo_ship_path(world, manifest_path: str | Path, output_dir: str | Pat
         "line_width": int(line_width),
         "smooth_patrol": bool(smooth_patrol),
         "smoothing_algorithm": (
-            "radial_outer_envelope_gaussian_11_samples_rdp_1m"
+            "rust_cargo_update_movement_simulation_rdp_0.5m"
             if smooth_patrol else None
         ),
     }

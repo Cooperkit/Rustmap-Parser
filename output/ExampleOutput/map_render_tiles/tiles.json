@@ -475,8 +475,8 @@
     }
   ],
   "timings": {
-    "png_encode_seconds": 0.12607320000097388,
-    "total_seconds": 0.12737649999326095
+    "png_encode_seconds": 0.11397399999987101,
+    "total_seconds": 0.11482239999986632
   },
   "metadata_file": "tiles.json",
   "directory_size_bytes": 4576318

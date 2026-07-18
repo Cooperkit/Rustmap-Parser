@@ -352,8 +352,9 @@ matching full-size terrain image was available.
 Path to `cargo_ship_path.json` when `export_json=True`. The JSON contains the
 closed patrol nodes, decreasing-index travel direction, transformed harbor
 approaches, smoothing metadata, server generation constants, timings, warnings,
-and accuracy. With smoothing enabled, these are the same smooth nodes used by
-the PNG; `patrol.source_node_count` records the server-style source count.
+and accuracy. With smoothing enabled, they are the same simulated movement
+centreline used by the PNG; `patrol.source_node_count` records the generated
+server-style waypoint count.
 
 ### `cargo_ship_path_node_count`
 

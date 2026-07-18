@@ -47,4 +47,4 @@ __all__ = (
     "refresh_cargo_collision_tiles",
 )
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"

@@ -556,14 +556,15 @@ packaged Harbor 1/2 approach and departure nodes. Colors are RGBA channels from
 
 ### `smooth_patrol`
 
-When `True` (the default), the exporter uniformly samples radius-versus-angle,
-builds an 11-sample circular outer envelope, applies a Gaussian low-pass filter,
-then compacts the result with a 1-metre simplification. This removes
-high-frequency saw-blade noise without pulling the route inward toward land.
-The PNG, terrain composite, and `cargo_ship_path.json` all use the same cleaned
-nodes; `source_node_count` records the reconstructed server-node count. Packaged
-harbor paths are not filtered and reconnect to the nearest exported patrol node.
-Set it to `False` for angular server-style nodes in both PNG and JSON.
+When `True`, the exporter simulates `CargoShip.UpdateMovement`: decreasing node
+order, an 80-metre arrival radius, eased steering/throttle, a
+2.5-degree-per-second turn limit, and an 8-metre-per-second maximum speed. It
+warms the controls for one loop, records the next loop, then compacts the track
+with a 0.5-metre simplification. The result is the smooth, corner-cutting ship
+centreline seen in game. PNG, terrain composite, and JSON use the same track;
+`source_node_count` records the reconstructed waypoint count. Harbor paths are
+not simulated and reconnect to the nearest exported patrol point. The default
+is `True`; set it to `False` to preserve the generated angular waypoints.
 
 ### Output selection
 

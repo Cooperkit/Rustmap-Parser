@@ -121,7 +121,7 @@ def test_layer_orientation_preserves_x_and_reverses_z() -> None:
 
 def test_exported_patrol_smoothing_preserves_source_array() -> None:
     angles = np.arange(64, dtype=np.float32) * np.float32(2.0 * np.pi / 64)
-    noisy_radii = 100.0 + np.where(np.arange(64) % 2 == 0, 20.0, -20.0)
+    noisy_radii = 1000.0 + np.where(np.arange(64) % 2 == 0, 40.0, -40.0)
     patrol = np.column_stack((
         np.sin(angles) * noisy_radii,
         np.zeros(64),
@@ -130,14 +130,14 @@ def test_exported_patrol_smoothing_preserves_source_array() -> None:
     original = patrol.copy()
     smoothed = _smooth_patrol_nodes(patrol, sample_count=64)
     np.testing.assert_array_equal(patrol, original)
-    assert len(smoothed) <= len(patrol)
+    assert len(smoothed) > len(patrol)
     assert smoothed.dtype == np.float32
     assert np.all(smoothed[:, 1] == 0.0)
     smoothed_radii = np.linalg.norm(smoothed[:, (0, 2)], axis=1)
     assert float(np.ptp(smoothed_radii)) < float(np.ptp(noisy_radii)) * 0.25
-    # Alternating 80/120 m teeth collapse to the conservative outer radius,
-    # never the inward 80 m radius or their 100 m average.
-    assert float(np.min(smoothed_radii)) >= 119.9
+    # The simulated ship cuts the alternating waypoint teeth into the rounded
+    # centreline produced by CargoShip.UpdateMovement.
+    assert 990.0 < float(np.mean(smoothed_radii)) < 1030.0
 
 
 def test_harbor_approach_reconnects_to_exported_smooth_node() -> None:

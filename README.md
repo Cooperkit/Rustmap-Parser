@@ -450,11 +450,12 @@ Rust does not serialize its cargo patrol loop into the `.map`. During world
 setup, the server generates `TerrainMeta.Path.OceanPatrolFar` by relaxing a
 circle toward the world while maintaining a 200-metre sphere-cast clearance,
 then simplifies it. This package ports that ordered float32 relaxation against
-the serialized terrain collider and the placed-prefab colliders that exist at
-that exact `WorldSetup` stage. The terrain projection includes shallow submerged
-shoals down to three metres below sea level, while packaged high-resolution
-collision masks cover route-changing world prefabs such as icebergs. Omitting
-either layer produces an incorrectly close route on affected maps.
+the serialized terrain collider and a packaged subset of placed-prefab
+colliders. The terrain projection includes shallow submerged shoals down to
+three metres below sea level, while packaged high-resolution collision masks
+cover route-changing world prefabs such as icebergs. Unity colliders belonging
+to monuments and underwater labs are not completely recoverable from the map
+file alone, so offline reconstruction is approximate around those features.
 
 - `cargo_ship_path.png` is a transparent indexed PNG containing the patrol loop
   and harbor paths.
@@ -465,15 +466,12 @@ either layer produces an incorrectly close route on affected maps.
 - Harbor 1 and Harbor 2 use their exact 11-node prefab `BasePath` definitions,
   shipped as sanitized versioned package data.
 
-The blue patrol line is cleaned by default with a circular radial outer envelope
-and Gaussian low-pass filter followed by a compact 1-metre simplification. This
-flattens the server path's high-frequency saw-blade noise outward: smoothing
-never pulls the route closer to land than the reconstructed source signal. PNG
-and JSON use the same cleaned route, while `source_node_count` records the
-reconstructed server-node count. Harbor paths are never filtered and reconnect
-to the nearest cleaned patrol node. Set `smooth_patrol=False` in
-`CargoShipPathOptions` to export the server's noisy angular nodes in both PNG
-and JSON.
+By default, `smooth_patrol=True` simulates Rust's normal cargo movement:
+decreasing waypoint order, 80-metre waypoint acceptance, eased steering and
+throttle, a 2.5-degree-per-second turn limit, and an 8-metre-per-second maximum
+speed. Its rounded, corner-cutting centreline matches how the ship traverses the
+generated waypoints in game rather than applying an arbitrary visual filter.
+Set it to `False` to export the reconstructed server-style waypoints unchanged.
 
 Rust creates this permanent route before `ServerMgr.Initialize`, save loading,
 and `SpawnHandler.InitialSpawn`. Consequently, later populations such as
