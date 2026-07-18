@@ -59,7 +59,7 @@ These images were generated from a real size-4250 Rust map.
   </tr>
   <tr>
     <td colspan="3" align="center">
-      <img src="docs/images/cargo-ship-path.jpg" alt="Reconstructed cargo-ship patrol loop and harbor paths" width="50%" />
+      <img src="docs/images/cargo-ship-path.jpg" alt="Reconstructed cargo-ship patrol loop and harbor paths" width="33%" />
       <br /><strong>Cargo Ship path</strong>
     </td>
   </tr>
