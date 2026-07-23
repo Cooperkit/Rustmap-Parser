@@ -1,5 +1,7 @@
 import json
+import tempfile
 from importlib import resources
+from pathlib import Path
 
 import numpy as np
 
@@ -9,6 +11,58 @@ from rustmap_parser.cargo import (
     _terrain_collider_clearance, _smooth_patrol_nodes,
     _reconnect_harbor_approaches,
 )
+from rustmap_parser.cargo_assets import (
+    _remove_verified_cargo_output, _safe_cargo_output_path,
+)
+
+
+def _write_generated_cargo_directory(directory: Path) -> None:
+    directory.mkdir()
+    (directory / "__init__.py").write_text("", encoding="utf-8")
+    (directory / "collision_000__test.png").write_bytes(b"png")
+    (directory / "tiles.json").write_text(json.dumps({
+        "schema_version": 1,
+        "templates": [{"mask_file": "collision_000__test.png"}],
+    }), encoding="utf-8")
+
+
+def test_cargo_asset_replacement_only_removes_verified_generated_files() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        output = Path(temporary) / "cargo_collision_tiles"
+        _write_generated_cargo_directory(output)
+        cache = output / "__pycache__"
+        cache.mkdir()
+        (cache / "__init__.cpython-313.pyc").write_bytes(b"cache")
+        _remove_verified_cargo_output(output)
+        assert not output.exists()
+
+
+def test_cargo_asset_replacement_refuses_unexpected_files() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        output = Path(temporary) / "cargo_collision_tiles"
+        _write_generated_cargo_directory(output)
+        sentinel = output / "do-not-delete.txt"
+        sentinel.write_text("keep", encoding="utf-8")
+        try:
+            _remove_verified_cargo_output(output)
+        except ValueError as error:
+            assert "unexpected" in str(error).casefold()
+        else:
+            raise AssertionError("unsafe replacement was not rejected")
+        assert sentinel.read_text(encoding="utf-8") == "keep"
+        assert (output / "collision_000__test.png").exists()
+
+
+def test_cargo_asset_output_cannot_overlap_rust_install() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        install = Path(temporary) / "rust"
+        install.mkdir()
+        try:
+            _safe_cargo_output_path(install, install / "generated")
+        except ValueError as error:
+            assert "Rust installation" in str(error)
+        else:
+            raise AssertionError("Rust installation overlap was not rejected")
 
 
 def test_packaged_harbor_paths_are_sanitized_and_complete() -> None:

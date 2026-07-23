@@ -1,10 +1,13 @@
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from importlib import resources
 from pathlib import Path
 
-from rustmap_parser.config import ExportConfig, ExportOptions, NoBuildZoneOptions
+from rustmap_parser.config import (
+    ExportConfig, ExportOptions, NoBuildZoneOptions, TransformOptions,
+)
 from rustmap_parser.no_build import _draw_zones, build_no_build_export, save_no_build_zones
 from rustmap_parser.parser import Prefab, RustMap, Vector3
 from rustmap_parser.prefabs import PrefabManifest, PrefabManifestEntry
@@ -151,6 +154,31 @@ class NoBuildZoneTests(unittest.TestCase):
             self.assertFalse((root / "no_build_zones.png").exists())
             self.assertFalse((root / "no_build_zones_on_map.png").exists())
             self.assertEqual(metadata["requested_outputs"], {"images": False, "json": True})
+
+    def test_json_respects_global_map_position_only_transform_selection(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            manifest = PrefabManifest(
+                {1: PrefabManifestEntry(1, PATH)}, {}, "content.bundle", 10, 20
+            )
+            manifest_path = root / "manifest.json"
+            manifest.save(manifest_path)
+            world = RustMap(1, 2, 100, [], [
+                Prefab("Monument", 1, Vector3(-20, 5, 20), Vector3(), Vector3(1, 1, 1))
+            ], [], bytearray())
+            with patch(
+                "rustmap_parser.no_build._load_packaged_data",
+                return_value=(fixture_data(), "fixture"),
+            ):
+                metadata = save_no_build_zones(
+                    world, manifest_path, root, export_images=False,
+                    transforms=TransformOptions(
+                        local_position=False, position=False, map_position=True,
+                    ),
+                )
+        self.assertEqual(metadata["exported_position_fields"], ["map_position"])
+        self.assertNotIn("position", metadata["zones"][0])
+        self.assertIn("map_position", metadata["zones"][0])
 
     def test_packaged_data_is_sanitized(self):
         payload = json.loads(resources.files("rustmap_parser.data").joinpath(

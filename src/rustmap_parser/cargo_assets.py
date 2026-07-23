@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import math
-import shutil
 from pathlib import Path
 
 import numpy as np
@@ -26,6 +25,112 @@ COLLISION_SCHEMA_VERSION = 1
 COLLISION_PIXELS_PER_METRE = 8.0
 SPHERE_RADIUS_METRES = 3.0
 CARGO_PHYSICS_MASK = 1084293377
+
+
+def _paths_overlap(first: Path, second: Path) -> bool:
+    return first == second or first in second.parents or second in first.parents
+
+
+def _safe_cargo_output_path(rust_install_path: str | Path,
+                            output_directory: str | Path) -> Path:
+    """Resolve and reject output paths that could damage important directories."""
+    raw_output = Path(output_directory).expanduser()
+    if raw_output.is_symlink():
+        raise ValueError("Cargo collision output directory must not be a symlink")
+    output = raw_output.resolve()
+    install = Path(rust_install_path).expanduser().resolve()
+    protected = {
+        Path(output.anchor).resolve(),
+        Path.home().resolve(),
+        Path.cwd().resolve(),
+    }
+    if output in protected:
+        raise ValueError(f"Refusing unsafe cargo collision output directory: {output}")
+    if _paths_overlap(output, install):
+        raise ValueError(
+            "Cargo collision output directory must not contain or be inside "
+            "the Rust installation"
+        )
+    return output
+
+
+def _remove_verified_cargo_output(output: Path) -> None:
+    """Remove only files belonging to a verified generated collision directory."""
+    if not output.exists():
+        return
+    if output.is_symlink() or not output.is_dir():
+        raise ValueError(f"Cargo collision output is not a normal directory: {output}")
+
+    marker = output / "tiles.json"
+    init_file = output / "__init__.py"
+    if not marker.is_file() or marker.is_symlink() or not init_file.is_file():
+        raise ValueError(
+            "Refusing to replace an unverified cargo collision directory; "
+            "expected generated tiles.json and __init__.py files"
+        )
+    try:
+        payload = json.loads(marker.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise ValueError(
+            "Refusing to replace cargo collision output with an invalid tiles.json"
+        ) from error
+    if (
+        payload.get("schema_version") != COLLISION_SCHEMA_VERSION
+        or not isinstance(payload.get("templates"), list)
+    ):
+        raise ValueError(
+            "Refusing to replace cargo collision output with an unknown schema"
+        )
+
+    mask_names: set[str] = set()
+    for template in payload["templates"]:
+        if not isinstance(template, dict):
+            raise ValueError("Cargo collision tiles.json contains an invalid template")
+        mask_name = template.get("mask_file")
+        if (
+            not isinstance(mask_name, str)
+            or Path(mask_name).name != mask_name
+            or not mask_name.startswith("collision_")
+            or not mask_name.casefold().endswith(".png")
+        ):
+            raise ValueError("Cargo collision tiles.json contains an unsafe mask name")
+        mask_names.add(mask_name)
+
+    entries = {item.name: item for item in output.iterdir()}
+    allowed_names = {"tiles.json", "__init__.py", "__pycache__", *mask_names}
+    unexpected = sorted(set(entries) - allowed_names)
+    if unexpected:
+        raise ValueError(
+            "Refusing to delete unexpected cargo collision output entries: "
+            + ", ".join(unexpected)
+        )
+    for mask_name in mask_names:
+        mask = entries.get(mask_name)
+        if mask is None or mask.is_symlink() or not mask.is_file():
+            raise ValueError(f"Cargo collision mask is missing or unsafe: {mask_name}")
+
+    cache = entries.get("__pycache__")
+    cache_files: list[Path] = []
+    if cache is not None:
+        if cache.is_symlink() or not cache.is_dir():
+            raise ValueError("Cargo collision __pycache__ is not a normal directory")
+        cache_files = list(cache.iterdir())
+        if any(
+            item.is_symlink() or not item.is_file() or item.suffix != ".pyc"
+            for item in cache_files
+        ):
+            raise ValueError("Cargo collision __pycache__ contains unexpected entries")
+
+    # All entries are verified before any removal begins. Avoid recursive deletion
+    # so an unexpected file can never be swept up by a caller-controlled path.
+    for name, item in entries.items():
+        if name != "__pycache__":
+            item.unlink()
+    for item in cache_files:
+        item.unlink()
+    if cache is not None:
+        cache.rmdir()
+    output.rmdir()
 
 
 def extract_cargo_harbor_paths(rust_install_path: str | Path) -> dict:
@@ -235,8 +340,8 @@ def extract_cargo_collision_tiles(rust_install_path: str | Path,
     """Build sanitized PNG collision footprints used by the startup cargo route."""
     import UnityPy
 
-    install = Path(rust_install_path)
-    output = Path(output_directory)
+    install = Path(rust_install_path).expanduser().resolve()
+    output = _safe_cargo_output_path(install, output_directory)
     content = install / "Bundles" / "shared" / "content.bundle"
     asset_scenes = install / "Bundles" / "shared" / "assetscenes.bundle"
     environment = UnityPy.load(str(asset_scenes), str(content))
@@ -260,8 +365,7 @@ def extract_cargo_collision_tiles(rust_install_path: str | Path,
             roots.append((path, game_object))
     roots.sort(key=lambda item: item[0])
 
-    if output.exists():
-        shutil.rmtree(output)
+    _remove_verified_cargo_output(output)
     output.mkdir(parents=True, exist_ok=True)
     (output / "__init__.py").write_text(
         '"""Sanitized cargo-route collision footprint resources."""\n',

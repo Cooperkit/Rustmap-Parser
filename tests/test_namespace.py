@@ -5,9 +5,10 @@ import rustmap_parser
 
 
 def test_new_namespace_exposes_public_api_and_version() -> None:
-    assert rustmap_parser.__version__ == "0.3.1"
+    assert rustmap_parser.__version__ == "0.4.0"
     for name in (
-        "CargoShipPathOptions", "ExportConfig", "ExportOptions", "RustMapExporter",
+        "CargoShipPathOptions", "DiagnosticsOptions", "ExportConfig", "ExportOptions",
+        "TransformOptions", "MonumentTransformOptions", "RustMapExporter",
         "generate_cargo_patrol_path", "refresh_cargo_harbor_paths",
         "refresh_cargo_collision_tiles", "load_map",
     ):

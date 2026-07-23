@@ -1,5 +1,7 @@
 {
   "world_size": 2500,
+  "output_resolution": null,
+  "resolution_mode": "native_layers",
   "orientation_validation": {
     "method": "raw grid indexed as [z,x], centered world coordinates, no axis flip",
     "sample_count": 7013,

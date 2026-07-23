@@ -1,8 +1,9 @@
-"""Refresh every versioned ``src/rustmap_parser/data`` resource from one Rust install.
+"""Refresh every versioned ``src/rustmap_parser/data`` resource.
 
 Run this file directly from a source checkout. No command-line arguments are
 used. Set RUST_INSTALL_PATH below, set the RUST_INSTALL_PATH environment
-variable, or leave it as None to search common Steam locations.
+variable, or leave it as None to search common Steam locations. Exact monument
+details may optionally come from a separate Rust dedicated-server install.
 """
 
 from __future__ import annotations
@@ -22,11 +23,15 @@ PROJECT_DIR = Path(__file__).resolve().parent
 SRC_DIR = PROJECT_DIR / "src"
 sys.path.insert(0, str(SRC_DIR))
 
-from rustmap_parser.tunnel_assets import bundle_identity, find_rust_install
+from rustmap_parser.monument_assets import (  # noqa: E402
+    SCHEMA_VERSION as MONUMENT_SCHEMA_VERSION,
+)
+from rustmap_parser.tunnel_assets import bundle_identity, find_rust_install  # noqa: E402
 
 
 # --- Maintainer configuration ---------------------------------------------
 RUST_INSTALL_PATH: Path | None = None
+MONUMENT_DETAILS_INSTALL_PATH: Path | None = None
 TUNNEL_CACHE_PATH: Path | None = PROJECT_DIR / ".rustmap-cache" / "tunnel-geometry"
 # ---------------------------------------------------------------------------
 
@@ -78,6 +83,9 @@ def _stage_worker(stage: str, install_text: str, staging_text: str,
         elif stage == "monument_metadata":
             from rustmap_parser import refresh_monument_metadata
             refresh_monument_metadata(install, staging / "monument_metadata.json")
+        elif stage == "monument_details":
+            from rustmap_parser import refresh_monument_details
+            refresh_monument_details(install, staging / "monument_metadata.json")
         elif stage == "no_build_zones":
             from rustmap_parser import refresh_no_build_zone_data
             refresh_no_build_zone_data(install, staging / "no_build_zones.json")
@@ -131,7 +139,61 @@ def _assert_bundle(value: dict, expected: dict, label: str) -> None:
         raise RuntimeError(f"{label} bundle timestamp does not match the selected Rust install")
 
 
-def _validate_staging(staging: Path, install: Path) -> dict:
+def _monument_detail_summary(monuments: dict) -> dict[str, int]:
+    totals = {
+        "monument_interactables": 0,
+        "monument_puzzles": 0,
+        "monument_loot_groups": 0,
+        "monument_radiation_zones": 0,
+        "monument_diesel_groups": 0,
+    }
+    diesel_path = (
+        "assets/content/structures/excavator/prefabs/"
+        "diesel_collectable.prefab"
+    )
+    required = (
+        "bounds", "interactables", "puzzles", "loot_spawn_groups",
+        "radiation_zones",
+    )
+    for prefab_path, item in monuments.get("prefabs", {}).items():
+        missing = [name for name in required if name not in item]
+        if missing:
+            raise RuntimeError(
+                f"Monument {prefab_path} is missing detailed fields: "
+                + ", ".join(missing)
+            )
+        totals["monument_interactables"] += len(item["interactables"])
+        totals["monument_puzzles"] += len(item["puzzles"])
+        totals["monument_loot_groups"] += len(item["loot_spawn_groups"])
+        totals["monument_radiation_zones"] += len(item["radiation_zones"])
+        for group in item["loot_spawn_groups"]:
+            variants = group.get("variants", [])
+            diesel = [
+                variant for variant in variants
+                if str(variant.get("prefab_path", "")).casefold() == diesel_path
+            ]
+            if not diesel:
+                continue
+            if any(variant.get("type") != "diesel_fuel" for variant in diesel):
+                raise RuntimeError(
+                    f"Diesel collectible has an invalid loot type in {prefab_path}"
+                )
+            totals["monument_diesel_groups"] += 1
+    if not totals["monument_interactables"]:
+        raise RuntimeError("Monument detail extraction produced no interactables")
+    if not totals["monument_puzzles"]:
+        raise RuntimeError("Monument detail extraction produced no puzzle routes")
+    if not totals["monument_loot_groups"]:
+        raise RuntimeError("Monument detail extraction produced no loot groups")
+    if not totals["monument_radiation_zones"]:
+        raise RuntimeError("Monument detail extraction produced no radiation zones")
+    if not totals["monument_diesel_groups"]:
+        raise RuntimeError("Monument detail extraction produced no Diesel Fuel groups")
+    return totals
+
+
+def _validate_staging(staging: Path, install: Path,
+                      details_install: Path) -> dict:
     paths = {name: staging / name for name in JSON_RESOURCES}
     missing = [str(path) for path in paths.values() if not path.is_file()]
     tile_metadata_path = staging / "tunnel_tiles" / "tiles.json"
@@ -151,6 +213,7 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     tunnels = _read_json(tile_metadata_path)
     cargo_collisions = _read_json(cargo_collision_metadata_path)
     identity = bundle_identity(install)
+    details_identity = bundle_identity(details_install)
     bundles = identity["bundles"]
 
     _assert_bundle({"size": manifest["source_size"],
@@ -162,6 +225,10 @@ def _validate_staging(staging: Path, install: Path) -> dict:
         _assert_bundle(cargo["source"]["bundles"][name], bundles[name], f"cargo/{name}")
         _assert_bundle(tunnels["identity"]["bundles"][name], bundles[name], f"tunnels/{name}")
         _assert_bundle(cargo_collisions["source"]["bundles"][name], bundles[name], f"cargo-collisions/{name}")
+        _assert_bundle(
+            monuments["details_source"]["bundles"][name],
+            details_identity["bundles"][name], f"monument-details/{name}",
+        )
     _assert_bundle({"size": no_build["source"]["content_bundle_size"],
                     "mtime_ns": no_build["source"]["content_bundle_mtime_ns"]},
                    bundles["content"], "no-build/content")
@@ -179,15 +246,31 @@ def _validate_staging(staging: Path, install: Path) -> dict:
     if len(build_ids) > 1:
         raise RuntimeError(f"Packaged resources contain mixed Rust build IDs: {sorted(build_ids)}")
 
+    if int(monuments.get("schema_version", -1)) != MONUMENT_SCHEMA_VERSION:
+        raise RuntimeError(
+            "Monument schema does not match the current extractor: "
+            f"expected {MONUMENT_SCHEMA_VERSION}, got "
+            f"{monuments.get('schema_version')!r}"
+        )
+    expected_details_build = details_identity.get("rust_build_id")
+    actual_details_build = monuments.get("details_source", {}).get("rust_build_id")
+    if (expected_details_build is not None and
+            actual_details_build != expected_details_build):
+        raise RuntimeError(
+            "Monument details build ID does not match the selected details install"
+        )
+    detail_summary = _monument_detail_summary(monuments)
+
     tile_files = sorted((staging / "tunnel_tiles").glob("*.png"))
     if len(tile_files) != int(tunnels["template_count"]):
         raise RuntimeError("Tunnel PNG count does not match tiles.json")
     cargo_collision_files = sorted((staging / "cargo_collision_tiles").glob("*.png"))
     if len(cargo_collision_files) != int(cargo_collisions["template_count"]):
         raise RuntimeError("Cargo collision PNG count does not match tiles.json")
-    leaked_path = str(install).casefold()
+    leaked_paths = {str(install).casefold(), str(details_install).casefold()}
     for path in list(paths.values()) + [tile_metadata_path, cargo_collision_metadata_path]:
-        if leaked_path in path.read_text(encoding="utf-8").casefold():
+        text = path.read_text(encoding="utf-8").casefold()
+        if any(leaked_path in text for leaked_path in leaked_paths):
             raise RuntimeError(f"Machine-specific Rust path leaked into {path.name}")
 
     return {
@@ -200,7 +283,24 @@ def _validate_staging(staging: Path, install: Path) -> dict:
         "cargo_harbor_paths": int(cargo["prefab_count"]),
         "cargo_collision_tiles": int(cargo_collisions["template_count"]),
         "tunnel_tiles": int(tunnels["template_count"]),
+        **detail_summary,
     }
+
+
+def _find_details_install(default: Path) -> Path:
+    explicit = MONUMENT_DETAILS_INSTALL_PATH
+    environment = os.environ.get("RUST_MONUMENT_DETAILS_INSTALL_PATH")
+    if explicit is None and not environment:
+        return default
+    candidate = find_rust_install(explicit or environment)
+    if candidate is None:
+        raise FileNotFoundError(
+            "Monument-details Rust installation is invalid. Set "
+            "MONUMENT_DETAILS_INSTALL_PATH or "
+            "RUST_MONUMENT_DETAILS_INSTALL_PATH to a Rust client or dedicated "
+            "server directory containing Bundles."
+        )
+    return candidate
 
 
 def _replace_packaged_data(staging: Path) -> None:
@@ -263,7 +363,10 @@ def main() -> None:
             "refresh_all_data.py or define the RUST_INSTALL_PATH environment variable."
         )
     print(f"Rust install: {install}")
+    details_install = _find_details_install(install)
+    print(f"Monument details install: {details_install}")
     stages = ("prefab_manifest", "spawn_rules", "monument_metadata",
+              "monument_details",
               "no_build_zones", "cargo_harbor_paths", "cargo_collision_tiles",
               "tunnel_tiles")
     timings = {}
@@ -271,10 +374,13 @@ def main() -> None:
         staging = Path(temporary)
         for stage in stages:
             print(f"Refreshing {stage.replace('_', ' ')}...")
-            timings[stage] = _run_stage(stage, install, staging, TUNNEL_CACHE_PATH)
+            stage_install = details_install if stage == "monument_details" else install
+            timings[stage] = _run_stage(
+                stage, stage_install, staging, TUNNEL_CACHE_PATH
+            )
             print(f"  completed in {timings[stage]:.2f}s")
         print("Validating staged resources...")
-        summary = _validate_staging(staging, install)
+        summary = _validate_staging(staging, install, details_install)
         _replace_packaged_data(staging)
 
     print("\nAll packaged Rust data updated successfully")
@@ -282,6 +388,11 @@ def main() -> None:
     print(f"  Prefab entries:   {summary['prefab_entries']}")
     print(f"  Spawn rules:      {summary['spawn_rules']}")
     print(f"  Monument prefabs: {summary['monument_prefabs']}")
+    print(f"  Interactables:    {summary['monument_interactables']}")
+    print(f"  Puzzle routes:    {summary['monument_puzzles']}")
+    print(f"  Loot groups:      {summary['monument_loot_groups']}")
+    print(f"  Diesel groups:    {summary['monument_diesel_groups']}")
+    print(f"  Radiation zones:  {summary['monument_radiation_zones']}")
     print(f"  No-build prefabs: {summary['no_build_prefabs']}")
     print(f"  No-build zones:   {summary['no_build_zones']}")
     print(f"  Cargo harbors:    {summary['cargo_harbor_paths']}")

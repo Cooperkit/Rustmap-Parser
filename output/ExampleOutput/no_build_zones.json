@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "status": "rendered",
   "source": {
     "rust_build_id": "24181174",
@@ -30,7 +30,7 @@
     2500
   ],
   "coordinates": {
-    "world": "Unity metres: X east/west, Y elevation, Z north/south",
+    "position": "Unity metres: X east/west, Y elevation, Z north/south",
     "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
     "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
     "heading_degrees": "rotation Y normalized to [0, 360)",
@@ -1601,10 +1601,15 @@
     ],
     "outline_width": 3
   },
-  "render_seconds": 0.32765290000043024,
+  "render_seconds": 0.3366990999999757,
   "image_file": "no_build_zones.png",
   "overlay_file": "no_build_zones_on_map.png",
-  "elapsed_seconds": 3.3213212999999087,
+  "elapsed_seconds": 3.273899399999948,
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
+  ],
   "artifact_sizes_bytes": {
     "no_build_zones.png": 322403,
     "no_build_zones_on_map.png": 4956316

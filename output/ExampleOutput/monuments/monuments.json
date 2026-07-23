@@ -1,12 +1,12 @@
 {
-  "schema_version": 5,
+  "schema_version": 13,
   "map": {
     "serialization_version": 10,
     "timestamp": 1783040108421,
     "world_size": 2500
   },
   "coordinates": {
-    "world": "Unity world coordinates in metres: X east/west, Y elevation, Z north/south",
+    "position": "Unity world coordinates in metres: X east/west, Y elevation, Z north/south",
     "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
     "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
     "heading_degrees": "rotation Y normalized to [0, 360)"
@@ -20,7 +20,17 @@
     "includes_train_tunnel_entrances": true,
     "includes_train_tunnel_links": true,
     "server_behavior": "gameplay roots plus visible train-tunnel LandmarkInfo child transforms",
-    "excludes_unique_environments": true
+    "excludes_unique_environments": true,
+    "includes_custom_monument_category_in_expanded_mode": true,
+    "interactables_sidecar": true,
+    "puzzles_sidecar": true,
+    "loot_sidecar": true,
+    "radiation_zones_sidecar": true,
+    "exported_position_fields": [
+      "local_position",
+      "position",
+      "map_position"
+    ]
   },
   "monument_count": 39,
   "unique_prefab_count": 31,
@@ -32,11 +42,12 @@
       "recycler_count",
       "keycard_requirements",
       "puzzle_type",
-      "loot_tier"
+      "loot_tier",
+      "maximum_radiation"
     ],
     "component_fields_status": "populated from packaged Rust prefab-component extraction",
     "component_database": {
-      "schema_version": 2,
+      "schema_version": 5,
       "source_rust_build_id": "24181174",
       "prefab_count": 121,
       "extraction": {
@@ -65,6 +76,25 @@
     "position_source": "serialized gameplay roots and packaged prefab-root-relative tunnel LandmarkInfo transforms",
     "root_position_fallback_instance_count": 0,
     "enriched_instance_count": 39
+  },
+  "details": {
+    "interactables_enabled": true,
+    "puzzles_enabled": true,
+    "interactable_count": 58,
+    "puzzle_count": 20,
+    "unassigned_interactable_count": 0,
+    "sources": [
+      "packaged prefab-component transforms",
+      "serialized map prefabs"
+    ],
+    "custom_monument_behavior": "nonstandard map-category Monument roots are included; directly placed recognized interactables are assigned by monument bounds, then a conservative size-class radius; unresolved items remain unassigned",
+    "puzzle_order": "compact causal routes derived from the internal IOEntity graph; only major player actions and their door outcome are exported; equivalent access doors sharing one prerequisite circuit are alternate endings"
+  },
+  "sidecars": {
+    "interactables": "monument_interactables.json",
+    "puzzles": "monument_puzzles.json",
+    "loot": "monument_loot.json",
+    "radiation_zones": "monument_radiation_zones.json"
   },
   "monuments": [
     {
@@ -97,14 +127,22 @@
             "blue"
           ],
           "puzzle_type": "keycard_and_electrical",
-          "loot_tier": 2
+          "loot_tier": 2,
+          "maximum_radiation": 10.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_large",
           "surface"
         ]
-      }
+      },
+      "id": "monument-001"
     },
     {
       "name": "cave_medium_medium",
@@ -134,14 +172,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "cave",
           "size_medium",
           "underground"
         ]
-      }
+      },
+      "id": "monument-002"
     },
     {
       "name": "cave_small_easy",
@@ -171,14 +217,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "cave",
           "size_small",
           "underground"
         ]
-      }
+      },
+      "id": "monument-003"
     },
     {
       "name": "cave_small_easy",
@@ -208,14 +262,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "cave",
           "size_small",
           "underground"
         ]
-      }
+      },
+      "id": "monument-004"
     },
     {
       "name": "cave_small_hard",
@@ -245,14 +307,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "cave",
           "size_small",
           "underground"
         ]
-      }
+      },
+      "id": "monument-005"
     },
     {
       "name": "cave_small_medium",
@@ -282,14 +352,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "cave",
           "size_small",
           "underground"
         ]
-      }
+      },
+      "id": "monument-006"
     },
     {
       "name": "fishing_village_a",
@@ -319,14 +397,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 3
         },
         "tags": [
           "safe_zone",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-007"
     },
     {
       "name": "train_tunnel_entrance",
@@ -363,7 +449,8 @@
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-008"
     },
     {
       "name": "ferry_terminal_1",
@@ -395,14 +482,22 @@
             "green"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 1,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 1,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "coastal",
           "coastal_monument",
           "size_large"
         ]
-      }
+      },
+      "id": "monument-009"
     },
     {
       "name": "harbor_1",
@@ -434,14 +529,22 @@
             "green"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 2
+          "loot_tier": 2,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 1,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "coastal",
           "coastal_monument",
           "size_large"
         ]
-      }
+      },
+      "id": "monument-010"
     },
     {
       "name": "train_tunnel_entrance",
@@ -478,7 +581,8 @@
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-011"
     },
     {
       "name": "harbor_2",
@@ -510,14 +614,22 @@
             "green"
           ],
           "puzzle_type": "keycard_and_electrical",
-          "loot_tier": 2
+          "loot_tier": 2,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 1,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "coastal",
           "coastal_monument",
           "size_large"
         ]
-      }
+      },
+      "id": "monument-012"
     },
     {
       "name": "train_tunnel_entrance",
@@ -554,7 +666,8 @@
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-013"
     },
     {
       "name": "ice_lake_4",
@@ -584,14 +697,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "natural_feature",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-014"
     },
     {
       "name": "water_treatment_plant_1",
@@ -624,14 +745,22 @@
             "blue"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 25.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 2,
+          "repair_bench_count": 2,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_large",
           "surface"
         ]
-      }
+      },
+      "id": "monument-015"
     },
     {
       "name": "train_tunnel_entrance",
@@ -668,7 +797,8 @@
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-016"
     },
     {
       "name": "lighthouse",
@@ -698,14 +828,22 @@
           "recycler_count": 1,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "coastal",
           "coastal_monument",
           "size_small"
         ]
-      }
+      },
+      "id": "monument-017"
     },
     {
       "name": "lighthouse",
@@ -735,14 +873,22 @@
           "recycler_count": 1,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "coastal",
           "coastal_monument",
           "size_small"
         ]
-      }
+      },
+      "id": "monument-018"
     },
     {
       "name": "bandit_town",
@@ -772,14 +918,22 @@
           "recycler_count": 2,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 1,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 1,
+          "mixing_table_count": 0,
+          "workbench_count": 1,
+          "vending_machine_count": 7
         },
         "tags": [
           "safe_zone",
           "size_medium",
           "surface"
         ]
-      }
+      },
+      "id": "monument-019"
     },
     {
       "name": "train_tunnel_entrance",
@@ -816,7 +970,8 @@
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-020"
     },
     {
       "name": "compound",
@@ -846,14 +1001,22 @@
           "recycler_count": 3,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 1,
+          "oil_refinery_count": 1,
+          "repair_bench_count": 1,
+          "mixing_table_count": 0,
+          "workbench_count": 2,
+          "vending_machine_count": 7
         },
         "tags": [
           "safe_zone",
           "size_medium",
           "surface"
         ]
-      }
+      },
+      "id": "monument-021"
     },
     {
       "name": "nuclear_missile_silo",
@@ -885,14 +1048,22 @@
             "red"
           ],
           "puzzle_type": "keycard_and_electrical",
-          "loot_tier": 3
+          "loot_tier": 3,
+          "maximum_radiation": 80.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_medium",
           "surface"
         ]
-      }
+      },
+      "id": "monument-022"
     },
     {
       "name": "desert_military_base_c",
@@ -922,14 +1093,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_medium",
           "surface"
         ]
-      }
+      },
+      "id": "monument-023"
     },
     {
       "name": "oilrig_1",
@@ -963,14 +1142,22 @@
             "red"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 1,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 1,
+          "vending_machine_count": 0
         },
         "tags": [
           "offshore",
           "offshore_monument",
           "size_small"
         ]
-      }
+      },
+      "id": "monument-024"
     },
     {
       "name": "oilrig_2",
@@ -1004,14 +1191,22 @@
             "red"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "offshore",
           "offshore_monument",
           "size_large"
         ]
-      }
+      },
+      "id": "monument-025"
     },
     {
       "name": "radtown_1",
@@ -1028,7 +1223,7 @@
       },
       "heading_degrees": 18.521783829,
       "metadata": {
-        "display_name": "Sewer Branch",
+        "display_name": "Mining Outpost",
         "family": "radtown",
         "classification": {
           "kind": "roadside_monument",
@@ -1043,14 +1238,22 @@
             "green"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 25.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "roadside_monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-026"
     },
     {
       "name": "warehouse",
@@ -1080,14 +1283,22 @@
           "recycler_count": 1,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 1,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "roadside_monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-027"
     },
     {
       "name": "mining_quarry_a",
@@ -1117,14 +1328,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "resource_monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-028"
     },
     {
       "name": "mining_quarry_b",
@@ -1154,14 +1373,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "resource_monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-029"
     },
     {
       "name": "mining_quarry_c",
@@ -1191,14 +1418,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "resource_monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-030"
     },
     {
       "name": "satellite_dish",
@@ -1230,14 +1465,22 @@
             "green"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 10.0,
+          "research_table_count": 1,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-031"
     },
     {
       "name": "sphere_tank",
@@ -1269,14 +1512,22 @@
             "green"
           ],
           "puzzle_type": "keycard",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 10.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 2,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "monument",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-032"
     },
     {
       "name": "swamp_b",
@@ -1306,14 +1557,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "natural_feature",
           "size_small",
           "surface"
         ]
-      }
+      },
+      "id": "monument-033"
     },
     {
       "name": "water_well_a",
@@ -1343,14 +1602,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 1
         },
         "tags": [
           "resource_location",
           "size_tiny",
           "surface"
         ]
-      }
+      },
+      "id": "monument-034"
     },
     {
       "name": "underwater_lab_b",
@@ -1380,14 +1647,22 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 1
+          "loot_tier": 1,
+          "maximum_radiation": 0.0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "size_large",
           "underwater",
           "underwater_monument"
         ]
-      }
+      },
+      "id": "monument-035"
     },
     {
       "name": "train_tunnel_entrance",
@@ -1417,14 +1692,21 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-036"
     },
     {
       "name": "train_tunnel_entrance",
@@ -1454,14 +1736,21 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-037"
     },
     {
       "name": "train_tunnel_entrance",
@@ -1491,14 +1780,21 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-038"
     },
     {
       "name": "train_tunnel_entrance",
@@ -1528,14 +1824,26 @@
           "recycler_count": 0,
           "keycard_requirements": [],
           "puzzle_type": "none",
-          "loot_tier": 0
+          "loot_tier": 0,
+          "research_table_count": 0,
+          "oil_refinery_count": 0,
+          "repair_bench_count": 0,
+          "mixing_table_count": 0,
+          "workbench_count": 0,
+          "vending_machine_count": 0
         },
         "tags": [
           "size_small",
           "surface_to_underground",
           "train_tunnel_entrance"
         ]
-      }
+      },
+      "id": "monument-039"
     }
+  ],
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
   ]
 }

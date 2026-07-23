@@ -11,7 +11,7 @@ from rustmap_parser.config import ExportConfig, ExportOptions, TunnelOptions
 from rustmap_parser.parser import Prefab, RustMap, Vector3
 from rustmap_parser.prefabs import PrefabManifest, PrefabManifestEntry
 from rustmap_parser.tunnels import _euler_matrix, _instance_matrix, render_tunnel_map, save_tunnel_render
-from rustmap_parser.tunnel_assets import _cache_key, _rasterize_template
+from rustmap_parser.tunnel_assets import _build_id, _cache_key, _rasterize_template
 
 
 class TunnelRendererTests(unittest.TestCase):
@@ -151,6 +151,21 @@ class TunnelRendererTests(unittest.TestCase):
         first = _cache_key(identity)
         identity["bundles"]["content"]["size"] += 1
         self.assertNotEqual(first, _cache_key(identity))
+
+    def test_build_id_matches_client_or_dedicated_install_directory(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            steamapps = Path(temporary) / "steamapps"
+            install = steamapps / "common" / "rust_dedicated"
+            install.mkdir(parents=True)
+            (steamapps / "appmanifest_252490.acf").write_text(
+                '"AppState" { "buildid" "client-build" '
+                '"installdir" "Rust" }', encoding="utf-8",
+            )
+            (steamapps / "appmanifest_258550.acf").write_text(
+                '"AppState" { "buildid" "server-build" '
+                '"installdir" "rust_dedicated" }', encoding="utf-8",
+            )
+            self.assertEqual(_build_id(install), "server-build")
 
     def test_packaged_tile_set_is_sanitized_and_complete(self):
         root = resources.files("rustmap_parser.data.tunnel_tiles")

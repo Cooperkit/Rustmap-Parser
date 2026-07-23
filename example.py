@@ -17,6 +17,7 @@ def main() -> None:
         output_dir=OUTPUT_DIR,
         exports=ExportOptions.all(),
         timing_debug=True,
+        status_updates=True,
     )
 
     result = RustMapExporter(config).run()

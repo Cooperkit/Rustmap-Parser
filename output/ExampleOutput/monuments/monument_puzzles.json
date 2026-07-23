@@ -1,0 +1,1807 @@
+{
+  "schema_version": 1,
+  "map": {
+    "world_size": 2500,
+    "timestamp": 1783040108421
+  },
+  "coordinates": {
+    "local_position": "metres in the owning monument prefab frame",
+    "position": "Unity world metres",
+    "map_position": "map metres from bottom-left"
+  },
+  "monuments": [
+    {
+      "monument_id": "monument-001",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "blue"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the blue keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader",
+              "properties": {
+                "access_level": 2,
+                "keycard": "blue"
+              },
+              "local_position": {
+                "x": 21.180050944,
+                "y": 0.432999998,
+                "z": -0.622016381
+              },
+              "position": {
+                "x": -681.573822583,
+                "y": 18.887769133,
+                "z": 243.360783309
+              },
+              "map_position": {
+                "x": 568.426177417,
+                "y": 1493.360783309
+              },
+              "heading_degrees": 282.01611088
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 21.375046298,
+                "y": 1.15199995,
+                "z": 0.153984316
+              },
+              "position": {
+                "x": -680.855422283,
+                "y": 19.606769085,
+                "z": 243.008503195
+              },
+              "map_position": {
+                "x": 569.144577717,
+                "y": 1493.008503195
+              },
+              "heading_degrees": 192.016259541
+            }
+          ],
+          "endpoint_count": 2,
+          "source": "prefab_asset",
+          "common_step_count": 0,
+          "alternate_endings": [
+            {
+              "id": "alternate-ending-001",
+              "steps": [
+                {
+                  "order": 1,
+                  "action": "swipe_keycard",
+                  "instruction": "Swipe the blue keycard",
+                  "component_type": "CardReader",
+                  "object_name": "CardReader",
+                  "properties": {
+                    "access_level": 2,
+                    "keycard": "blue"
+                  },
+                  "local_position": {
+                    "x": 36.180000067,
+                    "y": 0.432999998,
+                    "z": -0.621999741
+                  },
+                  "position": {
+                    "x": -684.696683176,
+                    "y": 18.887769133,
+                    "z": 228.689511537
+                  },
+                  "map_position": {
+                    "x": 565.303316824,
+                    "y": 1478.689511537
+                  },
+                  "heading_degrees": 282.016448975
+                },
+                {
+                  "order": 2,
+                  "action": "door_opens",
+                  "instruction": "Door opens",
+                  "component_type": "DoorManipulator",
+                  "object_name": "DoorManipulator",
+                  "properties": {},
+                  "local_position": {
+                    "x": 36.375,
+                    "y": 1.15199995,
+                    "z": 0.153999805
+                  },
+                  "position": {
+                    "x": -683.978284955,
+                    "y": 19.606769085,
+                    "z": 228.337227184
+                  },
+                  "map_position": {
+                    "x": 566.021715045,
+                    "y": 1478.337227184
+                  },
+                  "heading_degrees": 192.016597635
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-009",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -60.849742889,
+                "y": 5.348292828,
+                "z": -38.269001007
+              },
+              "position": {
+                "x": 914.955813369,
+                "y": 6.598292828,
+                "z": 38.040138428
+              },
+              "map_position": {
+                "x": 2164.955813369,
+                "y": 1288.040138428
+              },
+              "heading_degrees": 269.829876046
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -62.569999695,
+                "y": 5.480000019,
+                "z": -36.86000061
+              },
+              "position": {
+                "x": 916.422220357,
+                "y": 6.730000019,
+                "z": 39.71172933
+              },
+              "map_position": {
+                "x": 2166.422220357,
+                "y": 1289.71172933
+              },
+              "heading_degrees": 86.907225254
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 59.464221954,
+                "y": 5.566590309,
+                "z": -5.638954163
+              },
+              "position": {
+                "x": 943.495740927,
+                "y": 6.816590309,
+                "z": -83.309120443
+              },
+              "map_position": {
+                "x": 2193.495740927,
+                "y": 1166.690879557
+              },
+              "heading_degrees": 236.335657998
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 59.468952179,
+                "y": 5.556221008,
+                "z": -5.621875763
+              },
+              "position": {
+                "x": 943.512649474,
+                "y": 6.806221008,
+                "z": -83.314425892
+              },
+              "map_position": {
+                "x": 2193.512649474,
+                "y": 1166.685574108
+              },
+              "heading_degrees": 326.33885891
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-010",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": 65.505996704,
+                "y": 4.366001129,
+                "z": -40.916000366
+              },
+              "position": {
+                "x": 289.091887854,
+                "y": 5.812001228,
+                "z": 786.402196889
+              },
+              "map_position": {
+                "x": 1539.091887854,
+                "y": 2036.402196889
+              },
+              "heading_degrees": 343.612518311
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": 64.76599884,
+                "y": 4.367435455,
+                "z": -40.92300415
+              },
+              "position": {
+                "x": 288.383927921,
+                "y": 5.813435555,
+                "z": 786.18670066
+              },
+              "map_position": {
+                "x": 1538.383927921,
+                "y": 2036.18670066
+              },
+              "heading_degrees": 343.612518311
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 65.940002441,
+                "y": 7.305000305,
+                "z": -33.36000061
+              },
+              "position": {
+                "x": 287.376474168,
+                "y": 8.751000404,
+                "z": 793.773685828
+              },
+              "map_position": {
+                "x": 1537.376474168,
+                "y": 2043.773685828
+              },
+              "heading_degrees": 73.612487371
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 65.931999207,
+                "y": 7.581999779,
+                "z": -33.007995605
+              },
+              "position": {
+                "x": 287.269484235,
+                "y": 9.027999878,
+                "z": 794.109132887
+              },
+              "map_position": {
+                "x": 1537.269484235,
+                "y": 2044.109132887
+              },
+              "heading_degrees": 163.612463669
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-012",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -23.361000061,
+                "y": 4.274983406,
+                "z": -15.970000267
+              },
+              "position": {
+                "x": -947.221695375,
+                "y": 5.004983425,
+                "z": 376.947224832
+              },
+              "map_position": {
+                "x": 302.778304625,
+                "y": 1626.947224832
+              },
+              "heading_degrees": 89.968459524
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -23.205999374,
+                "y": 4.043000221,
+                "z": -16.158000946
+              },
+              "position": {
+                "x": -947.376799378,
+                "y": 4.77300024,
+                "z": 377.135140282
+              },
+              "map_position": {
+                "x": 302.623200622,
+                "y": 1627.135140282
+              },
+              "heading_degrees": 269.968339689
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 20.096874237,
+                "y": 4.022841454,
+                "z": -14.375
+              },
+              "position": {
+                "x": -990.678686374,
+                "y": 4.752841473,
+                "z": 375.328337037
+              },
+              "map_position": {
+                "x": 259.321313626,
+                "y": 1625.328337037
+              },
+              "heading_degrees": 179.968505859
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 20.103000641,
+                "y": 3.936999798,
+                "z": -14.375
+              },
+              "position": {
+                "x": -990.684812777,
+                "y": 4.666999817,
+                "z": 375.328333669
+              },
+              "map_position": {
+                "x": 259.315187223,
+                "y": 1625.328333669
+              },
+              "heading_degrees": 269.968513558
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-015",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": -9.875,
+                "y": 6.25,
+                "z": -72.25
+              },
+              "position": {
+                "x": -225.41548025,
+                "y": 28.239999771,
+                "z": 413.714439853
+              },
+              "map_position": {
+                "x": 1024.58451975,
+                "y": 1663.714439853
+              },
+              "heading_degrees": 0.683118327
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": -9.916000366,
+                "y": 6.126999855,
+                "z": -72.269996643
+              },
+              "position": {
+                "x": -225.374244275,
+                "y": 28.116999626,
+                "z": 413.733946009
+              },
+              "map_position": {
+                "x": 1024.625755725,
+                "y": 1663.733946009
+              },
+              "heading_degrees": 90.683419745
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-002",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "blue"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -5.734000206,
+                "y": 6.026000023,
+                "z": -62.298999786
+              },
+              "position": {
+                "x": -229.674883771,
+                "y": 28.015999794,
+                "z": 403.813542611
+              },
+              "map_position": {
+                "x": 1020.325116229,
+                "y": 1653.813542611
+              },
+              "heading_degrees": 270.683290251
+            },
+            {
+              "order": 2,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the blue keycard",
+              "component_type": "CardReader",
+              "object_name": "BCD_A_CardReader",
+              "properties": {
+                "access_level": 2,
+                "keycard": "blue"
+              },
+              "local_position": {
+                "x": 75.050003052,
+                "y": 6.25,
+                "z": 23.25
+              },
+              "position": {
+                "x": -311.473592283,
+                "y": 28.239999771,
+                "z": 319.234243532
+              },
+              "map_position": {
+                "x": 938.526407717,
+                "y": 1569.234243532
+              },
+              "heading_degrees": 270.68345446
+            },
+            {
+              "order": 3,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": 74.98400116,
+                "y": 6.426000118,
+                "z": 21.091999054
+              },
+              "position": {
+                "x": -311.381853842,
+                "y": 28.415999889,
+                "z": 321.391303659
+              },
+              "map_position": {
+                "x": 938.618146158,
+                "y": 1571.391303659
+              },
+              "heading_degrees": 90.683603272
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "BCD_A_DoorManipulator (1)",
+              "properties": {},
+              "local_position": {
+                "x": 75.059288025,
+                "y": 6.157000065,
+                "z": 23.24600029
+              },
+              "position": {
+                "x": -311.482828886,
+                "y": 28.146999836,
+                "z": 319.238353712
+              },
+              "map_position": {
+                "x": 938.517171114,
+                "y": 1569.238353712
+              },
+              "heading_degrees": 0.683401779
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-003",
+          "kind": "mechanical_route",
+          "required_keycards": [],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -5.734000206,
+                "y": 6.026000023,
+                "z": -62.298999786
+              },
+              "position": {
+                "x": -229.674883771,
+                "y": 28.015999794,
+                "z": 403.813542611
+              },
+              "map_position": {
+                "x": 1020.325116229,
+                "y": 1653.813542611
+              },
+              "heading_degrees": 270.683290251
+            },
+            {
+              "order": 2,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "sliding_blast_door_PressButton",
+              "properties": {},
+              "local_position": {
+                "x": -3.375,
+                "y": 0.25,
+                "z": -60.35100174
+              },
+              "position": {
+                "x": -232.056952417,
+                "y": 22.239999771,
+                "z": 401.893821973
+              },
+              "map_position": {
+                "x": 1017.943047583,
+                "y": 1651.893821973
+              },
+              "heading_degrees": 0.683118327
+            },
+            {
+              "order": 3,
+              "action": "turn_wheel",
+              "instruction": "Turn the wheel",
+              "component_type": "WheelSwitch",
+              "object_name": "sliding_blast_door_WheelSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -3.375,
+                "y": 0.27700001,
+                "z": -60.090999603
+              },
+              "position": {
+                "x": -232.060053796,
+                "y": 22.266999781,
+                "z": 401.633838335
+              },
+              "map_position": {
+                "x": 1017.939946204,
+                "y": 1651.633838335
+              },
+              "heading_degrees": 180.683456421
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "SlidingProgressDoor",
+              "object_name": "sliding_blast_door",
+              "properties": {},
+              "local_position": {
+                "x": -0.375,
+                "y": 0.375,
+                "z": -60.25
+              },
+              "position": {
+                "x": -235.057943761,
+                "y": 22.364999771,
+                "z": 401.828612265
+              },
+              "map_position": {
+                "x": 1014.942056239,
+                "y": 1651.828612265
+              },
+              "heading_degrees": 180.683456421
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-022",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "red"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the red keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader",
+              "properties": {
+                "access_level": 3,
+                "keycard": "red"
+              },
+              "local_position": {
+                "x": 11.720000267,
+                "y": 46.596000671,
+                "z": 29.450000763
+              },
+              "position": {
+                "x": -405.940233739,
+                "y": 31.560947418,
+                "z": -840.679450004
+              },
+              "map_position": {
+                "x": 844.059766261,
+                "y": 409.320549996
+              },
+              "heading_degrees": 122.403182219
+            },
+            {
+              "order": 2,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton",
+              "properties": {},
+              "local_position": {
+                "x": 11.324999809,
+                "y": 46.730998993,
+                "z": 29.448999405
+              },
+              "position": {
+                "x": -406.151059274,
+                "y": 31.69594574,
+                "z": -841.013484371
+              },
+              "map_position": {
+                "x": 843.848940726,
+                "y": 408.986515629
+              },
+              "heading_degrees": 122.403457135
+            },
+            {
+              "order": 3,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 11.324999809,
+                "y": 47.946998596,
+                "z": 29.455999374
+              },
+              "position": {
+                "x": -406.156969328,
+                "y": 32.911945343,
+                "z": -841.009733261
+              },
+              "map_position": {
+                "x": 843.843030672,
+                "y": 408.990266739
+              },
+              "heading_degrees": 212.403455965
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-002",
+          "kind": "button_route",
+          "required_keycards": [],
+          "steps": [
+            {
+              "order": 1,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton (1)",
+              "properties": {},
+              "local_position": {
+                "x": 38.006000519,
+                "y": 39.929000854,
+                "z": -24.181999207
+              },
+              "position": {
+                "x": -346.572871006,
+                "y": 24.893947601,
+                "z": -847.226317345
+              },
+              "map_position": {
+                "x": 903.427128994,
+                "y": 402.773682655
+              },
+              "heading_degrees": 32.403133284
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator_L",
+              "properties": {},
+              "local_position": {
+                "x": 36.01599884,
+                "y": 42.305999756,
+                "z": -29.87899971
+              },
+              "position": {
+                "x": -342.829302364,
+                "y": 27.270946503,
+                "z": -851.95935181
+              },
+              "map_position": {
+                "x": 907.170697636,
+                "y": 398.04064819
+              },
+              "heading_degrees": 345.701980946
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-024",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "red"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the red keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader (1)",
+              "properties": {
+                "access_level": 3,
+                "keycard": "red"
+              },
+              "local_position": {
+                "x": -12.003721237,
+                "y": 36.39799881,
+                "z": 2.545000076
+              },
+              "position": {
+                "x": 1296.130141796,
+                "y": 36.39799881,
+                "z": -1557.204703783
+              },
+              "map_position": {
+                "x": 2546.130141796,
+                "y": -307.204703783
+              },
+              "heading_degrees": 86.576884557
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator (1)",
+              "properties": {},
+              "local_position": {
+                "x": -12.119000435,
+                "y": 36.756999969,
+                "z": 2.532000065
+              },
+              "position": {
+                "x": 1296.015844478,
+                "y": 36.756999969,
+                "z": -1557.224563717
+              },
+              "map_position": {
+                "x": 2546.015844478,
+                "y": -307.224563717
+              },
+              "heading_degrees": 356.576934814
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-002",
+          "kind": "button_route",
+          "required_keycards": [],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": 1.017410755,
+                "y": 27.155000687,
+                "z": -21.545000076
+              },
+              "position": {
+                "x": 1310.566413544,
+                "y": 27.155000687,
+                "z": -1580.474255642
+              },
+              "map_position": {
+                "x": 2560.566413544,
+                "y": -330.474255642
+              },
+              "heading_degrees": 86.576903875
+            },
+            {
+              "order": 2,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton (2)",
+              "properties": {},
+              "local_position": {
+                "x": -2.147000074,
+                "y": 27.408000946,
+                "z": -22.169000626
+              },
+              "position": {
+                "x": 1307.444906391,
+                "y": 27.408000946,
+                "z": -1581.286084244
+              },
+              "map_position": {
+                "x": 2557.444906391,
+                "y": -331.286084244
+              },
+              "heading_degrees": 176.576823824
+            },
+            {
+              "order": 3,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton (1)",
+              "properties": {},
+              "local_position": {
+                "x": -2.147000074,
+                "y": 27.408000946,
+                "z": -22.066999435
+              },
+              "position": {
+                "x": 1307.438816081,
+                "y": 27.408000946,
+                "z": -1581.184265037
+              },
+              "map_position": {
+                "x": 2557.438816081,
+                "y": -331.184265037
+              },
+              "heading_degrees": 356.576869928
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator (1)",
+              "properties": {},
+              "local_position": {
+                "x": -2.147000074,
+                "y": 28.017000198,
+                "z": -22.069999695
+              },
+              "position": {
+                "x": 1307.438995221,
+                "y": 28.017000198,
+                "z": -1581.187259944
+              },
+              "map_position": {
+                "x": 2557.438995221,
+                "y": -331.187259944
+              },
+              "heading_degrees": 86.576932853
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-003",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "blue"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the blue keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader",
+              "properties": {
+                "access_level": 2,
+                "keycard": "blue"
+              },
+              "local_position": {
+                "x": 1.052000046,
+                "y": 27.13498497,
+                "z": -16.513000488
+              },
+              "position": {
+                "x": 1310.300489366,
+                "y": 27.13498497,
+                "z": -1575.449168518
+              },
+              "map_position": {
+                "x": 2560.300489366,
+                "y": -325.449168518
+              },
+              "heading_degrees": 266.576936776
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 1.146000028,
+                "y": 27.837999344,
+                "z": -16.506000519
+              },
+              "position": {
+                "x": 1310.393903684,
+                "y": 27.837999344,
+                "z": -1575.436568466
+              },
+              "map_position": {
+                "x": 2560.393903684,
+                "y": -325.436568466
+              },
+              "heading_degrees": 176.57686822
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-004",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 16.548000336,
+                "y": 22.768306732,
+                "z": 0.375
+              },
+              "position": {
+                "x": 1324.760490306,
+                "y": 22.768306732,
+                "z": -1557.666059726
+              },
+              "map_position": {
+                "x": 2574.760490306,
+                "y": -307.666059726
+              },
+              "heading_degrees": 86.57698115
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 16.452999115,
+                "y": 23.309000015,
+                "z": 0.389999986
+              },
+              "position": {
+                "x": 1324.664762957,
+                "y": 23.309000015,
+                "z": -1557.656758857
+              },
+              "map_position": {
+                "x": 2574.664762957,
+                "y": -307.656758857
+              },
+              "heading_degrees": 356.576934814
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-025",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "button_route",
+          "required_keycards": [],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": 19.602985382,
+                "y": 27.409313202,
+                "z": 3.525108337
+              },
+              "position": {
+                "x": -1031.018575407,
+                "y": 27.409313202,
+                "z": -1592.535365493
+              },
+              "map_position": {
+                "x": 218.981424593,
+                "y": -342.535365493
+              },
+              "heading_degrees": 112.476466902
+            },
+            {
+              "order": 2,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton (3)",
+              "properties": {},
+              "local_position": {
+                "x": 16.703998566,
+                "y": 27.133998871,
+                "z": 0.837684631
+              },
+              "position": {
+                "x": -1034.724762072,
+                "y": 27.133998871,
+                "z": -1593.910338633
+              },
+              "map_position": {
+                "x": 215.275237928,
+                "y": -343.910338633
+              },
+              "heading_degrees": 292.476953791
+            },
+            {
+              "order": 3,
+              "action": "press_button",
+              "instruction": "Press the button",
+              "component_type": "PressButton",
+              "object_name": "PressButton (2)",
+              "properties": {},
+              "local_position": {
+                "x": 16.802997589,
+                "y": 27.133998871,
+                "z": 0.837684631
+              },
+              "position": {
+                "x": -1034.633283458,
+                "y": 27.133998871,
+                "z": -1593.948186614
+              },
+              "map_position": {
+                "x": 215.366716542,
+                "y": -343.948186614
+              },
+              "heading_degrees": 112.476621451
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator (2)",
+              "properties": {},
+              "local_position": {
+                "x": 16.798997879,
+                "y": 27.708995819,
+                "z": 0.838684082
+              },
+              "position": {
+                "x": -1034.636597235,
+                "y": 27.708995819,
+                "z": -1593.94573397
+              },
+              "map_position": {
+                "x": 215.363402765,
+                "y": -343.94573397
+              },
+              "heading_degrees": 202.476566478
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-002",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "CardReader (2)",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 18.537998199,
+                "y": 22.617980957,
+                "z": -33.219512939
+              },
+              "position": {
+                "x": -1046.050373174,
+                "y": 22.617980957,
+                "z": -1626.081549275
+              },
+              "map_position": {
+                "x": 203.949626826,
+                "y": -376.081549275
+              },
+              "heading_degrees": 202.476810657
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "DoorManipulator (3)",
+              "properties": {},
+              "local_position": {
+                "x": 18.591999054,
+                "y": 23.320995331,
+                "z": -33.116317749
+              },
+              "position": {
+                "x": -1045.961022262,
+                "y": 23.320995331,
+                "z": -1626.006838137
+              },
+              "map_position": {
+                "x": 204.038977738,
+                "y": -376.006838137
+              },
+              "heading_degrees": 112.476737364
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-003",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "blue"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the blue keycard",
+              "component_type": "CardReader",
+              "object_name": "BCD_CardReader",
+              "properties": {
+                "access_level": 2,
+                "keycard": "blue"
+              },
+              "local_position": {
+                "x": 22.41699791,
+                "y": 27.005981445,
+                "z": -10.435516357
+              },
+              "position": {
+                "x": -1033.755567031,
+                "y": 27.005981445,
+                "z": -1606.511294271
+              },
+              "map_position": {
+                "x": 216.244432969,
+                "y": -356.511294271
+              },
+              "heading_degrees": 292.476635033
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "BCD_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 22.52399826,
+                "y": 27.708995819,
+                "z": -10.411315918
+              },
+              "position": {
+                "x": -1033.647442918,
+                "y": 27.708995819,
+                "z": -1606.529839147
+              },
+              "map_position": {
+                "x": 216.352557082,
+                "y": -356.529839147
+              },
+              "heading_degrees": 202.476566478
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        },
+        {
+          "id": "puzzle-route-004",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "red"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the red keycard",
+              "component_type": "CardReader",
+              "object_name": "RCD_CardReader (1)",
+              "properties": {
+                "access_level": 3,
+                "keycard": "red"
+              },
+              "local_position": {
+                "x": 26.231998444,
+                "y": 27.005981445,
+                "z": -7.650314331
+              },
+              "position": {
+                "x": -1029.16556985,
+                "y": 27.005981445,
+                "z": -1605.396168594
+              },
+              "map_position": {
+                "x": 220.83443015,
+                "y": -355.396168594
+              },
+              "heading_degrees": 22.476633072
+            },
+            {
+              "order": 2,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "RCD_DoorManipulator (1)",
+              "properties": {},
+              "local_position": {
+                "x": 26.267997742,
+                "y": 27.708995819,
+                "z": -7.772315979
+              },
+              "position": {
+                "x": -1029.178947257,
+                "y": 27.708995819,
+                "z": -1605.52266522
+              },
+              "map_position": {
+                "x": 220.821052743,
+                "y": -355.52266522
+              },
+              "heading_degrees": 292.476557758
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-026",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -42.467727661,
+                "y": 0.011908054,
+                "z": 20.46957016
+              },
+              "position": {
+                "x": -6.01917298,
+                "y": 9.079331875,
+                "z": -259.005173425
+              },
+              "map_position": {
+                "x": 1243.98082702,
+                "y": 990.994826575
+              },
+              "heading_degrees": 292.63665528
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -42.595726013,
+                "y": 0.568908215,
+                "z": 19.020570755
+              },
+              "position": {
+                "x": -6.60083806,
+                "y": 9.636332035,
+                "z": -260.338458312
+              },
+              "map_position": {
+                "x": 1243.39916194,
+                "y": 989.661541688
+              },
+              "heading_degrees": 291.866564286
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": -31.188831329,
+                "y": 4.772556305,
+                "z": 19.428153992
+              },
+              "position": {
+                "x": 4.344688107,
+                "y": 13.839980125,
+                "z": -263.575560003
+              },
+              "map_position": {
+                "x": 1254.344688107,
+                "y": 986.424439997
+              },
+              "heading_degrees": 288.413572196
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": -31.177722931,
+                "y": 4.761908054,
+                "z": 19.414569855
+              },
+              "position": {
+                "x": 4.350905915,
+                "y": 13.829331875,
+                "z": -263.591969273
+              },
+              "map_position": {
+                "x": 1254.350905915,
+                "y": 986.408030727
+              },
+              "heading_degrees": 18.409047131
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-031",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -28.361000061,
+                "y": 0.152999997,
+                "z": -22.319999695
+              },
+              "position": {
+                "x": 699.018727979,
+                "y": 13.776571393,
+                "z": 182.222344916
+              },
+              "map_position": {
+                "x": 1949.018727979,
+                "y": 1432.222344916
+              },
+              "heading_degrees": 259.667077258
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -27.0189991,
+                "y": 0.342999995,
+                "z": -24.055000305
+              },
+              "position": {
+                "x": 700.309094944,
+                "y": 13.966571391,
+                "z": 183.996083001
+              },
+              "map_position": {
+                "x": 1950.309094944,
+                "y": 1433.996083001
+              },
+              "heading_degrees": 76.726979199
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 28.192581177,
+                "y": 0.269648194,
+                "z": 14.792215347
+              },
+              "position": {
+                "x": 647.569034217,
+                "y": 13.89321959,
+                "z": 226.137639154
+              },
+              "map_position": {
+                "x": 1897.569034217,
+                "y": 1476.137639154
+              },
+              "heading_degrees": 120.191509565
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 28.209999084,
+                "y": 0.258999944,
+                "z": 14.789987564
+              },
+              "position": {
+                "x": 647.566301024,
+                "y": 13.88257134,
+                "z": 226.154984937
+              },
+              "map_position": {
+                "x": 1897.566301024,
+                "y": 1476.154984937
+              },
+              "heading_degrees": 210.186995619
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-032",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab",
+      "puzzles": [
+        {
+          "id": "puzzle-route-001",
+          "kind": "keycard_route",
+          "required_keycards": [
+            "green"
+          ],
+          "steps": [
+            {
+              "order": 1,
+              "action": "insert_fuse",
+              "instruction": "Insert a fuse",
+              "component_type": "ItemBasedFlowRestrictor",
+              "object_name": "FuseBox",
+              "properties": {},
+              "local_position": {
+                "x": -49.611000061,
+                "y": 5.663000107,
+                "z": 10.560001373
+              },
+              "position": {
+                "x": -153.854955251,
+                "y": 30.723226547,
+                "z": -7.659826773
+              },
+              "map_position": {
+                "x": 1096.145044749,
+                "y": 1242.340173227
+              },
+              "heading_degrees": 253.243127063
+            },
+            {
+              "order": 2,
+              "action": "turn_on_switch",
+              "instruction": "Turn on the switch",
+              "component_type": "ElectricSwitch",
+              "object_name": "SimpleSwitch",
+              "properties": {},
+              "local_position": {
+                "x": -48.268997192,
+                "y": 5.853000164,
+                "z": 8.825000763
+              },
+              "position": {
+                "x": -152.77114442,
+                "y": 30.913226604,
+                "z": -5.752851969
+              },
+              "map_position": {
+                "x": 1097.22885558,
+                "y": 1244.247148031
+              },
+              "heading_degrees": 70.303029004
+            },
+            {
+              "order": 3,
+              "action": "swipe_keycard",
+              "instruction": "Swipe the green keycard",
+              "component_type": "CardReader",
+              "object_name": "GCD_A_CardReader",
+              "properties": {
+                "access_level": 1,
+                "keycard": "green"
+              },
+              "local_position": {
+                "x": 6.942581177,
+                "y": 5.779648304,
+                "z": 47.672218323
+              },
+              "position": {
+                "x": -209.895043498,
+                "y": 30.839874744,
+                "z": 30.223318647
+              },
+              "map_position": {
+                "x": 1040.104956502,
+                "y": 1280.223318647
+              },
+              "heading_degrees": 113.76755937
+            },
+            {
+              "order": 4,
+              "action": "door_opens",
+              "instruction": "Door opens",
+              "component_type": "DoorManipulator",
+              "object_name": "GCD_A_DoorManipulator",
+              "properties": {},
+              "local_position": {
+                "x": 6.959999084,
+                "y": 5.769000053,
+                "z": 47.66999054
+              },
+              "position": {
+                "x": -209.899700251,
+                "y": 30.829226494,
+                "z": 30.240249719
+              },
+              "map_position": {
+                "x": 1040.100299749,
+                "y": 1280.240249719
+              },
+              "heading_degrees": 203.763045424
+            }
+          ],
+          "endpoint_count": 1,
+          "source": "prefab_asset"
+        }
+      ]
+    }
+  ],
+  "puzzle_count": 20,
+  "route_semantics": "only major causal player actions and their door outcomes; alternate doors sharing prerequisites are alternate endings",
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
+  ]
+}

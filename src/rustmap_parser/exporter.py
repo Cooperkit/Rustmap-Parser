@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from contextlib import ExitStack
 from importlib import resources
 from pathlib import Path
@@ -13,7 +13,7 @@ import numpy as np
 from PIL import Image
 
 from .cargo import save_cargo_ship_path
-from .config import ExportConfig, ExportResult
+from .config import DiagnosticsOptions, ExportConfig, ExportResult, MonumentOptions
 from .layers import generate_diagnostics
 from .monuments import save_monuments
 from .no_build import save_no_build_zones
@@ -22,10 +22,33 @@ from .png import save_png
 from .populations import SpawnFilterEvaluator
 from .renderer import save_map_render
 from .tunnels import save_tunnel_render
+from .transforms import exported_position_fields
 
 
 ORIENTATION = "flip_vertical (reverse Z rows; preserve X left/right)"
 HEATMAP_PREVIEW_DIRECTORY = "Heatmap-previews"
+STATUS_PREFIX = "[rust-map-parser]"
+
+
+def _status(config: ExportConfig, message: str) -> None:
+    """Print an immediate, opt-in pipeline milestone."""
+    if config.status_updates:
+        print(f"{STATUS_PREFIX} {message}", flush=True)
+
+
+def _support_status(name: str, result: tuple[dict, float]) -> str:
+    """Return a compact completion message for a supporting export."""
+    metadata, seconds = result
+    if name == "no_build_zones":
+        detail = f"{int(metadata.get('zone_count', 0))} zones"
+        label = "No-build zones"
+    elif name == "cargo_ship_path":
+        detail = f"{int(metadata.get('patrol', {}).get('node_count', 0))} patrol nodes"
+        label = "Cargo ship path"
+    else:
+        detail = str(metadata.get("status", "complete"))
+        label = "Train tunnels"
+    return f"{label} complete: {detail} ({seconds:.2f}s)"
 
 
 def export_orientation(values: np.ndarray) -> np.ndarray:
@@ -61,17 +84,42 @@ def _generate(config: ExportConfig, rules_path: Path | None,
     exports = config.exports
     timings: dict[str, object] = {"heatmap_categories": {}}
 
+    _status(config, f"Export started: {config.map_path.name} -> {output}")
+    _status(config, "Loading map")
     stage = time.perf_counter()
     world = load_map(config.map_path)
     timings["map_parse_seconds"] = time.perf_counter() - stage
+    _status(
+        config,
+        f"Map loaded: {int(world.size)} m world, "
+        f"{len(getattr(world, 'prefabs', ()))} placed prefabs "
+        f"({timings['map_parse_seconds']:.2f}s)",
+    )
 
     diagnostics_dir = output / "diagnostics"
+    diagnostic_options = (
+        exports.diagnostics
+        if isinstance(exports.diagnostics, DiagnosticsOptions)
+        else None
+    )
+    diagnostic_resolution = (
+        diagnostic_options.resolved_resolution(world.size)
+        if diagnostic_options is not None else None
+    )
     diagnostics_pool = ThreadPoolExecutor(max_workers=1) if exports.diagnostics else None
     diagnostics_started = time.perf_counter()
     diagnostics_future = (
-        diagnostics_pool.submit(generate_diagnostics, world, diagnostics_dir)
+        diagnostics_pool.submit(
+            generate_diagnostics, world, diagnostics_dir, diagnostic_resolution
+        )
         if diagnostics_pool else None
     )
+    if diagnostics_future:
+        diagnostic_size = (
+            f" at {diagnostic_resolution}x{diagnostic_resolution}"
+            if diagnostic_resolution is not None else " at native layer resolutions"
+        )
+        _status(config, f"Diagnostics started in background{diagnostic_size}")
 
     heatmap_options = exports.heatmaps
     heatmap_categories: dict[str, dict] = {}
@@ -85,6 +133,11 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             raise RuntimeError("Heatmap export requires a spawn-rule database")
         stage = time.perf_counter()
         database = json.loads(rules_path.read_text(encoding="utf-8"))
+        _status(
+            config,
+            f"Heatmaps started: {len(database['heatmap_categories'])} categories at "
+            f"{heatmap_resolution}x{heatmap_resolution}",
+        )
         timings["rule_database_load_seconds"] = time.perf_counter() - stage
         rules = {rule["asset_path"]: rule for rule in database["rules"]}
         rule_database_metadata = {
@@ -131,6 +184,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             for future in preview_futures:
                 future.result()
             preview_pool.shutdown()
+        _status(config, f"Heatmaps complete: {len(heatmap_categories)} categories")
     else:
         timings.update({
             "rule_database_load_seconds": 0.0,
@@ -143,23 +197,77 @@ def _generate(config: ExportConfig, rules_path: Path | None,
         diagnostic_stats = diagnostics_future.result()
         diagnostics_pool.shutdown()
         timings["diagnostics_seconds"] = time.perf_counter() - diagnostics_started
+        _status(
+            config,
+            f"Diagnostics complete ({timings['diagnostics_seconds']:.2f}s)",
+        )
     else:
         diagnostic_stats = {}
         timings["diagnostics_seconds"] = 0.0
 
-    monuments_path = output / "monuments.json"
+    monuments_dir = output / "monuments"
+    monuments_path = monuments_dir / "monuments.json"
+    monument_interactables_path = monuments_dir / "monument_interactables.json"
+    monument_puzzles_path = monuments_dir / "monument_puzzles.json"
+    monument_loot_path = monuments_dir / "monument_loot.json"
+    monument_radiation_path = monuments_dir / "monument_radiation_zones.json"
+    monument_options = (
+        exports.monuments
+        if isinstance(exports.monuments, MonumentOptions)
+        else MonumentOptions()
+    )
     stage = time.perf_counter()
     if exports.monuments:
+        _status(config, "Monument JSON export started")
         if manifest_path is None:
             raise RuntimeError("Monument export requires a prefab manifest")
-        monument_data = save_monuments(world, manifest_path, monuments_path)
+        monument_data = save_monuments(
+            world, manifest_path, monuments_path,
+            interactable=monument_options.interactable,
+            puzzles=monument_options.puzzles,
+            interactables_output_path=(
+                monument_interactables_path if monument_options.interactable else None
+            ),
+            puzzles_output_path=(
+                monument_puzzles_path if monument_options.puzzles else None
+            ),
+            loot_output_path=(monument_loot_path if monument_options.loot else None),
+            radiation_output_path=(
+                monument_radiation_path
+                if monument_options.radiation_zones else None
+            ),
+            transforms=exports.transforms,
+        )
+        for enabled, path in (
+            (monument_options.interactable, monument_interactables_path),
+            (monument_options.puzzles, monument_puzzles_path),
+            (monument_options.loot, monument_loot_path),
+            (monument_options.radiation_zones, monument_radiation_path),
+        ):
+            if not enabled and path.is_file():
+                path.unlink()
+        for legacy_name in (
+            "monuments.json", "monument_interactables.json",
+            "monument_puzzles.json", "monument_loot.json",
+            "monument_radiation_zones.json",
+        ):
+            legacy_path = output / legacy_name
+            if legacy_path.is_file():
+                legacy_path.unlink()
     else:
         monument_data = {"monument_count": 0, "unique_prefab_count": 0}
     timings["monuments_seconds"] = time.perf_counter() - stage
+    if exports.monuments:
+        _status(
+            config,
+            f"Monument JSON export complete: {int(monument_data['monument_count'])} "
+            f"monuments ({timings['monuments_seconds']:.2f}s)",
+        )
 
     terrain_options = exports.terrain
     render_metadata = None
     if terrain_options is not None:
+        _status(config, "Terrain render started")
         stage = time.perf_counter()
         render_metadata = save_map_render(
             world, output, terrain_options.scale, terrain_options.ocean_margin,
@@ -168,6 +276,10 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             terrain_options.tiles.size if terrain_options.tiles else 512,
         )
         timings["map_render_seconds"] = time.perf_counter() - stage
+        _status(
+            config,
+            f"Terrain render complete ({timings['map_render_seconds']:.2f}s)",
+        )
     else:
         timings["map_render_seconds"] = 0.0
 
@@ -197,6 +309,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             terrain_image=terrain_image,
             export_images=no_build_options.export_images,
             export_json=no_build_options.export_json,
+            transforms=exports.transforms,
         )
         return value, time.perf_counter() - stage_started
 
@@ -230,6 +343,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             export_layer=cargo_options.export_layer,
             export_overlay=cargo_options.export_overlay,
             export_json=cargo_options.export_json,
+            transforms=exports.transforms,
         )
         return value, time.perf_counter() - stage_started
 
@@ -241,13 +355,31 @@ def _generate(config: ExportConfig, rules_path: Path | None,
     if cargo_options is not None:
         jobs["cargo_ship_path"] = run_cargo
     results = {}
+    support_labels = {
+        "no_build_zones": "no-build zones",
+        "tunnels": "train tunnels",
+        "cargo_ship_path": "cargo ship path",
+    }
+    if jobs:
+        _status(
+            config,
+            "Supporting exports started: " + ", ".join(
+                support_labels[name] for name in jobs
+            ),
+        )
     if len(jobs) == 1:
         name, function = next(iter(jobs.items()))
         results[name] = function()
+        _status(config, _support_status(name, results[name]))
     elif jobs:
         with ThreadPoolExecutor(max_workers=min(3, len(jobs))) as pool:
-            futures = {name: pool.submit(function) for name, function in jobs.items()}
-            results = {name: future.result() for name, future in futures.items()}
+            futures = {
+                pool.submit(function): name for name, function in jobs.items()
+            }
+            for future in as_completed(futures):
+                name = futures[future]
+                results[name] = future.result()
+                _status(config, _support_status(name, results[name]))
     no_build_metadata, timings["no_build_zones_seconds"] = results.get(
         "no_build_zones", ({"status": "disabled", "zone_count": 0}, 0.0)
     )
@@ -262,18 +394,27 @@ def _generate(config: ExportConfig, rules_path: Path | None,
 
     metadata_path = output / "export_metadata.json"
     metadata = {
-        "schema_version": 2,
+        "schema_version": 7,
         "map": {
-            "path": str(config.map_path),
+            # Keep the established key for compatibility without disclosing an
+            # absolute workstation or server path when exports are shared.
+            "path": config.map_path.name,
             "world_size": int(world.size),
             "serialization_version": int(world.serialization_version),
             "timestamp": int(world.timestamp),
         },
         "orientation": ORIENTATION,
+        "transforms": {
+            "exported_position_fields": exported_position_fields(exports.transforms),
+        },
         "enabled_outputs": {
             "heatmaps": heatmap_options is not None,
-            "diagnostics": exports.diagnostics,
-            "monuments": exports.monuments,
+            "diagnostics": bool(exports.diagnostics),
+            "monuments": bool(exports.monuments),
+            "monument_interactables": monument_options.interactable,
+            "monument_puzzles": monument_options.puzzles,
+            "monument_loot": monument_options.loot,
+            "monument_radiation_zones": monument_options.radiation_zones,
             "terrain": terrain_options is not None,
             "tunnels": tunnel_options is not None,
             "no_build_zones": no_build_options is not None,
@@ -295,6 +436,11 @@ def _generate(config: ExportConfig, rules_path: Path | None,
         },
         "diagnostics": {
             "directory": diagnostics_dir.name if exports.diagnostics else None,
+            "requested_resolution": (
+                diagnostic_options.resolution if diagnostic_options is not None else None
+            ),
+            "resolution": diagnostic_resolution,
+            "resolution_mode": diagnostic_stats.get("resolution_mode"),
             "native_shapes": {
                 name: details.get("shape")
                 for name, details in diagnostic_stats.get("layers", {}).items()
@@ -303,9 +449,48 @@ def _generate(config: ExportConfig, rules_path: Path | None,
             "orientation_validation": diagnostic_stats.get("orientation_validation"),
         },
         "monuments": {
-            "file": monuments_path.name if exports.monuments else None,
+            "directory": monuments_dir.name if exports.monuments else None,
+            "file": (
+                monuments_path.relative_to(output).as_posix()
+                if exports.monuments else None
+            ),
             "count": int(monument_data["monument_count"]),
             "unique_prefab_count": int(monument_data["unique_prefab_count"]),
+            "interactables": bool(monument_options.interactable),
+            "puzzles": bool(monument_options.puzzles),
+            "exported_position_fields": exported_position_fields(exports.transforms),
+            "interactables_file": (
+                monument_interactables_path.relative_to(output).as_posix()
+                if monument_options.interactable else None
+            ),
+            "puzzles_file": (
+                monument_puzzles_path.relative_to(output).as_posix()
+                if monument_options.puzzles else None
+            ),
+            "loot_file": (
+                monument_loot_path.relative_to(output).as_posix()
+                if monument_options.loot else None
+            ),
+            "loot_position_count": int(
+                monument_data.get("sidecar_counts", {}).get("loot_position_count", 0)
+            ),
+            "radiation_zones_file": (
+                monument_radiation_path.relative_to(output).as_posix()
+                if monument_options.radiation_zones else None
+            ),
+            "radiation_zone_count": int(
+                monument_data.get("sidecar_counts", {}).get(
+                    "radiation_zone_count", 0
+                )
+            ),
+            "interactable_count": int(
+                monument_data.get("sidecar_counts", {}).get(
+                    "interactable_count", 0
+                )
+            ),
+            "puzzle_count": int(
+                monument_data.get("sidecar_counts", {}).get("puzzle_count", 0)
+            ),
         },
         "terrain": render_metadata,
         "tunnels": tunnel_metadata,
@@ -321,7 +506,17 @@ def _generate(config: ExportConfig, rules_path: Path | None,
     if exports.diagnostics:
         artifacts["diagnostics-total"] = sum(p.stat().st_size for p in diagnostics_dir.glob("*.*"))
     if exports.monuments:
-        artifacts[monuments_path.name] = monuments_path.stat().st_size
+        artifacts[monuments_path.relative_to(output).as_posix()] = (
+            monuments_path.stat().st_size
+        )
+        for enabled, path in (
+            (monument_options.interactable, monument_interactables_path),
+            (monument_options.puzzles, monument_puzzles_path),
+            (monument_options.loot, monument_loot_path),
+            (monument_options.radiation_zones, monument_radiation_path),
+        ):
+            if enabled and path.is_file():
+                artifacts[path.relative_to(output).as_posix()] = path.stat().st_size
     if render_metadata:
         artifacts.update({str(name): int(size) for name, size in render_metadata.get("artifacts", {}).items()})
     for enabled, names in (
@@ -336,6 +531,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
                     artifacts[name] = path.stat().st_size
     elapsed = time.perf_counter() - started
     metadata["generation"] = {"elapsed_seconds": elapsed, "artifact_sizes_bytes": artifacts}
+    _status(config, "Writing export metadata")
     _write_metadata(metadata_path, metadata, artifacts)
     elapsed = time.perf_counter() - started
     metadata["generation"]["elapsed_seconds"] = elapsed
@@ -367,6 +563,7 @@ def _generate(config: ExportConfig, rules_path: Path | None,
                 print(f"    {name.removesuffix('_seconds').replace('_', ' '):28s} {float(seconds):8.3f}s")
         print("-" * 48)
         print(f"{'total':32s} {elapsed:8.3f}s\n")
+    _status(config, f"Export complete in {elapsed:.2f}s: {output}")
     return metadata
 
 
@@ -409,6 +606,11 @@ class RustMapExporter:
         tunnel_options = exports.tunnels
         no_build_options = exports.no_build_zones
         cargo_options = exports.cargo_ship_path
+        monument_options = (
+            exports.monuments
+            if isinstance(exports.monuments, MonumentOptions)
+            else MonumentOptions()
+        )
         tunnel_metadata = metadata["tunnels"]
         no_build_metadata = metadata["no_build_zones"]
         cargo_metadata = metadata["cargo_ship_path"]
@@ -420,8 +622,33 @@ class RustMapExporter:
             metadata=metadata,
             heatmap_categories=tuple(sorted(metadata["heatmaps"]["categories"])),
             heatmaps_file=(output / metadata["heatmaps"]["file"]) if heatmaps else None,
-            monuments_file=(output / "monuments.json") if exports.monuments else None,
+            monuments_file=(
+                output / "monuments" / "monuments.json"
+            ) if exports.monuments else None,
             monument_count=int(metadata["monuments"]["count"]),
+            monument_interactables_file=(
+                output / "monuments" / "monument_interactables.json"
+            ) if monument_options.interactable else None,
+            monument_interactable_count=int(
+                metadata["monuments"]["interactable_count"]
+            ),
+            monument_puzzles_file=(
+                output / "monuments" / "monument_puzzles.json"
+            ) if monument_options.puzzles else None,
+            monument_puzzle_count=int(
+                metadata["monuments"]["puzzle_count"]
+            ),
+            monument_loot_file=(output / "monuments" / "monument_loot.json")
+                if monument_options.loot else None,
+            monument_loot_position_count=int(
+                metadata["monuments"]["loot_position_count"]
+            ),
+            monument_radiation_zones_file=(
+                output / "monuments" / "monument_radiation_zones.json"
+            ) if monument_options.radiation_zones else None,
+            monument_radiation_zone_count=int(
+                metadata["monuments"]["radiation_zone_count"]
+            ),
             map_image=(output / "map_render.png")
                 if terrain and not terrain.full_size and "png" in terrain.formats else None,
             full_map_image=(output / "map_render_full.png")

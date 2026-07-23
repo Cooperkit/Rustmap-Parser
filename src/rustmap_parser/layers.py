@@ -169,11 +169,20 @@ def sample_world_height(
     return sample_bilinear(grid, x, z)
 
 
-def _save_gray(path: Path, values: np.ndarray) -> None:
+def _resize_diagnostic(image: Image.Image, resolution: int | None,
+                       resample: Image.Resampling) -> Image.Image:
+    if resolution is None or image.size == (resolution, resolution):
+        return image
+    return image.resize((resolution, resolution), resample=resample)
+
+
+def _save_gray(path: Path, values: np.ndarray, resolution: int | None = None,
+               resample: Image.Resampling = Image.Resampling.BILINEAR) -> None:
     # Rust's decoded Z origin is opposite the image/viewer Y origin. Preserve
     # X (left/right) and reverse rows only; analytical arrays stay unchanged.
     exported = np.asarray(values, dtype=np.uint8)[::-1, :]
-    save_png(Image.fromarray(exported, mode="L"), path)
+    image = Image.fromarray(exported, mode="L")
+    save_png(_resize_diagnostic(image, resolution, resample), path)
 
 
 def _height_preview(values: np.ndarray) -> np.ndarray:
@@ -212,13 +221,18 @@ def validate_orientation(world: RustMap) -> dict:
     }
 
 
-def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
+def generate_diagnostics(world: RustMap, output_dir: str | Path,
+                         resolution: int | None = None) -> dict:
     """Write diagnostic PNGs and return their machine-readable statistics."""
+    if resolution is not None and resolution <= 0:
+        raise ValueError("diagnostics resolution must be positive")
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
 
     stats: dict = {
         "world_size": world.size,
+        "output_resolution": resolution,
+        "resolution_mode": "uniform" if resolution is not None else "native_layers",
         "orientation_validation": validate_orientation(world),
         "layers": {},
     }
@@ -226,7 +240,7 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     for name in ("terrain", "height", "water"):
         raw = int16_grid(world, name)
         metres = world_height_grid(world, name)
-        _save_gray(output / f"{name}.png", _height_preview(metres))
+        _save_gray(output / f"{name}.png", _height_preview(metres), resolution)
         stats["layers"][name] = {
             "shape": list(raw.shape), "dtype": "int16-le",
             "raw_min": int(raw.min()), "raw_max": int(raw.max()),
@@ -234,7 +248,7 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
         }
 
     alpha = uint8_grid(world, "alpha")
-    _save_gray(output / "alpha.png", alpha)
+    _save_gray(output / "alpha.png", alpha, resolution)
     stats["layers"]["alpha"] = {
         "shape": list(alpha.shape), "dtype": "uint8",
         "min": int(alpha.min()), "max": int(alpha.max()),
@@ -244,7 +258,7 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     splat = splat_grid(world)
     splat_stats = {}
     for index, name in enumerate(SPLAT_CHANNELS[: splat.shape[0]]):
-        _save_gray(output / f"splat_{index}_{name}.png", splat[index])
+        _save_gray(output / f"splat_{index}_{name}.png", splat[index], resolution)
         splat_stats[name] = {
             "min": int(splat[index].min()), "max": int(splat[index].max()),
             "nonzero_pixels": int(np.count_nonzero(splat[index])),
@@ -253,8 +267,11 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
         [105, 72, 45], [225, 238, 245], [218, 190, 120], [95, 95, 95],
         [92, 145, 65], [45, 95, 48], [125, 120, 110], [145, 135, 120],
     ])
+    splat_composite = Image.fromarray(
+        _dominant_color(splat, splat_colors[: splat.shape[0]])[::-1, :], mode="RGB"
+    )
     save_png(
-        Image.fromarray(_dominant_color(splat, splat_colors[: splat.shape[0]])[::-1, :], mode="RGB"),
+        _resize_diagnostic(splat_composite, resolution, Image.Resampling.BILINEAR),
         output / "splat_composite.png",
     )
     stats["layers"]["splat"] = {
@@ -267,7 +284,7 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     biome = biome_grid(world)
     biome_stats = {}
     for index, name in enumerate(BIOME_CHANNELS[: biome.shape[0]]):
-        _save_gray(output / f"biome_{index}_{name}.png", biome[index])
+        _save_gray(output / f"biome_{index}_{name}.png", biome[index], resolution)
         biome_stats[name] = {
             "min": int(biome[index].min()), "max": int(biome[index].max()),
             "nonzero_pixels": int(np.count_nonzero(biome[index])),
@@ -275,8 +292,11 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     biome_colors = np.array([
         [210, 135, 60], [90, 155, 75], [105, 125, 95], [220, 235, 245], [35, 120, 58]
     ])
+    biome_composite = Image.fromarray(
+        _dominant_color(biome, biome_colors[: biome.shape[0]])[::-1, :], mode="RGB"
+    )
     save_png(
-        Image.fromarray(_dominant_color(biome, biome_colors[: biome.shape[0]])[::-1, :], mode="RGB"),
+        _resize_diagnostic(biome_composite, resolution, Image.Resampling.BILINEAR),
         output / "biome_composite.png",
     )
     stats["layers"]["biome"] = {
@@ -290,7 +310,12 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     topology_stats = {}
     for bit, name in enumerate(TOPOLOGY_BITS):
         mask = (topology & np.uint32(1 << bit)) != 0
-        _save_gray(output / f"topology_{bit:02d}_{name}.png", mask.astype(np.uint8) * 255)
+        _save_gray(
+            output / f"topology_{bit:02d}_{name}.png",
+            mask.astype(np.uint8) * 255,
+            resolution,
+            Image.Resampling.NEAREST,
+        )
         topology_stats[name] = {"bit": bit, "set_pixels": int(np.count_nonzero(mask))}
     stats["layers"]["topology"] = {
         "shape": list(topology.shape), "dtype": "uint32-le-bitmask",
@@ -300,6 +325,7 @@ def generate_diagnostics(world: RustMap, output_dir: str | Path) -> dict:
     # Overlay path nodes and monument prefab positions on the height map. This
     # uses the exact same raw [z,x] transform verified by elevation sampling.
     preview = Image.fromarray(_height_preview(world_height_grid(world, "height")), mode="L").convert("RGB")
+    preview = _resize_diagnostic(preview, resolution, Image.Resampling.BILINEAR)
     draw = ImageDraw.Draw(preview)
     resolution = preview.width
     for path in world.paths:

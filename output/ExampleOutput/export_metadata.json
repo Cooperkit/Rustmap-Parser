@@ -1,16 +1,27 @@
 {
-  "schema_version": 2,
+  "schema_version": 7,
   "map": {
-    "path": "F:\\SteamLibrary\\steamapps\\common\\Rust\\maps\\proceduralmap.2500.1932177611.286_7262f5ab1a77ae452b3b7535282acdaa_2648917593.map",
+    "path": "example.map",
     "world_size": 2500,
     "serialization_version": 10,
     "timestamp": 1783040108421
   },
   "orientation": "flip_vertical (reverse Z rows; preserve X left/right)",
+  "transforms": {
+    "exported_position_fields": [
+      "local_position",
+      "position",
+      "map_position"
+    ]
+  },
   "enabled_outputs": {
     "heatmaps": true,
     "diagnostics": true,
     "monuments": true,
+    "monument_interactables": true,
+    "monument_puzzles": true,
+    "monument_loot": true,
+    "monument_radiation_zones": true,
     "terrain": true,
     "tunnels": true,
     "no_build_zones": true,
@@ -290,6 +301,9 @@
   },
   "diagnostics": {
     "directory": "diagnostics",
+    "requested_resolution": null,
+    "resolution": null,
+    "resolution_mode": "native_layers",
     "native_shapes": {
       "terrain": [
         2049,
@@ -331,9 +345,25 @@
     }
   },
   "monuments": {
-    "file": "monuments.json",
+    "directory": "monuments",
+    "file": "monuments/monuments.json",
     "count": 39,
-    "unique_prefab_count": 31
+    "unique_prefab_count": 31,
+    "interactables": true,
+    "puzzles": true,
+    "exported_position_fields": [
+      "local_position",
+      "position",
+      "map_position"
+    ],
+    "interactables_file": "monuments/monument_interactables.json",
+    "puzzles_file": "monuments/monument_puzzles.json",
+    "loot_file": "monuments/monument_loot.json",
+    "loot_position_count": 728,
+    "radiation_zones_file": "monuments/monument_radiation_zones.json",
+    "radiation_zone_count": 42,
+    "interactable_count": 58,
+    "puzzle_count": 20
   },
   "terrain": {
     "schema_version": 1,
@@ -446,8 +476,8 @@
       "ocean_margin": 0,
       "timings": {
         "shore_seconds": 0.0,
-        "total_seconds": 4.646175500000027,
-        "prepare_seconds": 0.9677227000001949
+        "total_seconds": 4.950235799999973,
+        "prepare_seconds": 2.2031820999999923
       },
       "artifact": "map_render_full.png"
     },
@@ -928,8 +958,8 @@
         }
       ],
       "timings": {
-        "png_encode_seconds": 0.11397399999987101,
-        "total_seconds": 0.11482239999986632
+        "png_encode_seconds": 0.10546679999998787,
+        "total_seconds": 0.10609299999998711
       },
       "metadata_file": "tiles.json",
       "directory_size_bytes": 4576318
@@ -965,9 +995,9 @@
       105,
       104
     ],
-    "png_encode_seconds": 0.06504859999949986,
-    "overlay_compose_seconds": 0.04181680000056076,
-    "overlay_encode_seconds": 2.6434393999998065,
+    "png_encode_seconds": 0.06525540000001229,
+    "overlay_compose_seconds": 0.04751609999999573,
+    "overlay_encode_seconds": 2.5228167000000212,
     "resolution": [
       2500,
       2500
@@ -1014,14 +1044,14 @@
     "cache_pixels_per_meter": 8.0,
     "cache_template_raster_seconds": null,
     "intermediate_pixels_per_meter": 2.0,
-    "cache_load_seconds": 4.399999852466863e-06,
-    "template_prepare_seconds": 0.058788299999832816,
-    "template_png_load_seconds": 0.036806099999012076,
-    "template_paste_seconds": 0.013968999997814535,
+    "cache_load_seconds": 5.100000009861105e-06,
+    "template_prepare_seconds": 0.06479279999996379,
+    "template_png_load_seconds": 0.03748700000005556,
+    "template_paste_seconds": 0.05589770000023009,
     "fallback_raster_seconds": 0.0,
-    "downsample_seconds": 0.06627329999992071,
+    "downsample_seconds": 0.06353739999997288,
     "alpha_nonzero_pixels": 263144,
-    "render_seconds": 0.20472330000029615,
+    "render_seconds": 0.20617119999997158,
     "cache_template_count": 81,
     "tile_source": "packaged",
     "tile_directory": "rustmap_parser.data.tunnel_tiles",
@@ -1055,11 +1085,11 @@
     "tile_source_build_id": "24181174",
     "tile_version_mismatch": false,
     "tile_warnings": [],
-    "total_seconds": 3.103187500000786,
+    "total_seconds": 2.9875220999999783,
     "metadata_file": "tunnels_metadata.json"
   },
   "no_build_zones": {
-    "schema_version": 5,
+    "schema_version": 6,
     "status": "rendered",
     "source": {
       "rust_build_id": "24181174",
@@ -1090,7 +1120,7 @@
       2500
     ],
     "coordinates": {
-      "world": "Unity metres: X east/west, Y elevation, Z north/south",
+      "position": "Unity metres: X east/west, Y elevation, Z north/south",
       "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
       "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
       "heading_degrees": "rotation Y normalized to [0, 360)",
@@ -2661,18 +2691,23 @@
       ],
       "outline_width": 3
     },
-    "render_seconds": 0.32765290000043024,
+    "render_seconds": 0.3366990999999757,
     "image_file": "no_build_zones.png",
     "overlay_file": "no_build_zones_on_map.png",
-    "elapsed_seconds": 3.3213212999999087,
+    "elapsed_seconds": 3.273899399999948,
+    "exported_position_fields": [
+      "local_position",
+      "position",
+      "map_position"
+    ],
     "artifact_sizes_bytes": {
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 42498
+      "no_build_zones.json": 42593
     }
   },
   "cargo_ship_path": {
-    "schema_version": 3,
+    "schema_version": 4,
     "status": "rendered",
     "map": {
       "serialization_version": 10,
@@ -2685,7 +2720,7 @@
     ],
     "orientation": "flip_vertical (reverse Z; preserve X left/right)",
     "coordinates": {
-      "world": "centered Unity X/Y/Z metres",
+      "position": "centered Unity X/Y/Z metres",
       "map_position": "bottom-left origin in world metres",
       "image": "X left-to-right; positive world Z points upward"
     },
@@ -2712,11 +2747,11 @@
       "converged": true,
       "directional_sweep_count": 47296,
       "timings": {
-        "terrain_collider_clearance_seconds": 0.10881640000025072,
-        "prefab_collision_grid_seconds": 0.2405741999991733,
-        "relaxation_seconds": 2.2091356999999334,
-        "simplification_seconds": 0.01185079999959271,
-        "total_seconds": 2.5703818000001775
+        "terrain_collider_clearance_seconds": 0.09787049999999908,
+        "prefab_collision_grid_seconds": 0.2550838000000226,
+        "relaxation_seconds": 2.056041900000025,
+        "simplification_seconds": 0.012579600000037772,
+        "total_seconds": 2.42158169999999
       },
       "server_constants": {
         "initial_radius": 2500,
@@ -7068,75 +7103,84 @@
       "smooth_patrol": true,
       "smoothing_algorithm": "rust_cargo_update_movement_simulation_rdp_0.5m"
     },
-    "render_seconds": 0.0017164999999295105,
+    "render_seconds": 0.001731600000027811,
     "image_file": "cargo_ship_path.png",
     "overlay_file": "cargo_ship_path_on_map.png",
-    "elapsed_seconds": 4.046218299999964,
+    "elapsed_seconds": 3.784586300000001,
+    "exported_position_fields": [
+      "local_position",
+      "position",
+      "map_position"
+    ],
     "artifact_sizes_bytes": {
       "cargo_ship_path.png": 87135,
       "cargo_ship_path_on_map.png": 4783678,
-      "cargo_ship_path.json": 97917
+      "cargo_ship_path.json": 98011
     }
   },
   "timings": {
     "heatmap_categories": {
-      "bear": 0.2707134000002043,
-      "berries": 0.4529732000000877,
-      "boar": 0.05006570000023203,
-      "chicken": 0.4102783999996973,
-      "corn": 0.059039199999460834,
-      "crocodile": 0.04970199999934266,
-      "flowers": 0.06527850000020408,
-      "hab": 0.3980541999999332,
-      "hemp": 0.16753419999986363,
-      "horse": 0.06192170000031183,
-      "junkpiles": 0.11077870000008261,
-      "logs": 0.3606958999998824,
-      "modularcar": 0.05591139999978623,
-      "mushroom": 0.06853219999993598,
-      "ores": 0.43712609999965935,
-      "pedalbike": 0.05402039999989938,
-      "potato": 0.005205800000112504,
-      "pumpkin": 0.005107999999381718,
-      "rowboat": 0.09590109999953711,
-      "snake": 0.0465503000004901,
-      "stag": 0.04855849999967177,
-      "tiger": 0.04603270000006887,
-      "wheat": 0.005205200000091281,
-      "wolf": 0.0938228999993953,
-      "wood": 0.0573805000003631
+      "bear": 0.2460176999999817,
+      "berries": 0.4086158999999725,
+      "boar": 0.04885159999997768,
+      "chicken": 0.3807831999999962,
+      "corn": 0.048677999999995336,
+      "crocodile": 0.04466119999995044,
+      "flowers": 0.05809629999998833,
+      "hab": 0.39555159999997613,
+      "hemp": 0.15997390000001133,
+      "horse": 0.053711799999973664,
+      "junkpiles": 0.10185610000002043,
+      "logs": 0.32775480000003654,
+      "modularcar": 0.048429399999974976,
+      "mushroom": 0.06152209999999059,
+      "ores": 0.4077093000000218,
+      "pedalbike": 0.04776679999997668,
+      "potato": 0.00493159999996351,
+      "pumpkin": 0.00514349999997421,
+      "rowboat": 0.08439320000002226,
+      "snake": 0.042227299999979095,
+      "stag": 0.04301159999999982,
+      "tiger": 0.042015000000048985,
+      "wheat": 0.004470700000013039,
+      "wolf": 0.08252590000000737,
+      "wood": 0.052334499999972195
     },
-    "map_parse_seconds": 0.3788596000003963,
-    "rule_database_load_seconds": 0.0006649000006291317,
-    "heatmap_evaluator_setup_seconds": 0.3310797000003731,
-    "heatmaps_total_seconds": 3.476390199997695,
-    "heatmap_npz_encode_seconds": 0.5878136999999697,
-    "diagnostics_seconds": 4.397683500000312,
-    "monuments_seconds": 0.05508620000000519,
-    "map_render_seconds": 6.038114099999802,
-    "no_build_zones_seconds": 3.332591400000638,
-    "tunnel_render_seconds": 3.1146005999999034,
-    "cargo_ship_path_seconds": 4.05332399999952
+    "map_parse_seconds": 0.3567113999999947,
+    "rule_database_load_seconds": 0.007557000000019798,
+    "heatmap_evaluator_setup_seconds": 0.33752729999997655,
+    "heatmaps_total_seconds": 3.201032999999825,
+    "heatmap_npz_encode_seconds": 0.5873543999999811,
+    "diagnostics_seconds": 4.134673199999952,
+    "monuments_seconds": 0.12227169999999887,
+    "map_render_seconds": 7.550081200000022,
+    "no_build_zones_seconds": 3.2882973000000106,
+    "tunnel_render_seconds": 3.000679699999978,
+    "cargo_ship_path_seconds": 3.7903438000000165
   },
   "generation": {
-    "elapsed_seconds": 15.015294499999982,
+    "elapsed_seconds": 16.041296399999965,
     "artifact_sizes_bytes": {
       "heatmaps.npz": 3651681,
       "Heatmap-previews-total": 3414311,
-      "diagnostics-total": 9047588,
-      "monuments.json": 41745,
+      "diagnostics-total": 9047657,
+      "monuments/monuments.json": 52499,
+      "monuments/monument_interactables.json": 45715,
+      "monuments/monument_puzzles.json": 56223,
+      "monuments/monument_loot.json": 349330,
+      "monuments/monument_radiation_zones.json": 35868,
       "map_render_full.png": 4245050,
       "map_render_tiles-total": 4576318,
       "tunnels.png": 109373,
       "tunnels_on_map.png": 3962354,
-      "tunnels_metadata.json": 5797,
+      "tunnels_metadata.json": 5795,
       "no_build_zones.png": 322403,
       "no_build_zones_on_map.png": 4956316,
-      "no_build_zones.json": 42498,
+      "no_build_zones.json": 42593,
       "cargo_ship_path.png": 87135,
       "cargo_ship_path_on_map.png": 4783678,
-      "cargo_ship_path.json": 97917,
-      "export_metadata.json": 182394
+      "cargo_ship_path.json": 98011,
+      "export_metadata.json": 183612
     }
   }
 }

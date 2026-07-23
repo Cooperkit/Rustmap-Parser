@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "status": "rendered",
   "map": {
     "serialization_version": 10,
@@ -12,7 +12,7 @@
   ],
   "orientation": "flip_vertical (reverse Z; preserve X left/right)",
   "coordinates": {
-    "world": "centered Unity X/Y/Z metres",
+    "position": "centered Unity X/Y/Z metres",
     "map_position": "bottom-left origin in world metres",
     "image": "X left-to-right; positive world Z points upward"
   },
@@ -39,11 +39,11 @@
     "converged": true,
     "directional_sweep_count": 47296,
     "timings": {
-      "terrain_collider_clearance_seconds": 0.10881640000025072,
-      "prefab_collision_grid_seconds": 0.2405741999991733,
-      "relaxation_seconds": 2.2091356999999334,
-      "simplification_seconds": 0.01185079999959271,
-      "total_seconds": 2.5703818000001775
+      "terrain_collider_clearance_seconds": 0.09787049999999908,
+      "prefab_collision_grid_seconds": 0.2550838000000226,
+      "relaxation_seconds": 2.056041900000025,
+      "simplification_seconds": 0.012579600000037772,
+      "total_seconds": 2.42158169999999
     },
     "server_constants": {
       "initial_radius": 2500,
@@ -4395,10 +4395,15 @@
     "smooth_patrol": true,
     "smoothing_algorithm": "rust_cargo_update_movement_simulation_rdp_0.5m"
   },
-  "render_seconds": 0.0017164999999295105,
+  "render_seconds": 0.001731600000027811,
   "image_file": "cargo_ship_path.png",
   "overlay_file": "cargo_ship_path_on_map.png",
-  "elapsed_seconds": 4.046218299999964,
+  "elapsed_seconds": 3.784586300000001,
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
+  ],
   "artifact_sizes_bytes": {
     "cargo_ship_path.png": 87135,
     "cargo_ship_path_on_map.png": 4783678

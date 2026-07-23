@@ -1,0 +1,1461 @@
+{
+  "schema_version": 1,
+  "map": {
+    "world_size": 2500,
+    "timestamp": 1783040108421
+  },
+  "coordinates": {
+    "local_position": "metres in the owning monument prefab frame",
+    "position": "Unity world metres",
+    "map_position": "map metres from bottom-left",
+    "heading_degrees": "rotation Y normalized to [0, 360)"
+  },
+  "monuments": [
+    {
+      "monument_id": "monument-001",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 14.616447449,
+            "y": 0.059585571,
+            "z": -17.864006042
+          },
+          "position": {
+            "x": -697.071510544,
+            "y": 18.514354706,
+            "z": 253.370217168
+          },
+          "map_position": {
+            "x": 552.928489456,
+            "y": 1503.370217168
+          },
+          "heading_degrees": 99.209492416,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-007",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab",
+      "interactables": [
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (4)",
+          "properties": {},
+          "local_position": {
+            "x": 17.658000946,
+            "y": 1.883452415,
+            "z": -0.833999991
+          },
+          "position": {
+            "x": 166.706736329,
+            "y": 1.883452415,
+            "z": -646.855611287
+          },
+          "map_position": {
+            "x": 1416.706736329,
+            "y": 603.144388713
+          },
+          "heading_degrees": 75.963355949,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis",
+          "properties": {},
+          "local_position": {
+            "x": -0.379128456,
+            "y": 1.967000008,
+            "z": 5.41488266
+          },
+          "position": {
+            "x": 185.720910374,
+            "y": 1.967000008,
+            "z": -648.54314109
+          },
+          "map_position": {
+            "x": 1435.720910374,
+            "y": 601.45685891
+          },
+          "heading_degrees": 351.071704364,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_FishExchange",
+          "properties": {},
+          "local_position": {
+            "x": -3.258644342,
+            "y": 1.987559676,
+            "z": 4.498000145
+          },
+          "position": {
+            "x": 188.292063553,
+            "y": 1.987559676,
+            "z": -646.955231578
+          },
+          "map_position": {
+            "x": 1438.292063553,
+            "y": 603.044768422
+          },
+          "heading_degrees": 347.292673177,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/fishing_village/fishing_village_a.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-009",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": -1.462000012,
+            "y": 5.2291255,
+            "z": -31.618000031
+          },
+          "position": {
+            "x": 919.593320767,
+            "y": 6.4791255,
+            "z": -21.538661015
+          },
+          "map_position": {
+            "x": 2169.593320767,
+            "y": 1228.461338985
+          },
+          "heading_degrees": 91.211879508,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static",
+          "properties": {},
+          "local_position": {
+            "x": -31.483999252,
+            "y": 5.392883778,
+            "z": -14.619000435
+          },
+          "position": {
+            "x": 937.598530389,
+            "y": 6.642883778,
+            "z": 7.890896441
+          },
+          "map_position": {
+            "x": 2187.598530389,
+            "y": 1257.890896441
+          },
+          "heading_degrees": 14.665722735,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab"
+        },
+        {
+          "type": "research_table",
+          "component_type": "ResearchTable",
+          "object_name": "researchtable_static",
+          "properties": {},
+          "local_position": {
+            "x": -8.723999977,
+            "y": 5.25,
+            "z": -4.676000118
+          },
+          "position": {
+            "x": 946.765636411,
+            "y": 6.5,
+            "z": -15.19253895
+          },
+          "map_position": {
+            "x": 2196.765636411,
+            "y": 1234.80746105
+          },
+          "heading_degrees": 1.023755283,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/ferry_terminal_1.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-010",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab",
+      "interactables": [
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static",
+          "properties": {},
+          "local_position": {
+            "x": -3.7955513,
+            "y": 1.159999847,
+            "z": -6.111206055
+          },
+          "position": {
+            "x": 212.786129802,
+            "y": 2.605999947,
+            "z": 800.240894478
+          },
+          "map_position": {
+            "x": 1462.786129802,
+            "y": 2050.240894478
+          },
+          "heading_degrees": 73.612526009,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 51.543987274,
+            "y": 4.250003815,
+            "z": 40.800491333
+          },
+          "position": {
+            "x": 252.642250852,
+            "y": 5.696003914,
+            "z": 860.859880746
+          },
+          "map_position": {
+            "x": 1502.642250852,
+            "y": 2110.859880746
+          },
+          "heading_degrees": 343.612518311,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_1.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-012",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab",
+      "interactables": [
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static",
+          "properties": {},
+          "local_position": {
+            "x": -12.739999771,
+            "y": 1.103863478,
+            "z": 28.642000198
+          },
+          "position": {
+            "x": -957.818171896,
+            "y": 1.833863497,
+            "z": 332.329392992
+          },
+          "map_position": {
+            "x": 292.181828104,
+            "y": 1582.329392992
+          },
+          "heading_degrees": 269.968513558,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": -45.099998474,
+            "y": 4.066999912,
+            "z": -63.404998779
+          },
+          "position": {
+            "x": -925.508774146,
+            "y": 4.796999931,
+            "z": 424.394165593
+          },
+          "map_position": {
+            "x": 324.491225854,
+            "y": 1674.394165593
+          },
+          "heading_degrees": 269.968426624,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/harbor/harbor_2.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-015",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
+      "interactables": [
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static (1)",
+          "properties": {},
+          "local_position": {
+            "x": 103.337997437,
+            "y": -4.804999828,
+            "z": -19.48900032
+          },
+          "position": {
+            "x": -339.249771286,
+            "y": 17.184999943,
+            "z": 362.307630382
+          },
+          "map_position": {
+            "x": 910.750228714,
+            "y": 1612.307630382
+          },
+          "heading_degrees": 19.74517139,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
+        },
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static (2)",
+          "properties": {},
+          "local_position": {
+            "x": -67.676002502,
+            "y": -4.804999828,
+            "z": -91.430000305
+          },
+          "position": {
+            "x": -167.389805519,
+            "y": 17.184999943,
+            "z": 432.203608952
+          },
+          "map_position": {
+            "x": 1082.610194481,
+            "y": 1682.203608952
+          },
+          "heading_degrees": 184.007535754,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 68.786628723,
+            "y": 6.221000195,
+            "z": -4.06099987
+          },
+          "position": {
+            "x": -304.884890252,
+            "y": 28.210999966,
+            "z": 346.468589081
+          },
+          "map_position": {
+            "x": 945.115109748,
+            "y": 1596.468589081
+          },
+          "heading_degrees": 0.683456421,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static",
+          "properties": {},
+          "local_position": {
+            "x": 68.5,
+            "y": 6.227000237,
+            "z": -2.625
+          },
+          "position": {
+            "x": -304.615410932,
+            "y": 28.217000008,
+            "z": 345.029272386
+          },
+          "map_position": {
+            "x": 945.384589068,
+            "y": 1595.029272386
+          },
+          "heading_degrees": 180.683456421,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static (1)",
+          "properties": {},
+          "local_position": {
+            "x": -1.118999958,
+            "y": 6.265999794,
+            "z": -64.592002869
+          },
+          "position": {
+            "x": -234.2622041,
+            "y": 28.255999565,
+            "z": 406.161431583
+          },
+          "map_position": {
+            "x": 1015.7377959,
+            "y": 1656.161431583
+          },
+          "heading_degrees": 90.566456758,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-017",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 20.155000687,
+            "y": 24.988716125,
+            "z": -0.209999993
+          },
+          "position": {
+            "x": -880.197336354,
+            "y": 24.988716125,
+            "z": 723.921537925
+          },
+          "map_position": {
+            "x": 369.802663646,
+            "y": 1973.921537925
+          },
+          "heading_degrees": 61.238944939,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-018",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 20.155000687,
+            "y": 24.988716125,
+            "z": -0.209999993
+          },
+          "position": {
+            "x": 863.994824561,
+            "y": 24.988716125,
+            "z": 819.704331693
+          },
+          "map_position": {
+            "x": 2113.994824561,
+            "y": 2069.704331693
+          },
+          "heading_degrees": 74.376182487,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/lighthouse/lighthouse.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-019",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab",
+      "interactables": [
+        {
+          "type": "marketplace",
+          "component_type": "Marketplace",
+          "object_name": "Marketplace",
+          "properties": {},
+          "local_position": {
+            "x": 11.287094116,
+            "y": 1.899999619,
+            "z": -46.120292664
+          },
+          "position": {
+            "x": 172.569737178,
+            "y": 5.278476715,
+            "z": 417.534392196
+          },
+          "map_position": {
+            "x": 1422.569737178,
+            "y": 1667.534392196
+          },
+          "heading_degrees": 179.281073242,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 53.423000336,
+            "y": 7.072999954,
+            "z": -20.461000443
+          },
+          "position": {
+            "x": 142.547260888,
+            "y": 10.451477051,
+            "z": 456.68135616
+          },
+          "map_position": {
+            "x": 1392.547260888,
+            "y": 1706.68135616
+          },
+          "heading_degrees": 218.921112048,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static (1)",
+          "properties": {},
+          "local_position": {
+            "x": 49.974998474,
+            "y": 7.065999985,
+            "z": -28.065999985
+          },
+          "position": {
+            "x": 150.477666809,
+            "y": 10.444477081,
+            "z": 454.067279497
+          },
+          "map_position": {
+            "x": 1400.477666809,
+            "y": 1704.067279497
+          },
+          "heading_degrees": 299.113747839,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static",
+          "properties": {},
+          "local_position": {
+            "x": -21.653999329,
+            "y": 4.728000164,
+            "z": 36.285999298
+          },
+          "position": {
+            "x": 94.163307439,
+            "y": 8.106477261,
+            "z": 375.961030921
+          },
+          "map_position": {
+            "x": 1344.163307439,
+            "y": 1625.961030921
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "research_table",
+          "component_type": "ResearchTable",
+          "object_name": "researchtable_static",
+          "properties": {},
+          "local_position": {
+            "x": 22.952999115,
+            "y": 4.721000195,
+            "z": 37.702999115
+          },
+          "position": {
+            "x": 87.979290362,
+            "y": 8.099477291,
+            "z": 420.160014296
+          },
+          "map_position": {
+            "x": 1337.979290362,
+            "y": 1670.160014296
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (4)",
+          "properties": {},
+          "local_position": {
+            "x": 26.891998291,
+            "y": 1.883452415,
+            "z": 45.395000458
+          },
+          "position": {
+            "x": 79.909821531,
+            "y": 5.261929512,
+            "z": 423.252953344
+          },
+          "map_position": {
+            "x": 1329.909821531,
+            "y": 1673.252953344
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (5)",
+          "properties": {},
+          "local_position": {
+            "x": -28.627000809,
+            "y": 1.878999949,
+            "z": 40.636001587
+          },
+          "position": {
+            "x": 90.584758409,
+            "y": 5.257477045,
+            "z": 368.562432648
+          },
+          "map_position": {
+            "x": 1340.584758409,
+            "y": 1618.562432648
+          },
+          "heading_degrees": 173.85472863,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (3)",
+          "properties": {},
+          "local_position": {
+            "x": 23.917999268,
+            "y": 4.888000011,
+            "z": 27.403999329
+          },
+          "position": {
+            "x": 98.115806007,
+            "y": 8.266477108,
+            "z": 422.221972703
+          },
+          "map_position": {
+            "x": 1348.115806007,
+            "y": 1672.221972703
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (5)",
+          "properties": {},
+          "local_position": {
+            "x": -57.883998871,
+            "y": 5.022452831,
+            "z": 23.288000107
+          },
+          "position": {
+            "x": 110.965021733,
+            "y": 8.400929928,
+            "z": 341.330650521
+          },
+          "map_position": {
+            "x": 1360.965021733,
+            "y": 1591.330650521
+          },
+          "heading_degrees": 316.544968927,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (2)",
+          "properties": {},
+          "local_position": {
+            "x": 10.164999008,
+            "y": 2.837452412,
+            "z": -2.527997971
+          },
+          "position": {
+            "x": 129.348057326,
+            "y": 6.215929508,
+            "z": 411.752208808
+          },
+          "map_position": {
+            "x": 1379.348057326,
+            "y": 1661.752208808
+          },
+          "heading_degrees": 173.85472863,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis (1)",
+          "properties": {},
+          "local_position": {
+            "x": 0.998998642,
+            "y": 1.750452399,
+            "z": -15.767997742
+          },
+          "position": {
+            "x": 143.493192244,
+            "y": 5.128929496,
+            "z": 404.056215383
+          },
+          "map_position": {
+            "x": 1393.493192244,
+            "y": 1654.056215383
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis",
+          "properties": {},
+          "local_position": {
+            "x": -19.874000549,
+            "y": 1.750452399,
+            "z": -35.120998383
+          },
+          "position": {
+            "x": 164.969429939,
+            "y": 5.128929496,
+            "z": 385.374889319
+          },
+          "map_position": {
+            "x": 1414.969429939,
+            "y": 1635.374889319
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        },
+        {
+          "type": "workbench",
+          "component_type": "Workbench",
+          "object_name": "workbench1.static",
+          "properties": {
+            "level": 1
+          },
+          "local_position": {
+            "x": -21.753000259,
+            "y": 1.75,
+            "z": 36.098899841
+          },
+          "position": {
+            "x": 94.35992977,
+            "y": 5.128477097,
+            "z": 375.882627796
+          },
+          "map_position": {
+            "x": 1344.35992977,
+            "y": 1625.882627796
+          },
+          "heading_degrees": 263.854736328,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/bandit_town.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-021",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab",
+      "interactables": [
+        {
+          "type": "marketplace",
+          "component_type": "Marketplace",
+          "object_name": "Marketplace",
+          "properties": {},
+          "local_position": {
+            "x": 13.369999886,
+            "y": 0.06000042,
+            "z": -21.129999161
+          },
+          "position": {
+            "x": -478.768212511,
+            "y": 20.850001335,
+            "z": -91.026703602
+          },
+          "map_position": {
+            "x": 771.231787489,
+            "y": 1158.973296398
+          },
+          "heading_degrees": 124.946682997,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static",
+          "properties": {},
+          "local_position": {
+            "x": -34.836987019,
+            "y": 0.645000458,
+            "z": -21.722488403
+          },
+          "position": {
+            "x": -513.594153833,
+            "y": 21.435001373,
+            "z": -124.364646563
+          },
+          "map_position": {
+            "x": 736.405846167,
+            "y": 1125.635353437
+          },
+          "heading_degrees": 212.827625283,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": -33.806986809,
+            "y": 1.750228882,
+            "z": 9.01751709
+          },
+          "position": {
+            "x": -533.823811845,
+            "y": 22.540229797,
+            "z": -101.196354117
+          },
+          "map_position": {
+            "x": 716.176188155,
+            "y": 1148.803645883
+          },
+          "heading_degrees": 4.155506122,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static (1)",
+          "properties": {},
+          "local_position": {
+            "x": -25.486986876,
+            "y": 1.750228882,
+            "z": 14.94751358
+          },
+          "position": {
+            "x": -531.791110691,
+            "y": 22.540229797,
+            "z": -91.183593095
+          },
+          "map_position": {
+            "x": 718.208889309,
+            "y": 1158.816406905
+          },
+          "heading_degrees": 226.954704216,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static (2)",
+          "properties": {},
+          "local_position": {
+            "x": -28.987986922,
+            "y": 1.750228882,
+            "z": 7.641513824
+          },
+          "position": {
+            "x": -529.362790197,
+            "y": 22.540229797,
+            "z": -98.912622357
+          },
+          "map_position": {
+            "x": 720.637209803,
+            "y": 1151.087377643
+          },
+          "heading_degrees": 316.954711914,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static",
+          "properties": {},
+          "local_position": {
+            "x": -28.476986945,
+            "y": 1.755228043,
+            "z": 30.697515488
+          },
+          "position": {
+            "x": -544.726822703,
+            "y": 22.545228958,
+            "z": -81.71416781
+          },
+          "map_position": {
+            "x": 705.273177297,
+            "y": 1168.28583219
+          },
+          "heading_degrees": 142.582478335,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "research_table",
+          "component_type": "ResearchTable",
+          "object_name": "researchtable_static",
+          "properties": {},
+          "local_position": {
+            "x": 1.673999786,
+            "y": 0.25,
+            "z": 11.298999786
+          },
+          "position": {
+            "x": -509.451081632,
+            "y": 21.040000916,
+            "z": -75.310535701
+          },
+          "map_position": {
+            "x": 740.548918368,
+            "y": 1174.689464299
+          },
+          "heading_degrees": 230.123033169,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Components",
+          "properties": {},
+          "local_position": {
+            "x": -25.138000488,
+            "y": 0.322364807,
+            "z": -12.701004028
+          },
+          "position": {
+            "x": -512.663845551,
+            "y": 21.112365723,
+            "z": -111.151318196
+          },
+          "map_position": {
+            "x": 737.336154449,
+            "y": 1138.848681804
+          },
+          "heading_degrees": 46.954719612,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Resources",
+          "properties": {},
+          "local_position": {
+            "x": -25.12100029,
+            "y": 0.343000412,
+            "z": -14.70199585
+          },
+          "position": {
+            "x": -511.285592111,
+            "y": 21.133001328,
+            "z": -112.602067909
+          },
+          "map_position": {
+            "x": 738.714407889,
+            "y": 1137.397932091
+          },
+          "heading_degrees": 46.954719612,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Farming",
+          "properties": {},
+          "local_position": {
+            "x": 26.592012405,
+            "y": 0.375228882,
+            "z": 15.124515533
+          },
+          "position": {
+            "x": -493.851845205,
+            "y": 21.165229797,
+            "z": -55.506350626
+          },
+          "map_position": {
+            "x": 756.148154795,
+            "y": 1194.493649374
+          },
+          "heading_degrees": 226.954713875,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Weapons",
+          "properties": {},
+          "local_position": {
+            "x": 3.906000137,
+            "y": 1.745000839,
+            "z": -18.309997559
+          },
+          "position": {
+            "x": -487.609505901,
+            "y": 22.535001755,
+            "z": -95.425707063
+          },
+          "map_position": {
+            "x": 762.390494099,
+            "y": 1154.574292937
+          },
+          "heading_degrees": 46.954719612,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Building",
+          "properties": {},
+          "local_position": {
+            "x": 5.084077835,
+            "y": 0.145174026,
+            "z": -47.066001892
+          },
+          "position": {
+            "x": -467.120384778,
+            "y": 20.935174942,
+            "z": -115.636881395
+          },
+          "map_position": {
+            "x": 782.879615222,
+            "y": 1134.363118605
+          },
+          "heading_degrees": 316.954711914,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Attire",
+          "properties": {},
+          "local_position": {
+            "x": 32.014001846,
+            "y": 1.574277878,
+            "z": -18.755661011
+          },
+          "position": {
+            "x": -466.763574111,
+            "y": 22.364278793,
+            "z": -76.565550547
+          },
+          "map_position": {
+            "x": 783.236425889,
+            "y": 1173.434449453
+          },
+          "heading_degrees": 226.954704216,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "vending_machine",
+          "component_type": "NPCVendingMachine",
+          "object_name": "NPCVendingMachine_Tools",
+          "properties": {},
+          "local_position": {
+            "x": 32.0189991,
+            "y": 1.548000336,
+            "z": -20.933998108
+          },
+          "position": {
+            "x": -465.273040927,
+            "y": 22.338001251,
+            "z": -78.154099668
+          },
+          "map_position": {
+            "x": 784.726959073,
+            "y": 1171.845900332
+          },
+          "heading_degrees": 226.954704216,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "workbench",
+          "component_type": "Workbench",
+          "object_name": "workbench1.static (1)",
+          "properties": {
+            "level": 1
+          },
+          "local_position": {
+            "x": -8.356987,
+            "y": 0.249441147,
+            "z": -17.082481384
+          },
+          "position": {
+            "x": -497.409346895,
+            "y": 21.039442062,
+            "z": -102.899044067
+          },
+          "map_position": {
+            "x": 752.590653105,
+            "y": 1147.100955933
+          },
+          "heading_degrees": 226.954704216,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        },
+        {
+          "type": "workbench",
+          "component_type": "Workbench",
+          "object_name": "workbench1.static",
+          "properties": {
+            "level": 1
+          },
+          "local_position": {
+            "x": -8.358999252,
+            "y": 0.249441147,
+            "z": -26.078369141
+          },
+          "position": {
+            "x": -491.270438345,
+            "y": 21.039442062,
+            "z": -109.47474193
+          },
+          "map_position": {
+            "x": 758.729561655,
+            "y": 1140.52525807
+          },
+          "heading_degrees": 226.954704216,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/medium/compound.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-024",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab",
+      "interactables": [
+        {
+          "type": "research_table",
+          "component_type": "ResearchTable",
+          "object_name": "researchtable_static",
+          "properties": {},
+          "local_position": {
+            "x": 17.201000214,
+            "y": 36.393001556,
+            "z": 1.922000051
+          },
+          "position": {
+            "x": 1325.319956524,
+            "y": 36.393001556,
+            "z": -1556.082830258
+          },
+          "map_position": {
+            "x": 2575.319956524,
+            "y": -306.082830258
+          },
+          "heading_degrees": 266.576791885,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab"
+        },
+        {
+          "type": "workbench",
+          "component_type": "Workbench",
+          "object_name": "workbench2.static",
+          "properties": {
+            "level": 2
+          },
+          "local_position": {
+            "x": 15.718000412,
+            "y": 22.906864166,
+            "z": 4.499000072
+          },
+          "position": {
+            "x": 1323.685734489,
+            "y": 22.906864166,
+            "z": -1553.598975217
+          },
+          "map_position": {
+            "x": 2573.685734489,
+            "y": -303.598975217
+          },
+          "heading_degrees": 262.949064806,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-026",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": -37.904067993,
+            "y": 0.249998808,
+            "z": 23.095691681
+          },
+          "position": {
+            "x": -0.857670051,
+            "y": 9.317422628,
+            "z": -257.964793054
+          },
+          "map_position": {
+            "x": 1249.142329949,
+            "y": 992.035206946
+          },
+          "heading_degrees": 18.521620758,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-027",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 3.220999956,
+            "y": 0.080324009,
+            "z": -0.75999999
+          },
+          "position": {
+            "x": 744.075119478,
+            "y": 12.118491963,
+            "z": -24.480905478
+          },
+          "map_position": {
+            "x": 1994.075119478,
+            "y": 1225.519094522
+          },
+          "heading_degrees": 248.937667847,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab"
+        },
+        {
+          "type": "repair_bench",
+          "component_type": "RepairBench",
+          "object_name": "repairbench_static",
+          "properties": {},
+          "local_position": {
+            "x": -2.27699995,
+            "y": 0.111000001,
+            "z": -14.522000313
+          },
+          "position": {
+            "x": 729.256668533,
+            "y": 12.149167955,
+            "z": -24.296061117
+          },
+          "map_position": {
+            "x": 1979.256668533,
+            "y": 1225.703938883
+          },
+          "heading_degrees": 68.937667847,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/roadside/warehouse.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-031",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab",
+      "interactables": [
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": -11.038999557,
+            "y": 6.018000126,
+            "z": 48.987998962
+          },
+          "position": {
+            "x": 625.711901624,
+            "y": 19.641571522,
+            "z": 178.906989161
+          },
+          "map_position": {
+            "x": 1875.711901624,
+            "y": 1428.906989161
+          },
+          "heading_degrees": 85.434573967,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab"
+        },
+        {
+          "type": "research_table",
+          "component_type": "ResearchTable",
+          "object_name": "researchtable_static",
+          "properties": {},
+          "local_position": {
+            "x": 54.164001465,
+            "y": 10.570999146,
+            "z": -7.688009739
+          },
+          "position": {
+            "x": 661.887322754,
+            "y": 24.194570541,
+            "z": 257.360416178
+          },
+          "map_position": {
+            "x": 1911.887322754,
+            "y": 1507.360416178
+          },
+          "heading_degrees": 312.500248805,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-032",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab",
+      "interactables": [
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static",
+          "properties": {},
+          "local_position": {
+            "x": -0.063227743,
+            "y": 0.179833889,
+            "z": 12.845041275
+          },
+          "position": {
+            "x": -175.058067085,
+            "y": 25.240060329,
+            "z": 37.180235644
+          },
+          "map_position": {
+            "x": 1074.941932915,
+            "y": 1287.180235644
+          },
+          "heading_degrees": 201.718047142,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab"
+        },
+        {
+          "type": "oil_refinery",
+          "component_type": "BaseOven",
+          "object_name": "small_refinery_static",
+          "properties": {},
+          "local_position": {
+            "x": -21.593000412,
+            "y": 5.875,
+            "z": -35.2719841
+          },
+          "position": {
+            "x": -122.360559394,
+            "y": 30.93522644,
+            "z": 35.856632486
+          },
+          "map_position": {
+            "x": 1127.639440606,
+            "y": 1285.856632486
+          },
+          "heading_degrees": 67.332873894,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab"
+        },
+        {
+          "type": "recycler",
+          "component_type": "Recycler",
+          "object_name": "recycler_static",
+          "properties": {},
+          "local_position": {
+            "x": 10.859999657,
+            "y": 5.909999847,
+            "z": 51.804000854
+          },
+          "position": {
+            "x": -215.217366809,
+            "y": 30.970226288,
+            "z": 32.245858885
+          },
+          "map_position": {
+            "x": 1034.782633191,
+            "y": 1282.245858885
+          },
+          "heading_degrees": 112.332896812,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab"
+        }
+      ]
+    },
+    {
+      "monument_id": "monument-034",
+      "prefab": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab",
+      "interactables": [
+        {
+          "type": "vending_machine",
+          "component_type": "InvisibleVendingMachine",
+          "object_name": "Shopkeeper_VM_Invis_WaterWell",
+          "properties": {},
+          "local_position": {
+            "x": -5.291022778,
+            "y": 4.625,
+            "z": -1.025721312
+          },
+          "position": {
+            "x": 359.645731371,
+            "y": 9.932946205,
+            "z": 572.973682376
+          },
+          "map_position": {
+            "x": 1609.645731371,
+            "y": 1822.973682376
+          },
+          "heading_degrees": 230.029962286,
+          "source": "prefab_asset",
+          "source_prefab_path": "assets/bundled/prefabs/autospawn/monument/tiny/water_well_a.prefab"
+        }
+      ]
+    }
+  ],
+  "interactable_count": 58,
+  "unassigned_interactable_count": 0,
+  "unassigned_interactables": [],
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
+  ]
+}

@@ -68,11 +68,23 @@ def _bundle_paths(install: Path) -> dict[str, Path]:
 
 
 def _build_id(install: Path) -> str | None:
-    manifest = install.parent.parent / "appmanifest_252490.acf"
-    if not manifest.is_file():
-        return None
-    match = re.search(r'"buildid"\s+"([^"]+)"', manifest.read_text(encoding="utf-8", errors="ignore"))
-    return match.group(1) if match else None
+    steamapps = install.parent.parent
+    fallback: str | None = None
+    for app_id in ("252490", "258550"):
+        manifest = steamapps / f"appmanifest_{app_id}.acf"
+        if not manifest.is_file():
+            continue
+        text = manifest.read_text(encoding="utf-8", errors="ignore")
+        build = re.search(r'"buildid"\s+"([^"]+)"', text)
+        if build is None:
+            continue
+        install_dir = re.search(r'"installdir"\s+"([^"]+)"', text)
+        if (install_dir is not None and
+                install_dir.group(1).casefold() == install.name.casefold()):
+            return build.group(1)
+        if app_id == "252490":
+            fallback = build.group(1)
+    return fallback
 
 
 def bundle_identity(install: Path) -> dict:

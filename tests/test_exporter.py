@@ -1,5 +1,7 @@
 import tempfile
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -7,10 +9,11 @@ from unittest.mock import patch
 import numpy as np
 
 from rustmap_parser.config import (
-    CargoShipPathOptions, DataOptions, ExportConfig, ExportOptions, HeatmapOptions,
-    TerrainOptions, TileOptions,
+    CargoShipPathOptions, DataOptions, DiagnosticsOptions, ExportConfig,
+    ExportOptions, HeatmapOptions, MonumentOptions, TerrainOptions, TileOptions,
+    TransformOptions,
 )
-from rustmap_parser.exporter import _generate, export_orientation
+from rustmap_parser.exporter import RustMapExporter, _generate, export_orientation
 
 
 class ExporterTests(unittest.TestCase):
@@ -56,6 +59,12 @@ class ExporterTests(unittest.TestCase):
         self.assertTrue(everything.heatmaps.previews)
         self.assertTrue(everything.diagnostics)
         self.assertTrue(everything.monuments)
+        self.assertIsInstance(everything.monuments, MonumentOptions)
+        self.assertTrue(everything.monuments.interactable)
+        self.assertTrue(everything.monuments.puzzles)
+        self.assertTrue(everything.monuments.loot)
+        self.assertTrue(everything.monuments.radiation_zones)
+        self.assertEqual(everything.transforms, TransformOptions())
         self.assertIsNotNone(everything.terrain)
         self.assertTrue(everything.terrain.full_size)
         self.assertIsNotNone(everything.terrain.tiles)
@@ -100,6 +109,179 @@ class ExporterTests(unittest.TestCase):
             ).validated()
         self.assertIsNone(config.exports.heatmaps.resolution)
 
+    def test_diagnostics_options_support_map_and_explicit_resolution(self):
+        self.assertEqual(DiagnosticsOptions().resolved_resolution(4250), 4250)
+        self.assertEqual(DiagnosticsOptions(1024).resolved_resolution(4250), 1024)
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(diagnostics=DiagnosticsOptions()),
+            ).validated()
+            with self.assertRaisesRegex(ValueError, "diagnostics resolution"):
+                ExportConfig(
+                    Path(map_file.name), Path("output"),
+                    exports=ExportOptions(
+                        diagnostics=DiagnosticsOptions(resolution=0)
+                    ),
+                ).validated()
+        self.assertIsInstance(config.exports.diagnostics, DiagnosticsOptions)
+        self.assertIsNone(config.exports.diagnostics.resolution)
+
+    def test_diagnostics_none_is_resolved_before_generation(self):
+        world = SimpleNamespace(
+            size=100, serialization_version=1, timestamp=2, prefabs=[], paths=[],
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            config = ExportConfig(
+                Path("unused.map"), Path(temporary),
+                exports=ExportOptions(diagnostics=DiagnosticsOptions(None)),
+            )
+            stats = {
+                "resolution_mode": "uniform",
+                "orientation_validation": {},
+                "layers": {},
+            }
+            with (
+                patch("rustmap_parser.exporter.load_map", return_value=world),
+                patch(
+                    "rustmap_parser.exporter.generate_diagnostics",
+                    return_value=stats,
+                ) as diagnostics,
+            ):
+                metadata = _generate(config, None, None)
+            diagnostics.assert_called_once_with(
+                world, Path(temporary) / "diagnostics", 100
+            )
+        self.assertEqual(metadata["diagnostics"]["requested_resolution"], None)
+        self.assertEqual(metadata["diagnostics"]["resolution"], 100)
+        self.assertEqual(metadata["diagnostics"]["resolution_mode"], "uniform")
+
+    def test_interactable_and_puzzles_enable_independent_sidecars(self):
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(monuments=MonumentOptions(
+                    interactable=True, puzzles=False,
+                )),
+            ).validated()
+        self.assertTrue(config.exports.monuments)
+        self.assertTrue(config.exports.monuments.interactable)
+        self.assertFalse(config.exports.monuments.puzzles)
+
+    def test_transform_selection_is_global_and_normalized(self):
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(
+                    monuments=True,
+                    transforms=TransformOptions(
+                        local_position=0, position="", map_position=1,
+                    ),
+                ),
+            ).validated()
+        self.assertEqual(config.exports.transforms, TransformOptions(
+            local_position=False, position=False, map_position=True,
+        ))
+
+    def test_status_updates_are_opt_in_and_survive_validation(self):
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(monuments=True), status_updates=1,
+            ).validated()
+            positional = ExportConfig(
+                Path(map_file.name), Path("output"),
+                ExportOptions(monuments=True), DataOptions(), True,
+            ).validated()
+        self.assertIs(config.status_updates, True)
+        self.assertIs(positional.timing_debug, True)
+        self.assertIs(positional.status_updates, False)
+
+    def test_status_updates_report_pipeline_milestones(self):
+        world = SimpleNamespace(
+            size=100, serialization_version=1, timestamp=2, prefabs=[],
+        )
+        render_metadata = {"artifacts": {}, "full_size_tiles": None}
+        with tempfile.TemporaryDirectory() as temporary:
+            config = ExportConfig(
+                Path("status-test.map"), Path(temporary),
+                exports=ExportOptions(terrain=TerrainOptions(
+                    formats=("png",), full_size=False,
+                )),
+                status_updates=True,
+            )
+            output = StringIO()
+            with (
+                patch("rustmap_parser.exporter.load_map", return_value=world),
+                patch("rustmap_parser.exporter.save_map_render",
+                      return_value=render_metadata),
+                redirect_stdout(output),
+            ):
+                _generate(config, None, None)
+        status = output.getvalue()
+        self.assertIn("[rust-map-parser] Export started:", status)
+        self.assertIn("Map loaded: 100 m world, 0 placed prefabs", status)
+        self.assertIn("Terrain render started", status)
+        self.assertIn("Terrain render complete", status)
+        self.assertIn("Writing export metadata", status)
+        self.assertIn("Export complete in", status)
+
+    def test_monument_sidecars_are_independently_opt_in(self):
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(monuments=MonumentOptions(
+                    loot=True, radiation_zones=True,
+                )),
+            ).validated()
+        self.assertIsInstance(config.exports.monuments, MonumentOptions)
+        self.assertFalse(config.exports.monuments.interactable)
+        self.assertFalse(config.exports.monuments.puzzles)
+        self.assertTrue(config.exports.monuments.loot)
+        self.assertTrue(config.exports.monuments.radiation_zones)
+
+    def test_all_monument_result_paths_share_monuments_directory(self):
+        metadata = {
+            "map": {"world_size": 1000},
+            "generation": {"elapsed_seconds": 0.1},
+            "heatmaps": {"categories": {}},
+            "monuments": {
+                "count": 1, "interactable_count": 2, "puzzle_count": 3,
+                "loot_position_count": 4, "radiation_zone_count": 5,
+            },
+            "tunnels": {"status": "disabled"},
+            "no_build_zones": {"status": "disabled"},
+            "cargo_ship_path": {"status": "disabled", "patrol": {}},
+            "terrain": None,
+        }
+        with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
+            config = ExportConfig(
+                Path(map_file.name), Path("output"),
+                exports=ExportOptions(monuments=MonumentOptions(
+                    interactable=True, puzzles=True, loot=True,
+                    radiation_zones=True,
+                )),
+            )
+            with patch("rustmap_parser.exporter._generate", return_value=metadata):
+                result = RustMapExporter(config).run()
+        self.assertEqual(result.monuments_file, Path("output/monuments/monuments.json"))
+        self.assertEqual(
+            result.monument_interactables_file,
+            Path("output/monuments/monument_interactables.json"),
+        )
+        self.assertEqual(
+            result.monument_puzzles_file,
+            Path("output/monuments/monument_puzzles.json"),
+        )
+        self.assertEqual(
+            result.monument_loot_file,
+            Path("output/monuments/monument_loot.json"),
+        )
+        self.assertEqual(
+            result.monument_radiation_zones_file,
+            Path("output/monuments/monument_radiation_zones.json"),
+        )
+
     def test_unused_data_override_is_not_required(self):
         with tempfile.NamedTemporaryFile(suffix=".map") as map_file:
             config = ExportConfig(
@@ -119,7 +301,8 @@ class ExporterTests(unittest.TestCase):
         world = SimpleNamespace(size=100, serialization_version=1, timestamp=2)
         with tempfile.TemporaryDirectory() as temporary:
             config = ExportConfig(
-                Path("unused.map"), Path(temporary),
+                Path(temporary) / "private-machine-folder" / "unused.map",
+                Path(temporary),
                 exports=ExportOptions(terrain=TerrainOptions(
                     formats=("png",), full_size=False,
                 )),
@@ -135,6 +318,9 @@ class ExporterTests(unittest.TestCase):
                 patch("rustmap_parser.exporter.save_cargo_ship_path") as cargo,
             ):
                 metadata = _generate(config, None, None)
+            self.assertEqual(metadata["schema_version"], 7)
+            self.assertEqual(metadata["map"]["path"], "unused.map")
+            self.assertNotIn(temporary, metadata["map"]["path"])
             render.assert_called_once()
             diagnostics.assert_not_called()
             monuments.assert_not_called()
@@ -143,6 +329,10 @@ class ExporterTests(unittest.TestCase):
             cargo.assert_not_called()
             self.assertEqual(metadata["enabled_outputs"], {
                 "heatmaps": False, "diagnostics": False, "monuments": False,
+                "monument_interactables": False,
+                "monument_puzzles": False,
+                "monument_loot": False,
+                "monument_radiation_zones": False,
                 "terrain": True, "tunnels": False, "no_build_zones": False,
                 "cargo_ship_path": False,
             })

@@ -14,6 +14,8 @@ from PIL import Image, ImageDraw
 from .prefabs import PrefabManifest
 from .png import save_png
 from .tunnels import _instance_matrix
+from .config import TransformOptions
+from .transforms import exported_position_fields, strip_disabled_position_fields
 
 
 AUTOSPAWN_PREFIX = "assets/bundled/prefabs/autospawn/"
@@ -183,7 +185,7 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
         )
     )
     document = {
-        "schema_version": 5,
+        "schema_version": 6,
         "status": "rendered",
         "source": source,
         "map": {
@@ -192,7 +194,7 @@ def build_no_build_export(world, manifest: PrefabManifest, data: dict,
         },
         "resolution": [resolution, resolution],
         "coordinates": {
-            "world": "Unity metres: X east/west, Y elevation, Z north/south",
+            "position": "Unity metres: X east/west, Y elevation, Z north/south",
             "map_position": "map metres from bottom-left: x = world_x + world_size/2; y = world_z + world_size/2",
             "map_origin": "(0, 0) is the bottom-left of the playable map; positive X is right and positive Y is up",
             "heading_degrees": "rotation Y normalized to [0, 360)",
@@ -228,7 +230,8 @@ def save_no_build_zones(world, manifest_path: str | Path, output_dir: str | Path
                         outline_width: int = 3,
                         terrain_image: str | Path | Image.Image | None = None,
                         export_images: bool = True,
-                        export_json: bool = True) -> dict:
+                        export_json: bool = True,
+                        transforms: TransformOptions | None = None) -> dict:
     started = time.perf_counter()
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
@@ -279,6 +282,9 @@ def save_no_build_zones(world, manifest_path: str | Path, output_dir: str | Path
         else:
             warnings.append("terrain_image_unavailable_overlay_omitted")
     document["elapsed_seconds"] = time.perf_counter() - started
+    transforms = transforms or TransformOptions()
+    document["exported_position_fields"] = exported_position_fields(transforms)
+    strip_disabled_position_fields(document, transforms)
     document["artifact_sizes_bytes"] = {}
     if document["image_file"]:
         document["artifact_sizes_bytes"][image_path.name] = image_path.stat().st_size

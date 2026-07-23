@@ -47,6 +47,14 @@ ExportResult(
     heatmaps_file: Path | None = None,
     monuments_file: Path | None = None,
     monument_count: int = 0,
+    monument_interactables_file: Path | None = None,
+    monument_interactable_count: int = 0,
+    monument_puzzles_file: Path | None = None,
+    monument_puzzle_count: int = 0,
+    monument_loot_file: Path | None = None,
+    monument_loot_position_count: int = 0,
+    monument_radiation_zones_file: Path | None = None,
+    monument_radiation_zone_count: int = 0,
     map_image: Path | None = None,
     full_map_image: Path | None = None,
     map_tiles_dir: Path | None = None,
@@ -171,11 +179,12 @@ The arrays use exported image orientation and line up with PNG previews.
 
 ## Monument fields
 
-Populated when `ExportOptions.monuments=True`.
+Populated when `ExportOptions.monuments=True` or when `monuments` receives a
+`MonumentOptions` object.
 
 ### `monuments_file`
 
-Path to `monuments.json`, or `None` when disabled.
+Path to `monuments/monuments.json`, or `None` when disabled.
 
 ### `monument_count`
 
@@ -190,6 +199,54 @@ if result.monuments_file:
 
 Do not use `monument_count == 0` alone to determine whether the stage ran; use
 `monuments_file` or `metadata["enabled_outputs"]["monuments"]`.
+
+### Monument sidecar fields
+
+`monument_interactables_file` and `monument_interactable_count` are populated
+with `MonumentOptions(interactable=True)`. `monument_puzzles_file` and
+`monument_puzzle_count` are populated with `MonumentOptions(puzzles=True)`.
+`monument_loot_file` and
+`monument_loot_position_count` are populated only with
+`MonumentOptions(loot=True)`. `monument_radiation_zones_file` and
+`monument_radiation_zone_count` are populated only with
+`MonumentOptions(radiation_zones=True)`. Disabled sidecar paths are `None` and
+their counts are zero.
+
+The two readable detail sidecars are independently selected:
+
+- `monuments/monument_interactables.json`: exact local, world, and bottom-left
+  map positions, heading,
+  component/prefab identity, properties, and `source` (`prefab_asset` or
+  `map_prefab`).
+- `monuments/monument_puzzles.json`: compact major-action routes with ordered
+  `steps`, exact positions,
+  required keycard colors, and the door outcome. Internal wiring nodes,
+  lighting/alarm switches, timers, and alternate exit buttons are excluded.
+  Equivalent keycard entrances powered by one prerequisite circuit are one
+  puzzle; additional reader/door suffixes appear in `alternate_endings`, with
+  `common_step_count` and `endpoint_count` describing how they branch.
+
+Every record's `metadata.gameplay` contains the scalar `maximum_radiation`;
+zone arrays are never embedded in `monuments/monuments.json`. With `loot=True`,
+readable position/kind/prefab/owner objects are written to
+`monuments/monument_loot.json`. With `radiation_zones=True`, readable trigger
+objects are written to
+`monuments/monument_radiation_zones.json`. The result exposes their paths and
+counts as `monument_loot_*` and `monument_radiation_*` fields.
+
+The document-level `details` object in `monuments/monuments.json` retains only
+totals, enabled-state flags, and assignment rules. The large arrays are not
+embedded. Recognized map interactables that cannot be attached confidently are
+preserved in the interactables sidecar's `unassigned_interactables` array.
+
+Coordinate objects are projected according to the global
+`ExportOptions.transforms`. The same selection applies to the primary monument
+file, every enabled monument sidecar, `cargo_ship_path.json`, and
+`no_build_zones.json`. Each affected document's
+`exported_position_fields` array lists any of `local_position`, `position`, and
+`map_position` that are present. Heading, rotation, radius, and collider
+geometry describe orientation or shape rather than coordinate alternatives and
+remain available.
 
 ## Terrain fields
 
@@ -242,7 +299,8 @@ For 512px tiles:
 
 ### `diagnostics_dir`
 
-Path to `diagnostics/` when `ExportOptions.diagnostics=True`, otherwise `None`.
+Path to `diagnostics/` when diagnostics are enabled with either `True` or
+`DiagnosticsOptions`, otherwise `None`.
 
 The directory contains decoded layer PNGs and `diagnostics.json`. Individual
 diagnostic paths are intentionally not duplicated in `ExportResult`; enumerate
@@ -381,6 +439,10 @@ if result.cargo_ship_path_status == "rendered":
 | Heatmaps | `heatmaps_file`, `heatmap_categories` |
 | Diagnostics | `diagnostics_dir` |
 | Monuments | `monuments_file`, `monument_count` |
+| Monument interactables | `monument_interactables_file`, interactable count |
+| Monument puzzles | `monument_puzzles_file`, puzzle count |
+| Monument loot | `monument_loot_file`, marker count |
+| Monument radiation zones | `monument_radiation_zones_file`, zone count |
 | Terrain PNG | `map_image` |
 | Full terrain | `full_map_image` |
 | Tiles | `map_tiles_dir`, `map_tiles_metadata_file`, `map_tile_count` |
@@ -446,6 +508,10 @@ JSON-only removes old no-build PNGs.
 The typed result intentionally exposes only common fields. Detailed information
 lives in `result.metadata` and `export_metadata.json`:
 
+In schema version 7 and newer, `map.path` is the input filename only (for
+example, `procedural.map`). Directory components are intentionally omitted so
+published exports do not reveal workstation usernames or server locations.
+
 ```text
 schema_version
 map
@@ -470,6 +536,10 @@ Boolean record of which high-level stages were selected:
     "heatmaps": True,
     "diagnostics": False,
     "monuments": True,
+    "monument_interactables": True,
+    "monument_puzzles": True,
+    "monument_loot": False,
+    "monument_radiation_zones": False,
     "terrain": True,
     "tunnels": False,
     "no_build_zones": True,
@@ -488,8 +558,11 @@ sizes = result.metadata["generation"]["artifact_sizes_bytes"]
 ### Per-stage metadata
 
 - `heatmaps` includes resolution, categories, previews, and rule identity.
-- `diagnostics` includes native shapes and orientation validation.
-- `monuments` includes instance and unique-prefab counts.
+- `diagnostics` includes requested/resolved resolution, resolution mode, native
+  shapes, and orientation validation.
+- `monuments` includes the `monuments/` directory, relative artifact paths,
+  independently enabled interactable/puzzle flags, exported position fields,
+  and every monument-sidecar count.
 - `terrain` mirrors `map_render_metadata.json`.
 - `tunnels` mirrors `tunnels_metadata.json` and requested outputs.
 - `no_build_zones` includes output selection, counts, warnings, and zones.

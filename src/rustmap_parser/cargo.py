@@ -16,6 +16,8 @@ from .png import save_png
 from .prefabs import PrefabManifest
 from .renderer import _signed_distance
 from .tunnels import _instance_matrix
+from .config import TransformOptions
+from .transforms import exported_position_fields, strip_disabled_position_fields
 
 try:
     from numba import njit
@@ -26,7 +28,7 @@ except ImportError:  # pragma: no cover
         return decorate
 
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 ORIENTATION = "flip_vertical (reverse Z; preserve X left/right)"
 HARBOR_PREFIX = "assets/bundled/prefabs/autospawn/monument/harbor/"
 CARGO_COLLISION_RESOURCE = "cargo_collision_tiles"
@@ -714,7 +716,7 @@ def build_cargo_ship_path_export(world, manifest: PrefabManifest,
         "resolution": [resolution, resolution],
         "orientation": ORIENTATION,
         "coordinates": {
-            "world": "centered Unity X/Y/Z metres",
+            "position": "centered Unity X/Y/Z metres",
             "map_position": "bottom-left origin in world metres",
             "image": "X left-to-right; positive world Z points upward",
         },
@@ -833,7 +835,8 @@ def save_cargo_ship_path(world, manifest_path: str | Path, output_dir: str | Pat
                          smooth_patrol: bool = False,
                          terrain_image: str | Path | Image.Image | None = None,
                          export_layer: bool = True, export_overlay: bool = True,
-                         export_json: bool = True) -> dict:
+                         export_json: bool = True,
+                         transforms: TransformOptions | None = None) -> dict:
     started = time.perf_counter()
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
@@ -893,6 +896,9 @@ def save_cargo_ship_path(world, manifest_path: str | Path, output_dir: str | Pat
             save_png(Image.alpha_composite(base, image.convert("RGBA")), overlay_path)
             document["overlay_file"] = overlay_path.name
     document["elapsed_seconds"] = time.perf_counter() - started
+    transforms = transforms or TransformOptions()
+    document["exported_position_fields"] = exported_position_fields(transforms)
+    strip_disabled_position_fields(document, transforms)
     document["artifact_sizes_bytes"] = {}
     for path in (layer_path, overlay_path):
         if path.is_file():

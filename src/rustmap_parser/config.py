@@ -29,6 +29,16 @@ class HeatmapOptions:
 
 
 @dataclass(frozen=True, slots=True)
+class DiagnosticsOptions:
+    """Diagnostic PNG sizing; ``None`` means one pixel per world metre."""
+
+    resolution: int | None = None
+
+    def resolved_resolution(self, world_size: int) -> int:
+        return int(world_size if self.resolution is None else self.resolution)
+
+
+@dataclass(frozen=True, slots=True)
 class TileOptions:
     size: int = 512
 
@@ -77,21 +87,49 @@ class CargoShipPathOptions:
 
 
 @dataclass(frozen=True, slots=True)
+class TransformOptions:
+    """Select coordinate representations in every exported JSON document."""
+
+    local_position: bool = True
+    position: bool = True
+    map_position: bool = True
+
+
+@dataclass(frozen=True, slots=True)
+class MonumentOptions:
+    """Optional monument detail sidecars; every field defaults to off."""
+
+    interactable: bool = False
+    puzzles: bool = False
+    loot: bool = False
+    radiation_zones: bool = False
+
+
+# Compatibility alias for callers using the former monument-only type name.
+MonumentTransformOptions = TransformOptions
+
+
+@dataclass(frozen=True, slots=True)
 class ExportOptions:
     """Select outputs. ``None``/``False`` means that stage does not run."""
 
     heatmaps: HeatmapOptions | None = None
-    diagnostics: bool = False
-    monuments: bool = False
+    diagnostics: bool | DiagnosticsOptions = False
+    monuments: bool | MonumentOptions = False
     terrain: TerrainOptions | None = None
     tunnels: TunnelOptions | None = None
     no_build_zones: NoBuildZoneOptions | None = None
     cargo_ship_path: CargoShipPathOptions | None = None
+    transforms: TransformOptions = field(default_factory=TransformOptions)
 
     @classmethod
     def all(cls) -> "ExportOptions":
         return cls(
-            heatmaps=HeatmapOptions(), diagnostics=True, monuments=True,
+            heatmaps=HeatmapOptions(), diagnostics=True,
+            monuments=MonumentOptions(
+                interactable=True, puzzles=True, loot=True,
+                radiation_zones=True,
+            ),
             terrain=TerrainOptions(tiles=TileOptions()), tunnels=TunnelOptions(),
             no_build_zones=NoBuildZoneOptions(),
             cargo_ship_path=CargoShipPathOptions(),
@@ -116,6 +154,7 @@ class ExportConfig:
     exports: ExportOptions = field(default_factory=ExportOptions.all)
     data: DataOptions = field(default_factory=DataOptions)
     timing_debug: bool = False
+    status_updates: bool = False
 
     def validated(self) -> "ExportConfig":
         map_path = Path(self.map_path)
@@ -123,7 +162,22 @@ class ExportConfig:
         if not map_path.is_file():
             raise FileNotFoundError(f"Rust map not found: {map_path}")
         exports = self.exports
-        if not any((exports.heatmaps, exports.diagnostics, exports.monuments,
+        transforms = TransformOptions(
+            local_position=bool(exports.transforms.local_position),
+            position=bool(exports.transforms.position),
+            map_position=bool(exports.transforms.map_position),
+        )
+        monuments_enabled = bool(exports.monuments)
+        if isinstance(exports.monuments, MonumentOptions):
+            monument_options = MonumentOptions(
+                interactable=bool(exports.monuments.interactable),
+                puzzles=bool(exports.monuments.puzzles),
+                loot=bool(exports.monuments.loot),
+                radiation_zones=bool(exports.monuments.radiation_zones),
+            )
+        else:
+            monument_options = MonumentOptions()
+        if not any((exports.heatmaps, exports.diagnostics, monuments_enabled,
                     exports.terrain, exports.tunnels, exports.no_build_zones,
                     exports.cargo_ship_path)):
             raise ValueError("At least one export output must be enabled")
@@ -132,6 +186,14 @@ class ExportConfig:
         if (heatmaps is not None and heatmaps.resolution is not None and
                 heatmaps.resolution <= 0):
             raise ValueError("heatmap resolution must be positive")
+
+        diagnostics = exports.diagnostics
+        if isinstance(diagnostics, DiagnosticsOptions):
+            if diagnostics.resolution is not None and diagnostics.resolution <= 0:
+                raise ValueError("diagnostics resolution must be positive")
+            diagnostics = DiagnosticsOptions(resolution=diagnostics.resolution)
+        else:
+            diagnostics = bool(diagnostics)
 
         terrain = exports.terrain
         if terrain is not None:
@@ -237,7 +299,7 @@ class ExportConfig:
         required_overrides = (
             ("spawn rules", data.spawn_rules_path, heatmaps is not None),
             ("prefab manifest", data.prefab_manifest_path,
-             bool(exports.monuments or tunnels or no_build or cargo)),
+             bool(monuments_enabled or tunnels or no_build or cargo)),
         )
         for label, value, required in required_overrides:
             if required and value is not None and not Path(value).is_file():
@@ -247,13 +309,16 @@ class ExportConfig:
             prefab_manifest_path=Path(data.prefab_manifest_path) if data.prefab_manifest_path else None,
         )
         normalized_exports = ExportOptions(
-            heatmaps=heatmaps, diagnostics=bool(exports.diagnostics),
-            monuments=bool(exports.monuments), terrain=terrain,
+            heatmaps=heatmaps, diagnostics=diagnostics,
+            monuments=monument_options if monuments_enabled else False,
+            terrain=terrain,
             tunnels=tunnels, no_build_zones=no_build, cargo_ship_path=cargo,
+            transforms=transforms,
         )
         return ExportConfig(
             map_path=map_path, output_dir=output_dir, exports=normalized_exports,
-            data=normalized_data, timing_debug=bool(self.timing_debug),
+            data=normalized_data, status_updates=bool(self.status_updates),
+            timing_debug=bool(self.timing_debug),
         )
 
 
@@ -268,6 +333,14 @@ class ExportResult:
     heatmaps_file: Path | None = None
     monuments_file: Path | None = None
     monument_count: int = 0
+    monument_interactables_file: Path | None = None
+    monument_interactable_count: int = 0
+    monument_puzzles_file: Path | None = None
+    monument_puzzle_count: int = 0
+    monument_loot_file: Path | None = None
+    monument_loot_position_count: int = 0
+    monument_radiation_zones_file: Path | None = None
+    monument_radiation_zone_count: int = 0
     map_image: Path | None = None
     full_map_image: Path | None = None
     map_tiles_dir: Path | None = None

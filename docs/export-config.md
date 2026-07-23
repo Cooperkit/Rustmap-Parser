@@ -14,7 +14,8 @@ result = RustMapExporter(ExportConfig(
 )).run()
 ```
 
-The default configuration exports everything. For selective exports, provide an
+The default configuration uses `ExportOptions.all()` and exports every output,
+including all four monument sidecars. For selective exports, provide an
 `ExportOptions` object.
 
 ## Mental model
@@ -25,13 +26,19 @@ ExportConfig
 |-- output_dir: Path
 |-- exports: ExportOptions
 |   |-- heatmaps: HeatmapOptions | None
-|   |-- diagnostics: bool
-|   |-- monuments: bool
+|   |-- diagnostics: bool | DiagnosticsOptions
+|   |-- monuments: bool | MonumentOptions
+|   |   |-- interactable: bool -> monuments/monument_interactables.json
+|   |   |-- puzzles: bool -> monuments/monument_puzzles.json
+|   |   |-- loot: bool -> monuments/monument_loot.json
+|   |   |-- radiation_zones: bool -> monuments/monument_radiation_zones.json
 |   |-- terrain: TerrainOptions | None
 |   |-- tunnels: TunnelOptions | None
 |   |-- no_build_zones: NoBuildZoneOptions | None
-|   `-- cargo_ship_path: CargoShipPathOptions | None
+|   |-- cargo_ship_path: CargoShipPathOptions | None
+|   `-- transforms: TransformOptions
 |-- data: DataOptions
+|-- status_updates: bool
 `-- timing_debug: bool
 ```
 
@@ -55,13 +62,16 @@ All configuration types are available from the public `rustmap_parser` package:
 from rustmap_parser import (
     CargoShipPathOptions,
     DataOptions,
+    DiagnosticsOptions,
     ExportConfig,
     ExportOptions,
     HeatmapOptions,
+    MonumentOptions,
     NoBuildZoneOptions,
     RustMapExporter,
     TerrainOptions,
     TileOptions,
+    TransformOptions,
     TunnelOptions,
 )
 ```
@@ -75,6 +85,7 @@ ExportConfig(
     exports: ExportOptions = ExportOptions.all(),
     data: DataOptions = DataOptions(),
     timing_debug: bool = False,
+    status_updates: bool = False,
 )
 ```
 
@@ -109,6 +120,33 @@ manifest. Normal users should leave this at its default.
 When `True`, print a stage timing table after the run. Timing information is
 always written to `export_metadata.json`, regardless of this setting.
 
+### `status_updates`
+
+When `True`, print concise live pipeline milestones to standard output. Every
+line begins with `[rust-map-parser]` and is flushed immediately, making this
+suitable for terminals, service logs, and desktop application consoles.
+
+The updates cover:
+
+- Export start, map loading, world size, and placed-prefab count
+- Enabled heatmap, diagnostics, monument, and terrain stages
+- Supporting no-build, tunnel, and cargo stages, including useful result counts
+- Metadata writing and final elapsed time/output directory
+
+The exporter does not print per-prefab, per-loot-marker, or per-puzzle-step
+messages. When supporting stages run concurrently, their completion messages
+appear in actual completion order. The default is `False`, and this setting is
+independent of `timing_debug`, which prints the detailed timing table only after
+the run.
+
+```python
+config = ExportConfig(
+    map_path=map_path,
+    output_dir=output_dir,
+    status_updates=True,
+)
+```
+
 ## Presets
 
 ### Everything
@@ -131,7 +169,7 @@ The complete preset enables:
 
 - Heatmaps and raw previews
 - Diagnostics
-- Monuments
+- Monuments, interactables, puzzles, loot, and radiation zones
 - Full-size terrain render and 512-pixel map tiles
 - Train-tunnel layer and overlay
 - No-build-zone layer, overlay, and JSON
@@ -139,7 +177,8 @@ The complete preset enables:
 
 The scaled terrain render is intentionally omitted when `full_size=True`; this
 avoids rendering the same terrain twice. All distinct normal output artifacts,
-including full-size map tiles, are enabled by this preset.
+including full-size map tiles and every monument JSON, are enabled by this
+preset.
 
 ### Map only
 
@@ -181,12 +220,13 @@ exports = ExportOptions.heatmaps_only(
 ```python
 ExportOptions(
     heatmaps: HeatmapOptions | None = None,
-    diagnostics: bool = False,
-    monuments: bool = False,
+    diagnostics: bool | DiagnosticsOptions = False,
+    monuments: bool | MonumentOptions = False,
     terrain: TerrainOptions | None = None,
     tunnels: TunnelOptions | None = None,
     no_build_zones: NoBuildZoneOptions | None = None,
     cargo_ship_path: CargoShipPathOptions | None = None,
+    transforms: TransformOptions = TransformOptions(),
 )
 ```
 
@@ -199,11 +239,82 @@ exports = ExportOptions(
 )
 ```
 
-This produces `monuments.json`, `tunnels.png`, and tunnel metadata. It does not
+This produces `monuments/monuments.json`, `tunnels.png`, and tunnel metadata. It does not
 render terrain, so `tunnels_on_map.png` is omitted with a metadata warning.
 
 At least one stage must be enabled. An empty `ExportOptions()` passed to
 `ExportConfig` raises `ValueError`.
+
+## MonumentOptions
+
+```python
+MonumentOptions(
+    interactable: bool = False,
+    puzzles: bool = False,
+    loot: bool = False,
+    radiation_zones: bool = False,
+)
+```
+
+All four expansions default to off. `interactable` and `puzzles` write separate
+indented JSON files; `loot` and
+`radiation_zones` create their own sidecars. None of these arrays are embedded
+in `monuments/monuments.json`. Passing plain `monuments=True` retains the small
+basic export.
+
+The switches are independent. For example, this writes the puzzle file without
+performing interactable placement:
+
+```python
+exports = ExportOptions(
+    monuments=MonumentOptions(puzzles=True),
+)
+```
+
+## TransformOptions
+
+```python
+TransformOptions(
+    local_position: bool = True,
+    position: bool = True,
+    map_position: bool = True,
+)
+```
+
+These global switches project coordinate fields consistently across every
+transform-bearing JSON export. Defaults preserve the complete output:
+
+- `local_position` is XYZ in the owning monument prefab frame.
+- `position` is the true Unity world XYZ position.
+- `map_position` is bottom-left map XY for placing a marker on a map.
+
+For a compact map-marker-only export:
+
+```python
+exports = ExportOptions(
+    monuments=MonumentOptions(
+        interactable=True,
+        puzzles=True,
+        loot=True,
+        radiation_zones=True,
+    ),
+    no_build_zones=NoBuildZoneOptions(export_json=True),
+    cargo_ship_path=CargoShipPathOptions(export_json=True),
+    transforms=TransformOptions(
+        local_position=False,
+        position=False,
+        map_position=True,
+    ),
+)
+```
+
+This filters monument roots and sidecars, cargo patrol/harbor nodes, and
+no-build-zone centres. It does not remove `heading_degrees`, `rotation_euler`,
+loot `radius`, or collider geometry because those describe orientation or shape,
+not alternate position representations. Image renderers still use their full
+internal geometry. All three switches may be false for an identity/metadata-only
+JSON export. Each affected document includes `exported_position_fields` so
+consumers can discover its coordinate contract.
 
 ## HeatmapOptions
 
@@ -260,31 +371,127 @@ exports = ExportOptions(
 
 ## Diagnostics
 
-Diagnostics are a simple boolean because they currently have no tuning options:
+Use `DiagnosticsOptions` to give every diagnostic PNG one square output size:
 
 ```python
-exports = ExportOptions(diagnostics=True)
+from rustmap_parser import DiagnosticsOptions
+
+exports = ExportOptions(
+    diagnostics=DiagnosticsOptions(resolution=None),
+)
 ```
+
+`resolution=None` resolves to the map's world size, producing one pixel per
+world metre. A positive integer such as `1024` selects an explicit
+`1024 × 1024` output. Plain `diagnostics=True` remains a compatibility mode
+that preserves the different native resolutions of the decoded layers.
 
 This writes decoded height, water, alpha, biome, splat, and topology images,
 composites, orientation checks, and `diagnostics.json` beneath `diagnostics/`.
+Continuous height, water, alpha, biome, and splat images use bilinear scaling.
+Topology masks use nearest-neighbor scaling so their values remain binary.
+`export_metadata.json` records the requested resolution, resolved resolution,
+resolution mode, and original native layer shapes.
 
 When heatmaps and diagnostics are both enabled, diagnostics run alongside
 heatmap computation where possible.
 
 ## Monuments
 
-Monuments are also a simple boolean:
+Basic monument export is a simple boolean:
 
 ```python
 exports = ExportOptions(monuments=True)
 ```
 
-This writes `monuments.json` with positions, bottom-left map coordinates,
-headings, classifications, safe-zone status, recycler counts, keycards, puzzle
-types, and loot tiers. Existing gameplay-monument roots are preserved, while
+This writes `monuments/monuments.json` with positions, bottom-left map
+coordinates, headings, classifications, safe-zone status, recycler counts,
+keycards, puzzle types, and loot tiers. Existing gameplay-monument roots are preserved, while
 train-tunnel links and monument-owned entrances are positioned from packaged
 prefab child `LandmarkInfo` transforms to match the Rust+ server behavior.
+
+Every expanded monument export is independently opt-in and defaults to off:
+
+```python
+exports = ExportOptions(
+    monuments=MonumentOptions(
+        interactable=True,
+        puzzles=True,
+        loot=False,
+        radiation_zones=False,
+    ),
+)
+```
+
+`interactable=True` writes per-monument interactables to
+`monuments/monument_interactables.json`. Independently, `puzzles=True` writes
+major puzzle routes to `monuments/monument_puzzles.json`. Recognized
+interactables include recyclers, research tables, oil refineries, repair
+benches, mixing tables, workbenches, vending machines, and marketplaces.
+
+Vanilla child positions come from packaged prefab-root-relative component
+transforms. Recognized prefabs placed directly in the `.map` are merged as
+`source="map_prefab"`, which captures RustEdit/custom-monument additions such
+as extra recyclers. After assignment, their `local_position` is expressed in
+the owning monument root's coordinate frame, including its rotation and scale.
+When any monument expansion is enabled, nonstandard prefab roots explicitly in
+the map's `Monument` category are also exported as `custom_monument` records;
+Rust's unique-environment roots remain excluded. Assignment uses the
+monument's oriented bounds first and a conservative size-based fallback. Items
+that cannot be assigned confidently are kept in the interactables sidecar's
+top-level `unassigned_interactables` array.
+
+`loot=True` writes a separate, indented `monuments/monument_loot.json`; no loot
+arrays are placed in `monuments/monuments.json`. Records are grouped beneath
+their owning monument prefab, then by loot kind and possible prefab paths. Every position has
+`local_position`, Unity world `position`, bottom-left `map_position`, and
+radial uncertainty. Each `prefabs` entry has explicit `kind` and `prefab`
+fields. Coordinates are rounded to millimetres. Radius is zero
+for an exact point and is the random placement radius for a radial point.
+Population limits, respawn timers, weights, group settings, summaries, and
+runtime occupancy are deliberately omitted. Direct barrel/crate/diesel prefabs added
+to a custom monument are included after they are assigned to an owner. Diesel
+Fuel collectables use kind `diesel_fuel` and prefab
+`assets/content/structures/excavator/prefabs/diesel_collectable.prefab`; both
+vanilla spawn choices and directly placed custom copies are recognized.
+
+Every monument always keeps just one `metadata.gameplay.maximum_radiation`
+number. `radiation_zones=True` additionally writes the separate, indented
+`monuments/monument_radiation_zones.json`, containing static
+`TriggerRadiation` sphere or box geometry, tier, raw amount before player
+protection, falloff, relevant
+flags, and readable local/world/map positions. Zones are grouped beneath their
+owning monument prefab. A dynamic zone has
+`radiation_amount=null` because server events can
+change it at runtime. Radiation outside a monument trigger,
+plugin-created runtime zones, and a custom prefab's unbundled internal
+components cannot be inferred reliably from the `.map` alone.
+
+The packaged data retains Rust's complete directed `IOEntity.outputs` graph,
+but that implementation detail is not dumped into either output. Each puzzle
+in `monuments/monument_puzzles.json` is a compact causal route containing only
+major player actions
+(`insert_fuse`, `turn_on_switch`, `press_button`, `swipe_keycard`, or
+`turn_wheel`) followed by the `door_opens` outcome. Lighting/alarm switches,
+timers, logic components, and inside exit-button alternatives are omitted.
+Every retained step includes exact local, world, and map positions. Dynamic
+modular puzzles with no baked graph are omitted rather than receiving guessed
+steps.
+
+One `puzzles` entry represents one powered player puzzle, not one physical
+door. When several keycard readers open equivalent entrances powered by the
+same fuse/switch sequence, the canonical walkthrough remains in `steps` and
+the other valid reader/door suffixes are retained in `alternate_endings`.
+`common_step_count` says how many leading canonical steps precede each ending,
+and `endpoint_count` records the total number of equivalent access points.
+
+For server-side validation, `tools/MonumentDetailsProbe.cs` is an optional
+Oxide plugin. It writes `oxide/data/MonumentDetailsProbe.json` after server
+initialization and on the `monumentdetails.export` console command. The probe
+captures runtime entities and IO links, including plugin-spawned entities and
+dynamically assembled puzzles, plus live spawn-group population and radiation
+trigger values. It is deliberately diagnostic-only: the parser
+does not require the file and has no server-snapshot path setting.
 
 Monument export loads the prefab manifest. It does not require terrain,
 heatmaps, or diagnostics.
@@ -759,6 +966,14 @@ result.heatmap_categories
 result.diagnostics_dir
 result.monuments_file
 result.monument_count
+result.monument_interactables_file
+result.monument_interactable_count
+result.monument_puzzles_file
+result.monument_puzzle_count
+result.monument_loot_file
+result.monument_loot_position_count
+result.monument_radiation_zones_file
+result.monument_radiation_zone_count
 result.map_image
 result.full_map_image
 result.map_tiles_dir
@@ -786,7 +1001,7 @@ stage may still have a missing composite path when terrain is disabled.
 
 Every run writes a stage-neutral `export_metadata.json` containing:
 
-- Map serialization information and world size
+- The input map filename, serialization information, and world size
 - Enabled output selection
 - Heatmap categories and rule database identity
 - Diagnostic shapes and orientation validation
@@ -797,6 +1012,9 @@ Every run writes a stage-neutral `export_metadata.json` containing:
 - Artifact sizes
 
 This file is the best source for logging, job status, and downstream automation.
+`map.path` is deliberately filename-only so sharing an export cannot disclose a
+local workstation or game-server directory. Schema version 7 introduced this
+privacy behavior; schema version 6 and older may contain the caller-provided path.
 
 ## Migration from the old flat configuration
 

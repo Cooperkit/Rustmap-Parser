@@ -1,0 +1,1405 @@
+{
+  "schema_version": 2,
+  "map": {
+    "world_size": 2500,
+    "timestamp": 1783040108421
+  },
+  "coordinates": {
+    "local_position": "metres in the owning monument prefab frame",
+    "position": "Unity world metres",
+    "map_position": "map metres from bottom-left"
+  },
+  "monuments": [
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/arctic_bases/arctic_research_base_a.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 39.28,
+            "y": 1.43,
+            "z": 7.07
+          },
+          "position": {
+            "x": -677.819,
+            "y": 19.885,
+            "z": 224.056
+          },
+          "map_position": {
+            "x": 572.181,
+            "y": 1474.056
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 102.016,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": 25.57,
+            "y": 1.43,
+            "z": 7.07
+          },
+          "position": {
+            "x": -674.964,
+            "y": 19.885,
+            "z": 237.466
+          },
+          "map_position": {
+            "x": 575.036,
+            "y": 1487.466
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 102.016,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": 15.277,
+            "y": 0.304,
+            "z": -22.952
+          },
+          "position": {
+            "x": -702.186,
+            "y": 18.759,
+            "z": 253.783
+          },
+          "map_position": {
+            "x": 547.814,
+            "y": 1503.783
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 102.016,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "position": {
+            "x": -676.556,
+            "y": 18.455,
+            "z": 263.947
+          },
+          "map_position": {
+            "x": 573.444,
+            "y": 1513.947
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 102.016,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 2.0,
+          "tier": "minimal",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 114.02
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/large/water_treatment_plant_1.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": -57.329,
+            "y": 2.89,
+            "z": 2.908
+          },
+          "position": {
+            "x": -178.861,
+            "y": 24.88,
+            "z": 337.996
+          },
+          "map_position": {
+            "x": 1071.139,
+            "y": 1587.996
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 5.773
+        },
+        {
+          "local_position": {
+            "x": -4.4,
+            "y": 56.44,
+            "z": 74.12
+          },
+          "position": {
+            "x": -232.636,
+            "y": 78.43,
+            "z": 267.42
+          },
+          "map_position": {
+            "x": 1017.364,
+            "y": 1517.42
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 11.866
+        },
+        {
+          "local_position": {
+            "x": -42.49,
+            "y": -6.06,
+            "z": -141.23
+          },
+          "position": {
+            "x": -191.98,
+            "y": 15.93,
+            "z": 482.3
+          },
+          "map_position": {
+            "x": 1058.02,
+            "y": 1732.3
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 10.972
+        },
+        {
+          "local_position": {
+            "x": -89.06,
+            "y": -9.42,
+            "z": -83.55
+          },
+          "position": {
+            "x": -146.101,
+            "y": 12.57,
+            "z": 424.069
+          },
+          "map_position": {
+            "x": 1103.899,
+            "y": 1674.069
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.681
+        },
+        {
+          "local_position": {
+            "x": -55.25,
+            "y": 12.69,
+            "z": 43.25
+          },
+          "position": {
+            "x": -181.421,
+            "y": 34.68,
+            "z": 297.681
+          },
+          "map_position": {
+            "x": 1068.579,
+            "y": 1547.681
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 10.578
+        },
+        {
+          "local_position": {
+            "x": -33.86,
+            "y": 12.69,
+            "z": 35.72
+          },
+          "position": {
+            "x": -202.72,
+            "y": 34.68,
+            "z": 305.466
+          },
+          "map_position": {
+            "x": 1047.28,
+            "y": 1555.466
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 10.578
+        },
+        {
+          "local_position": {
+            "x": 66.411,
+            "y": 7.888,
+            "z": 17.755
+          },
+          "position": {
+            "x": -302.77,
+            "y": 29.878,
+            "z": 324.626
+          },
+          "map_position": {
+            "x": 947.23,
+            "y": 1574.626
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 3.065
+        },
+        {
+          "local_position": {
+            "x": 74.28,
+            "y": -4.87,
+            "z": -28.36
+          },
+          "position": {
+            "x": -310.088,
+            "y": 17.12,
+            "z": 370.831
+          },
+          "map_position": {
+            "x": 939.912,
+            "y": 1620.831
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 6.722
+        },
+        {
+          "local_position": {
+            "x": 73.77,
+            "y": -7.03,
+            "z": -46.79
+          },
+          "position": {
+            "x": -309.358,
+            "y": 14.96,
+            "z": 389.254
+          },
+          "map_position": {
+            "x": 940.642,
+            "y": 1639.254
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 5.387
+        },
+        {
+          "local_position": {
+            "x": 84.3,
+            "y": -6.83,
+            "z": -62.41
+          },
+          "position": {
+            "x": -319.701,
+            "y": 15.16,
+            "z": 404.998
+          },
+          "map_position": {
+            "x": 930.299,
+            "y": 1654.998
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 6.436
+        },
+        {
+          "local_position": {
+            "x": 65.11,
+            "y": -6.83,
+            "z": -98.17
+          },
+          "position": {
+            "x": -300.086,
+            "y": 15.16,
+            "z": 440.527
+          },
+          "map_position": {
+            "x": 949.914,
+            "y": 1690.527
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 7.234
+        },
+        {
+          "local_position": {
+            "x": 71.69,
+            "y": -6.06,
+            "z": -139.87
+          },
+          "position": {
+            "x": -306.168,
+            "y": 15.93,
+            "z": 482.303
+          },
+          "map_position": {
+            "x": 943.832,
+            "y": 1732.303
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 180.683,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.1,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.297
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/medium/nuclear_missile_silo.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 36.112,
+            "y": 12.27,
+            "z": -1.802
+          },
+          "position": {
+            "x": -366.483,
+            "y": -2.765,
+            "z": -836.833
+          },
+          "map_position": {
+            "x": 883.517,
+            "y": 413.167
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 302.403,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 80.0,
+          "tier": "high",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 3.119
+        },
+        {
+          "local_position": {
+            "x": 0.0,
+            "y": 46.0,
+            "z": 0.0
+          },
+          "position": {
+            "x": -387.356,
+            "y": 30.965,
+            "z": -866.356
+          },
+          "map_position": {
+            "x": 862.644,
+            "y": 383.644
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 302.403,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 52.163
+        },
+        {
+          "local_position": {
+            "x": -16.1,
+            "y": 20.5,
+            "z": 0.0
+          },
+          "position": {
+            "x": -395.984,
+            "y": 5.465,
+            "z": -879.949
+          },
+          "map_position": {
+            "x": 854.016,
+            "y": 370.051
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 302.403,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 33.628
+        },
+        {
+          "local_position": {
+            "x": 30.8,
+            "y": 20.5,
+            "z": 0.0
+          },
+          "position": {
+            "x": -370.851,
+            "y": 5.465,
+            "z": -840.352
+          },
+          "map_position": {
+            "x": 879.149,
+            "y": 409.648
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 302.403,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 33.628
+        },
+        {
+          "local_position": {
+            "x": 63.9,
+            "y": 20.5,
+            "z": -18.8
+          },
+          "position": {
+            "x": -337.241,
+            "y": 5.465,
+            "z": -822.48
+          },
+          "map_position": {
+            "x": 912.759,
+            "y": 427.52
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 302.403,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 33.628
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_1.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": -1.0,
+            "y": 35.573,
+            "z": 10.0
+          },
+          "position": {
+            "x": 1306.669,
+            "y": 35.573,
+            "z": -1549.106
+          },
+          "map_position": {
+            "x": 2556.669,
+            "y": -299.106
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 356.577,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": null,
+          "tier": "none",
+          "dynamic": true,
+          "falloff": 0.4,
+          "bypass_armor": true,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 125.0
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/offshore/oilrig_2.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 12.631,
+            "y": 26.31,
+            "z": -10.34
+          },
+          "position": {
+            "x": -1042.762,
+            "y": 26.31,
+            "z": -1602.682
+          },
+          "map_position": {
+            "x": 207.238,
+            "y": -352.682
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 22.477,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": null,
+          "tier": "none",
+          "dynamic": true,
+          "falloff": 0.5,
+          "bypass_armor": true,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 120.0
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/roadside/radtown_1.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 25.41,
+            "y": -2.56,
+            "z": -21.57
+          },
+          "position": {
+            "x": 44.988,
+            "y": 6.507,
+            "z": -320.43
+          },
+          "map_position": {
+            "x": 1294.988,
+            "y": 929.57
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 14.382
+        },
+        {
+          "local_position": {
+            "x": 36.535,
+            "y": -2.56,
+            "z": -21.57
+          },
+          "position": {
+            "x": 55.537,
+            "y": 6.507,
+            "z": -323.964
+          },
+          "map_position": {
+            "x": 1305.537,
+            "y": 926.036
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 14.382
+        },
+        {
+          "local_position": {
+            "x": 46.34,
+            "y": 1.7,
+            "z": 16.31
+          },
+          "position": {
+            "x": 76.867,
+            "y": 10.767,
+            "z": -291.16
+          },
+          "map_position": {
+            "x": 1326.867,
+            "y": 958.84
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 11.003
+        },
+        {
+          "local_position": {
+            "x": 0.57,
+            "y": 3.1,
+            "z": -18.63
+          },
+          "position": {
+            "x": 22.369,
+            "y": 12.167,
+            "z": -309.751
+          },
+          "map_position": {
+            "x": 1272.369,
+            "y": 940.249
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 12.043
+        },
+        {
+          "local_position": {
+            "x": 2.84,
+            "y": 2.81,
+            "z": 18.56
+          },
+          "position": {
+            "x": 36.335,
+            "y": 11.877,
+            "z": -275.209
+          },
+          "map_position": {
+            "x": 1286.335,
+            "y": 974.791
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.722
+        },
+        {
+          "local_position": {
+            "x": 22.528,
+            "y": 2.81,
+            "z": 16.31
+          },
+          "position": {
+            "x": 54.288,
+            "y": 11.877,
+            "z": -283.596
+          },
+          "map_position": {
+            "x": 1304.288,
+            "y": 966.404
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.722
+        },
+        {
+          "local_position": {
+            "x": 30.09,
+            "y": 2.81,
+            "z": 16.31
+          },
+          "position": {
+            "x": 61.459,
+            "y": 11.877,
+            "z": -285.998
+          },
+          "map_position": {
+            "x": 1311.459,
+            "y": 964.002
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.722
+        },
+        {
+          "local_position": {
+            "x": 37.778,
+            "y": 2.81,
+            "z": 16.31
+          },
+          "position": {
+            "x": 68.748,
+            "y": 11.877,
+            "z": -288.44
+          },
+          "map_position": {
+            "x": 1318.748,
+            "y": 961.56
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 8.722
+        },
+        {
+          "local_position": {
+            "x": -22.88,
+            "y": 1.79,
+            "z": 0.77
+          },
+          "position": {
+            "x": 6.296,
+            "y": 10.857,
+            "z": -283.907
+          },
+          "map_position": {
+            "x": 1256.296,
+            "y": 966.093
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.4,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 5.753
+        },
+        {
+          "local_position": {
+            "x": -35.58,
+            "y": 3.1,
+            "z": 20.86
+          },
+          "position": {
+            "x": 0.636,
+            "y": 12.167,
+            "z": -260.823
+          },
+          "map_position": {
+            "x": 1250.636,
+            "y": 989.177
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.4,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 15.16
+        },
+        {
+          "local_position": {
+            "x": -26.768,
+            "y": 3.1,
+            "z": 20.86
+          },
+          "position": {
+            "x": 8.992,
+            "y": 12.167,
+            "z": -263.622
+          },
+          "map_position": {
+            "x": 1258.992,
+            "y": 986.378
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.4,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 15.16
+        },
+        {
+          "local_position": {
+            "x": -16.705,
+            "y": 3.1,
+            "z": 20.86
+          },
+          "position": {
+            "x": 18.533,
+            "y": 12.167,
+            "z": -266.819
+          },
+          "map_position": {
+            "x": 1268.533,
+            "y": 983.181
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 18.522,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 25.0,
+          "tier": "medium",
+          "dynamic": false,
+          "falloff": 0.4,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 15.16
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/satellite_dish.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 55.12,
+            "y": 16.64,
+            "z": -8.0
+          },
+          "position": {
+            "x": 661.919,
+            "y": 30.264,
+            "z": 258.366
+          },
+          "map_position": {
+            "x": 1911.919,
+            "y": 1508.366
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": 30.4,
+            "y": 3.99,
+            "z": 22.18
+          },
+          "position": {
+            "x": 639.859,
+            "y": 17.614,
+            "z": 226.19
+          },
+          "map_position": {
+            "x": 1889.859,
+            "y": 1476.19
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": -55.83,
+            "y": 13.97,
+            "z": -5.82
+          },
+          "position": {
+            "x": 690.861,
+            "y": 27.594,
+            "z": 151.235
+          },
+          "map_position": {
+            "x": 1940.861,
+            "y": 1401.235
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 15.087
+        },
+        {
+          "local_position": {
+            "x": -12.31,
+            "y": 10.37,
+            "z": 43.88
+          },
+          "position": {
+            "x": 630.972,
+            "y": 23.994,
+            "z": 179.116
+          },
+          "map_position": {
+            "x": 1880.972,
+            "y": 1429.116
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 12.441
+        },
+        {
+          "local_position": {
+            "x": -27.68,
+            "y": 0.98,
+            "z": -19.1
+          },
+          "position": {
+            "x": 695.737,
+            "y": 14.604,
+            "z": 181.975
+          },
+          "map_position": {
+            "x": 1945.737,
+            "y": 1431.975
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.3,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 17.306
+        },
+        {
+          "local_position": {
+            "x": -0.31,
+            "y": 6.2,
+            "z": 0.607
+          },
+          "position": {
+            "x": 669.161,
+            "y": 19.824,
+            "z": 202.741
+          },
+          "map_position": {
+            "x": 1919.161,
+            "y": 1452.741
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 253.757,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 2.0,
+          "tier": "minimal",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 114.02
+        }
+      ]
+    },
+    {
+      "prefab": "assets/bundled/prefabs/autospawn/monument/small/sphere_tank.prefab",
+      "zones": [
+        {
+          "local_position": {
+            "x": 0.0,
+            "y": 46.39,
+            "z": -0.14
+          },
+          "position": {
+            "x": -163.1,
+            "y": 71.45,
+            "z": 42.243
+          },
+          "map_position": {
+            "x": 1086.9,
+            "y": 1292.243
+          },
+          "rotation_euler": {
+            "x": -0.0,
+            "y": 247.333,
+            "z": 0.0
+          },
+          "shape": "sphere",
+          "radiation_amount": 10.0,
+          "tier": "low",
+          "dynamic": false,
+          "falloff": 0.2,
+          "bypass_armor": false,
+          "increase_near_center": true,
+          "use_line_of_sight": false,
+          "ignore_above_ground": false,
+          "minimum_local_height": null,
+          "radius": 33.564
+        }
+      ]
+    }
+  ],
+  "zone_count": 42,
+  "amount_semantics": "raw TriggerRadiation amount before clothing/armor protection; null means the amount is controlled dynamically at runtime",
+  "exported_position_fields": [
+    "local_position",
+    "position",
+    "map_position"
+  ]
+}
